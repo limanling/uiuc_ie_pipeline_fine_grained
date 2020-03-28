@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE LCTL_TEXT SYSTEM "ltf.v1.5.dtd">
+<LCTL_TEXT lang="eng">
+<DOC id="IC0014F00" lang="eng" tokenization="tokenization_parameters.v5.0" grammar="none" raw_text_char_length="876" raw_text_md5="2fd85fb8b4efd4a5571480996328a9b5">
+<TEXT>
+<SEG id="segment-0" start_char="1" end_char="69">
+<ORIGINAL_TEXT>Second Day of Astana Talks on Syria Kicks Off With Bilateral Meetings</ORIGINAL_TEXT>
+<TOKEN id="token-0-0" pos="word" morph="none" start_char="1" end_char="6">Second</TOKEN>
+<TOKEN id="token-0-1" pos="word" morph="none" start_char="8" end_char="10">Day</TOKEN>
+<TOKEN id="token-0-2" pos="word" morph="none" start_char="12" end_char="13">of</TOKEN>
+<TOKEN id="token-0-3" pos="word" morph="none" start_char="15" end_char="20">Astana</TOKEN>
+<TOKEN id="token-0-4" pos="word" morph="none" start_char="22" end_char="26">Talks</TOKEN>
+<TOKEN id="token-0-5" pos="word" morph="none" start_char="28" end_char="29">on</TOKEN>
+<TOKEN id="token-0-6" pos="word" morph="none" start_char="31" end_char="35">Syria</TOKEN>
+<TOKEN id="token-0-7" pos="word" morph="none" start_char="37" end_char="41">Kicks</TOKEN>
+<TOKEN id="token-0-8" pos="word" morph="none" start_char="43" end_char="45">Off</TOKEN>
+<TOKEN id="token-0-9" pos="word" morph="none" start_char="47" end_char="50">With</TOKEN>
+<TOKEN id="token-0-10" pos="word" morph="none" start_char="52" end_char="60">Bilateral</TOKEN>
+<TOKEN id="token-0-11" pos="word" morph="none" start_char="62" end_char="69">Meetings</TOKEN>
+</SEG>
+<SEG id="segment-1" start_char="74" end_char="268">
+<ORIGINAL_TEXT>Second and last day of the fifth international meeting on Syria in Astana has kicked off Wednesday with bilateral meetings between the participating delegations, a Sputnik correspondent reported.</ORIGINAL_TEXT>
+<TOKEN id="token-1-0" pos="word" morph="none" start_char="74" end_char="79">Second</TOKEN>
+<TOKEN id="token-1-1" pos="word" morph="none" start_char="81" end_char="83">and</TOKEN>
+<TOKEN id="token-1-2" pos="word" morph="none" start_char="85" end_char="88">last</TOKEN>
+<TOKEN id="token-1-3" pos="word" morph="none" start_char="90" end_char="92">day</TOKEN>
+<TOKEN id="token-1-4" pos="word" morph="none" start_char="94" end_char="95">of</TOKEN>
+<TOKEN id="token-1-5" pos="word" morph="none" start_char="97" end_char="99">the</TOKEN>
+<TOKEN id="token-1-6" pos="word" morph="none" start_char="101" end_char="105">fifth</TOKEN>
+<TOKEN id="token-1-7" pos="word" morph="none" start_char="107" end_char="119">international</TOKEN>
+<TOKEN id="token-1-8" pos="word" morph="none" start_char="121" end_char="127">meeting</TOKEN>
+<TOKEN id="token-1-9" pos="word" morph="none" start_char="129" end_char="130">on</TOKEN>
+<TOKEN id="token-1-10" pos="word" morph="none" start_char="132" end_char="136">Syria</TOKEN>
+<TOKEN id="token-1-11" pos="word" morph="none" start_char="138" end_char="139">in</TOKEN>
+<TOKEN id="token-1-12" pos="word" morph="none" start_char="141" end_char="146">Astana</TOKEN>
+<TOKEN id="token-1-13" pos="word" morph="none" start_char="148" end_char="150">has</TOKEN>
+<TOKEN id="token-1-14" pos="word" morph="none" start_char="152" end_char="157">kicked</TOKEN>
+<TOKEN id="token-1-15" pos="word" morph="none" start_char="159" end_char="161">off</TOKEN>
+<TOKEN id="token-1-16" pos="word" morph="none" start_char="163" end_char="171">Wednesday</TOKEN>
+<TOKEN id="token-1-17" pos="word" morph="none" start_char="173" end_char="176">with</TOKEN>
+<TOKEN id="token-1-18" pos="word" morph="none" start_char="178" end_char="186">bilateral</TOKEN>
+<TOKEN id="token-1-19" pos="word" morph="none" start_char="188" end_char="195">meetings</TOKEN>
+<TOKEN id="token-1-20" pos="word" morph="none" start_char="197" end_char="203">between</TOKEN>
+<TOKEN id="token-1-21" pos="word" morph="none" start_char="205" end_char="207">the</TOKEN>
+<TOKEN id="token-1-22" pos="word" morph="none" start_char="209" end_char="221">participating</TOKEN>
+<TOKEN id="token-1-23" pos="word" morph="none" start_char="223" end_char="233">delegations</TOKEN>
+<TOKEN id="token-1-24" pos="punct" morph="none" start_char="234" end_char="234">,</TOKEN>
+<TOKEN id="token-1-25" pos="word" morph="none" start_char="236" end_char="236">a</TOKEN>
+<TOKEN id="token-1-26" pos="word" morph="none" start_char="238" end_char="244">Sputnik</TOKEN>
+<TOKEN id="token-1-27" pos="word" morph="none" start_char="246" end_char="258">correspondent</TOKEN>
+<TOKEN id="token-1-28" pos="word" morph="none" start_char="260" end_char="267">reported</TOKEN>
+<TOKEN id="token-1-29" pos="punct" morph="none" start_char="268" end_char="268">.</TOKEN>
+</SEG>
+<SEG id="segment-2" start_char="271" end_char="418">
+<ORIGINAL_TEXT>ASTANA (Sputnik) Defining the exact borders of the four deescalation zones in Syria and the monitoring procedures are the main issues on the agenda.</ORIGINAL_TEXT>
+<TOKEN id="token-2-0" pos="word" morph="none" start_char="271" end_char="276">ASTANA</TOKEN>
+<TOKEN id="token-2-1" pos="punct" morph="none" start_char="278" end_char="278">(</TOKEN>
+<TOKEN id="token-2-2" pos="word" morph="none" start_char="279" end_char="285">Sputnik</TOKEN>
+<TOKEN id="token-2-3" pos="punct" morph="none" start_char="286" end_char="286">)</TOKEN>
+<TOKEN id="token-2-4" pos="word" morph="none" start_char="288" end_char="295">Defining</TOKEN>
+<TOKEN id="token-2-5" pos="word" morph="none" start_char="297" end_char="299">the</TOKEN>
+<TOKEN id="token-2-6" pos="word" morph="none" start_char="301" end_char="305">exact</TOKEN>
+<TOKEN id="token-2-7" pos="word" morph="none" start_char="307" end_char="313">borders</TOKEN>
+<TOKEN id="token-2-8" pos="word" morph="none" start_char="315" end_char="316">of</TOKEN>
+<TOKEN id="token-2-9" pos="word" morph="none" start_char="318" end_char="320">the</TOKEN>
+<TOKEN id="token-2-10" pos="word" morph="none" start_char="322" end_char="325">four</TOKEN>
+<TOKEN id="token-2-11" pos="word" morph="none" start_char="327" end_char="338">deescalation</TOKEN>
+<TOKEN id="token-2-12" pos="word" morph="none" start_char="340" end_char="344">zones</TOKEN>
+<TOKEN id="token-2-13" pos="word" morph="none" start_char="346" end_char="347">in</TOKEN>
+<TOKEN id="token-2-14" pos="word" morph="none" start_char="349" end_char="353">Syria</TOKEN>
+<TOKEN id="token-2-15" pos="word" morph="none" start_char="355" end_char="357">and</TOKEN>
+<TOKEN id="token-2-16" pos="word" morph="none" start_char="359" end_char="361">the</TOKEN>
+<TOKEN id="token-2-17" pos="word" morph="none" start_char="363" end_char="372">monitoring</TOKEN>
+<TOKEN id="token-2-18" pos="word" morph="none" start_char="374" end_char="383">procedures</TOKEN>
+<TOKEN id="token-2-19" pos="word" morph="none" start_char="385" end_char="387">are</TOKEN>
+<TOKEN id="token-2-20" pos="word" morph="none" start_char="389" end_char="391">the</TOKEN>
+<TOKEN id="token-2-21" pos="word" morph="none" start_char="393" end_char="396">main</TOKEN>
+<TOKEN id="token-2-22" pos="word" morph="none" start_char="398" end_char="403">issues</TOKEN>
+<TOKEN id="token-2-23" pos="word" morph="none" start_char="405" end_char="406">on</TOKEN>
+<TOKEN id="token-2-24" pos="word" morph="none" start_char="408" end_char="410">the</TOKEN>
+<TOKEN id="token-2-25" pos="word" morph="none" start_char="412" end_char="417">agenda</TOKEN>
+<TOKEN id="token-2-26" pos="punct" morph="none" start_char="418" end_char="418">.</TOKEN>
+</SEG>
+<SEG id="segment-3" start_char="421" end_char="645">
+<ORIGINAL_TEXT>The fifth international meeting on Syria in Astana takes place on July 4-5, and brings together the delegations from the three guarantor states Russia, Iran and Turkey as well as the Syrian sides and the United Nations teams.</ORIGINAL_TEXT>
+<TOKEN id="token-3-0" pos="word" morph="none" start_char="421" end_char="423">The</TOKEN>
+<TOKEN id="token-3-1" pos="word" morph="none" start_char="425" end_char="429">fifth</TOKEN>
+<TOKEN id="token-3-2" pos="word" morph="none" start_char="431" end_char="443">international</TOKEN>
+<TOKEN id="token-3-3" pos="word" morph="none" start_char="445" end_char="451">meeting</TOKEN>
+<TOKEN id="token-3-4" pos="word" morph="none" start_char="453" end_char="454">on</TOKEN>
+<TOKEN id="token-3-5" pos="word" morph="none" start_char="456" end_char="460">Syria</TOKEN>
+<TOKEN id="token-3-6" pos="word" morph="none" start_char="462" end_char="463">in</TOKEN>
+<TOKEN id="token-3-7" pos="word" morph="none" start_char="465" end_char="470">Astana</TOKEN>
+<TOKEN id="token-3-8" pos="word" morph="none" start_char="472" end_char="476">takes</TOKEN>
+<TOKEN id="token-3-9" pos="word" morph="none" start_char="478" end_char="482">place</TOKEN>
+<TOKEN id="token-3-10" pos="word" morph="none" start_char="484" end_char="485">on</TOKEN>
+<TOKEN id="token-3-11" pos="word" morph="none" start_char="487" end_char="490">July</TOKEN>
+<TOKEN id="token-3-12" pos="unknown" morph="none" start_char="492" end_char="494">4-5</TOKEN>
+<TOKEN id="token-3-13" pos="punct" morph="none" start_char="495" end_char="495">,</TOKEN>
+<TOKEN id="token-3-14" pos="word" morph="none" start_char="497" end_char="499">and</TOKEN>
+<TOKEN id="token-3-15" pos="word" morph="none" start_char="501" end_char="506">brings</TOKEN>
+<TOKEN id="token-3-16" pos="word" morph="none" start_char="508" end_char="515">together</TOKEN>
+<TOKEN id="token-3-17" pos="word" morph="none" start_char="517" end_char="519">the</TOKEN>
+<TOKEN id="token-3-18" pos="word" morph="none" start_char="521" end_char="531">delegations</TOKEN>
+<TOKEN id="token-3-19" pos="word" morph="none" start_char="533" end_char="536">from</TOKEN>
+<TOKEN id="token-3-20" pos="word" morph="none" start_char="538" end_char="540">the</TOKEN>
+<TOKEN id="token-3-21" pos="word" morph="none" start_char="542" end_char="546">three</TOKEN>
+<TOKEN id="token-3-22" pos="word" morph="none" start_char="548" end_char="556">guarantor</TOKEN>
+<TOKEN id="token-3-23" pos="word" morph="none" start_char="558" end_char="563">states</TOKEN>
+<TOKEN id="token-3-24" pos="word" morph="none" start_char="565" end_char="570">Russia</TOKEN>
+<TOKEN id="token-3-25" pos="punct" morph="none" start_char="571" end_char="571">,</TOKEN>
+<TOKEN id="token-3-26" pos="word" morph="none" start_char="573" end_char="576">Iran</TOKEN>
+<TOKEN id="token-3-27" pos="word" morph="none" start_char="578" end_char="580">and</TOKEN>
+<TOKEN id="token-3-28" pos="word" morph="none" start_char="582" end_char="587">Turkey</TOKEN>
+<TOKEN id="token-3-29" pos="word" morph="none" start_char="589" end_char="590">as</TOKEN>
+<TOKEN id="token-3-30" pos="word" morph="none" start_char="592" end_char="595">well</TOKEN>
+<TOKEN id="token-3-31" pos="word" morph="none" start_char="597" end_char="598">as</TOKEN>
+<TOKEN id="token-3-32" pos="word" morph="none" start_char="600" end_char="602">the</TOKEN>
+<TOKEN id="token-3-33" pos="word" morph="none" start_char="604" end_char="609">Syrian</TOKEN>
+<TOKEN id="token-3-34" pos="word" morph="none" start_char="611" end_char="615">sides</TOKEN>
+<TOKEN id="token-3-35" pos="word" morph="none" start_char="617" end_char="619">and</TOKEN>
+<TOKEN id="token-3-36" pos="word" morph="none" start_char="621" end_char="623">the</TOKEN>
+<TOKEN id="token-3-37" pos="word" morph="none" start_char="625" end_char="630">United</TOKEN>
+<TOKEN id="token-3-38" pos="word" morph="none" start_char="632" end_char="638">Nations</TOKEN>
+<TOKEN id="token-3-39" pos="word" morph="none" start_char="640" end_char="644">teams</TOKEN>
+<TOKEN id="token-3-40" pos="punct" morph="none" start_char="645" end_char="645">.</TOKEN>
+</SEG>
+<SEG id="segment-4" start_char="647" end_char="692">
+<ORIGINAL_TEXT>Jordan and the United States act as observers.</ORIGINAL_TEXT>
+<TOKEN id="token-4-0" pos="word" morph="none" start_char="647" end_char="652">Jordan</TOKEN>
+<TOKEN id="token-4-1" pos="word" morph="none" start_char="654" end_char="656">and</TOKEN>
+<TOKEN id="token-4-2" pos="word" morph="none" start_char="658" end_char="660">the</TOKEN>
+<TOKEN id="token-4-3" pos="word" morph="none" start_char="662" end_char="667">United</TOKEN>
+<TOKEN id="token-4-4" pos="word" morph="none" start_char="669" end_char="674">States</TOKEN>
+<TOKEN id="token-4-5" pos="word" morph="none" start_char="676" end_char="678">act</TOKEN>
+<TOKEN id="token-4-6" pos="word" morph="none" start_char="680" end_char="681">as</TOKEN>
+<TOKEN id="token-4-7" pos="word" morph="none" start_char="683" end_char="691">observers</TOKEN>
+<TOKEN id="token-4-8" pos="punct" morph="none" start_char="692" end_char="692">.</TOKEN>
+</SEG>
+<SEG id="segment-5" start_char="695" end_char="793">
+<ORIGINAL_TEXT>Arrival of the armed opposition to the negotiations venue Rixos hotel is expected later in the day.</ORIGINAL_TEXT>
+<TOKEN id="token-5-0" pos="word" morph="none" start_char="695" end_char="701">Arrival</TOKEN>
+<TOKEN id="token-5-1" pos="word" morph="none" start_char="703" end_char="704">of</TOKEN>
+<TOKEN id="token-5-2" pos="word" morph="none" start_char="706" end_char="708">the</TOKEN>
+<TOKEN id="token-5-3" pos="word" morph="none" start_char="710" end_char="714">armed</TOKEN>
+<TOKEN id="token-5-4" pos="word" morph="none" start_char="716" end_char="725">opposition</TOKEN>
+<TOKEN id="token-5-5" pos="word" morph="none" start_char="727" end_char="728">to</TOKEN>
+<TOKEN id="token-5-6" pos="word" morph="none" start_char="730" end_char="732">the</TOKEN>
+<TOKEN id="token-5-7" pos="word" morph="none" start_char="734" end_char="745">negotiations</TOKEN>
+<TOKEN id="token-5-8" pos="word" morph="none" start_char="747" end_char="751">venue</TOKEN>
+<TOKEN id="token-5-9" pos="word" morph="none" start_char="753" end_char="757">Rixos</TOKEN>
+<TOKEN id="token-5-10" pos="word" morph="none" start_char="759" end_char="763">hotel</TOKEN>
+<TOKEN id="token-5-11" pos="word" morph="none" start_char="765" end_char="766">is</TOKEN>
+<TOKEN id="token-5-12" pos="word" morph="none" start_char="768" end_char="775">expected</TOKEN>
+<TOKEN id="token-5-13" pos="word" morph="none" start_char="777" end_char="781">later</TOKEN>
+<TOKEN id="token-5-14" pos="word" morph="none" start_char="783" end_char="784">in</TOKEN>
+<TOKEN id="token-5-15" pos="word" morph="none" start_char="786" end_char="788">the</TOKEN>
+<TOKEN id="token-5-16" pos="word" morph="none" start_char="790" end_char="792">day</TOKEN>
+<TOKEN id="token-5-17" pos="punct" morph="none" start_char="793" end_char="793">.</TOKEN>
+</SEG>
+<SEG id="segment-6" start_char="796" end_char="856">
+<ORIGINAL_TEXT>In the afternoon, a plenary session is planned to take place.</ORIGINAL_TEXT>
+<TOKEN id="token-6-0" pos="word" morph="none" start_char="796" end_char="797">In</TOKEN>
+<TOKEN id="token-6-1" pos="word" morph="none" start_char="799" end_char="801">the</TOKEN>
+<TOKEN id="token-6-2" pos="word" morph="none" start_char="803" end_char="811">afternoon</TOKEN>
+<TOKEN id="token-6-3" pos="punct" morph="none" start_char="812" end_char="812">,</TOKEN>
+<TOKEN id="token-6-4" pos="word" morph="none" start_char="814" end_char="814">a</TOKEN>
+<TOKEN id="token-6-5" pos="word" morph="none" start_char="816" end_char="822">plenary</TOKEN>
+<TOKEN id="token-6-6" pos="word" morph="none" start_char="824" end_char="830">session</TOKEN>
+<TOKEN id="token-6-7" pos="word" morph="none" start_char="832" end_char="833">is</TOKEN>
+<TOKEN id="token-6-8" pos="word" morph="none" start_char="835" end_char="841">planned</TOKEN>
+<TOKEN id="token-6-9" pos="word" morph="none" start_char="843" end_char="844">to</TOKEN>
+<TOKEN id="token-6-10" pos="word" morph="none" start_char="846" end_char="849">take</TOKEN>
+<TOKEN id="token-6-11" pos="word" morph="none" start_char="851" end_char="855">place</TOKEN>
+<TOKEN id="token-6-12" pos="punct" morph="none" start_char="856" end_char="856">.</TOKEN>
+</SEG>
+<SEG id="segment-7" start_char="858" end_char="872">
+<ORIGINAL_TEXT>Source: Sputnik</ORIGINAL_TEXT>
+<TOKEN id="token-7-0" pos="word" morph="none" start_char="858" end_char="863">Source</TOKEN>
+<TOKEN id="token-7-1" pos="punct" morph="none" start_char="864" end_char="864">:</TOKEN>
+<TOKEN id="token-7-2" pos="word" morph="none" start_char="866" end_char="872">Sputnik</TOKEN>
+</SEG>
+</TEXT>
+</DOC>
+</LCTL_TEXT>

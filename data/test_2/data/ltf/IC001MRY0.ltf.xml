@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE LCTL_TEXT SYSTEM "ltf.v1.5.dtd">
+<LCTL_TEXT lang="eng">
+<DOC id="IC001MRY0" lang="eng" tokenization="tokenization_parameters.v5.0" grammar="none" raw_text_char_length="3173" raw_text_md5="9f5fd80b346d79285ecb2df0eb064879">
+<TEXT>
+<SEG id="segment-0" start_char="1" end_char="53">
+<ORIGINAL_TEXT>Stronger Asian Currencies Cause Concern for Exporters</ORIGINAL_TEXT>
+<TOKEN id="token-0-0" pos="word" morph="none" start_char="1" end_char="8">Stronger</TOKEN>
+<TOKEN id="token-0-1" pos="word" morph="none" start_char="10" end_char="14">Asian</TOKEN>
+<TOKEN id="token-0-2" pos="word" morph="none" start_char="16" end_char="25">Currencies</TOKEN>
+<TOKEN id="token-0-3" pos="word" morph="none" start_char="27" end_char="31">Cause</TOKEN>
+<TOKEN id="token-0-4" pos="word" morph="none" start_char="33" end_char="39">Concern</TOKEN>
+<TOKEN id="token-0-5" pos="word" morph="none" start_char="41" end_char="43">for</TOKEN>
+<TOKEN id="token-0-6" pos="word" morph="none" start_char="45" end_char="53">Exporters</TOKEN>
+</SEG>
+<SEG id="segment-1" start_char="57" end_char="170">
+<ORIGINAL_TEXT>Fears are emerging that the rise in Asia's currencies against the U.S. dollar will undermine the region's exports.</ORIGINAL_TEXT>
+<TOKEN id="token-1-0" pos="word" morph="none" start_char="57" end_char="61">Fears</TOKEN>
+<TOKEN id="token-1-1" pos="word" morph="none" start_char="63" end_char="65">are</TOKEN>
+<TOKEN id="token-1-2" pos="word" morph="none" start_char="67" end_char="74">emerging</TOKEN>
+<TOKEN id="token-1-3" pos="word" morph="none" start_char="76" end_char="79">that</TOKEN>
+<TOKEN id="token-1-4" pos="word" morph="none" start_char="81" end_char="83">the</TOKEN>
+<TOKEN id="token-1-5" pos="word" morph="none" start_char="85" end_char="88">rise</TOKEN>
+<TOKEN id="token-1-6" pos="word" morph="none" start_char="90" end_char="91">in</TOKEN>
+<TOKEN id="token-1-7" pos="word" morph="none" start_char="93" end_char="98">Asia's</TOKEN>
+<TOKEN id="token-1-8" pos="word" morph="none" start_char="100" end_char="109">currencies</TOKEN>
+<TOKEN id="token-1-9" pos="word" morph="none" start_char="111" end_char="117">against</TOKEN>
+<TOKEN id="token-1-10" pos="word" morph="none" start_char="119" end_char="121">the</TOKEN>
+<TOKEN id="token-1-11" pos="unknown" morph="none" start_char="123" end_char="125">U.S</TOKEN>
+<TOKEN id="token-1-12" pos="punct" morph="none" start_char="126" end_char="126">.</TOKEN>
+<TOKEN id="token-1-13" pos="word" morph="none" start_char="128" end_char="133">dollar</TOKEN>
+<TOKEN id="token-1-14" pos="word" morph="none" start_char="135" end_char="138">will</TOKEN>
+<TOKEN id="token-1-15" pos="word" morph="none" start_char="140" end_char="148">undermine</TOKEN>
+<TOKEN id="token-1-16" pos="word" morph="none" start_char="150" end_char="152">the</TOKEN>
+<TOKEN id="token-1-17" pos="word" morph="none" start_char="154" end_char="161">region's</TOKEN>
+<TOKEN id="token-1-18" pos="word" morph="none" start_char="163" end_char="169">exports</TOKEN>
+<TOKEN id="token-1-19" pos="punct" morph="none" start_char="170" end_char="170">.</TOKEN>
+</SEG>
+<SEG id="segment-2" start_char="172" end_char="257">
+<ORIGINAL_TEXT>Economists say companies face narrowing profit margins in a competitive global market.</ORIGINAL_TEXT>
+<TOKEN id="token-2-0" pos="word" morph="none" start_char="172" end_char="181">Economists</TOKEN>
+<TOKEN id="token-2-1" pos="word" morph="none" start_char="183" end_char="185">say</TOKEN>
+<TOKEN id="token-2-2" pos="word" morph="none" start_char="187" end_char="195">companies</TOKEN>
+<TOKEN id="token-2-3" pos="word" morph="none" start_char="197" end_char="200">face</TOKEN>
+<TOKEN id="token-2-4" pos="word" morph="none" start_char="202" end_char="210">narrowing</TOKEN>
+<TOKEN id="token-2-5" pos="word" morph="none" start_char="212" end_char="217">profit</TOKEN>
+<TOKEN id="token-2-6" pos="word" morph="none" start_char="219" end_char="225">margins</TOKEN>
+<TOKEN id="token-2-7" pos="word" morph="none" start_char="227" end_char="228">in</TOKEN>
+<TOKEN id="token-2-8" pos="word" morph="none" start_char="230" end_char="230">a</TOKEN>
+<TOKEN id="token-2-9" pos="word" morph="none" start_char="232" end_char="242">competitive</TOKEN>
+<TOKEN id="token-2-10" pos="word" morph="none" start_char="244" end_char="249">global</TOKEN>
+<TOKEN id="token-2-11" pos="word" morph="none" start_char="251" end_char="256">market</TOKEN>
+<TOKEN id="token-2-12" pos="punct" morph="none" start_char="257" end_char="257">.</TOKEN>
+</SEG>
+<SEG id="segment-3" start_char="260" end_char="345">
+<ORIGINAL_TEXT>Asian currencies have been on the rise against the U.S. dollar since the year's start.</ORIGINAL_TEXT>
+<TOKEN id="token-3-0" pos="word" morph="none" start_char="260" end_char="264">Asian</TOKEN>
+<TOKEN id="token-3-1" pos="word" morph="none" start_char="266" end_char="275">currencies</TOKEN>
+<TOKEN id="token-3-2" pos="word" morph="none" start_char="277" end_char="280">have</TOKEN>
+<TOKEN id="token-3-3" pos="word" morph="none" start_char="282" end_char="285">been</TOKEN>
+<TOKEN id="token-3-4" pos="word" morph="none" start_char="287" end_char="288">on</TOKEN>
+<TOKEN id="token-3-5" pos="word" morph="none" start_char="290" end_char="292">the</TOKEN>
+<TOKEN id="token-3-6" pos="word" morph="none" start_char="294" end_char="297">rise</TOKEN>
+<TOKEN id="token-3-7" pos="word" morph="none" start_char="299" end_char="305">against</TOKEN>
+<TOKEN id="token-3-8" pos="word" morph="none" start_char="307" end_char="309">the</TOKEN>
+<TOKEN id="token-3-9" pos="unknown" morph="none" start_char="311" end_char="313">U.S</TOKEN>
+<TOKEN id="token-3-10" pos="punct" morph="none" start_char="314" end_char="314">.</TOKEN>
+<TOKEN id="token-3-11" pos="word" morph="none" start_char="316" end_char="321">dollar</TOKEN>
+<TOKEN id="token-3-12" pos="word" morph="none" start_char="323" end_char="327">since</TOKEN>
+<TOKEN id="token-3-13" pos="word" morph="none" start_char="329" end_char="331">the</TOKEN>
+<TOKEN id="token-3-14" pos="word" morph="none" start_char="333" end_char="338">year's</TOKEN>
+<TOKEN id="token-3-15" pos="word" morph="none" start_char="340" end_char="344">start</TOKEN>
+<TOKEN id="token-3-16" pos="punct" morph="none" start_char="345" end_char="345">.</TOKEN>
+</SEG>
+<SEG id="segment-4" start_char="348" end_char="502">
+<ORIGINAL_TEXT>The Japanese yen, Malaysian ringgit, Thai baht, Indonesian rupiah and Singapore dollar, among others, have risen by three to eight percent over the dollar.</ORIGINAL_TEXT>
+<TOKEN id="token-4-0" pos="word" morph="none" start_char="348" end_char="350">The</TOKEN>
+<TOKEN id="token-4-1" pos="word" morph="none" start_char="352" end_char="359">Japanese</TOKEN>
+<TOKEN id="token-4-2" pos="word" morph="none" start_char="361" end_char="363">yen</TOKEN>
+<TOKEN id="token-4-3" pos="punct" morph="none" start_char="364" end_char="364">,</TOKEN>
+<TOKEN id="token-4-4" pos="word" morph="none" start_char="366" end_char="374">Malaysian</TOKEN>
+<TOKEN id="token-4-5" pos="word" morph="none" start_char="376" end_char="382">ringgit</TOKEN>
+<TOKEN id="token-4-6" pos="punct" morph="none" start_char="383" end_char="383">,</TOKEN>
+<TOKEN id="token-4-7" pos="word" morph="none" start_char="385" end_char="388">Thai</TOKEN>
+<TOKEN id="token-4-8" pos="word" morph="none" start_char="390" end_char="393">baht</TOKEN>
+<TOKEN id="token-4-9" pos="punct" morph="none" start_char="394" end_char="394">,</TOKEN>
+<TOKEN id="token-4-10" pos="word" morph="none" start_char="396" end_char="405">Indonesian</TOKEN>
+<TOKEN id="token-4-11" pos="word" morph="none" start_char="407" end_char="412">rupiah</TOKEN>
+<TOKEN id="token-4-12" pos="word" morph="none" start_char="414" end_char="416">and</TOKEN>
+<TOKEN id="token-4-13" pos="word" morph="none" start_char="418" end_char="426">Singapore</TOKEN>
+<TOKEN id="token-4-14" pos="word" morph="none" start_char="428" end_char="433">dollar</TOKEN>
+<TOKEN id="token-4-15" pos="punct" morph="none" start_char="434" end_char="434">,</TOKEN>
+<TOKEN id="token-4-16" pos="word" morph="none" start_char="436" end_char="440">among</TOKEN>
+<TOKEN id="token-4-17" pos="word" morph="none" start_char="442" end_char="447">others</TOKEN>
+<TOKEN id="token-4-18" pos="punct" morph="none" start_char="448" end_char="448">,</TOKEN>
+<TOKEN id="token-4-19" pos="word" morph="none" start_char="450" end_char="453">have</TOKEN>
+<TOKEN id="token-4-20" pos="word" morph="none" start_char="455" end_char="459">risen</TOKEN>
+<TOKEN id="token-4-21" pos="word" morph="none" start_char="461" end_char="462">by</TOKEN>
+<TOKEN id="token-4-22" pos="word" morph="none" start_char="464" end_char="468">three</TOKEN>
+<TOKEN id="token-4-23" pos="word" morph="none" start_char="470" end_char="471">to</TOKEN>
+<TOKEN id="token-4-24" pos="word" morph="none" start_char="473" end_char="477">eight</TOKEN>
+<TOKEN id="token-4-25" pos="word" morph="none" start_char="479" end_char="485">percent</TOKEN>
+<TOKEN id="token-4-26" pos="word" morph="none" start_char="487" end_char="490">over</TOKEN>
+<TOKEN id="token-4-27" pos="word" morph="none" start_char="492" end_char="494">the</TOKEN>
+<TOKEN id="token-4-28" pos="word" morph="none" start_char="496" end_char="501">dollar</TOKEN>
+<TOKEN id="token-4-29" pos="punct" morph="none" start_char="502" end_char="502">.</TOKEN>
+</SEG>
+<SEG id="segment-5" start_char="505" end_char="596">
+<ORIGINAL_TEXT>Most Asian economies rebounded strongly from the global financial crisis that began in 2008.</ORIGINAL_TEXT>
+<TOKEN id="token-5-0" pos="word" morph="none" start_char="505" end_char="508">Most</TOKEN>
+<TOKEN id="token-5-1" pos="word" morph="none" start_char="510" end_char="514">Asian</TOKEN>
+<TOKEN id="token-5-2" pos="word" morph="none" start_char="516" end_char="524">economies</TOKEN>
+<TOKEN id="token-5-3" pos="word" morph="none" start_char="526" end_char="534">rebounded</TOKEN>
+<TOKEN id="token-5-4" pos="word" morph="none" start_char="536" end_char="543">strongly</TOKEN>
+<TOKEN id="token-5-5" pos="word" morph="none" start_char="545" end_char="548">from</TOKEN>
+<TOKEN id="token-5-6" pos="word" morph="none" start_char="550" end_char="552">the</TOKEN>
+<TOKEN id="token-5-7" pos="word" morph="none" start_char="554" end_char="559">global</TOKEN>
+<TOKEN id="token-5-8" pos="word" morph="none" start_char="561" end_char="569">financial</TOKEN>
+<TOKEN id="token-5-9" pos="word" morph="none" start_char="571" end_char="576">crisis</TOKEN>
+<TOKEN id="token-5-10" pos="word" morph="none" start_char="578" end_char="581">that</TOKEN>
+<TOKEN id="token-5-11" pos="word" morph="none" start_char="583" end_char="587">began</TOKEN>
+<TOKEN id="token-5-12" pos="word" morph="none" start_char="589" end_char="590">in</TOKEN>
+<TOKEN id="token-5-13" pos="word" morph="none" start_char="592" end_char="595">2008</TOKEN>
+<TOKEN id="token-5-14" pos="punct" morph="none" start_char="596" end_char="596">.</TOKEN>
+</SEG>
+<SEG id="segment-6" start_char="598" end_char="708">
+<ORIGINAL_TEXT>On the other hand, the major developed economies, including the United States, still are struggling to recover.</ORIGINAL_TEXT>
+<TOKEN id="token-6-0" pos="word" morph="none" start_char="598" end_char="599">On</TOKEN>
+<TOKEN id="token-6-1" pos="word" morph="none" start_char="601" end_char="603">the</TOKEN>
+<TOKEN id="token-6-2" pos="word" morph="none" start_char="605" end_char="609">other</TOKEN>
+<TOKEN id="token-6-3" pos="word" morph="none" start_char="611" end_char="614">hand</TOKEN>
+<TOKEN id="token-6-4" pos="punct" morph="none" start_char="615" end_char="615">,</TOKEN>
+<TOKEN id="token-6-5" pos="word" morph="none" start_char="617" end_char="619">the</TOKEN>
+<TOKEN id="token-6-6" pos="word" morph="none" start_char="621" end_char="625">major</TOKEN>
+<TOKEN id="token-6-7" pos="word" morph="none" start_char="627" end_char="635">developed</TOKEN>
+<TOKEN id="token-6-8" pos="word" morph="none" start_char="637" end_char="645">economies</TOKEN>
+<TOKEN id="token-6-9" pos="punct" morph="none" start_char="646" end_char="646">,</TOKEN>
+<TOKEN id="token-6-10" pos="word" morph="none" start_char="648" end_char="656">including</TOKEN>
+<TOKEN id="token-6-11" pos="word" morph="none" start_char="658" end_char="660">the</TOKEN>
+<TOKEN id="token-6-12" pos="word" morph="none" start_char="662" end_char="667">United</TOKEN>
+<TOKEN id="token-6-13" pos="word" morph="none" start_char="669" end_char="674">States</TOKEN>
+<TOKEN id="token-6-14" pos="punct" morph="none" start_char="675" end_char="675">,</TOKEN>
+<TOKEN id="token-6-15" pos="word" morph="none" start_char="677" end_char="681">still</TOKEN>
+<TOKEN id="token-6-16" pos="word" morph="none" start_char="683" end_char="685">are</TOKEN>
+<TOKEN id="token-6-17" pos="word" morph="none" start_char="687" end_char="696">struggling</TOKEN>
+<TOKEN id="token-6-18" pos="word" morph="none" start_char="698" end_char="699">to</TOKEN>
+<TOKEN id="token-6-19" pos="word" morph="none" start_char="701" end_char="707">recover</TOKEN>
+<TOKEN id="token-6-20" pos="punct" morph="none" start_char="708" end_char="708">.</TOKEN>
+</SEG>
+<SEG id="segment-7" start_char="711" end_char="793">
+<ORIGINAL_TEXT>In Southeast Asia, particularly, investment money is flowing in, and output rising.</ORIGINAL_TEXT>
+<TOKEN id="token-7-0" pos="word" morph="none" start_char="711" end_char="712">In</TOKEN>
+<TOKEN id="token-7-1" pos="word" morph="none" start_char="714" end_char="722">Southeast</TOKEN>
+<TOKEN id="token-7-2" pos="word" morph="none" start_char="724" end_char="727">Asia</TOKEN>
+<TOKEN id="token-7-3" pos="punct" morph="none" start_char="728" end_char="728">,</TOKEN>
+<TOKEN id="token-7-4" pos="word" morph="none" start_char="730" end_char="741">particularly</TOKEN>
+<TOKEN id="token-7-5" pos="punct" morph="none" start_char="742" end_char="742">,</TOKEN>
+<TOKEN id="token-7-6" pos="word" morph="none" start_char="744" end_char="753">investment</TOKEN>
+<TOKEN id="token-7-7" pos="word" morph="none" start_char="755" end_char="759">money</TOKEN>
+<TOKEN id="token-7-8" pos="word" morph="none" start_char="761" end_char="762">is</TOKEN>
+<TOKEN id="token-7-9" pos="word" morph="none" start_char="764" end_char="770">flowing</TOKEN>
+<TOKEN id="token-7-10" pos="word" morph="none" start_char="772" end_char="773">in</TOKEN>
+<TOKEN id="token-7-11" pos="punct" morph="none" start_char="774" end_char="774">,</TOKEN>
+<TOKEN id="token-7-12" pos="word" morph="none" start_char="776" end_char="778">and</TOKEN>
+<TOKEN id="token-7-13" pos="word" morph="none" start_char="780" end_char="785">output</TOKEN>
+<TOKEN id="token-7-14" pos="word" morph="none" start_char="787" end_char="792">rising</TOKEN>
+<TOKEN id="token-7-15" pos="punct" morph="none" start_char="793" end_char="793">.</TOKEN>
+</SEG>
+<SEG id="segment-8" start_char="796" end_char="886">
+<ORIGINAL_TEXT>But economists and industries warn that stronger currencies are starting to hurt exporters.</ORIGINAL_TEXT>
+<TOKEN id="token-8-0" pos="word" morph="none" start_char="796" end_char="798">But</TOKEN>
+<TOKEN id="token-8-1" pos="word" morph="none" start_char="800" end_char="809">economists</TOKEN>
+<TOKEN id="token-8-2" pos="word" morph="none" start_char="811" end_char="813">and</TOKEN>
+<TOKEN id="token-8-3" pos="word" morph="none" start_char="815" end_char="824">industries</TOKEN>
+<TOKEN id="token-8-4" pos="word" morph="none" start_char="826" end_char="829">warn</TOKEN>
+<TOKEN id="token-8-5" pos="word" morph="none" start_char="831" end_char="834">that</TOKEN>
+<TOKEN id="token-8-6" pos="word" morph="none" start_char="836" end_char="843">stronger</TOKEN>
+<TOKEN id="token-8-7" pos="word" morph="none" start_char="845" end_char="854">currencies</TOKEN>
+<TOKEN id="token-8-8" pos="word" morph="none" start_char="856" end_char="858">are</TOKEN>
+<TOKEN id="token-8-9" pos="word" morph="none" start_char="860" end_char="867">starting</TOKEN>
+<TOKEN id="token-8-10" pos="word" morph="none" start_char="869" end_char="870">to</TOKEN>
+<TOKEN id="token-8-11" pos="word" morph="none" start_char="872" end_char="875">hurt</TOKEN>
+<TOKEN id="token-8-12" pos="word" morph="none" start_char="877" end_char="885">exporters</TOKEN>
+<TOKEN id="token-8-13" pos="punct" morph="none" start_char="886" end_char="886">.</TOKEN>
+</SEG>
+<SEG id="segment-9" start_char="889" end_char="972">
+<ORIGINAL_TEXT>Asia's export-driven economies have long relied on cheap currencies to boost growth.</ORIGINAL_TEXT>
+<TOKEN id="token-9-0" pos="word" morph="none" start_char="889" end_char="894">Asia's</TOKEN>
+<TOKEN id="token-9-1" pos="unknown" morph="none" start_char="896" end_char="908">export-driven</TOKEN>
+<TOKEN id="token-9-2" pos="word" morph="none" start_char="910" end_char="918">economies</TOKEN>
+<TOKEN id="token-9-3" pos="word" morph="none" start_char="920" end_char="923">have</TOKEN>
+<TOKEN id="token-9-4" pos="word" morph="none" start_char="925" end_char="928">long</TOKEN>
+<TOKEN id="token-9-5" pos="word" morph="none" start_char="930" end_char="935">relied</TOKEN>
+<TOKEN id="token-9-6" pos="word" morph="none" start_char="937" end_char="938">on</TOKEN>
+<TOKEN id="token-9-7" pos="word" morph="none" start_char="940" end_char="944">cheap</TOKEN>
+<TOKEN id="token-9-8" pos="word" morph="none" start_char="946" end_char="955">currencies</TOKEN>
+<TOKEN id="token-9-9" pos="word" morph="none" start_char="957" end_char="958">to</TOKEN>
+<TOKEN id="token-9-10" pos="word" morph="none" start_char="960" end_char="964">boost</TOKEN>
+<TOKEN id="token-9-11" pos="word" morph="none" start_char="966" end_char="971">growth</TOKEN>
+<TOKEN id="token-9-12" pos="punct" morph="none" start_char="972" end_char="972">.</TOKEN>
+</SEG>
+<SEG id="segment-10" start_char="974" end_char="1118">
+<ORIGINAL_TEXT>Now regional agricultural and industrial producers are seeing that edge disappear - stronger currencies make their goods more expensive overseas.</ORIGINAL_TEXT>
+<TOKEN id="token-10-0" pos="word" morph="none" start_char="974" end_char="976">Now</TOKEN>
+<TOKEN id="token-10-1" pos="word" morph="none" start_char="978" end_char="985">regional</TOKEN>
+<TOKEN id="token-10-2" pos="word" morph="none" start_char="987" end_char="998">agricultural</TOKEN>
+<TOKEN id="token-10-3" pos="word" morph="none" start_char="1000" end_char="1002">and</TOKEN>
+<TOKEN id="token-10-4" pos="word" morph="none" start_char="1004" end_char="1013">industrial</TOKEN>
+<TOKEN id="token-10-5" pos="word" morph="none" start_char="1015" end_char="1023">producers</TOKEN>
+<TOKEN id="token-10-6" pos="word" morph="none" start_char="1025" end_char="1027">are</TOKEN>
+<TOKEN id="token-10-7" pos="word" morph="none" start_char="1029" end_char="1034">seeing</TOKEN>
+<TOKEN id="token-10-8" pos="word" morph="none" start_char="1036" end_char="1039">that</TOKEN>
+<TOKEN id="token-10-9" pos="word" morph="none" start_char="1041" end_char="1044">edge</TOKEN>
+<TOKEN id="token-10-10" pos="word" morph="none" start_char="1046" end_char="1054">disappear</TOKEN>
+<TOKEN id="token-10-11" pos="punct" morph="none" start_char="1056" end_char="1056">-</TOKEN>
+<TOKEN id="token-10-12" pos="word" morph="none" start_char="1058" end_char="1065">stronger</TOKEN>
+<TOKEN id="token-10-13" pos="word" morph="none" start_char="1067" end_char="1076">currencies</TOKEN>
+<TOKEN id="token-10-14" pos="word" morph="none" start_char="1078" end_char="1081">make</TOKEN>
+<TOKEN id="token-10-15" pos="word" morph="none" start_char="1083" end_char="1087">their</TOKEN>
+<TOKEN id="token-10-16" pos="word" morph="none" start_char="1089" end_char="1093">goods</TOKEN>
+<TOKEN id="token-10-17" pos="word" morph="none" start_char="1095" end_char="1098">more</TOKEN>
+<TOKEN id="token-10-18" pos="word" morph="none" start_char="1100" end_char="1108">expensive</TOKEN>
+<TOKEN id="token-10-19" pos="word" morph="none" start_char="1110" end_char="1117">overseas</TOKEN>
+<TOKEN id="token-10-20" pos="punct" morph="none" start_char="1118" end_char="1118">.</TOKEN>
+</SEG>
+<SEG id="segment-11" start_char="1121" end_char="1218">
+<ORIGINAL_TEXT>And that makes business harder, since their major markets - the developed economies - remain weak.</ORIGINAL_TEXT>
+<TOKEN id="token-11-0" pos="word" morph="none" start_char="1121" end_char="1123">And</TOKEN>
+<TOKEN id="token-11-1" pos="word" morph="none" start_char="1125" end_char="1128">that</TOKEN>
+<TOKEN id="token-11-2" pos="word" morph="none" start_char="1130" end_char="1134">makes</TOKEN>
+<TOKEN id="token-11-3" pos="word" morph="none" start_char="1136" end_char="1143">business</TOKEN>
+<TOKEN id="token-11-4" pos="word" morph="none" start_char="1145" end_char="1150">harder</TOKEN>
+<TOKEN id="token-11-5" pos="punct" morph="none" start_char="1151" end_char="1151">,</TOKEN>
+<TOKEN id="token-11-6" pos="word" morph="none" start_char="1153" end_char="1157">since</TOKEN>
+<TOKEN id="token-11-7" pos="word" morph="none" start_char="1159" end_char="1163">their</TOKEN>
+<TOKEN id="token-11-8" pos="word" morph="none" start_char="1165" end_char="1169">major</TOKEN>
+<TOKEN id="token-11-9" pos="word" morph="none" start_char="1171" end_char="1177">markets</TOKEN>
+<TOKEN id="token-11-10" pos="punct" morph="none" start_char="1179" end_char="1179">-</TOKEN>
+<TOKEN id="token-11-11" pos="word" morph="none" start_char="1181" end_char="1183">the</TOKEN>
+<TOKEN id="token-11-12" pos="word" morph="none" start_char="1185" end_char="1193">developed</TOKEN>
+<TOKEN id="token-11-13" pos="word" morph="none" start_char="1195" end_char="1203">economies</TOKEN>
+<TOKEN id="token-11-14" pos="punct" morph="none" start_char="1205" end_char="1205">-</TOKEN>
+<TOKEN id="token-11-15" pos="word" morph="none" start_char="1207" end_char="1212">remain</TOKEN>
+<TOKEN id="token-11-16" pos="word" morph="none" start_char="1214" end_char="1217">weak</TOKEN>
+<TOKEN id="token-11-17" pos="punct" morph="none" start_char="1218" end_char="1218">.</TOKEN>
+</SEG>
+<SEG id="segment-12" start_char="1221" end_char="1294">
+<ORIGINAL_TEXT>Shamika Sirimanne is a trade economist with the United Nations in Bangkok.</ORIGINAL_TEXT>
+<TOKEN id="token-12-0" pos="word" morph="none" start_char="1221" end_char="1227">Shamika</TOKEN>
+<TOKEN id="token-12-1" pos="word" morph="none" start_char="1229" end_char="1237">Sirimanne</TOKEN>
+<TOKEN id="token-12-2" pos="word" morph="none" start_char="1239" end_char="1240">is</TOKEN>
+<TOKEN id="token-12-3" pos="word" morph="none" start_char="1242" end_char="1242">a</TOKEN>
+<TOKEN id="token-12-4" pos="word" morph="none" start_char="1244" end_char="1248">trade</TOKEN>
+<TOKEN id="token-12-5" pos="word" morph="none" start_char="1250" end_char="1258">economist</TOKEN>
+<TOKEN id="token-12-6" pos="word" morph="none" start_char="1260" end_char="1263">with</TOKEN>
+<TOKEN id="token-12-7" pos="word" morph="none" start_char="1265" end_char="1267">the</TOKEN>
+<TOKEN id="token-12-8" pos="word" morph="none" start_char="1269" end_char="1274">United</TOKEN>
+<TOKEN id="token-12-9" pos="word" morph="none" start_char="1276" end_char="1282">Nations</TOKEN>
+<TOKEN id="token-12-10" pos="word" morph="none" start_char="1284" end_char="1285">in</TOKEN>
+<TOKEN id="token-12-11" pos="word" morph="none" start_char="1287" end_char="1293">Bangkok</TOKEN>
+<TOKEN id="token-12-12" pos="punct" morph="none" start_char="1294" end_char="1294">.</TOKEN>
+</SEG>
+<SEG id="segment-13" start_char="1296" end_char="1428">
+<ORIGINAL_TEXT>"The global recovery is very tentative at the moment and yes the Western markets are opening up but not as fast as you'd like to see.</ORIGINAL_TEXT>
+<TOKEN id="token-13-0" pos="punct" morph="none" start_char="1296" end_char="1296">"</TOKEN>
+<TOKEN id="token-13-1" pos="word" morph="none" start_char="1297" end_char="1299">The</TOKEN>
+<TOKEN id="token-13-2" pos="word" morph="none" start_char="1301" end_char="1306">global</TOKEN>
+<TOKEN id="token-13-3" pos="word" morph="none" start_char="1308" end_char="1315">recovery</TOKEN>
+<TOKEN id="token-13-4" pos="word" morph="none" start_char="1317" end_char="1318">is</TOKEN>
+<TOKEN id="token-13-5" pos="word" morph="none" start_char="1320" end_char="1323">very</TOKEN>
+<TOKEN id="token-13-6" pos="word" morph="none" start_char="1325" end_char="1333">tentative</TOKEN>
+<TOKEN id="token-13-7" pos="word" morph="none" start_char="1335" end_char="1336">at</TOKEN>
+<TOKEN id="token-13-8" pos="word" morph="none" start_char="1338" end_char="1340">the</TOKEN>
+<TOKEN id="token-13-9" pos="word" morph="none" start_char="1342" end_char="1347">moment</TOKEN>
+<TOKEN id="token-13-10" pos="word" morph="none" start_char="1349" end_char="1351">and</TOKEN>
+<TOKEN id="token-13-11" pos="word" morph="none" start_char="1353" end_char="1355">yes</TOKEN>
+<TOKEN id="token-13-12" pos="word" morph="none" start_char="1357" end_char="1359">the</TOKEN>
+<TOKEN id="token-13-13" pos="word" morph="none" start_char="1361" end_char="1367">Western</TOKEN>
+<TOKEN id="token-13-14" pos="word" morph="none" start_char="1369" end_char="1375">markets</TOKEN>
+<TOKEN id="token-13-15" pos="word" morph="none" start_char="1377" end_char="1379">are</TOKEN>
+<TOKEN id="token-13-16" pos="word" morph="none" start_char="1381" end_char="1387">opening</TOKEN>
+<TOKEN id="token-13-17" pos="word" morph="none" start_char="1389" end_char="1390">up</TOKEN>
+<TOKEN id="token-13-18" pos="word" morph="none" start_char="1392" end_char="1394">but</TOKEN>
+<TOKEN id="token-13-19" pos="word" morph="none" start_char="1396" end_char="1398">not</TOKEN>
+<TOKEN id="token-13-20" pos="word" morph="none" start_char="1400" end_char="1401">as</TOKEN>
+<TOKEN id="token-13-21" pos="word" morph="none" start_char="1403" end_char="1406">fast</TOKEN>
+<TOKEN id="token-13-22" pos="word" morph="none" start_char="1408" end_char="1409">as</TOKEN>
+<TOKEN id="token-13-23" pos="word" morph="none" start_char="1411" end_char="1415">you'd</TOKEN>
+<TOKEN id="token-13-24" pos="word" morph="none" start_char="1417" end_char="1420">like</TOKEN>
+<TOKEN id="token-13-25" pos="word" morph="none" start_char="1422" end_char="1423">to</TOKEN>
+<TOKEN id="token-13-26" pos="word" morph="none" start_char="1425" end_char="1427">see</TOKEN>
+<TOKEN id="token-13-27" pos="punct" morph="none" start_char="1428" end_char="1428">.</TOKEN>
+</SEG>
+<SEG id="segment-14" start_char="1430" end_char="1492">
+<ORIGINAL_TEXT>So for the countries in this region competition is very fierce.</ORIGINAL_TEXT>
+<TOKEN id="token-14-0" pos="word" morph="none" start_char="1430" end_char="1431">So</TOKEN>
+<TOKEN id="token-14-1" pos="word" morph="none" start_char="1433" end_char="1435">for</TOKEN>
+<TOKEN id="token-14-2" pos="word" morph="none" start_char="1437" end_char="1439">the</TOKEN>
+<TOKEN id="token-14-3" pos="word" morph="none" start_char="1441" end_char="1449">countries</TOKEN>
+<TOKEN id="token-14-4" pos="word" morph="none" start_char="1451" end_char="1452">in</TOKEN>
+<TOKEN id="token-14-5" pos="word" morph="none" start_char="1454" end_char="1457">this</TOKEN>
+<TOKEN id="token-14-6" pos="word" morph="none" start_char="1459" end_char="1464">region</TOKEN>
+<TOKEN id="token-14-7" pos="word" morph="none" start_char="1466" end_char="1476">competition</TOKEN>
+<TOKEN id="token-14-8" pos="word" morph="none" start_char="1478" end_char="1479">is</TOKEN>
+<TOKEN id="token-14-9" pos="word" morph="none" start_char="1481" end_char="1484">very</TOKEN>
+<TOKEN id="token-14-10" pos="word" morph="none" start_char="1486" end_char="1491">fierce</TOKEN>
+<TOKEN id="token-14-11" pos="punct" morph="none" start_char="1492" end_char="1492">.</TOKEN>
+</SEG>
+<SEG id="segment-15" start_char="1494" end_char="1607">
+<ORIGINAL_TEXT>And if the exchange rate is holding them back this is going to create big problems for exporters," Sirimanne said.</ORIGINAL_TEXT>
+<TOKEN id="token-15-0" pos="word" morph="none" start_char="1494" end_char="1496">And</TOKEN>
+<TOKEN id="token-15-1" pos="word" morph="none" start_char="1498" end_char="1499">if</TOKEN>
+<TOKEN id="token-15-2" pos="word" morph="none" start_char="1501" end_char="1503">the</TOKEN>
+<TOKEN id="token-15-3" pos="word" morph="none" start_char="1505" end_char="1512">exchange</TOKEN>
+<TOKEN id="token-15-4" pos="word" morph="none" start_char="1514" end_char="1517">rate</TOKEN>
+<TOKEN id="token-15-5" pos="word" morph="none" start_char="1519" end_char="1520">is</TOKEN>
+<TOKEN id="token-15-6" pos="word" morph="none" start_char="1522" end_char="1528">holding</TOKEN>
+<TOKEN id="token-15-7" pos="word" morph="none" start_char="1530" end_char="1533">them</TOKEN>
+<TOKEN id="token-15-8" pos="word" morph="none" start_char="1535" end_char="1538">back</TOKEN>
+<TOKEN id="token-15-9" pos="word" morph="none" start_char="1540" end_char="1543">this</TOKEN>
+<TOKEN id="token-15-10" pos="word" morph="none" start_char="1545" end_char="1546">is</TOKEN>
+<TOKEN id="token-15-11" pos="word" morph="none" start_char="1548" end_char="1552">going</TOKEN>
+<TOKEN id="token-15-12" pos="word" morph="none" start_char="1554" end_char="1555">to</TOKEN>
+<TOKEN id="token-15-13" pos="word" morph="none" start_char="1557" end_char="1562">create</TOKEN>
+<TOKEN id="token-15-14" pos="word" morph="none" start_char="1564" end_char="1566">big</TOKEN>
+<TOKEN id="token-15-15" pos="word" morph="none" start_char="1568" end_char="1575">problems</TOKEN>
+<TOKEN id="token-15-16" pos="word" morph="none" start_char="1577" end_char="1579">for</TOKEN>
+<TOKEN id="token-15-17" pos="word" morph="none" start_char="1581" end_char="1589">exporters</TOKEN>
+<TOKEN id="token-15-18" pos="punct" morph="none" start_char="1590" end_char="1591">,"</TOKEN>
+<TOKEN id="token-15-19" pos="word" morph="none" start_char="1593" end_char="1601">Sirimanne</TOKEN>
+<TOKEN id="token-15-20" pos="word" morph="none" start_char="1603" end_char="1606">said</TOKEN>
+<TOKEN id="token-15-21" pos="punct" morph="none" start_char="1607" end_char="1607">.</TOKEN>
+</SEG>
+<SEG id="segment-16" start_char="1610" end_char="1748">
+<ORIGINAL_TEXT>In Thailand, the central bank says capital inflows and investment have lifted the baht's value by more than six percent against the dollar.</ORIGINAL_TEXT>
+<TOKEN id="token-16-0" pos="word" morph="none" start_char="1610" end_char="1611">In</TOKEN>
+<TOKEN id="token-16-1" pos="word" morph="none" start_char="1613" end_char="1620">Thailand</TOKEN>
+<TOKEN id="token-16-2" pos="punct" morph="none" start_char="1621" end_char="1621">,</TOKEN>
+<TOKEN id="token-16-3" pos="word" morph="none" start_char="1623" end_char="1625">the</TOKEN>
+<TOKEN id="token-16-4" pos="word" morph="none" start_char="1627" end_char="1633">central</TOKEN>
+<TOKEN id="token-16-5" pos="word" morph="none" start_char="1635" end_char="1638">bank</TOKEN>
+<TOKEN id="token-16-6" pos="word" morph="none" start_char="1640" end_char="1643">says</TOKEN>
+<TOKEN id="token-16-7" pos="word" morph="none" start_char="1645" end_char="1651">capital</TOKEN>
+<TOKEN id="token-16-8" pos="word" morph="none" start_char="1653" end_char="1659">inflows</TOKEN>
+<TOKEN id="token-16-9" pos="word" morph="none" start_char="1661" end_char="1663">and</TOKEN>
+<TOKEN id="token-16-10" pos="word" morph="none" start_char="1665" end_char="1674">investment</TOKEN>
+<TOKEN id="token-16-11" pos="word" morph="none" start_char="1676" end_char="1679">have</TOKEN>
+<TOKEN id="token-16-12" pos="word" morph="none" start_char="1681" end_char="1686">lifted</TOKEN>
+<TOKEN id="token-16-13" pos="word" morph="none" start_char="1688" end_char="1690">the</TOKEN>
+<TOKEN id="token-16-14" pos="word" morph="none" start_char="1692" end_char="1697">baht's</TOKEN>
+<TOKEN id="token-16-15" pos="word" morph="none" start_char="1699" end_char="1703">value</TOKEN>
+<TOKEN id="token-16-16" pos="word" morph="none" start_char="1705" end_char="1706">by</TOKEN>
+<TOKEN id="token-16-17" pos="word" morph="none" start_char="1708" end_char="1711">more</TOKEN>
+<TOKEN id="token-16-18" pos="word" morph="none" start_char="1713" end_char="1716">than</TOKEN>
+<TOKEN id="token-16-19" pos="word" morph="none" start_char="1718" end_char="1720">six</TOKEN>
+<TOKEN id="token-16-20" pos="word" morph="none" start_char="1722" end_char="1728">percent</TOKEN>
+<TOKEN id="token-16-21" pos="word" morph="none" start_char="1730" end_char="1736">against</TOKEN>
+<TOKEN id="token-16-22" pos="word" morph="none" start_char="1738" end_char="1740">the</TOKEN>
+<TOKEN id="token-16-23" pos="word" morph="none" start_char="1742" end_char="1747">dollar</TOKEN>
+<TOKEN id="token-16-24" pos="punct" morph="none" start_char="1748" end_char="1748">.</TOKEN>
+</SEG>
+<SEG id="segment-17" start_char="1750" end_char="1875">
+<ORIGINAL_TEXT>Exports, strong at the start of the year, are starting to slow, with growing competition from key competitors such as Vietnam.</ORIGINAL_TEXT>
+<TOKEN id="token-17-0" pos="word" morph="none" start_char="1750" end_char="1756">Exports</TOKEN>
+<TOKEN id="token-17-1" pos="punct" morph="none" start_char="1757" end_char="1757">,</TOKEN>
+<TOKEN id="token-17-2" pos="word" morph="none" start_char="1759" end_char="1764">strong</TOKEN>
+<TOKEN id="token-17-3" pos="word" morph="none" start_char="1766" end_char="1767">at</TOKEN>
+<TOKEN id="token-17-4" pos="word" morph="none" start_char="1769" end_char="1771">the</TOKEN>
+<TOKEN id="token-17-5" pos="word" morph="none" start_char="1773" end_char="1777">start</TOKEN>
+<TOKEN id="token-17-6" pos="word" morph="none" start_char="1779" end_char="1780">of</TOKEN>
+<TOKEN id="token-17-7" pos="word" morph="none" start_char="1782" end_char="1784">the</TOKEN>
+<TOKEN id="token-17-8" pos="word" morph="none" start_char="1786" end_char="1789">year</TOKEN>
+<TOKEN id="token-17-9" pos="punct" morph="none" start_char="1790" end_char="1790">,</TOKEN>
+<TOKEN id="token-17-10" pos="word" morph="none" start_char="1792" end_char="1794">are</TOKEN>
+<TOKEN id="token-17-11" pos="word" morph="none" start_char="1796" end_char="1803">starting</TOKEN>
+<TOKEN id="token-17-12" pos="word" morph="none" start_char="1805" end_char="1806">to</TOKEN>
+<TOKEN id="token-17-13" pos="word" morph="none" start_char="1808" end_char="1811">slow</TOKEN>
+<TOKEN id="token-17-14" pos="punct" morph="none" start_char="1812" end_char="1812">,</TOKEN>
+<TOKEN id="token-17-15" pos="word" morph="none" start_char="1814" end_char="1817">with</TOKEN>
+<TOKEN id="token-17-16" pos="word" morph="none" start_char="1819" end_char="1825">growing</TOKEN>
+<TOKEN id="token-17-17" pos="word" morph="none" start_char="1827" end_char="1837">competition</TOKEN>
+<TOKEN id="token-17-18" pos="word" morph="none" start_char="1839" end_char="1842">from</TOKEN>
+<TOKEN id="token-17-19" pos="word" morph="none" start_char="1844" end_char="1846">key</TOKEN>
+<TOKEN id="token-17-20" pos="word" morph="none" start_char="1848" end_char="1858">competitors</TOKEN>
+<TOKEN id="token-17-21" pos="word" morph="none" start_char="1860" end_char="1863">such</TOKEN>
+<TOKEN id="token-17-22" pos="word" morph="none" start_char="1865" end_char="1866">as</TOKEN>
+<TOKEN id="token-17-23" pos="word" morph="none" start_char="1868" end_char="1874">Vietnam</TOKEN>
+<TOKEN id="token-17-24" pos="punct" morph="none" start_char="1875" end_char="1875">.</TOKEN>
+</SEG>
+<SEG id="segment-18" start_char="1878" end_char="1966">
+<ORIGINAL_TEXT>Vichai Siriprasert is the honorary president of the Rice Traders Association of Thailand.</ORIGINAL_TEXT>
+<TOKEN id="token-18-0" pos="word" morph="none" start_char="1878" end_char="1883">Vichai</TOKEN>
+<TOKEN id="token-18-1" pos="word" morph="none" start_char="1885" end_char="1895">Siriprasert</TOKEN>
+<TOKEN id="token-18-2" pos="word" morph="none" start_char="1897" end_char="1898">is</TOKEN>
+<TOKEN id="token-18-3" pos="word" morph="none" start_char="1900" end_char="1902">the</TOKEN>
+<TOKEN id="token-18-4" pos="word" morph="none" start_char="1904" end_char="1911">honorary</TOKEN>
+<TOKEN id="token-18-5" pos="word" morph="none" start_char="1913" end_char="1921">president</TOKEN>
+<TOKEN id="token-18-6" pos="word" morph="none" start_char="1923" end_char="1924">of</TOKEN>
+<TOKEN id="token-18-7" pos="word" morph="none" start_char="1926" end_char="1928">the</TOKEN>
+<TOKEN id="token-18-8" pos="word" morph="none" start_char="1930" end_char="1933">Rice</TOKEN>
+<TOKEN id="token-18-9" pos="word" morph="none" start_char="1935" end_char="1941">Traders</TOKEN>
+<TOKEN id="token-18-10" pos="word" morph="none" start_char="1943" end_char="1953">Association</TOKEN>
+<TOKEN id="token-18-11" pos="word" morph="none" start_char="1955" end_char="1956">of</TOKEN>
+<TOKEN id="token-18-12" pos="word" morph="none" start_char="1958" end_char="1965">Thailand</TOKEN>
+<TOKEN id="token-18-13" pos="punct" morph="none" start_char="1966" end_char="1966">.</TOKEN>
+</SEG>
+<SEG id="segment-19" start_char="1968" end_char="2122">
+<ORIGINAL_TEXT>"As a whole because Thailand exports a lot, when the currency is strong it will hurt all the sectors, all the export sectors, including rice," Vichai said.</ORIGINAL_TEXT>
+<TOKEN id="token-19-0" pos="punct" morph="none" start_char="1968" end_char="1968">"</TOKEN>
+<TOKEN id="token-19-1" pos="word" morph="none" start_char="1969" end_char="1970">As</TOKEN>
+<TOKEN id="token-19-2" pos="word" morph="none" start_char="1972" end_char="1972">a</TOKEN>
+<TOKEN id="token-19-3" pos="word" morph="none" start_char="1974" end_char="1978">whole</TOKEN>
+<TOKEN id="token-19-4" pos="word" morph="none" start_char="1980" end_char="1986">because</TOKEN>
+<TOKEN id="token-19-5" pos="word" morph="none" start_char="1988" end_char="1995">Thailand</TOKEN>
+<TOKEN id="token-19-6" pos="word" morph="none" start_char="1997" end_char="2003">exports</TOKEN>
+<TOKEN id="token-19-7" pos="word" morph="none" start_char="2005" end_char="2005">a</TOKEN>
+<TOKEN id="token-19-8" pos="word" morph="none" start_char="2007" end_char="2009">lot</TOKEN>
+<TOKEN id="token-19-9" pos="punct" morph="none" start_char="2010" end_char="2010">,</TOKEN>
+<TOKEN id="token-19-10" pos="word" morph="none" start_char="2012" end_char="2015">when</TOKEN>
+<TOKEN id="token-19-11" pos="word" morph="none" start_char="2017" end_char="2019">the</TOKEN>
+<TOKEN id="token-19-12" pos="word" morph="none" start_char="2021" end_char="2028">currency</TOKEN>
+<TOKEN id="token-19-13" pos="word" morph="none" start_char="2030" end_char="2031">is</TOKEN>
+<TOKEN id="token-19-14" pos="word" morph="none" start_char="2033" end_char="2038">strong</TOKEN>
+<TOKEN id="token-19-15" pos="word" morph="none" start_char="2040" end_char="2041">it</TOKEN>
+<TOKEN id="token-19-16" pos="word" morph="none" start_char="2043" end_char="2046">will</TOKEN>
+<TOKEN id="token-19-17" pos="word" morph="none" start_char="2048" end_char="2051">hurt</TOKEN>
+<TOKEN id="token-19-18" pos="word" morph="none" start_char="2053" end_char="2055">all</TOKEN>
+<TOKEN id="token-19-19" pos="word" morph="none" start_char="2057" end_char="2059">the</TOKEN>
+<TOKEN id="token-19-20" pos="word" morph="none" start_char="2061" end_char="2067">sectors</TOKEN>
+<TOKEN id="token-19-21" pos="punct" morph="none" start_char="2068" end_char="2068">,</TOKEN>
+<TOKEN id="token-19-22" pos="word" morph="none" start_char="2070" end_char="2072">all</TOKEN>
+<TOKEN id="token-19-23" pos="word" morph="none" start_char="2074" end_char="2076">the</TOKEN>
+<TOKEN id="token-19-24" pos="word" morph="none" start_char="2078" end_char="2083">export</TOKEN>
+<TOKEN id="token-19-25" pos="word" morph="none" start_char="2085" end_char="2091">sectors</TOKEN>
+<TOKEN id="token-19-26" pos="punct" morph="none" start_char="2092" end_char="2092">,</TOKEN>
+<TOKEN id="token-19-27" pos="word" morph="none" start_char="2094" end_char="2102">including</TOKEN>
+<TOKEN id="token-19-28" pos="word" morph="none" start_char="2104" end_char="2107">rice</TOKEN>
+<TOKEN id="token-19-29" pos="punct" morph="none" start_char="2108" end_char="2109">,"</TOKEN>
+<TOKEN id="token-19-30" pos="word" morph="none" start_char="2111" end_char="2116">Vichai</TOKEN>
+<TOKEN id="token-19-31" pos="word" morph="none" start_char="2118" end_char="2121">said</TOKEN>
+<TOKEN id="token-19-32" pos="punct" morph="none" start_char="2122" end_char="2122">.</TOKEN>
+</SEG>
+<SEG id="segment-20" start_char="2124" end_char="2248">
+<ORIGINAL_TEXT>"I think it's to our interest to keep the currency stable, not to be weaker, not to be stronger, but to be stable if you can.</ORIGINAL_TEXT>
+<TOKEN id="token-20-0" pos="punct" morph="none" start_char="2124" end_char="2124">"</TOKEN>
+<TOKEN id="token-20-1" pos="word" morph="none" start_char="2125" end_char="2125">I</TOKEN>
+<TOKEN id="token-20-2" pos="word" morph="none" start_char="2127" end_char="2131">think</TOKEN>
+<TOKEN id="token-20-3" pos="word" morph="none" start_char="2133" end_char="2136">it's</TOKEN>
+<TOKEN id="token-20-4" pos="word" morph="none" start_char="2138" end_char="2139">to</TOKEN>
+<TOKEN id="token-20-5" pos="word" morph="none" start_char="2141" end_char="2143">our</TOKEN>
+<TOKEN id="token-20-6" pos="word" morph="none" start_char="2145" end_char="2152">interest</TOKEN>
+<TOKEN id="token-20-7" pos="word" morph="none" start_char="2154" end_char="2155">to</TOKEN>
+<TOKEN id="token-20-8" pos="word" morph="none" start_char="2157" end_char="2160">keep</TOKEN>
+<TOKEN id="token-20-9" pos="word" morph="none" start_char="2162" end_char="2164">the</TOKEN>
+<TOKEN id="token-20-10" pos="word" morph="none" start_char="2166" end_char="2173">currency</TOKEN>
+<TOKEN id="token-20-11" pos="word" morph="none" start_char="2175" end_char="2180">stable</TOKEN>
+<TOKEN id="token-20-12" pos="punct" morph="none" start_char="2181" end_char="2181">,</TOKEN>
+<TOKEN id="token-20-13" pos="word" morph="none" start_char="2183" end_char="2185">not</TOKEN>
+<TOKEN id="token-20-14" pos="word" morph="none" start_char="2187" end_char="2188">to</TOKEN>
+<TOKEN id="token-20-15" pos="word" morph="none" start_char="2190" end_char="2191">be</TOKEN>
+<TOKEN id="token-20-16" pos="word" morph="none" start_char="2193" end_char="2198">weaker</TOKEN>
+<TOKEN id="token-20-17" pos="punct" morph="none" start_char="2199" end_char="2199">,</TOKEN>
+<TOKEN id="token-20-18" pos="word" morph="none" start_char="2201" end_char="2203">not</TOKEN>
+<TOKEN id="token-20-19" pos="word" morph="none" start_char="2205" end_char="2206">to</TOKEN>
+<TOKEN id="token-20-20" pos="word" morph="none" start_char="2208" end_char="2209">be</TOKEN>
+<TOKEN id="token-20-21" pos="word" morph="none" start_char="2211" end_char="2218">stronger</TOKEN>
+<TOKEN id="token-20-22" pos="punct" morph="none" start_char="2219" end_char="2219">,</TOKEN>
+<TOKEN id="token-20-23" pos="word" morph="none" start_char="2221" end_char="2223">but</TOKEN>
+<TOKEN id="token-20-24" pos="word" morph="none" start_char="2225" end_char="2226">to</TOKEN>
+<TOKEN id="token-20-25" pos="word" morph="none" start_char="2228" end_char="2229">be</TOKEN>
+<TOKEN id="token-20-26" pos="word" morph="none" start_char="2231" end_char="2236">stable</TOKEN>
+<TOKEN id="token-20-27" pos="word" morph="none" start_char="2238" end_char="2239">if</TOKEN>
+<TOKEN id="token-20-28" pos="word" morph="none" start_char="2241" end_char="2243">you</TOKEN>
+<TOKEN id="token-20-29" pos="word" morph="none" start_char="2245" end_char="2247">can</TOKEN>
+<TOKEN id="token-20-30" pos="punct" morph="none" start_char="2248" end_char="2248">.</TOKEN>
+</SEG>
+<SEG id="segment-21" start_char="2250" end_char="2279">
+<ORIGINAL_TEXT>That would be the best policy.</ORIGINAL_TEXT>
+<TOKEN id="token-21-0" pos="word" morph="none" start_char="2250" end_char="2253">That</TOKEN>
+<TOKEN id="token-21-1" pos="word" morph="none" start_char="2255" end_char="2259">would</TOKEN>
+<TOKEN id="token-21-2" pos="word" morph="none" start_char="2261" end_char="2262">be</TOKEN>
+<TOKEN id="token-21-3" pos="word" morph="none" start_char="2264" end_char="2266">the</TOKEN>
+<TOKEN id="token-21-4" pos="word" morph="none" start_char="2268" end_char="2271">best</TOKEN>
+<TOKEN id="token-21-5" pos="word" morph="none" start_char="2273" end_char="2278">policy</TOKEN>
+<TOKEN id="token-21-6" pos="punct" morph="none" start_char="2279" end_char="2279">.</TOKEN>
+</SEG>
+<SEG id="segment-22" start_char="2281" end_char="2336">
+<ORIGINAL_TEXT>But now we are climbing now to be one of the strongest."</ORIGINAL_TEXT>
+<TOKEN id="token-22-0" pos="word" morph="none" start_char="2281" end_char="2283">But</TOKEN>
+<TOKEN id="token-22-1" pos="word" morph="none" start_char="2285" end_char="2287">now</TOKEN>
+<TOKEN id="token-22-2" pos="word" morph="none" start_char="2289" end_char="2290">we</TOKEN>
+<TOKEN id="token-22-3" pos="word" morph="none" start_char="2292" end_char="2294">are</TOKEN>
+<TOKEN id="token-22-4" pos="word" morph="none" start_char="2296" end_char="2303">climbing</TOKEN>
+<TOKEN id="token-22-5" pos="word" morph="none" start_char="2305" end_char="2307">now</TOKEN>
+<TOKEN id="token-22-6" pos="word" morph="none" start_char="2309" end_char="2310">to</TOKEN>
+<TOKEN id="token-22-7" pos="word" morph="none" start_char="2312" end_char="2313">be</TOKEN>
+<TOKEN id="token-22-8" pos="word" morph="none" start_char="2315" end_char="2317">one</TOKEN>
+<TOKEN id="token-22-9" pos="word" morph="none" start_char="2319" end_char="2320">of</TOKEN>
+<TOKEN id="token-22-10" pos="word" morph="none" start_char="2322" end_char="2324">the</TOKEN>
+<TOKEN id="token-22-11" pos="word" morph="none" start_char="2326" end_char="2334">strongest</TOKEN>
+<TOKEN id="token-22-12" pos="punct" morph="none" start_char="2335" end_char="2336">."</TOKEN>
+</SEG>
+<SEG id="segment-23" start_char="2339" end_char="2491">
+<ORIGINAL_TEXT>Vichai, like many businesspeople in the region, complains that some Asian nations control the value of their currencies, and keep them from appreciating.</ORIGINAL_TEXT>
+<TOKEN id="token-23-0" pos="word" morph="none" start_char="2339" end_char="2344">Vichai</TOKEN>
+<TOKEN id="token-23-1" pos="punct" morph="none" start_char="2345" end_char="2345">,</TOKEN>
+<TOKEN id="token-23-2" pos="word" morph="none" start_char="2347" end_char="2350">like</TOKEN>
+<TOKEN id="token-23-3" pos="word" morph="none" start_char="2352" end_char="2355">many</TOKEN>
+<TOKEN id="token-23-4" pos="word" morph="none" start_char="2357" end_char="2370">businesspeople</TOKEN>
+<TOKEN id="token-23-5" pos="word" morph="none" start_char="2372" end_char="2373">in</TOKEN>
+<TOKEN id="token-23-6" pos="word" morph="none" start_char="2375" end_char="2377">the</TOKEN>
+<TOKEN id="token-23-7" pos="word" morph="none" start_char="2379" end_char="2384">region</TOKEN>
+<TOKEN id="token-23-8" pos="punct" morph="none" start_char="2385" end_char="2385">,</TOKEN>
+<TOKEN id="token-23-9" pos="word" morph="none" start_char="2387" end_char="2395">complains</TOKEN>
+<TOKEN id="token-23-10" pos="word" morph="none" start_char="2397" end_char="2400">that</TOKEN>
+<TOKEN id="token-23-11" pos="word" morph="none" start_char="2402" end_char="2405">some</TOKEN>
+<TOKEN id="token-23-12" pos="word" morph="none" start_char="2407" end_char="2411">Asian</TOKEN>
+<TOKEN id="token-23-13" pos="word" morph="none" start_char="2413" end_char="2419">nations</TOKEN>
+<TOKEN id="token-23-14" pos="word" morph="none" start_char="2421" end_char="2427">control</TOKEN>
+<TOKEN id="token-23-15" pos="word" morph="none" start_char="2429" end_char="2431">the</TOKEN>
+<TOKEN id="token-23-16" pos="word" morph="none" start_char="2433" end_char="2437">value</TOKEN>
+<TOKEN id="token-23-17" pos="word" morph="none" start_char="2439" end_char="2440">of</TOKEN>
+<TOKEN id="token-23-18" pos="word" morph="none" start_char="2442" end_char="2446">their</TOKEN>
+<TOKEN id="token-23-19" pos="word" morph="none" start_char="2448" end_char="2457">currencies</TOKEN>
+<TOKEN id="token-23-20" pos="punct" morph="none" start_char="2458" end_char="2458">,</TOKEN>
+<TOKEN id="token-23-21" pos="word" morph="none" start_char="2460" end_char="2462">and</TOKEN>
+<TOKEN id="token-23-22" pos="word" morph="none" start_char="2464" end_char="2467">keep</TOKEN>
+<TOKEN id="token-23-23" pos="word" morph="none" start_char="2469" end_char="2472">them</TOKEN>
+<TOKEN id="token-23-24" pos="word" morph="none" start_char="2474" end_char="2477">from</TOKEN>
+<TOKEN id="token-23-25" pos="word" morph="none" start_char="2479" end_char="2490">appreciating</TOKEN>
+<TOKEN id="token-23-26" pos="punct" morph="none" start_char="2491" end_char="2491">.</TOKEN>
+</SEG>
+<SEG id="segment-24" start_char="2494" end_char="2635">
+<ORIGINAL_TEXT>For instance, he says Hanoi's depreciation the value of its currency over the past year gave Vietnam a larger share of the global rice market.</ORIGINAL_TEXT>
+<TOKEN id="token-24-0" pos="word" morph="none" start_char="2494" end_char="2496">For</TOKEN>
+<TOKEN id="token-24-1" pos="word" morph="none" start_char="2498" end_char="2505">instance</TOKEN>
+<TOKEN id="token-24-2" pos="punct" morph="none" start_char="2506" end_char="2506">,</TOKEN>
+<TOKEN id="token-24-3" pos="word" morph="none" start_char="2508" end_char="2509">he</TOKEN>
+<TOKEN id="token-24-4" pos="word" morph="none" start_char="2511" end_char="2514">says</TOKEN>
+<TOKEN id="token-24-5" pos="word" morph="none" start_char="2516" end_char="2522">Hanoi's</TOKEN>
+<TOKEN id="token-24-6" pos="word" morph="none" start_char="2524" end_char="2535">depreciation</TOKEN>
+<TOKEN id="token-24-7" pos="word" morph="none" start_char="2537" end_char="2539">the</TOKEN>
+<TOKEN id="token-24-8" pos="word" morph="none" start_char="2541" end_char="2545">value</TOKEN>
+<TOKEN id="token-24-9" pos="word" morph="none" start_char="2547" end_char="2548">of</TOKEN>
+<TOKEN id="token-24-10" pos="word" morph="none" start_char="2550" end_char="2552">its</TOKEN>
+<TOKEN id="token-24-11" pos="word" morph="none" start_char="2554" end_char="2561">currency</TOKEN>
+<TOKEN id="token-24-12" pos="word" morph="none" start_char="2563" end_char="2566">over</TOKEN>
+<TOKEN id="token-24-13" pos="word" morph="none" start_char="2568" end_char="2570">the</TOKEN>
+<TOKEN id="token-24-14" pos="word" morph="none" start_char="2572" end_char="2575">past</TOKEN>
+<TOKEN id="token-24-15" pos="word" morph="none" start_char="2577" end_char="2580">year</TOKEN>
+<TOKEN id="token-24-16" pos="word" morph="none" start_char="2582" end_char="2585">gave</TOKEN>
+<TOKEN id="token-24-17" pos="word" morph="none" start_char="2587" end_char="2593">Vietnam</TOKEN>
+<TOKEN id="token-24-18" pos="word" morph="none" start_char="2595" end_char="2595">a</TOKEN>
+<TOKEN id="token-24-19" pos="word" morph="none" start_char="2597" end_char="2602">larger</TOKEN>
+<TOKEN id="token-24-20" pos="word" morph="none" start_char="2604" end_char="2608">share</TOKEN>
+<TOKEN id="token-24-21" pos="word" morph="none" start_char="2610" end_char="2611">of</TOKEN>
+<TOKEN id="token-24-22" pos="word" morph="none" start_char="2613" end_char="2615">the</TOKEN>
+<TOKEN id="token-24-23" pos="word" morph="none" start_char="2617" end_char="2622">global</TOKEN>
+<TOKEN id="token-24-24" pos="word" morph="none" start_char="2624" end_char="2627">rice</TOKEN>
+<TOKEN id="token-24-25" pos="word" morph="none" start_char="2629" end_char="2634">market</TOKEN>
+<TOKEN id="token-24-26" pos="punct" morph="none" start_char="2635" end_char="2635">.</TOKEN>
+</SEG>
+<SEG id="segment-25" start_char="2637" end_char="2739">
+<ORIGINAL_TEXT>Vietnam does not allow its currency to trade freely in foreign exchange markets, the way the baht does.</ORIGINAL_TEXT>
+<TOKEN id="token-25-0" pos="word" morph="none" start_char="2637" end_char="2643">Vietnam</TOKEN>
+<TOKEN id="token-25-1" pos="word" morph="none" start_char="2645" end_char="2648">does</TOKEN>
+<TOKEN id="token-25-2" pos="word" morph="none" start_char="2650" end_char="2652">not</TOKEN>
+<TOKEN id="token-25-3" pos="word" morph="none" start_char="2654" end_char="2658">allow</TOKEN>
+<TOKEN id="token-25-4" pos="word" morph="none" start_char="2660" end_char="2662">its</TOKEN>
+<TOKEN id="token-25-5" pos="word" morph="none" start_char="2664" end_char="2671">currency</TOKEN>
+<TOKEN id="token-25-6" pos="word" morph="none" start_char="2673" end_char="2674">to</TOKEN>
+<TOKEN id="token-25-7" pos="word" morph="none" start_char="2676" end_char="2680">trade</TOKEN>
+<TOKEN id="token-25-8" pos="word" morph="none" start_char="2682" end_char="2687">freely</TOKEN>
+<TOKEN id="token-25-9" pos="word" morph="none" start_char="2689" end_char="2690">in</TOKEN>
+<TOKEN id="token-25-10" pos="word" morph="none" start_char="2692" end_char="2698">foreign</TOKEN>
+<TOKEN id="token-25-11" pos="word" morph="none" start_char="2700" end_char="2707">exchange</TOKEN>
+<TOKEN id="token-25-12" pos="word" morph="none" start_char="2709" end_char="2715">markets</TOKEN>
+<TOKEN id="token-25-13" pos="punct" morph="none" start_char="2716" end_char="2716">,</TOKEN>
+<TOKEN id="token-25-14" pos="word" morph="none" start_char="2718" end_char="2720">the</TOKEN>
+<TOKEN id="token-25-15" pos="word" morph="none" start_char="2722" end_char="2724">way</TOKEN>
+<TOKEN id="token-25-16" pos="word" morph="none" start_char="2726" end_char="2728">the</TOKEN>
+<TOKEN id="token-25-17" pos="word" morph="none" start_char="2730" end_char="2733">baht</TOKEN>
+<TOKEN id="token-25-18" pos="word" morph="none" start_char="2735" end_char="2738">does</TOKEN>
+<TOKEN id="token-25-19" pos="punct" morph="none" start_char="2739" end_char="2739">.</TOKEN>
+</SEG>
+<SEG id="segment-26" start_char="2742" end_char="2865">
+<ORIGINAL_TEXT>Economists and manufacturers around the world also have complained for years that China keeps its currency artificially low.</ORIGINAL_TEXT>
+<TOKEN id="token-26-0" pos="word" morph="none" start_char="2742" end_char="2751">Economists</TOKEN>
+<TOKEN id="token-26-1" pos="word" morph="none" start_char="2753" end_char="2755">and</TOKEN>
+<TOKEN id="token-26-2" pos="word" morph="none" start_char="2757" end_char="2769">manufacturers</TOKEN>
+<TOKEN id="token-26-3" pos="word" morph="none" start_char="2771" end_char="2776">around</TOKEN>
+<TOKEN id="token-26-4" pos="word" morph="none" start_char="2778" end_char="2780">the</TOKEN>
+<TOKEN id="token-26-5" pos="word" morph="none" start_char="2782" end_char="2786">world</TOKEN>
+<TOKEN id="token-26-6" pos="word" morph="none" start_char="2788" end_char="2791">also</TOKEN>
+<TOKEN id="token-26-7" pos="word" morph="none" start_char="2793" end_char="2796">have</TOKEN>
+<TOKEN id="token-26-8" pos="word" morph="none" start_char="2798" end_char="2807">complained</TOKEN>
+<TOKEN id="token-26-9" pos="word" morph="none" start_char="2809" end_char="2811">for</TOKEN>
+<TOKEN id="token-26-10" pos="word" morph="none" start_char="2813" end_char="2817">years</TOKEN>
+<TOKEN id="token-26-11" pos="word" morph="none" start_char="2819" end_char="2822">that</TOKEN>
+<TOKEN id="token-26-12" pos="word" morph="none" start_char="2824" end_char="2828">China</TOKEN>
+<TOKEN id="token-26-13" pos="word" morph="none" start_char="2830" end_char="2834">keeps</TOKEN>
+<TOKEN id="token-26-14" pos="word" morph="none" start_char="2836" end_char="2838">its</TOKEN>
+<TOKEN id="token-26-15" pos="word" morph="none" start_char="2840" end_char="2847">currency</TOKEN>
+<TOKEN id="token-26-16" pos="word" morph="none" start_char="2849" end_char="2860">artificially</TOKEN>
+<TOKEN id="token-26-17" pos="word" morph="none" start_char="2862" end_char="2864">low</TOKEN>
+<TOKEN id="token-26-18" pos="punct" morph="none" start_char="2865" end_char="2865">.</TOKEN>
+</SEG>
+<SEG id="segment-27" start_char="2867" end_char="2959">
+<ORIGINAL_TEXT>Beijing in June said it would let its yuan move more against the dollar and other currencies.</ORIGINAL_TEXT>
+<TOKEN id="token-27-0" pos="word" morph="none" start_char="2867" end_char="2873">Beijing</TOKEN>
+<TOKEN id="token-27-1" pos="word" morph="none" start_char="2875" end_char="2876">in</TOKEN>
+<TOKEN id="token-27-2" pos="word" morph="none" start_char="2878" end_char="2881">June</TOKEN>
+<TOKEN id="token-27-3" pos="word" morph="none" start_char="2883" end_char="2886">said</TOKEN>
+<TOKEN id="token-27-4" pos="word" morph="none" start_char="2888" end_char="2889">it</TOKEN>
+<TOKEN id="token-27-5" pos="word" morph="none" start_char="2891" end_char="2895">would</TOKEN>
+<TOKEN id="token-27-6" pos="word" morph="none" start_char="2897" end_char="2899">let</TOKEN>
+<TOKEN id="token-27-7" pos="word" morph="none" start_char="2901" end_char="2903">its</TOKEN>
+<TOKEN id="token-27-8" pos="word" morph="none" start_char="2905" end_char="2908">yuan</TOKEN>
+<TOKEN id="token-27-9" pos="word" morph="none" start_char="2910" end_char="2913">move</TOKEN>
+<TOKEN id="token-27-10" pos="word" morph="none" start_char="2915" end_char="2918">more</TOKEN>
+<TOKEN id="token-27-11" pos="word" morph="none" start_char="2920" end_char="2926">against</TOKEN>
+<TOKEN id="token-27-12" pos="word" morph="none" start_char="2928" end_char="2930">the</TOKEN>
+<TOKEN id="token-27-13" pos="word" morph="none" start_char="2932" end_char="2937">dollar</TOKEN>
+<TOKEN id="token-27-14" pos="word" morph="none" start_char="2939" end_char="2941">and</TOKEN>
+<TOKEN id="token-27-15" pos="word" morph="none" start_char="2943" end_char="2947">other</TOKEN>
+<TOKEN id="token-27-16" pos="word" morph="none" start_char="2949" end_char="2958">currencies</TOKEN>
+<TOKEN id="token-27-17" pos="punct" morph="none" start_char="2959" end_char="2959">.</TOKEN>
+</SEG>
+<SEG id="segment-28" start_char="2961" end_char="3005">
+<ORIGINAL_TEXT>However, the yuan's value has changed little.</ORIGINAL_TEXT>
+<TOKEN id="token-28-0" pos="word" morph="none" start_char="2961" end_char="2967">However</TOKEN>
+<TOKEN id="token-28-1" pos="punct" morph="none" start_char="2968" end_char="2968">,</TOKEN>
+<TOKEN id="token-28-2" pos="word" morph="none" start_char="2970" end_char="2972">the</TOKEN>
+<TOKEN id="token-28-3" pos="word" morph="none" start_char="2974" end_char="2979">yuan's</TOKEN>
+<TOKEN id="token-28-4" pos="word" morph="none" start_char="2981" end_char="2985">value</TOKEN>
+<TOKEN id="token-28-5" pos="word" morph="none" start_char="2987" end_char="2989">has</TOKEN>
+<TOKEN id="token-28-6" pos="word" morph="none" start_char="2991" end_char="2997">changed</TOKEN>
+<TOKEN id="token-28-7" pos="word" morph="none" start_char="2999" end_char="3004">little</TOKEN>
+<TOKEN id="token-28-8" pos="punct" morph="none" start_char="3005" end_char="3005">.</TOKEN>
+</SEG>
+<SEG id="segment-29" start_char="3008" end_char="3169">
+<ORIGINAL_TEXT>Economists say Asia's export industries face narrowing profit margins in the months ahead, raising concerns of unemployment and slowing growth around the regions.</ORIGINAL_TEXT>
+<TOKEN id="token-29-0" pos="word" morph="none" start_char="3008" end_char="3017">Economists</TOKEN>
+<TOKEN id="token-29-1" pos="word" morph="none" start_char="3019" end_char="3021">say</TOKEN>
+<TOKEN id="token-29-2" pos="word" morph="none" start_char="3023" end_char="3028">Asia's</TOKEN>
+<TOKEN id="token-29-3" pos="word" morph="none" start_char="3030" end_char="3035">export</TOKEN>
+<TOKEN id="token-29-4" pos="word" morph="none" start_char="3037" end_char="3046">industries</TOKEN>
+<TOKEN id="token-29-5" pos="word" morph="none" start_char="3048" end_char="3051">face</TOKEN>
+<TOKEN id="token-29-6" pos="word" morph="none" start_char="3053" end_char="3061">narrowing</TOKEN>
+<TOKEN id="token-29-7" pos="word" morph="none" start_char="3063" end_char="3068">profit</TOKEN>
+<TOKEN id="token-29-8" pos="word" morph="none" start_char="3070" end_char="3076">margins</TOKEN>
+<TOKEN id="token-29-9" pos="word" morph="none" start_char="3078" end_char="3079">in</TOKEN>
+<TOKEN id="token-29-10" pos="word" morph="none" start_char="3081" end_char="3083">the</TOKEN>
+<TOKEN id="token-29-11" pos="word" morph="none" start_char="3085" end_char="3090">months</TOKEN>
+<TOKEN id="token-29-12" pos="word" morph="none" start_char="3092" end_char="3096">ahead</TOKEN>
+<TOKEN id="token-29-13" pos="punct" morph="none" start_char="3097" end_char="3097">,</TOKEN>
+<TOKEN id="token-29-14" pos="word" morph="none" start_char="3099" end_char="3105">raising</TOKEN>
+<TOKEN id="token-29-15" pos="word" morph="none" start_char="3107" end_char="3114">concerns</TOKEN>
+<TOKEN id="token-29-16" pos="word" morph="none" start_char="3116" end_char="3117">of</TOKEN>
+<TOKEN id="token-29-17" pos="word" morph="none" start_char="3119" end_char="3130">unemployment</TOKEN>
+<TOKEN id="token-29-18" pos="word" morph="none" start_char="3132" end_char="3134">and</TOKEN>
+<TOKEN id="token-29-19" pos="word" morph="none" start_char="3136" end_char="3142">slowing</TOKEN>
+<TOKEN id="token-29-20" pos="word" morph="none" start_char="3144" end_char="3149">growth</TOKEN>
+<TOKEN id="token-29-21" pos="word" morph="none" start_char="3151" end_char="3156">around</TOKEN>
+<TOKEN id="token-29-22" pos="word" morph="none" start_char="3158" end_char="3160">the</TOKEN>
+<TOKEN id="token-29-23" pos="word" morph="none" start_char="3162" end_char="3168">regions</TOKEN>
+<TOKEN id="token-29-24" pos="punct" morph="none" start_char="3169" end_char="3169">.</TOKEN>
+</SEG>
+</TEXT>
+</DOC>
+</LCTL_TEXT>

@@ -1,0 +1,118 @@
+1.0	LOC.GeographicPoint.Address	Address108491027
+1.0	ORG.Government.Agency	Agency108337324
+1.0	WEA.MissileSystem.AirToAirMissile	Air-to-airMissile102693413
+1.0	VEH.Aircraft	Aircraft102686568
+1.0	VEH.Aircraft.Airplane	Airplane102691156
+1.0	FAC.Installation.Airport	Airport102692232, Airfield102687992
+0.5	PER.ProfessionalPosition.Ambassador	Ambassador109787534
+1.0	WEA.Bullets.Ammunition	Ammunition102703275
+1.0	FAC.Building.ApartmentBuilding	ApartmentBuilding102726681, Apartment102726305
+1.0	WEA.Gun.Artillery	Artillery102746365
+1.0	ORG.Association	Association108049401
+1.0	GPE.OrganizationOfCountries.OrganizationOfCountries	Bloc108171094
+1.0	VEH.Watercraft.Boat	Boat102858304
+1.0	WEA.Bomb	Bomb102866578
+1.0	FAC.GeographicalArea.Border	Boundary108512259, BoundaryLine108512736
+1.0	FAC.Structure.Bridge	Bridge102898711
+1.0	ORG.CommercialOrganization.BroadcastingCompany	BroadcastingCompany108002015
+1.0	FAC.Building	Building102913152
+1.0	WEA.Bullets	Bullet102916350
+1.0	VEH.WheeledVehicle.Bus	Bus102924116
+1.0	WEA.Cannon.Cannon	Cannon102950256
+1.0	VEH.WheeledVehicle.Car	Car102958343
+1.0	PER.ProfessionalPosition.Paramedic	Care100654885, Medicine100612160, MedicalProcedure101024392
+1.0	FAC.GeographicalArea.Checkpoint	Checkpoint108517825, Security113344071, Safety114538472, SecuritySystem104166111, SecurityForce108210982
+2.0	GPE.UrbanArea.City	City108524735
+1.0	ORG.Association.Club	Club108227214
+0.5	PER.Combatant	Combatant109939313
+1.0	LOC.Land.Continent	Continent109254614
+1.0	ORG.CommercialOrganization.Corporation	Corporation108059412
+1.0	ORG.Government.Council	Council108310949
+2.0	GPE.Country.Country	Country108544813
+1.0	ORG.PoliticalOrganization.Court	Court108329453
+0.5	LOC.Position.CrimeScene	Crime100766234, OrganizedCrime108245172
+1.0	ORG.CommercialOrganization	Enterprise108056231, Company108058098
+1.0	FAC.Installation	Facility103315023,
+0.5	PER.Fan	Fan110077593
+1.0	LOC.Position.Field	Field108569998, Field108659446, Minefield108507255, Hayfield108570634
+1.0	WEA.Gun.Firearm	Firearm103343853
+1.0	ORG.Government.FireDepartment	FireDepartment108121117
+0.5	PER.ProfessionalPosition.Firefighter	Fireman110091651
+1.0	ORG.MilitaryOrganization.GovernmentArmedForces	Force108208016
+1.0	WEA.Gas	Gas114877585
+1.0	FAC.GeographicalArea	GeographicalArea108574314
+1.0	LOC.GeographicPoint	GeographicPoint108578706
+1.0	ORG.Government	Government108050678
+1.0	FAC.Building.GovernmentBuilding	GovernmentBuilding103449564, GovernmentDepartment108119821, Administration108164585
+2.0	PER.Politician.Governor	Governor110140314
+1.0	WEA.Bomb.Grenade	Grenade103458271
+2.0	WEA.Gun	Gun103467984
+1.0	VEH.Aircraft.Helicopter	Helicopter103512147
+1.0	FAC.Way.Highway	Highway103519981
+1.0	FAC.Building.House	Housing103546340, House103544360, Home103528100, House107971449
+1.0	ORG.MilitaryOrganization.Intelligence	Intelligence108339454
+2.0	PER.ProfessionalPosition.Journalist	Journalist110224578
+1.0	WEA.DaggerKnifeSword	Knife103624134
+1.0	LOC.Land	Land109334396
+1.0	WEA.MissileSystem.MissileLauncher	Launcher103647520
+1.0	ORG.Government.LawEnforcementAgency	LawEnforcementAgency108348815
+1.0	ORG.Government.LegislativeBody	Legislature108163273
+1.0	ORG.CommercialOrganization.Manufacturer	Manufacturer108060446
+0.5	PER.Politician.Mayor	Mayor110303814
+0.5	PER.Combatant.Mercenary	Mercenary110309614
+1.0	FAC.Installation.MilitaryInstallation	MilitaryInstallation103763133, MilitaryCourt108334087, MilitaryAcademy108279524, Military108199025, MilitaryService108198137
+1.0	PER.MilitaryPersonnel.MilitaryOfficer	MilitaryOfficer110317007
+1.0	ORG.MilitaryOrganization	MilitaryService108198137,MilitaryUnit108198398
+1.0	VEH.MilitaryVehicle	MilitaryVehicle103764276
+1.0	ORG.MilitaryOrganization.NonGovernmentMilitia	Militia108390511
+1.5	PER.ProfessionalPosition.Minister	Minister110320863
+1.0	WEA.MissileSystem.Missile	Missile103773504
+1.0	LOC.Position.Neighborhood	Neighbor110352299
+1.0	ORG.CommercialOrganization.NewsAgency	NewsAgency108355075
+1.0	FAC.Structure.Barricade	Obstruction103839993, Barrier102796623
+1.0	FAC.Building.OfficeBuilding	OfficeBuilding103842012, Office103841666
+1.0	ORG.CriminalOrganization.CriminalOrganization	OrganizedCrime108245172
+1.0	ORG.PoliticalOrganization.Party	Party108256968
+1.0	FAC.Structure.Plaza	Plaza108619795, Plaza103965456
+1.0	WEA.Gas.PoisonGas	PoisonGas114993378
+1.0	PER.Police.ChiefOfPolice	PoliceCommissioner110448834
+1.0	PER.Police	Policeman110448983
+1.0	ORG.PoliticalOrganization	PoliticalUnit108359949,Polity108050385
+2.0	PER.Politician	Politician110451263, Politician110450303
+1.0	LOC.Position	Position108621598
+1.0	PER.ProfessionalPosition	Profession100609953
+1.0	WEA.ThrownProjectile	Projectile104008634
+1.0	ORG.Government.Railway	Railway104048568
+1.0	FAC.Installation.TrainStation	RailwayStation104049098
+1.0	LOC.Position.Region	Region108630985,Region108630039
+1.0	WEA.ThrownProjectile.Rock	Rock114696793,Rock109416076
+1.0	VEH.Rocket.Rocket	Rocket104099429
+1.0	WEA.Bullets.LiveRounds	Round104113641
+2.1	PER.Politician.HeadOfGovernment	Ruler110541229, PresidingOfficer110469346, President110467179,
+1.0	FAC.Building.School	School104146050, SchoolSystem104146976, EducationalInstitution108276342
+0.5	PER.ProfessionalPosition.Scientist	Scientist110560637
+1.0	PER.MilitaryPersonnel	Serviceman110582746
+1.0	FAC.Building.StoreShop	Shop104202417
+1.0	PER.Combatant.Sniper	Sniper110616899
+1.0	PER.ProfessionalPosition.Spokesperson	Spokesperson110638385
+1.0	PER.Fan.SportsFan	SportsFan110639925
+0.5	PER.ProfessionalPosition.Spy	Spy110641755
+1.0	GPE.ProvinceState.ProvinceState	State108654360
+1.0	FAC.Way.Street	Street104334599
+1.0	FAC.Structure	Structure104341686
+1.0	WEA.MissileSystem.SurfaceToAirMissile	Surface-to-airMissile104363210
+1.0	VEH.MilitaryVehicle.Tank	Tank104389033
+1.0	ORG.Association.Team	Team108208560
+1.0	FAC.Structure.Tower	Tower104460130
+1.0	GPE.UrbanArea.Village	Village108672738
+1.0	VEH.WheeledVehicle.Train	Train104468005
+1.0	VEH.WheeledVehicle.Truck	Truck104490091
+1.0	GPE.UrbanArea	UrbanArea108675967
+1.0	VEH.Watercraft	Vessel104530566
+1.0	FAC.Building.VotingFacility	VoteOfConfidence107253482, Poll105800998, Vote100183505, Vote100182213, Voter110760340
+1.0	VEH.MilitaryVehicle.FighterAircraft	Warplane104552348
+1.0	VEH.MilitaryVehicle.MilitaryBoat	Warship104552696
+1.0	FAC.Way	Way104564698, Line108593262
+1.0	VEH.WheeledVehicle	WheeledVehicle104576211
+1.0	ORG.International	WorldOrganization108294696,Alliance108293982
+1.0	VEH.Watercraft.Yacht	Yacht104610013

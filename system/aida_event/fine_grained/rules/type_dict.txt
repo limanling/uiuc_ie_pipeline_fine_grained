@@ -1,0 +1,15 @@
+Conflict.Attack	Conflict.Attack.AirstrikeMissileStrike	Instrument	WEA.MissileSystem, Missile103773504, Air-to-airMissile102693413, Air-to-groundMissile102693540, Heat-seekingMissile103509843, Sidewinder104215910, GuidedMissile103466162, BallisticMissile102781338, CruiseMissile103140771
+Conflict.Attack	Conflict.Attack.BiologicalChemicalPoisonAttack	Instrument	WEA.Gas, Chemical114806838, ChemicalElement114622893, ChemicalAgent114779550, ChemicalDefense100961794, BiologicalWarfareDefense100967993, BiologicalDefense100961594, ChemicalBomb103012734, ChemicalWarfare100967622, BiologicalWarfare100967780, Bioweapon102842303, ChemicalWeapon103013162
+Conflict.Attack	Conflict.Attack.Bombing	Instrument	WEA.GrenadeLauncher, WEA.Bomb, Bomb102866578
+Conflict.Attack	Conflict.Attack.FirearmAttack	Instrument	WEA.Cannon, WEA.Bullets, WEA.Gun, Firearm103343853
+Conflict.Attack	Conflict.Attack.Stabbing	Instrument	WEA.DaggerKnifeSword, Knife103623556
+Life.Die	Life.Die.DeathCausedByViolentEvents	Instrument	WEA, Weaponry104566257, InstrumentOfExecution103575691, InstrumentOfPunishment103575958, Missile103773504, Chemical114806838, ChemicalElement114622893, ChemicalAgent114779550, ChemicalDefense100961794, BiologicalWarfareDefense100967993, BiologicalDefense100961594, ChemicalBomb103012734, ChemicalWarfare100967622, BiologicalWarfare100967780, Bioweapon102842303, ChemicalWeapon103013162, Bomb102866578, Firearm103343853, Knife103623556
+Life.Injure	Life.Injure.InjuryCausedByViolentEvents	Instrument	WEA, Weaponry104566257, InstrumentOfExecution103575691, InstrumentOfPunishment103575958, Missile103773504, Chemical114806838, ChemicalElement114622893, ChemicalAgent114779550, ChemicalDefense100961794, BiologicalWarfareDefense100967993, BiologicalDefense100961594, ChemicalBomb103012734, ChemicalWarfare100967622, BiologicalWarfare100967780, Bioweapon102842303, ChemicalWeapon103013162, Bomb102866578, Firearm103343853, Knife103623556
+Manufacture.Artifact	Manufacture.Artifact.CreateIntellectualProperty	Artifact	WorkOfArt104601690, Genre103434943, LiteraryComposition106364329, Nonfiction106367571, Writing106362953
+Manufacture.Artifact	Manufacture.Artifact.Build	Artifact	FAC, Facility
+Movement.TransportPerson	Movement.TransportPerson.SmuggleExtract	Passenger	PER, Person
+Movement.TransportArtifact	Movement.TransportArtifact.SmuggleExtract	Artifact	WEA, Weapon, Vehicle, Commodity
+Conflict.Demonstrate	Conflict.Demonstrate.MarchProtestPoliticalGathering	Demonstrator	PER.Protester
+Movement.TransportPerson	Movement.TransportPerson.SmuggleExtract	Passenger	Person
+Movement.TransportArtifact	Movement.TransportArtifact.SmuggleExtract	Artifact	Weapon, Vehicle, Commodity
+Inspection.SensoryObserve	Inspection.SensoryObserve.InspectPeopleOrganization	ObservedEntity	Person, Organization, Side

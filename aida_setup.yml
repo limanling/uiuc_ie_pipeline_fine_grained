@@ -1,0 +1,216 @@
+---
+- hosts: supercomputers
+  remote_user: napiersk
+  tasks:
+    - name: test connection
+      ping:
+      remote_user: napiersk
+      become: yes
+
+    - name: create dev dir
+      file: 
+        path: /data/aida_pipeline-dev/
+        state: directory
+        owner: napiersk
+        mode: '0700'
+      become: yes  
+
+    - name: create src dir
+      file: 
+        path: /data/aida_pipeline-dev/src/
+        state: directory
+        owner: napiersk
+        mode: '0700'
+      become: yes
+
+    - name: create aida_pipeline dir
+      file: 
+        path: /data/aida_pipeline-dev/src/aida_pipeline/
+        state: directory
+        owner: napiersk
+        mode: '0700'
+      become: yes
+
+    - name: install java 1.8.0
+      yum:
+        name: 'java-1.8.0-openjdk'
+        state: 'present'
+      become: yes
+
+    - name: return java version to registered var
+      command: java -version
+      register: java_version
+
+    - name: upgrade yum 
+      yum:
+        name: yum
+        state: latest
+      become: yes
+
+    - name: upgrade all yum packages
+      yum:
+        name: '*'
+        state: latest
+      become: yes
+
+    - name: install pip
+      yum:
+        name: 'python2-pip'
+        state: 'latest'
+      become: yes
+
+    - name: ensure a list of yum packages installed
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - wget
+          - tree
+          - nano
+          - perl-Digest-MD5
+          - perl-IO-Compress
+      become: yes
+
+    - name: install setuptools using pip
+      pip:
+        name:
+          - setuptools
+        state: latest
+      become: yes
+
+    - name: install additional python libraries
+      pip:
+        name:
+          - docker-py
+          - requests
+          - jieba
+          - nltk
+          - pexpect
+        state: latest
+      become: yes
+
+    - name: docker pull mongo
+      docker_image:
+        name: mongo
+        pull: yes
+      become: yes   
+
+    - name: docker pull panx27/edl
+      docker_image:
+        name: panx27/edl
+        pull: yes
+      become: yes   
+
+    - name: docker pull elisarpi/elisa-ie
+      docker_image:
+        name: elisarpi/elisa-ie
+        pull: yes
+      become: yes  
+          
+    - name: docker pull limanling/aida_relation
+      docker_image:
+        name: limanling/aida_relation
+        pull: yes
+      become: yes  
+    
+    - name: docker pull dylandilu/event_coreference_xdoc
+      docker_image:
+        name: dylandilu/event_coreference_xdoc
+        pull: yes
+      become: yes  
+    
+    - name: docker pull charlesztt/aida_event
+      docker_image:
+        name: charlesztt/aida_event
+        pull: yes
+      become: yes  
+    
+    - name: docker pull limanling/aida_converter
+      docker_image:
+        name: limanling/aida_converter
+        pull: yes
+      become: yes  
+    
+    - name: docker pull wangqy96/aida_nominal_coreference_en
+      docker_image:
+        name: wangqy96/aida_nominal_coreference_en
+        pull: yes
+      become: yes  
+
+    - name: copy ssh key to host
+      copy:
+        src: ./dn_tt_id_rsa
+        dest: /nas/home/napiersk/.ssh/dd_tt_id_rsa
+        owner: napiersk
+        mode: '0600'
+
+    - name: copy ssh config to host
+      copy:
+        src: ./ssh_config
+        dest: /nas/home/napiersk/.ssh/config
+        owner: napiersk
+        mode: '0644'
+
+# manually delete directory on remote host to force new git clone
+# $ cd /data/aida_pipeline-dev
+# $ rm -rf ./src
+
+    - name: clone expect
+      expect:
+        chdir: /data/aida_pipeline-dev/src/
+        command: git clone git@github.com:danielnapierski/aida_pipeline.git
+        responses:
+          'Enter passphrase for key': "secret2019"
+
+    - name: get aida edl models tgz
+      command: wget https://blender04.cs.rpi.edu/~zhangt13/pipeline/aida_edl_models.tgz
+      args:
+        chdir: /data/aida_pipeline-dev/src/aida_pipeline/aida_pipeline-master/aida_edl/
+      register: gotaidaedlmodels
+
+    - name: un tar models archive
+      command: tar -xvf aida_edl_models.tgz
+      args:
+        chdir: /data/aida_pipeline-dev/src/aida_pipeline/aida_pipeline-master/aida_edl/
+      register: untaredlmodels
+
+    - name: get en nom tgz
+      command: wget https://blender04.cs.rpi.edu/~zhangb8/lorelei/pytorch_models/en-nom.tar.gz
+      args:
+        chdir: /data/aida_pipeline-dev/src/aida_pipeline/aida_pipeline-master/aida_edl/models/
+      register: gotennommodels
+
+    - name: get en nom weaveh tgz
+      command: wget https://blender04.cs.rpi.edu/~zhangb8/lorelei/pytorch_models/en-nom_weaveh.tar.gz
+      args:
+        chdir: /data/aida_pipeline-dev/src/aida_pipeline/aida_pipeline-master/aida_edl/models/
+      register: gotennomweavehmodels
+
+    - name: un tar en nom archive
+      command: tar -zxvf en-nom.tar.gz
+      args:
+        chdir: /data/aida_pipeline-dev/src/aida_pipeline/aida_pipeline-master/aida_edl/models/
+      register: untarennommodels
+
+    - name: un tar en nom weaveh archive
+      command: tar -zxvf en-nom_weaveh.tar.gz
+      args:
+        chdir: /data/aida_pipeline-dev/src/aida_pipeline/aida_pipeline-master/aida_edl/models/
+      register: untarennomweavehmodels
+
+    - name: get en nom weaveh tgz
+      command: wget https://blender04.cs.rpi.edu/~zhangt13/pipeline/aida_event_data.tgz
+      args:
+        chdir: /data/aida_pipeline-dev/src/aida_pipeline/aida_pipeline-master/aida_event/
+      register: gotennomweavehmodels
+
+    - name: un tar aida event archive
+      command: tar -xzf aida_event_data.tgz
+      args:
+        chdir: /data/aida_pipeline-dev/src/aida_pipeline/aida_pipeline-master/aida_event/
+      register: untaraidaeventdata
+
+#
+# Github ssh key identified with authorized account
+# ssh-keygen -t rsa -b 4096 -C "dan.napierski@toptal.com"
+# assign password and use in this file.

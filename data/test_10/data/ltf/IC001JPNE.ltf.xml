@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE LCTL_TEXT SYSTEM "ltf.v1.5.dtd">
+<LCTL_TEXT lang="eng">
+<DOC id="IC001JPNE" lang="eng" tokenization="tokenization_parameters.v5.0" grammar="none" raw_text_char_length="3402" raw_text_md5="26a383e1abcbdd113cefa4e63859affd">
+<TEXT>
+<SEG id="segment-0" start_char="1" end_char="65">
+<ORIGINAL_TEXT>U.S. officials believe attack against Malaysian plane was mistake</ORIGINAL_TEXT>
+<TOKEN id="token-0-0" pos="unknown" morph="none" start_char="1" end_char="3">U.S</TOKEN>
+<TOKEN id="token-0-1" pos="punct" morph="none" start_char="4" end_char="4">.</TOKEN>
+<TOKEN id="token-0-2" pos="word" morph="none" start_char="6" end_char="14">officials</TOKEN>
+<TOKEN id="token-0-3" pos="word" morph="none" start_char="16" end_char="22">believe</TOKEN>
+<TOKEN id="token-0-4" pos="word" morph="none" start_char="24" end_char="29">attack</TOKEN>
+<TOKEN id="token-0-5" pos="word" morph="none" start_char="31" end_char="37">against</TOKEN>
+<TOKEN id="token-0-6" pos="word" morph="none" start_char="39" end_char="47">Malaysian</TOKEN>
+<TOKEN id="token-0-7" pos="word" morph="none" start_char="49" end_char="53">plane</TOKEN>
+<TOKEN id="token-0-8" pos="word" morph="none" start_char="55" end_char="57">was</TOKEN>
+<TOKEN id="token-0-9" pos="word" morph="none" start_char="59" end_char="65">mistake</TOKEN>
+</SEG>
+<SEG id="segment-1" start_char="69" end_char="346">
+<ORIGINAL_TEXT>American intelligence agencies believe Ukrainian separatists shot down a Malaysia Airlines passenger jet by mistake, possibly by misreading fuzzy radar images on a sophisticated surface-to-air missile launcher provided by Russia, senior U.S. intelligence officials said Tuesday.</ORIGINAL_TEXT>
+<TOKEN id="token-1-0" pos="word" morph="none" start_char="69" end_char="76">American</TOKEN>
+<TOKEN id="token-1-1" pos="word" morph="none" start_char="78" end_char="89">intelligence</TOKEN>
+<TOKEN id="token-1-2" pos="word" morph="none" start_char="91" end_char="98">agencies</TOKEN>
+<TOKEN id="token-1-3" pos="word" morph="none" start_char="100" end_char="106">believe</TOKEN>
+<TOKEN id="token-1-4" pos="word" morph="none" start_char="108" end_char="116">Ukrainian</TOKEN>
+<TOKEN id="token-1-5" pos="word" morph="none" start_char="118" end_char="128">separatists</TOKEN>
+<TOKEN id="token-1-6" pos="word" morph="none" start_char="130" end_char="133">shot</TOKEN>
+<TOKEN id="token-1-7" pos="word" morph="none" start_char="135" end_char="138">down</TOKEN>
+<TOKEN id="token-1-8" pos="word" morph="none" start_char="140" end_char="140">a</TOKEN>
+<TOKEN id="token-1-9" pos="word" morph="none" start_char="142" end_char="149">Malaysia</TOKEN>
+<TOKEN id="token-1-10" pos="word" morph="none" start_char="151" end_char="158">Airlines</TOKEN>
+<TOKEN id="token-1-11" pos="word" morph="none" start_char="160" end_char="168">passenger</TOKEN>
+<TOKEN id="token-1-12" pos="word" morph="none" start_char="170" end_char="172">jet</TOKEN>
+<TOKEN id="token-1-13" pos="word" morph="none" start_char="174" end_char="175">by</TOKEN>
+<TOKEN id="token-1-14" pos="word" morph="none" start_char="177" end_char="183">mistake</TOKEN>
+<TOKEN id="token-1-15" pos="punct" morph="none" start_char="184" end_char="184">,</TOKEN>
+<TOKEN id="token-1-16" pos="word" morph="none" start_char="186" end_char="193">possibly</TOKEN>
+<TOKEN id="token-1-17" pos="word" morph="none" start_char="195" end_char="196">by</TOKEN>
+<TOKEN id="token-1-18" pos="word" morph="none" start_char="198" end_char="207">misreading</TOKEN>
+<TOKEN id="token-1-19" pos="word" morph="none" start_char="209" end_char="213">fuzzy</TOKEN>
+<TOKEN id="token-1-20" pos="word" morph="none" start_char="215" end_char="219">radar</TOKEN>
+<TOKEN id="token-1-21" pos="word" morph="none" start_char="221" end_char="226">images</TOKEN>
+<TOKEN id="token-1-22" pos="word" morph="none" start_char="228" end_char="229">on</TOKEN>
+<TOKEN id="token-1-23" pos="word" morph="none" start_char="231" end_char="231">a</TOKEN>
+<TOKEN id="token-1-24" pos="word" morph="none" start_char="233" end_char="245">sophisticated</TOKEN>
+<TOKEN id="token-1-25" pos="unknown" morph="none" start_char="247" end_char="260">surface-to-air</TOKEN>
+<TOKEN id="token-1-26" pos="word" morph="none" start_char="262" end_char="268">missile</TOKEN>
+<TOKEN id="token-1-27" pos="word" morph="none" start_char="270" end_char="277">launcher</TOKEN>
+<TOKEN id="token-1-28" pos="word" morph="none" start_char="279" end_char="286">provided</TOKEN>
+<TOKEN id="token-1-29" pos="word" morph="none" start_char="288" end_char="289">by</TOKEN>
+<TOKEN id="token-1-30" pos="word" morph="none" start_char="291" end_char="296">Russia</TOKEN>
+<TOKEN id="token-1-31" pos="punct" morph="none" start_char="297" end_char="297">,</TOKEN>
+<TOKEN id="token-1-32" pos="word" morph="none" start_char="299" end_char="304">senior</TOKEN>
+<TOKEN id="token-1-33" pos="unknown" morph="none" start_char="306" end_char="308">U.S</TOKEN>
+<TOKEN id="token-1-34" pos="punct" morph="none" start_char="309" end_char="309">.</TOKEN>
+<TOKEN id="token-1-35" pos="word" morph="none" start_char="311" end_char="322">intelligence</TOKEN>
+<TOKEN id="token-1-36" pos="word" morph="none" start_char="324" end_char="332">officials</TOKEN>
+<TOKEN id="token-1-37" pos="word" morph="none" start_char="334" end_char="337">said</TOKEN>
+<TOKEN id="token-1-38" pos="word" morph="none" start_char="339" end_char="345">Tuesday</TOKEN>
+<TOKEN id="token-1-39" pos="punct" morph="none" start_char="346" end_char="346">.</TOKEN>
+</SEG>
+<SEG id="segment-2" start_char="349" end_char="531">
+<ORIGINAL_TEXT>The launcher that U.S. officials believe fired the SA-11 heat-seeking missile used a rudimentary radar system that gives an incomplete picture of what is flying above, officials said.</ORIGINAL_TEXT>
+<TOKEN id="token-2-0" pos="word" morph="none" start_char="349" end_char="351">The</TOKEN>
+<TOKEN id="token-2-1" pos="word" morph="none" start_char="353" end_char="360">launcher</TOKEN>
+<TOKEN id="token-2-2" pos="word" morph="none" start_char="362" end_char="365">that</TOKEN>
+<TOKEN id="token-2-3" pos="unknown" morph="none" start_char="367" end_char="369">U.S</TOKEN>
+<TOKEN id="token-2-4" pos="punct" morph="none" start_char="370" end_char="370">.</TOKEN>
+<TOKEN id="token-2-5" pos="word" morph="none" start_char="372" end_char="380">officials</TOKEN>
+<TOKEN id="token-2-6" pos="word" morph="none" start_char="382" end_char="388">believe</TOKEN>
+<TOKEN id="token-2-7" pos="word" morph="none" start_char="390" end_char="394">fired</TOKEN>
+<TOKEN id="token-2-8" pos="word" morph="none" start_char="396" end_char="398">the</TOKEN>
+<TOKEN id="token-2-9" pos="unknown" morph="none" start_char="400" end_char="404">SA-11</TOKEN>
+<TOKEN id="token-2-10" pos="unknown" morph="none" start_char="406" end_char="417">heat-seeking</TOKEN>
+<TOKEN id="token-2-11" pos="word" morph="none" start_char="419" end_char="425">missile</TOKEN>
+<TOKEN id="token-2-12" pos="word" morph="none" start_char="427" end_char="430">used</TOKEN>
+<TOKEN id="token-2-13" pos="word" morph="none" start_char="432" end_char="432">a</TOKEN>
+<TOKEN id="token-2-14" pos="word" morph="none" start_char="434" end_char="444">rudimentary</TOKEN>
+<TOKEN id="token-2-15" pos="word" morph="none" start_char="446" end_char="450">radar</TOKEN>
+<TOKEN id="token-2-16" pos="word" morph="none" start_char="452" end_char="457">system</TOKEN>
+<TOKEN id="token-2-17" pos="word" morph="none" start_char="459" end_char="462">that</TOKEN>
+<TOKEN id="token-2-18" pos="word" morph="none" start_char="464" end_char="468">gives</TOKEN>
+<TOKEN id="token-2-19" pos="word" morph="none" start_char="470" end_char="471">an</TOKEN>
+<TOKEN id="token-2-20" pos="word" morph="none" start_char="473" end_char="482">incomplete</TOKEN>
+<TOKEN id="token-2-21" pos="word" morph="none" start_char="484" end_char="490">picture</TOKEN>
+<TOKEN id="token-2-22" pos="word" morph="none" start_char="492" end_char="493">of</TOKEN>
+<TOKEN id="token-2-23" pos="word" morph="none" start_char="495" end_char="498">what</TOKEN>
+<TOKEN id="token-2-24" pos="word" morph="none" start_char="500" end_char="501">is</TOKEN>
+<TOKEN id="token-2-25" pos="word" morph="none" start_char="503" end_char="508">flying</TOKEN>
+<TOKEN id="token-2-26" pos="word" morph="none" start_char="510" end_char="514">above</TOKEN>
+<TOKEN id="token-2-27" pos="punct" morph="none" start_char="515" end_char="515">,</TOKEN>
+<TOKEN id="token-2-28" pos="word" morph="none" start_char="517" end_char="525">officials</TOKEN>
+<TOKEN id="token-2-29" pos="word" morph="none" start_char="527" end_char="530">said</TOKEN>
+<TOKEN id="token-2-30" pos="punct" morph="none" start_char="531" end_char="531">.</TOKEN>
+</SEG>
+<SEG id="segment-3" start_char="533" end_char="693">
+<ORIGINAL_TEXT>Such antiaircraft systems are designed to be linked to other radar that would allow the crew on the ground to distinguish between military and civilian aircraft.</ORIGINAL_TEXT>
+<TOKEN id="token-3-0" pos="word" morph="none" start_char="533" end_char="536">Such</TOKEN>
+<TOKEN id="token-3-1" pos="word" morph="none" start_char="538" end_char="549">antiaircraft</TOKEN>
+<TOKEN id="token-3-2" pos="word" morph="none" start_char="551" end_char="557">systems</TOKEN>
+<TOKEN id="token-3-3" pos="word" morph="none" start_char="559" end_char="561">are</TOKEN>
+<TOKEN id="token-3-4" pos="word" morph="none" start_char="563" end_char="570">designed</TOKEN>
+<TOKEN id="token-3-5" pos="word" morph="none" start_char="572" end_char="573">to</TOKEN>
+<TOKEN id="token-3-6" pos="word" morph="none" start_char="575" end_char="576">be</TOKEN>
+<TOKEN id="token-3-7" pos="word" morph="none" start_char="578" end_char="583">linked</TOKEN>
+<TOKEN id="token-3-8" pos="word" morph="none" start_char="585" end_char="586">to</TOKEN>
+<TOKEN id="token-3-9" pos="word" morph="none" start_char="588" end_char="592">other</TOKEN>
+<TOKEN id="token-3-10" pos="word" morph="none" start_char="594" end_char="598">radar</TOKEN>
+<TOKEN id="token-3-11" pos="word" morph="none" start_char="600" end_char="603">that</TOKEN>
+<TOKEN id="token-3-12" pos="word" morph="none" start_char="605" end_char="609">would</TOKEN>
+<TOKEN id="token-3-13" pos="word" morph="none" start_char="611" end_char="615">allow</TOKEN>
+<TOKEN id="token-3-14" pos="word" morph="none" start_char="617" end_char="619">the</TOKEN>
+<TOKEN id="token-3-15" pos="word" morph="none" start_char="621" end_char="624">crew</TOKEN>
+<TOKEN id="token-3-16" pos="word" morph="none" start_char="626" end_char="627">on</TOKEN>
+<TOKEN id="token-3-17" pos="word" morph="none" start_char="629" end_char="631">the</TOKEN>
+<TOKEN id="token-3-18" pos="word" morph="none" start_char="633" end_char="638">ground</TOKEN>
+<TOKEN id="token-3-19" pos="word" morph="none" start_char="640" end_char="641">to</TOKEN>
+<TOKEN id="token-3-20" pos="word" morph="none" start_char="643" end_char="653">distinguish</TOKEN>
+<TOKEN id="token-3-21" pos="word" morph="none" start_char="655" end_char="661">between</TOKEN>
+<TOKEN id="token-3-22" pos="word" morph="none" start_char="663" end_char="670">military</TOKEN>
+<TOKEN id="token-3-23" pos="word" morph="none" start_char="672" end_char="674">and</TOKEN>
+<TOKEN id="token-3-24" pos="word" morph="none" start_char="676" end_char="683">civilian</TOKEN>
+<TOKEN id="token-3-25" pos="word" morph="none" start_char="685" end_char="692">aircraft</TOKEN>
+<TOKEN id="token-3-26" pos="punct" morph="none" start_char="693" end_char="693">.</TOKEN>
+</SEG>
+<SEG id="segment-4" start_char="696" end_char="848">
+<ORIGINAL_TEXT>Because separatists did not have secondary radar images available, they probably mistook the airliner for a Ukrainian military plane, the officials said.</ORIGINAL_TEXT>
+<TOKEN id="token-4-0" pos="word" morph="none" start_char="696" end_char="702">Because</TOKEN>
+<TOKEN id="token-4-1" pos="word" morph="none" start_char="704" end_char="714">separatists</TOKEN>
+<TOKEN id="token-4-2" pos="word" morph="none" start_char="716" end_char="718">did</TOKEN>
+<TOKEN id="token-4-3" pos="word" morph="none" start_char="720" end_char="722">not</TOKEN>
+<TOKEN id="token-4-4" pos="word" morph="none" start_char="724" end_char="727">have</TOKEN>
+<TOKEN id="token-4-5" pos="word" morph="none" start_char="729" end_char="737">secondary</TOKEN>
+<TOKEN id="token-4-6" pos="word" morph="none" start_char="739" end_char="743">radar</TOKEN>
+<TOKEN id="token-4-7" pos="word" morph="none" start_char="745" end_char="750">images</TOKEN>
+<TOKEN id="token-4-8" pos="word" morph="none" start_char="752" end_char="760">available</TOKEN>
+<TOKEN id="token-4-9" pos="punct" morph="none" start_char="761" end_char="761">,</TOKEN>
+<TOKEN id="token-4-10" pos="word" morph="none" start_char="763" end_char="766">they</TOKEN>
+<TOKEN id="token-4-11" pos="word" morph="none" start_char="768" end_char="775">probably</TOKEN>
+<TOKEN id="token-4-12" pos="word" morph="none" start_char="777" end_char="783">mistook</TOKEN>
+<TOKEN id="token-4-13" pos="word" morph="none" start_char="785" end_char="787">the</TOKEN>
+<TOKEN id="token-4-14" pos="word" morph="none" start_char="789" end_char="796">airliner</TOKEN>
+<TOKEN id="token-4-15" pos="word" morph="none" start_char="798" end_char="800">for</TOKEN>
+<TOKEN id="token-4-16" pos="word" morph="none" start_char="802" end_char="802">a</TOKEN>
+<TOKEN id="token-4-17" pos="word" morph="none" start_char="804" end_char="812">Ukrainian</TOKEN>
+<TOKEN id="token-4-18" pos="word" morph="none" start_char="814" end_char="821">military</TOKEN>
+<TOKEN id="token-4-19" pos="word" morph="none" start_char="823" end_char="827">plane</TOKEN>
+<TOKEN id="token-4-20" pos="punct" morph="none" start_char="828" end_char="828">,</TOKEN>
+<TOKEN id="token-4-21" pos="word" morph="none" start_char="830" end_char="832">the</TOKEN>
+<TOKEN id="token-4-22" pos="word" morph="none" start_char="834" end_char="842">officials</TOKEN>
+<TOKEN id="token-4-23" pos="word" morph="none" start_char="844" end_char="847">said</TOKEN>
+<TOKEN id="token-4-24" pos="punct" morph="none" start_char="848" end_char="848">.</TOKEN>
+</SEG>
+<SEG id="segment-5" start_char="851" end_char="1061">
+<ORIGINAL_TEXT>Separatist forces have shot down at least a dozen Ukrainian military aircraft, mostly ground-attack helicopters and low-altitude jets, using shoulder-fired rockets and surface-to-air missiles, the official said.</ORIGINAL_TEXT>
+<TOKEN id="token-5-0" pos="word" morph="none" start_char="851" end_char="860">Separatist</TOKEN>
+<TOKEN id="token-5-1" pos="word" morph="none" start_char="862" end_char="867">forces</TOKEN>
+<TOKEN id="token-5-2" pos="word" morph="none" start_char="869" end_char="872">have</TOKEN>
+<TOKEN id="token-5-3" pos="word" morph="none" start_char="874" end_char="877">shot</TOKEN>
+<TOKEN id="token-5-4" pos="word" morph="none" start_char="879" end_char="882">down</TOKEN>
+<TOKEN id="token-5-5" pos="word" morph="none" start_char="884" end_char="885">at</TOKEN>
+<TOKEN id="token-5-6" pos="word" morph="none" start_char="887" end_char="891">least</TOKEN>
+<TOKEN id="token-5-7" pos="word" morph="none" start_char="893" end_char="893">a</TOKEN>
+<TOKEN id="token-5-8" pos="word" morph="none" start_char="895" end_char="899">dozen</TOKEN>
+<TOKEN id="token-5-9" pos="word" morph="none" start_char="901" end_char="909">Ukrainian</TOKEN>
+<TOKEN id="token-5-10" pos="word" morph="none" start_char="911" end_char="918">military</TOKEN>
+<TOKEN id="token-5-11" pos="word" morph="none" start_char="920" end_char="927">aircraft</TOKEN>
+<TOKEN id="token-5-12" pos="punct" morph="none" start_char="928" end_char="928">,</TOKEN>
+<TOKEN id="token-5-13" pos="word" morph="none" start_char="930" end_char="935">mostly</TOKEN>
+<TOKEN id="token-5-14" pos="unknown" morph="none" start_char="937" end_char="949">ground-attack</TOKEN>
+<TOKEN id="token-5-15" pos="word" morph="none" start_char="951" end_char="961">helicopters</TOKEN>
+<TOKEN id="token-5-16" pos="word" morph="none" start_char="963" end_char="965">and</TOKEN>
+<TOKEN id="token-5-17" pos="unknown" morph="none" start_char="967" end_char="978">low-altitude</TOKEN>
+<TOKEN id="token-5-18" pos="word" morph="none" start_char="980" end_char="983">jets</TOKEN>
+<TOKEN id="token-5-19" pos="punct" morph="none" start_char="984" end_char="984">,</TOKEN>
+<TOKEN id="token-5-20" pos="word" morph="none" start_char="986" end_char="990">using</TOKEN>
+<TOKEN id="token-5-21" pos="unknown" morph="none" start_char="992" end_char="1005">shoulder-fired</TOKEN>
+<TOKEN id="token-5-22" pos="word" morph="none" start_char="1007" end_char="1013">rockets</TOKEN>
+<TOKEN id="token-5-23" pos="word" morph="none" start_char="1015" end_char="1017">and</TOKEN>
+<TOKEN id="token-5-24" pos="unknown" morph="none" start_char="1019" end_char="1032">surface-to-air</TOKEN>
+<TOKEN id="token-5-25" pos="word" morph="none" start_char="1034" end_char="1041">missiles</TOKEN>
+<TOKEN id="token-5-26" pos="punct" morph="none" start_char="1042" end_char="1042">,</TOKEN>
+<TOKEN id="token-5-27" pos="word" morph="none" start_char="1044" end_char="1046">the</TOKEN>
+<TOKEN id="token-5-28" pos="word" morph="none" start_char="1048" end_char="1055">official</TOKEN>
+<TOKEN id="token-5-29" pos="word" morph="none" start_char="1057" end_char="1060">said</TOKEN>
+<TOKEN id="token-5-30" pos="punct" morph="none" start_char="1061" end_char="1061">.</TOKEN>
+</SEG>
+<SEG id="segment-6" start_char="1064" end_char="1242">
+<ORIGINAL_TEXT>U.S. officials have not released evidence proving that Russia's military played a direct role in the downing of the jet or in training separatists to use the SA-11 missile system.</ORIGINAL_TEXT>
+<TOKEN id="token-6-0" pos="unknown" morph="none" start_char="1064" end_char="1066">U.S</TOKEN>
+<TOKEN id="token-6-1" pos="punct" morph="none" start_char="1067" end_char="1067">.</TOKEN>
+<TOKEN id="token-6-2" pos="word" morph="none" start_char="1069" end_char="1077">officials</TOKEN>
+<TOKEN id="token-6-3" pos="word" morph="none" start_char="1079" end_char="1082">have</TOKEN>
+<TOKEN id="token-6-4" pos="word" morph="none" start_char="1084" end_char="1086">not</TOKEN>
+<TOKEN id="token-6-5" pos="word" morph="none" start_char="1088" end_char="1095">released</TOKEN>
+<TOKEN id="token-6-6" pos="word" morph="none" start_char="1097" end_char="1104">evidence</TOKEN>
+<TOKEN id="token-6-7" pos="word" morph="none" start_char="1106" end_char="1112">proving</TOKEN>
+<TOKEN id="token-6-8" pos="word" morph="none" start_char="1114" end_char="1117">that</TOKEN>
+<TOKEN id="token-6-9" pos="word" morph="none" start_char="1119" end_char="1126">Russia's</TOKEN>
+<TOKEN id="token-6-10" pos="word" morph="none" start_char="1128" end_char="1135">military</TOKEN>
+<TOKEN id="token-6-11" pos="word" morph="none" start_char="1137" end_char="1142">played</TOKEN>
+<TOKEN id="token-6-12" pos="word" morph="none" start_char="1144" end_char="1144">a</TOKEN>
+<TOKEN id="token-6-13" pos="word" morph="none" start_char="1146" end_char="1151">direct</TOKEN>
+<TOKEN id="token-6-14" pos="word" morph="none" start_char="1153" end_char="1156">role</TOKEN>
+<TOKEN id="token-6-15" pos="word" morph="none" start_char="1158" end_char="1159">in</TOKEN>
+<TOKEN id="token-6-16" pos="word" morph="none" start_char="1161" end_char="1163">the</TOKEN>
+<TOKEN id="token-6-17" pos="word" morph="none" start_char="1165" end_char="1171">downing</TOKEN>
+<TOKEN id="token-6-18" pos="word" morph="none" start_char="1173" end_char="1174">of</TOKEN>
+<TOKEN id="token-6-19" pos="word" morph="none" start_char="1176" end_char="1178">the</TOKEN>
+<TOKEN id="token-6-20" pos="word" morph="none" start_char="1180" end_char="1182">jet</TOKEN>
+<TOKEN id="token-6-21" pos="word" morph="none" start_char="1184" end_char="1185">or</TOKEN>
+<TOKEN id="token-6-22" pos="word" morph="none" start_char="1187" end_char="1188">in</TOKEN>
+<TOKEN id="token-6-23" pos="word" morph="none" start_char="1190" end_char="1197">training</TOKEN>
+<TOKEN id="token-6-24" pos="word" morph="none" start_char="1199" end_char="1209">separatists</TOKEN>
+<TOKEN id="token-6-25" pos="word" morph="none" start_char="1211" end_char="1212">to</TOKEN>
+<TOKEN id="token-6-26" pos="word" morph="none" start_char="1214" end_char="1216">use</TOKEN>
+<TOKEN id="token-6-27" pos="word" morph="none" start_char="1218" end_char="1220">the</TOKEN>
+<TOKEN id="token-6-28" pos="unknown" morph="none" start_char="1222" end_char="1226">SA-11</TOKEN>
+<TOKEN id="token-6-29" pos="word" morph="none" start_char="1228" end_char="1234">missile</TOKEN>
+<TOKEN id="token-6-30" pos="word" morph="none" start_char="1236" end_char="1241">system</TOKEN>
+<TOKEN id="token-6-31" pos="punct" morph="none" start_char="1242" end_char="1242">.</TOKEN>
+</SEG>
+<SEG id="segment-7" start_char="1245" end_char="1353">
+<ORIGINAL_TEXT>Since the crash, Russia has increased the movement of military hardware into eastern Ukraine, officials said.</ORIGINAL_TEXT>
+<TOKEN id="token-7-0" pos="word" morph="none" start_char="1245" end_char="1249">Since</TOKEN>
+<TOKEN id="token-7-1" pos="word" morph="none" start_char="1251" end_char="1253">the</TOKEN>
+<TOKEN id="token-7-2" pos="word" morph="none" start_char="1255" end_char="1259">crash</TOKEN>
+<TOKEN id="token-7-3" pos="punct" morph="none" start_char="1260" end_char="1260">,</TOKEN>
+<TOKEN id="token-7-4" pos="word" morph="none" start_char="1262" end_char="1267">Russia</TOKEN>
+<TOKEN id="token-7-5" pos="word" morph="none" start_char="1269" end_char="1271">has</TOKEN>
+<TOKEN id="token-7-6" pos="word" morph="none" start_char="1273" end_char="1281">increased</TOKEN>
+<TOKEN id="token-7-7" pos="word" morph="none" start_char="1283" end_char="1285">the</TOKEN>
+<TOKEN id="token-7-8" pos="word" morph="none" start_char="1287" end_char="1294">movement</TOKEN>
+<TOKEN id="token-7-9" pos="word" morph="none" start_char="1296" end_char="1297">of</TOKEN>
+<TOKEN id="token-7-10" pos="word" morph="none" start_char="1299" end_char="1306">military</TOKEN>
+<TOKEN id="token-7-11" pos="word" morph="none" start_char="1308" end_char="1315">hardware</TOKEN>
+<TOKEN id="token-7-12" pos="word" morph="none" start_char="1317" end_char="1320">into</TOKEN>
+<TOKEN id="token-7-13" pos="word" morph="none" start_char="1322" end_char="1328">eastern</TOKEN>
+<TOKEN id="token-7-14" pos="word" morph="none" start_char="1330" end_char="1336">Ukraine</TOKEN>
+<TOKEN id="token-7-15" pos="punct" morph="none" start_char="1337" end_char="1337">,</TOKEN>
+<TOKEN id="token-7-16" pos="word" morph="none" start_char="1339" end_char="1347">officials</TOKEN>
+<TOKEN id="token-7-17" pos="word" morph="none" start_char="1349" end_char="1352">said</TOKEN>
+<TOKEN id="token-7-18" pos="punct" morph="none" start_char="1353" end_char="1353">.</TOKEN>
+</SEG>
+<SEG id="segment-8" start_char="1355" end_char="1488">
+<ORIGINAL_TEXT>On Tuesday morning, U.S. intelligence agencies confirmed that about 20 tanks and armored vehicles crossed Russia into eastern Ukraine.</ORIGINAL_TEXT>
+<TOKEN id="token-8-0" pos="word" morph="none" start_char="1355" end_char="1356">On</TOKEN>
+<TOKEN id="token-8-1" pos="word" morph="none" start_char="1358" end_char="1364">Tuesday</TOKEN>
+<TOKEN id="token-8-2" pos="word" morph="none" start_char="1366" end_char="1372">morning</TOKEN>
+<TOKEN id="token-8-3" pos="punct" morph="none" start_char="1373" end_char="1373">,</TOKEN>
+<TOKEN id="token-8-4" pos="unknown" morph="none" start_char="1375" end_char="1377">U.S</TOKEN>
+<TOKEN id="token-8-5" pos="punct" morph="none" start_char="1378" end_char="1378">.</TOKEN>
+<TOKEN id="token-8-6" pos="word" morph="none" start_char="1380" end_char="1391">intelligence</TOKEN>
+<TOKEN id="token-8-7" pos="word" morph="none" start_char="1393" end_char="1400">agencies</TOKEN>
+<TOKEN id="token-8-8" pos="word" morph="none" start_char="1402" end_char="1410">confirmed</TOKEN>
+<TOKEN id="token-8-9" pos="word" morph="none" start_char="1412" end_char="1415">that</TOKEN>
+<TOKEN id="token-8-10" pos="word" morph="none" start_char="1417" end_char="1421">about</TOKEN>
+<TOKEN id="token-8-11" pos="word" morph="none" start_char="1423" end_char="1424">20</TOKEN>
+<TOKEN id="token-8-12" pos="word" morph="none" start_char="1426" end_char="1430">tanks</TOKEN>
+<TOKEN id="token-8-13" pos="word" morph="none" start_char="1432" end_char="1434">and</TOKEN>
+<TOKEN id="token-8-14" pos="word" morph="none" start_char="1436" end_char="1442">armored</TOKEN>
+<TOKEN id="token-8-15" pos="word" morph="none" start_char="1444" end_char="1451">vehicles</TOKEN>
+<TOKEN id="token-8-16" pos="word" morph="none" start_char="1453" end_char="1459">crossed</TOKEN>
+<TOKEN id="token-8-17" pos="word" morph="none" start_char="1461" end_char="1466">Russia</TOKEN>
+<TOKEN id="token-8-18" pos="word" morph="none" start_char="1468" end_char="1471">into</TOKEN>
+<TOKEN id="token-8-19" pos="word" morph="none" start_char="1473" end_char="1479">eastern</TOKEN>
+<TOKEN id="token-8-20" pos="word" morph="none" start_char="1481" end_char="1487">Ukraine</TOKEN>
+<TOKEN id="token-8-21" pos="punct" morph="none" start_char="1488" end_char="1488">.</TOKEN>
+</SEG>
+<SEG id="segment-9" start_char="1491" end_char="1625">
+<ORIGINAL_TEXT>The Russian government is also training separatists on a "gigantic" military base near the southwestern town of Rostov, officials said.</ORIGINAL_TEXT>
+<TOKEN id="token-9-0" pos="word" morph="none" start_char="1491" end_char="1493">The</TOKEN>
+<TOKEN id="token-9-1" pos="word" morph="none" start_char="1495" end_char="1501">Russian</TOKEN>
+<TOKEN id="token-9-2" pos="word" morph="none" start_char="1503" end_char="1512">government</TOKEN>
+<TOKEN id="token-9-3" pos="word" morph="none" start_char="1514" end_char="1515">is</TOKEN>
+<TOKEN id="token-9-4" pos="word" morph="none" start_char="1517" end_char="1520">also</TOKEN>
+<TOKEN id="token-9-5" pos="word" morph="none" start_char="1522" end_char="1529">training</TOKEN>
+<TOKEN id="token-9-6" pos="word" morph="none" start_char="1531" end_char="1541">separatists</TOKEN>
+<TOKEN id="token-9-7" pos="word" morph="none" start_char="1543" end_char="1544">on</TOKEN>
+<TOKEN id="token-9-8" pos="word" morph="none" start_char="1546" end_char="1546">a</TOKEN>
+<TOKEN id="token-9-9" pos="punct" morph="none" start_char="1548" end_char="1548">"</TOKEN>
+<TOKEN id="token-9-10" pos="word" morph="none" start_char="1549" end_char="1556">gigantic</TOKEN>
+<TOKEN id="token-9-11" pos="punct" morph="none" start_char="1557" end_char="1557">"</TOKEN>
+<TOKEN id="token-9-12" pos="word" morph="none" start_char="1559" end_char="1566">military</TOKEN>
+<TOKEN id="token-9-13" pos="word" morph="none" start_char="1568" end_char="1571">base</TOKEN>
+<TOKEN id="token-9-14" pos="word" morph="none" start_char="1573" end_char="1576">near</TOKEN>
+<TOKEN id="token-9-15" pos="word" morph="none" start_char="1578" end_char="1580">the</TOKEN>
+<TOKEN id="token-9-16" pos="word" morph="none" start_char="1582" end_char="1593">southwestern</TOKEN>
+<TOKEN id="token-9-17" pos="word" morph="none" start_char="1595" end_char="1598">town</TOKEN>
+<TOKEN id="token-9-18" pos="word" morph="none" start_char="1600" end_char="1601">of</TOKEN>
+<TOKEN id="token-9-19" pos="word" morph="none" start_char="1603" end_char="1608">Rostov</TOKEN>
+<TOKEN id="token-9-20" pos="punct" morph="none" start_char="1609" end_char="1609">,</TOKEN>
+<TOKEN id="token-9-21" pos="word" morph="none" start_char="1611" end_char="1619">officials</TOKEN>
+<TOKEN id="token-9-22" pos="word" morph="none" start_char="1621" end_char="1624">said</TOKEN>
+<TOKEN id="token-9-23" pos="punct" morph="none" start_char="1625" end_char="1625">.</TOKEN>
+</SEG>
+<SEG id="segment-10" start_char="1627" end_char="1738">
+<ORIGINAL_TEXT>Officials shared satellite images of the base that showed a large buildup of vehicles between June and mid-July.</ORIGINAL_TEXT>
+<TOKEN id="token-10-0" pos="word" morph="none" start_char="1627" end_char="1635">Officials</TOKEN>
+<TOKEN id="token-10-1" pos="word" morph="none" start_char="1637" end_char="1642">shared</TOKEN>
+<TOKEN id="token-10-2" pos="word" morph="none" start_char="1644" end_char="1652">satellite</TOKEN>
+<TOKEN id="token-10-3" pos="word" morph="none" start_char="1654" end_char="1659">images</TOKEN>
+<TOKEN id="token-10-4" pos="word" morph="none" start_char="1661" end_char="1662">of</TOKEN>
+<TOKEN id="token-10-5" pos="word" morph="none" start_char="1664" end_char="1666">the</TOKEN>
+<TOKEN id="token-10-6" pos="word" morph="none" start_char="1668" end_char="1671">base</TOKEN>
+<TOKEN id="token-10-7" pos="word" morph="none" start_char="1673" end_char="1676">that</TOKEN>
+<TOKEN id="token-10-8" pos="word" morph="none" start_char="1678" end_char="1683">showed</TOKEN>
+<TOKEN id="token-10-9" pos="word" morph="none" start_char="1685" end_char="1685">a</TOKEN>
+<TOKEN id="token-10-10" pos="word" morph="none" start_char="1687" end_char="1691">large</TOKEN>
+<TOKEN id="token-10-11" pos="word" morph="none" start_char="1693" end_char="1699">buildup</TOKEN>
+<TOKEN id="token-10-12" pos="word" morph="none" start_char="1701" end_char="1702">of</TOKEN>
+<TOKEN id="token-10-13" pos="word" morph="none" start_char="1704" end_char="1711">vehicles</TOKEN>
+<TOKEN id="token-10-14" pos="word" morph="none" start_char="1713" end_char="1719">between</TOKEN>
+<TOKEN id="token-10-15" pos="word" morph="none" start_char="1721" end_char="1724">June</TOKEN>
+<TOKEN id="token-10-16" pos="word" morph="none" start_char="1726" end_char="1728">and</TOKEN>
+<TOKEN id="token-10-17" pos="unknown" morph="none" start_char="1730" end_char="1737">mid-July</TOKEN>
+<TOKEN id="token-10-18" pos="punct" morph="none" start_char="1738" end_char="1738">.</TOKEN>
+</SEG>
+<SEG id="segment-11" start_char="1740" end_char="1858">
+<ORIGINAL_TEXT>One image was dated June 19 and the other image, which showed dozens of rows of additional vehicles, was dated July 21.</ORIGINAL_TEXT>
+<TOKEN id="token-11-0" pos="word" morph="none" start_char="1740" end_char="1742">One</TOKEN>
+<TOKEN id="token-11-1" pos="word" morph="none" start_char="1744" end_char="1748">image</TOKEN>
+<TOKEN id="token-11-2" pos="word" morph="none" start_char="1750" end_char="1752">was</TOKEN>
+<TOKEN id="token-11-3" pos="word" morph="none" start_char="1754" end_char="1758">dated</TOKEN>
+<TOKEN id="token-11-4" pos="word" morph="none" start_char="1760" end_char="1763">June</TOKEN>
+<TOKEN id="token-11-5" pos="word" morph="none" start_char="1765" end_char="1766">19</TOKEN>
+<TOKEN id="token-11-6" pos="word" morph="none" start_char="1768" end_char="1770">and</TOKEN>
+<TOKEN id="token-11-7" pos="word" morph="none" start_char="1772" end_char="1774">the</TOKEN>
+<TOKEN id="token-11-8" pos="word" morph="none" start_char="1776" end_char="1780">other</TOKEN>
+<TOKEN id="token-11-9" pos="word" morph="none" start_char="1782" end_char="1786">image</TOKEN>
+<TOKEN id="token-11-10" pos="punct" morph="none" start_char="1787" end_char="1787">,</TOKEN>
+<TOKEN id="token-11-11" pos="word" morph="none" start_char="1789" end_char="1793">which</TOKEN>
+<TOKEN id="token-11-12" pos="word" morph="none" start_char="1795" end_char="1800">showed</TOKEN>
+<TOKEN id="token-11-13" pos="word" morph="none" start_char="1802" end_char="1807">dozens</TOKEN>
+<TOKEN id="token-11-14" pos="word" morph="none" start_char="1809" end_char="1810">of</TOKEN>
+<TOKEN id="token-11-15" pos="word" morph="none" start_char="1812" end_char="1815">rows</TOKEN>
+<TOKEN id="token-11-16" pos="word" morph="none" start_char="1817" end_char="1818">of</TOKEN>
+<TOKEN id="token-11-17" pos="word" morph="none" start_char="1820" end_char="1829">additional</TOKEN>
+<TOKEN id="token-11-18" pos="word" morph="none" start_char="1831" end_char="1838">vehicles</TOKEN>
+<TOKEN id="token-11-19" pos="punct" morph="none" start_char="1839" end_char="1839">,</TOKEN>
+<TOKEN id="token-11-20" pos="word" morph="none" start_char="1841" end_char="1843">was</TOKEN>
+<TOKEN id="token-11-21" pos="word" morph="none" start_char="1845" end_char="1849">dated</TOKEN>
+<TOKEN id="token-11-22" pos="word" morph="none" start_char="1851" end_char="1854">July</TOKEN>
+<TOKEN id="token-11-23" pos="word" morph="none" start_char="1856" end_char="1857">21</TOKEN>
+<TOKEN id="token-11-24" pos="punct" morph="none" start_char="1858" end_char="1858">.</TOKEN>
+</SEG>
+<SEG id="segment-12" start_char="1861" end_char="2007">
+<ORIGINAL_TEXT>Tanks and infantry fighting vehicles from Russia have been driven into the area around Luhansk in eastern Ukraine in the last week, officials said.</ORIGINAL_TEXT>
+<TOKEN id="token-12-0" pos="word" morph="none" start_char="1861" end_char="1865">Tanks</TOKEN>
+<TOKEN id="token-12-1" pos="word" morph="none" start_char="1867" end_char="1869">and</TOKEN>
+<TOKEN id="token-12-2" pos="word" morph="none" start_char="1871" end_char="1878">infantry</TOKEN>
+<TOKEN id="token-12-3" pos="word" morph="none" start_char="1880" end_char="1887">fighting</TOKEN>
+<TOKEN id="token-12-4" pos="word" morph="none" start_char="1889" end_char="1896">vehicles</TOKEN>
+<TOKEN id="token-12-5" pos="word" morph="none" start_char="1898" end_char="1901">from</TOKEN>
+<TOKEN id="token-12-6" pos="word" morph="none" start_char="1903" end_char="1908">Russia</TOKEN>
+<TOKEN id="token-12-7" pos="word" morph="none" start_char="1910" end_char="1913">have</TOKEN>
+<TOKEN id="token-12-8" pos="word" morph="none" start_char="1915" end_char="1918">been</TOKEN>
+<TOKEN id="token-12-9" pos="word" morph="none" start_char="1920" end_char="1925">driven</TOKEN>
+<TOKEN id="token-12-10" pos="word" morph="none" start_char="1927" end_char="1930">into</TOKEN>
+<TOKEN id="token-12-11" pos="word" morph="none" start_char="1932" end_char="1934">the</TOKEN>
+<TOKEN id="token-12-12" pos="word" morph="none" start_char="1936" end_char="1939">area</TOKEN>
+<TOKEN id="token-12-13" pos="word" morph="none" start_char="1941" end_char="1946">around</TOKEN>
+<TOKEN id="token-12-14" pos="word" morph="none" start_char="1948" end_char="1954">Luhansk</TOKEN>
+<TOKEN id="token-12-15" pos="word" morph="none" start_char="1956" end_char="1957">in</TOKEN>
+<TOKEN id="token-12-16" pos="word" morph="none" start_char="1959" end_char="1965">eastern</TOKEN>
+<TOKEN id="token-12-17" pos="word" morph="none" start_char="1967" end_char="1973">Ukraine</TOKEN>
+<TOKEN id="token-12-18" pos="word" morph="none" start_char="1975" end_char="1976">in</TOKEN>
+<TOKEN id="token-12-19" pos="word" morph="none" start_char="1978" end_char="1980">the</TOKEN>
+<TOKEN id="token-12-20" pos="word" morph="none" start_char="1982" end_char="1985">last</TOKEN>
+<TOKEN id="token-12-21" pos="word" morph="none" start_char="1987" end_char="1990">week</TOKEN>
+<TOKEN id="token-12-22" pos="punct" morph="none" start_char="1991" end_char="1991">,</TOKEN>
+<TOKEN id="token-12-23" pos="word" morph="none" start_char="1993" end_char="2001">officials</TOKEN>
+<TOKEN id="token-12-24" pos="word" morph="none" start_char="2003" end_char="2006">said</TOKEN>
+<TOKEN id="token-12-25" pos="punct" morph="none" start_char="2007" end_char="2007">.</TOKEN>
+</SEG>
+<SEG id="segment-13" start_char="2009" end_char="2191">
+<ORIGINAL_TEXT>Officials believe that Russia stepped up its training and deliveries of military hardware in the last month because separatist forces were being pushed back by the Ukrainian military.</ORIGINAL_TEXT>
+<TOKEN id="token-13-0" pos="word" morph="none" start_char="2009" end_char="2017">Officials</TOKEN>
+<TOKEN id="token-13-1" pos="word" morph="none" start_char="2019" end_char="2025">believe</TOKEN>
+<TOKEN id="token-13-2" pos="word" morph="none" start_char="2027" end_char="2030">that</TOKEN>
+<TOKEN id="token-13-3" pos="word" morph="none" start_char="2032" end_char="2037">Russia</TOKEN>
+<TOKEN id="token-13-4" pos="word" morph="none" start_char="2039" end_char="2045">stepped</TOKEN>
+<TOKEN id="token-13-5" pos="word" morph="none" start_char="2047" end_char="2048">up</TOKEN>
+<TOKEN id="token-13-6" pos="word" morph="none" start_char="2050" end_char="2052">its</TOKEN>
+<TOKEN id="token-13-7" pos="word" morph="none" start_char="2054" end_char="2061">training</TOKEN>
+<TOKEN id="token-13-8" pos="word" morph="none" start_char="2063" end_char="2065">and</TOKEN>
+<TOKEN id="token-13-9" pos="word" morph="none" start_char="2067" end_char="2076">deliveries</TOKEN>
+<TOKEN id="token-13-10" pos="word" morph="none" start_char="2078" end_char="2079">of</TOKEN>
+<TOKEN id="token-13-11" pos="word" morph="none" start_char="2081" end_char="2088">military</TOKEN>
+<TOKEN id="token-13-12" pos="word" morph="none" start_char="2090" end_char="2097">hardware</TOKEN>
+<TOKEN id="token-13-13" pos="word" morph="none" start_char="2099" end_char="2100">in</TOKEN>
+<TOKEN id="token-13-14" pos="word" morph="none" start_char="2102" end_char="2104">the</TOKEN>
+<TOKEN id="token-13-15" pos="word" morph="none" start_char="2106" end_char="2109">last</TOKEN>
+<TOKEN id="token-13-16" pos="word" morph="none" start_char="2111" end_char="2115">month</TOKEN>
+<TOKEN id="token-13-17" pos="word" morph="none" start_char="2117" end_char="2123">because</TOKEN>
+<TOKEN id="token-13-18" pos="word" morph="none" start_char="2125" end_char="2134">separatist</TOKEN>
+<TOKEN id="token-13-19" pos="word" morph="none" start_char="2136" end_char="2141">forces</TOKEN>
+<TOKEN id="token-13-20" pos="word" morph="none" start_char="2143" end_char="2146">were</TOKEN>
+<TOKEN id="token-13-21" pos="word" morph="none" start_char="2148" end_char="2152">being</TOKEN>
+<TOKEN id="token-13-22" pos="word" morph="none" start_char="2154" end_char="2159">pushed</TOKEN>
+<TOKEN id="token-13-23" pos="word" morph="none" start_char="2161" end_char="2164">back</TOKEN>
+<TOKEN id="token-13-24" pos="word" morph="none" start_char="2166" end_char="2167">by</TOKEN>
+<TOKEN id="token-13-25" pos="word" morph="none" start_char="2169" end_char="2171">the</TOKEN>
+<TOKEN id="token-13-26" pos="word" morph="none" start_char="2173" end_char="2181">Ukrainian</TOKEN>
+<TOKEN id="token-13-27" pos="word" morph="none" start_char="2183" end_char="2190">military</TOKEN>
+<TOKEN id="token-13-28" pos="punct" morph="none" start_char="2191" end_char="2191">.</TOKEN>
+</SEG>
+<SEG id="segment-14" start_char="2193" end_char="2297">
+<ORIGINAL_TEXT>Ukrainian troops recaptured the city of Slovyansk on July 5; it had been held by separatists since April.</ORIGINAL_TEXT>
+<TOKEN id="token-14-0" pos="word" morph="none" start_char="2193" end_char="2201">Ukrainian</TOKEN>
+<TOKEN id="token-14-1" pos="word" morph="none" start_char="2203" end_char="2208">troops</TOKEN>
+<TOKEN id="token-14-2" pos="word" morph="none" start_char="2210" end_char="2219">recaptured</TOKEN>
+<TOKEN id="token-14-3" pos="word" morph="none" start_char="2221" end_char="2223">the</TOKEN>
+<TOKEN id="token-14-4" pos="word" morph="none" start_char="2225" end_char="2228">city</TOKEN>
+<TOKEN id="token-14-5" pos="word" morph="none" start_char="2230" end_char="2231">of</TOKEN>
+<TOKEN id="token-14-6" pos="word" morph="none" start_char="2233" end_char="2241">Slovyansk</TOKEN>
+<TOKEN id="token-14-7" pos="word" morph="none" start_char="2243" end_char="2244">on</TOKEN>
+<TOKEN id="token-14-8" pos="word" morph="none" start_char="2246" end_char="2249">July</TOKEN>
+<TOKEN id="token-14-9" pos="word" morph="none" start_char="2251" end_char="2251">5</TOKEN>
+<TOKEN id="token-14-10" pos="punct" morph="none" start_char="2252" end_char="2252">;</TOKEN>
+<TOKEN id="token-14-11" pos="word" morph="none" start_char="2254" end_char="2255">it</TOKEN>
+<TOKEN id="token-14-12" pos="word" morph="none" start_char="2257" end_char="2259">had</TOKEN>
+<TOKEN id="token-14-13" pos="word" morph="none" start_char="2261" end_char="2264">been</TOKEN>
+<TOKEN id="token-14-14" pos="word" morph="none" start_char="2266" end_char="2269">held</TOKEN>
+<TOKEN id="token-14-15" pos="word" morph="none" start_char="2271" end_char="2272">by</TOKEN>
+<TOKEN id="token-14-16" pos="word" morph="none" start_char="2274" end_char="2284">separatists</TOKEN>
+<TOKEN id="token-14-17" pos="word" morph="none" start_char="2286" end_char="2290">since</TOKEN>
+<TOKEN id="token-14-18" pos="word" morph="none" start_char="2292" end_char="2296">April</TOKEN>
+<TOKEN id="token-14-19" pos="punct" morph="none" start_char="2297" end_char="2297">.</TOKEN>
+</SEG>
+<SEG id="segment-15" start_char="2300" end_char="2433">
+<ORIGINAL_TEXT>U.S. intelligence agencies have so far been unable to determine the nationalities or identities of the crew that launched the missile.</ORIGINAL_TEXT>
+<TOKEN id="token-15-0" pos="unknown" morph="none" start_char="2300" end_char="2302">U.S</TOKEN>
+<TOKEN id="token-15-1" pos="punct" morph="none" start_char="2303" end_char="2303">.</TOKEN>
+<TOKEN id="token-15-2" pos="word" morph="none" start_char="2305" end_char="2316">intelligence</TOKEN>
+<TOKEN id="token-15-3" pos="word" morph="none" start_char="2318" end_char="2325">agencies</TOKEN>
+<TOKEN id="token-15-4" pos="word" morph="none" start_char="2327" end_char="2330">have</TOKEN>
+<TOKEN id="token-15-5" pos="word" morph="none" start_char="2332" end_char="2333">so</TOKEN>
+<TOKEN id="token-15-6" pos="word" morph="none" start_char="2335" end_char="2337">far</TOKEN>
+<TOKEN id="token-15-7" pos="word" morph="none" start_char="2339" end_char="2342">been</TOKEN>
+<TOKEN id="token-15-8" pos="word" morph="none" start_char="2344" end_char="2349">unable</TOKEN>
+<TOKEN id="token-15-9" pos="word" morph="none" start_char="2351" end_char="2352">to</TOKEN>
+<TOKEN id="token-15-10" pos="word" morph="none" start_char="2354" end_char="2362">determine</TOKEN>
+<TOKEN id="token-15-11" pos="word" morph="none" start_char="2364" end_char="2366">the</TOKEN>
+<TOKEN id="token-15-12" pos="word" morph="none" start_char="2368" end_char="2380">nationalities</TOKEN>
+<TOKEN id="token-15-13" pos="word" morph="none" start_char="2382" end_char="2383">or</TOKEN>
+<TOKEN id="token-15-14" pos="word" morph="none" start_char="2385" end_char="2394">identities</TOKEN>
+<TOKEN id="token-15-15" pos="word" morph="none" start_char="2396" end_char="2397">of</TOKEN>
+<TOKEN id="token-15-16" pos="word" morph="none" start_char="2399" end_char="2401">the</TOKEN>
+<TOKEN id="token-15-17" pos="word" morph="none" start_char="2403" end_char="2406">crew</TOKEN>
+<TOKEN id="token-15-18" pos="word" morph="none" start_char="2408" end_char="2411">that</TOKEN>
+<TOKEN id="token-15-19" pos="word" morph="none" start_char="2413" end_char="2420">launched</TOKEN>
+<TOKEN id="token-15-20" pos="word" morph="none" start_char="2422" end_char="2424">the</TOKEN>
+<TOKEN id="token-15-21" pos="word" morph="none" start_char="2426" end_char="2432">missile</TOKEN>
+<TOKEN id="token-15-22" pos="punct" morph="none" start_char="2433" end_char="2433">.</TOKEN>
+</SEG>
+<SEG id="segment-16" start_char="2435" end_char="2582">
+<ORIGINAL_TEXT>U.S. officials said it was possible the SA-11 was launched by a defector from the Ukrainian military who was trained to use similar missile systems.</ORIGINAL_TEXT>
+<TOKEN id="token-16-0" pos="unknown" morph="none" start_char="2435" end_char="2437">U.S</TOKEN>
+<TOKEN id="token-16-1" pos="punct" morph="none" start_char="2438" end_char="2438">.</TOKEN>
+<TOKEN id="token-16-2" pos="word" morph="none" start_char="2440" end_char="2448">officials</TOKEN>
+<TOKEN id="token-16-3" pos="word" morph="none" start_char="2450" end_char="2453">said</TOKEN>
+<TOKEN id="token-16-4" pos="word" morph="none" start_char="2455" end_char="2456">it</TOKEN>
+<TOKEN id="token-16-5" pos="word" morph="none" start_char="2458" end_char="2460">was</TOKEN>
+<TOKEN id="token-16-6" pos="word" morph="none" start_char="2462" end_char="2469">possible</TOKEN>
+<TOKEN id="token-16-7" pos="word" morph="none" start_char="2471" end_char="2473">the</TOKEN>
+<TOKEN id="token-16-8" pos="unknown" morph="none" start_char="2475" end_char="2479">SA-11</TOKEN>
+<TOKEN id="token-16-9" pos="word" morph="none" start_char="2481" end_char="2483">was</TOKEN>
+<TOKEN id="token-16-10" pos="word" morph="none" start_char="2485" end_char="2492">launched</TOKEN>
+<TOKEN id="token-16-11" pos="word" morph="none" start_char="2494" end_char="2495">by</TOKEN>
+<TOKEN id="token-16-12" pos="word" morph="none" start_char="2497" end_char="2497">a</TOKEN>
+<TOKEN id="token-16-13" pos="word" morph="none" start_char="2499" end_char="2506">defector</TOKEN>
+<TOKEN id="token-16-14" pos="word" morph="none" start_char="2508" end_char="2511">from</TOKEN>
+<TOKEN id="token-16-15" pos="word" morph="none" start_char="2513" end_char="2515">the</TOKEN>
+<TOKEN id="token-16-16" pos="word" morph="none" start_char="2517" end_char="2525">Ukrainian</TOKEN>
+<TOKEN id="token-16-17" pos="word" morph="none" start_char="2527" end_char="2534">military</TOKEN>
+<TOKEN id="token-16-18" pos="word" morph="none" start_char="2536" end_char="2538">who</TOKEN>
+<TOKEN id="token-16-19" pos="word" morph="none" start_char="2540" end_char="2542">was</TOKEN>
+<TOKEN id="token-16-20" pos="word" morph="none" start_char="2544" end_char="2550">trained</TOKEN>
+<TOKEN id="token-16-21" pos="word" morph="none" start_char="2552" end_char="2553">to</TOKEN>
+<TOKEN id="token-16-22" pos="word" morph="none" start_char="2555" end_char="2557">use</TOKEN>
+<TOKEN id="token-16-23" pos="word" morph="none" start_char="2559" end_char="2565">similar</TOKEN>
+<TOKEN id="token-16-24" pos="word" morph="none" start_char="2567" end_char="2573">missile</TOKEN>
+<TOKEN id="token-16-25" pos="word" morph="none" start_char="2575" end_char="2581">systems</TOKEN>
+<TOKEN id="token-16-26" pos="punct" morph="none" start_char="2582" end_char="2582">.</TOKEN>
+</SEG>
+<SEG id="segment-17" start_char="2585" end_char="2794">
+<ORIGINAL_TEXT>But U.S. intelligence agencies have independently verified photos posted to social media last week that show an SA-11 launcher driving toward the Russian border missing at least one missile, the officials said.</ORIGINAL_TEXT>
+<TOKEN id="token-17-0" pos="word" morph="none" start_char="2585" end_char="2587">But</TOKEN>
+<TOKEN id="token-17-1" pos="unknown" morph="none" start_char="2589" end_char="2591">U.S</TOKEN>
+<TOKEN id="token-17-2" pos="punct" morph="none" start_char="2592" end_char="2592">.</TOKEN>
+<TOKEN id="token-17-3" pos="word" morph="none" start_char="2594" end_char="2605">intelligence</TOKEN>
+<TOKEN id="token-17-4" pos="word" morph="none" start_char="2607" end_char="2614">agencies</TOKEN>
+<TOKEN id="token-17-5" pos="word" morph="none" start_char="2616" end_char="2619">have</TOKEN>
+<TOKEN id="token-17-6" pos="word" morph="none" start_char="2621" end_char="2633">independently</TOKEN>
+<TOKEN id="token-17-7" pos="word" morph="none" start_char="2635" end_char="2642">verified</TOKEN>
+<TOKEN id="token-17-8" pos="word" morph="none" start_char="2644" end_char="2649">photos</TOKEN>
+<TOKEN id="token-17-9" pos="word" morph="none" start_char="2651" end_char="2656">posted</TOKEN>
+<TOKEN id="token-17-10" pos="word" morph="none" start_char="2658" end_char="2659">to</TOKEN>
+<TOKEN id="token-17-11" pos="word" morph="none" start_char="2661" end_char="2666">social</TOKEN>
+<TOKEN id="token-17-12" pos="word" morph="none" start_char="2668" end_char="2672">media</TOKEN>
+<TOKEN id="token-17-13" pos="word" morph="none" start_char="2674" end_char="2677">last</TOKEN>
+<TOKEN id="token-17-14" pos="word" morph="none" start_char="2679" end_char="2682">week</TOKEN>
+<TOKEN id="token-17-15" pos="word" morph="none" start_char="2684" end_char="2687">that</TOKEN>
+<TOKEN id="token-17-16" pos="word" morph="none" start_char="2689" end_char="2692">show</TOKEN>
+<TOKEN id="token-17-17" pos="word" morph="none" start_char="2694" end_char="2695">an</TOKEN>
+<TOKEN id="token-17-18" pos="unknown" morph="none" start_char="2697" end_char="2701">SA-11</TOKEN>
+<TOKEN id="token-17-19" pos="word" morph="none" start_char="2703" end_char="2710">launcher</TOKEN>
+<TOKEN id="token-17-20" pos="word" morph="none" start_char="2712" end_char="2718">driving</TOKEN>
+<TOKEN id="token-17-21" pos="word" morph="none" start_char="2720" end_char="2725">toward</TOKEN>
+<TOKEN id="token-17-22" pos="word" morph="none" start_char="2727" end_char="2729">the</TOKEN>
+<TOKEN id="token-17-23" pos="word" morph="none" start_char="2731" end_char="2737">Russian</TOKEN>
+<TOKEN id="token-17-24" pos="word" morph="none" start_char="2739" end_char="2744">border</TOKEN>
+<TOKEN id="token-17-25" pos="word" morph="none" start_char="2746" end_char="2752">missing</TOKEN>
+<TOKEN id="token-17-26" pos="word" morph="none" start_char="2754" end_char="2755">at</TOKEN>
+<TOKEN id="token-17-27" pos="word" morph="none" start_char="2757" end_char="2761">least</TOKEN>
+<TOKEN id="token-17-28" pos="word" morph="none" start_char="2763" end_char="2765">one</TOKEN>
+<TOKEN id="token-17-29" pos="word" morph="none" start_char="2767" end_char="2773">missile</TOKEN>
+<TOKEN id="token-17-30" pos="punct" morph="none" start_char="2774" end_char="2774">,</TOKEN>
+<TOKEN id="token-17-31" pos="word" morph="none" start_char="2776" end_char="2778">the</TOKEN>
+<TOKEN id="token-17-32" pos="word" morph="none" start_char="2780" end_char="2788">officials</TOKEN>
+<TOKEN id="token-17-33" pos="word" morph="none" start_char="2790" end_char="2793">said</TOKEN>
+<TOKEN id="token-17-34" pos="punct" morph="none" start_char="2794" end_char="2794">.</TOKEN>
+</SEG>
+<SEG id="segment-18" start_char="2797" end_char="2978">
+<ORIGINAL_TEXT>U.S. analysts have also been able to authenticate recordings released online by the Ukrainian government of conversations between known separatist leaders after the jetliner crashed.</ORIGINAL_TEXT>
+<TOKEN id="token-18-0" pos="unknown" morph="none" start_char="2797" end_char="2799">U.S</TOKEN>
+<TOKEN id="token-18-1" pos="punct" morph="none" start_char="2800" end_char="2800">.</TOKEN>
+<TOKEN id="token-18-2" pos="word" morph="none" start_char="2802" end_char="2809">analysts</TOKEN>
+<TOKEN id="token-18-3" pos="word" morph="none" start_char="2811" end_char="2814">have</TOKEN>
+<TOKEN id="token-18-4" pos="word" morph="none" start_char="2816" end_char="2819">also</TOKEN>
+<TOKEN id="token-18-5" pos="word" morph="none" start_char="2821" end_char="2824">been</TOKEN>
+<TOKEN id="token-18-6" pos="word" morph="none" start_char="2826" end_char="2829">able</TOKEN>
+<TOKEN id="token-18-7" pos="word" morph="none" start_char="2831" end_char="2832">to</TOKEN>
+<TOKEN id="token-18-8" pos="word" morph="none" start_char="2834" end_char="2845">authenticate</TOKEN>
+<TOKEN id="token-18-9" pos="word" morph="none" start_char="2847" end_char="2856">recordings</TOKEN>
+<TOKEN id="token-18-10" pos="word" morph="none" start_char="2858" end_char="2865">released</TOKEN>
+<TOKEN id="token-18-11" pos="word" morph="none" start_char="2867" end_char="2872">online</TOKEN>
+<TOKEN id="token-18-12" pos="word" morph="none" start_char="2874" end_char="2875">by</TOKEN>
+<TOKEN id="token-18-13" pos="word" morph="none" start_char="2877" end_char="2879">the</TOKEN>
+<TOKEN id="token-18-14" pos="word" morph="none" start_char="2881" end_char="2889">Ukrainian</TOKEN>
+<TOKEN id="token-18-15" pos="word" morph="none" start_char="2891" end_char="2900">government</TOKEN>
+<TOKEN id="token-18-16" pos="word" morph="none" start_char="2902" end_char="2903">of</TOKEN>
+<TOKEN id="token-18-17" pos="word" morph="none" start_char="2905" end_char="2917">conversations</TOKEN>
+<TOKEN id="token-18-18" pos="word" morph="none" start_char="2919" end_char="2925">between</TOKEN>
+<TOKEN id="token-18-19" pos="word" morph="none" start_char="2927" end_char="2931">known</TOKEN>
+<TOKEN id="token-18-20" pos="word" morph="none" start_char="2933" end_char="2942">separatist</TOKEN>
+<TOKEN id="token-18-21" pos="word" morph="none" start_char="2944" end_char="2950">leaders</TOKEN>
+<TOKEN id="token-18-22" pos="word" morph="none" start_char="2952" end_char="2956">after</TOKEN>
+<TOKEN id="token-18-23" pos="word" morph="none" start_char="2958" end_char="2960">the</TOKEN>
+<TOKEN id="token-18-24" pos="word" morph="none" start_char="2962" end_char="2969">jetliner</TOKEN>
+<TOKEN id="token-18-25" pos="word" morph="none" start_char="2971" end_char="2977">crashed</TOKEN>
+<TOKEN id="token-18-26" pos="punct" morph="none" start_char="2978" end_char="2978">.</TOKEN>
+</SEG>
+<SEG id="segment-19" start_char="2980" end_char="3110">
+<ORIGINAL_TEXT>The voices were matched with the unique sound signatures from speeches and other earlier recordings of the leaders, officials said.</ORIGINAL_TEXT>
+<TOKEN id="token-19-0" pos="word" morph="none" start_char="2980" end_char="2982">The</TOKEN>
+<TOKEN id="token-19-1" pos="word" morph="none" start_char="2984" end_char="2989">voices</TOKEN>
+<TOKEN id="token-19-2" pos="word" morph="none" start_char="2991" end_char="2994">were</TOKEN>
+<TOKEN id="token-19-3" pos="word" morph="none" start_char="2996" end_char="3002">matched</TOKEN>
+<TOKEN id="token-19-4" pos="word" morph="none" start_char="3004" end_char="3007">with</TOKEN>
+<TOKEN id="token-19-5" pos="word" morph="none" start_char="3009" end_char="3011">the</TOKEN>
+<TOKEN id="token-19-6" pos="word" morph="none" start_char="3013" end_char="3018">unique</TOKEN>
+<TOKEN id="token-19-7" pos="word" morph="none" start_char="3020" end_char="3024">sound</TOKEN>
+<TOKEN id="token-19-8" pos="word" morph="none" start_char="3026" end_char="3035">signatures</TOKEN>
+<TOKEN id="token-19-9" pos="word" morph="none" start_char="3037" end_char="3040">from</TOKEN>
+<TOKEN id="token-19-10" pos="word" morph="none" start_char="3042" end_char="3049">speeches</TOKEN>
+<TOKEN id="token-19-11" pos="word" morph="none" start_char="3051" end_char="3053">and</TOKEN>
+<TOKEN id="token-19-12" pos="word" morph="none" start_char="3055" end_char="3059">other</TOKEN>
+<TOKEN id="token-19-13" pos="word" morph="none" start_char="3061" end_char="3067">earlier</TOKEN>
+<TOKEN id="token-19-14" pos="word" morph="none" start_char="3069" end_char="3078">recordings</TOKEN>
+<TOKEN id="token-19-15" pos="word" morph="none" start_char="3080" end_char="3081">of</TOKEN>
+<TOKEN id="token-19-16" pos="word" morph="none" start_char="3083" end_char="3085">the</TOKEN>
+<TOKEN id="token-19-17" pos="word" morph="none" start_char="3087" end_char="3093">leaders</TOKEN>
+<TOKEN id="token-19-18" pos="punct" morph="none" start_char="3094" end_char="3094">,</TOKEN>
+<TOKEN id="token-19-19" pos="word" morph="none" start_char="3096" end_char="3104">officials</TOKEN>
+<TOKEN id="token-19-20" pos="word" morph="none" start_char="3106" end_char="3109">said</TOKEN>
+<TOKEN id="token-19-21" pos="punct" morph="none" start_char="3110" end_char="3110">.</TOKEN>
+</SEG>
+<SEG id="segment-20" start_char="3113" end_char="3206">
+<ORIGINAL_TEXT>Russian President Vladimir Putin has publicly embraced the separatist leaders, officials said.</ORIGINAL_TEXT>
+<TOKEN id="token-20-0" pos="word" morph="none" start_char="3113" end_char="3119">Russian</TOKEN>
+<TOKEN id="token-20-1" pos="word" morph="none" start_char="3121" end_char="3129">President</TOKEN>
+<TOKEN id="token-20-2" pos="word" morph="none" start_char="3131" end_char="3138">Vladimir</TOKEN>
+<TOKEN id="token-20-3" pos="word" morph="none" start_char="3140" end_char="3144">Putin</TOKEN>
+<TOKEN id="token-20-4" pos="word" morph="none" start_char="3146" end_char="3148">has</TOKEN>
+<TOKEN id="token-20-5" pos="word" morph="none" start_char="3150" end_char="3157">publicly</TOKEN>
+<TOKEN id="token-20-6" pos="word" morph="none" start_char="3159" end_char="3166">embraced</TOKEN>
+<TOKEN id="token-20-7" pos="word" morph="none" start_char="3168" end_char="3170">the</TOKEN>
+<TOKEN id="token-20-8" pos="word" morph="none" start_char="3172" end_char="3181">separatist</TOKEN>
+<TOKEN id="token-20-9" pos="word" morph="none" start_char="3183" end_char="3189">leaders</TOKEN>
+<TOKEN id="token-20-10" pos="punct" morph="none" start_char="3190" end_char="3190">,</TOKEN>
+<TOKEN id="token-20-11" pos="word" morph="none" start_char="3192" end_char="3200">officials</TOKEN>
+<TOKEN id="token-20-12" pos="word" morph="none" start_char="3202" end_char="3205">said</TOKEN>
+<TOKEN id="token-20-13" pos="punct" morph="none" start_char="3206" end_char="3206">.</TOKEN>
+</SEG>
+<SEG id="segment-21" start_char="3208" end_char="3398">
+<ORIGINAL_TEXT>In speeches, he refers to the separatist forces as the people's militia and calls the area they hold New Russia, officials said, based on analysis of Putin's public speeches in recent months.</ORIGINAL_TEXT>
+<TOKEN id="token-21-0" pos="word" morph="none" start_char="3208" end_char="3209">In</TOKEN>
+<TOKEN id="token-21-1" pos="word" morph="none" start_char="3211" end_char="3218">speeches</TOKEN>
+<TOKEN id="token-21-2" pos="punct" morph="none" start_char="3219" end_char="3219">,</TOKEN>
+<TOKEN id="token-21-3" pos="word" morph="none" start_char="3221" end_char="3222">he</TOKEN>
+<TOKEN id="token-21-4" pos="word" morph="none" start_char="3224" end_char="3229">refers</TOKEN>
+<TOKEN id="token-21-5" pos="word" morph="none" start_char="3231" end_char="3232">to</TOKEN>
+<TOKEN id="token-21-6" pos="word" morph="none" start_char="3234" end_char="3236">the</TOKEN>
+<TOKEN id="token-21-7" pos="word" morph="none" start_char="3238" end_char="3247">separatist</TOKEN>
+<TOKEN id="token-21-8" pos="word" morph="none" start_char="3249" end_char="3254">forces</TOKEN>
+<TOKEN id="token-21-9" pos="word" morph="none" start_char="3256" end_char="3257">as</TOKEN>
+<TOKEN id="token-21-10" pos="word" morph="none" start_char="3259" end_char="3261">the</TOKEN>
+<TOKEN id="token-21-11" pos="word" morph="none" start_char="3263" end_char="3270">people's</TOKEN>
+<TOKEN id="token-21-12" pos="word" morph="none" start_char="3272" end_char="3278">militia</TOKEN>
+<TOKEN id="token-21-13" pos="word" morph="none" start_char="3280" end_char="3282">and</TOKEN>
+<TOKEN id="token-21-14" pos="word" morph="none" start_char="3284" end_char="3288">calls</TOKEN>
+<TOKEN id="token-21-15" pos="word" morph="none" start_char="3290" end_char="3292">the</TOKEN>
+<TOKEN id="token-21-16" pos="word" morph="none" start_char="3294" end_char="3297">area</TOKEN>
+<TOKEN id="token-21-17" pos="word" morph="none" start_char="3299" end_char="3302">they</TOKEN>
+<TOKEN id="token-21-18" pos="word" morph="none" start_char="3304" end_char="3307">hold</TOKEN>
+<TOKEN id="token-21-19" pos="word" morph="none" start_char="3309" end_char="3311">New</TOKEN>
+<TOKEN id="token-21-20" pos="word" morph="none" start_char="3313" end_char="3318">Russia</TOKEN>
+<TOKEN id="token-21-21" pos="punct" morph="none" start_char="3319" end_char="3319">,</TOKEN>
+<TOKEN id="token-21-22" pos="word" morph="none" start_char="3321" end_char="3329">officials</TOKEN>
+<TOKEN id="token-21-23" pos="word" morph="none" start_char="3331" end_char="3334">said</TOKEN>
+<TOKEN id="token-21-24" pos="punct" morph="none" start_char="3335" end_char="3335">,</TOKEN>
+<TOKEN id="token-21-25" pos="word" morph="none" start_char="3337" end_char="3341">based</TOKEN>
+<TOKEN id="token-21-26" pos="word" morph="none" start_char="3343" end_char="3344">on</TOKEN>
+<TOKEN id="token-21-27" pos="word" morph="none" start_char="3346" end_char="3353">analysis</TOKEN>
+<TOKEN id="token-21-28" pos="word" morph="none" start_char="3355" end_char="3356">of</TOKEN>
+<TOKEN id="token-21-29" pos="word" morph="none" start_char="3358" end_char="3364">Putin's</TOKEN>
+<TOKEN id="token-21-30" pos="word" morph="none" start_char="3366" end_char="3371">public</TOKEN>
+<TOKEN id="token-21-31" pos="word" morph="none" start_char="3373" end_char="3380">speeches</TOKEN>
+<TOKEN id="token-21-32" pos="word" morph="none" start_char="3382" end_char="3383">in</TOKEN>
+<TOKEN id="token-21-33" pos="word" morph="none" start_char="3385" end_char="3390">recent</TOKEN>
+<TOKEN id="token-21-34" pos="word" morph="none" start_char="3392" end_char="3397">months</TOKEN>
+<TOKEN id="token-21-35" pos="punct" morph="none" start_char="3398" end_char="3398">.</TOKEN>
+</SEG>
+</TEXT>
+</DOC>
+</LCTL_TEXT>
