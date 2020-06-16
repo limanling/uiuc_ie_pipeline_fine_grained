@@ -1,15 +1,17 @@
-import ujson as json
 import os
+import sys
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(os.path.join(CURRENT_DIR, "..", ".."))
+
+import ujson as json
 from collections import defaultdict, Counter
 import argparse
 
-from util.ltf_util import LTF_util
-from util.finegrain_util import FineGrainedUtil
+from aida_utilities.ltf_util import LTF_util
+from aida_utilities.finegrain_util import FineGrainedUtil
 
 from nltk.stem.snowball import SnowballStemmer
 from nltk import WordNetLemmatizer
-
-CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 event_newtype = {}
 type_dict = defaultdict(lambda: defaultdict(lambda: defaultdict(str)))
@@ -37,7 +39,7 @@ def load_stemmer(lang):
         return stemmer
     elif lang.startswith('uk'):
         stemmer = dict()
-        for line in open('/nas/data/m1/lim22/aida/conf/lemmatization-uk.txt'):
+        for line in open(os.path.dir(CURRENT_DIR, 'rules', 'lemmatization-uk.txt')):
             line = line.rstrip('\n')
             tabs = line.split('\t')
             if len(tabs) == 2:
@@ -356,6 +358,80 @@ def load_trans(trans_file, lang):
     return trans
 
 
+def runner(lang, ltf_dir, entity_finegrain, entity_freebase_tab, entity_coarse,
+            filler_coarse, event_coarse, trans_file, output, visualpath, entity_finegrain_aida
+           ):
+    ltf_util = LTF_util(ltf_dir)
+
+    trans = load_trans(trans_file, lang)
+
+    type_dict_path = os.path.join(CURRENT_DIR, 'rules/type_dict.txt')
+    trigger_dict_path = os.path.join(CURRENT_DIR, 'rules/trigger_dict_clean_v2.txt')
+    context_dict_path = os.path.join(CURRENT_DIR, 'rules/context_dict.txt')
+    hierarchy_dir = os.path.join(CURRENT_DIR, '../../aida_edl/conf/yago_taxonomy_wordnet_single_parent.json')
+    finetype_util = FineGrainedUtil(hierarchy_dir)
+    entity_dict = finetype_util.entity_finegrain_by_json(entity_finegrain, entity_freebase_tab, entity_coarse,
+                                                         filler_coarse)
+
+    entity_dict = entity_finegrain_by_cs(entity_finegrain_aida, entity_dict)
+
+    # print(entity_dict)
+    stemmer = load_stemmer(lang)
+    en_stemmer = load_stemmer('en')
+
+    event_dict = load_events(event_coarse, entity_dict)
+    print('event_dict', len(event_dict))
+    type_dict = load_type_dict(type_dict_path)
+    # print(type_dict)
+    trigger_dict = load_trigger_dict(trigger_dict_path)
+    # print(trigger_dict)
+    context_dict = load_context_dict(context_dict_path)
+    # print(context_dict)
+
+    event_newtype = update_type_all(event_dict, type_dict, trigger_dict, context_dict, ltf_util, trans, lang, stemmer,
+                                    en_stemmer)
+    rewrite(event_newtype, event_coarse, output)
+
+    if args.visualpath is not None:
+        head = '''
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <title>Page Title</title>
+            </head>
+            <body>
+            '''
+
+        tail = '''
+            </body>
+            </html>
+            '''
+
+        f_html = open(visualpath, 'w')
+        f_html.write('%s\n' % head)
+        count = 0
+        for event in event_newtype:
+            for trigger in event_dict[event]['mention']:
+                count = count + 1
+                ###    print('Trigger: %s'%trigger[3], 'Argument: %s'%argument[3])
+                f_html.write('<p>%d. Old Event type: %s;<br> New Event type: %s;<br> Trigger: %s;</p>' % (
+                # <br> Argument: %s; Argument Role: %s
+                    count, event_dict[event]['type'], event_newtype[event], trigger))  # , event_dict[event]['type']
+                sent_out = ltf_util.get_context(event_dict[event]['mention'][trigger])
+                sent_out_new = []
+                for word in sent_out:
+                    if word == trigger:
+                        word = '<span style="color:blue">' + word + '</span>'
+                    sent_out_new.append(word)
+                f_html.write('<p>%s</p><br><br>' % (' '.join(sent_out_new)))
+                # one trigger ##(??? multiple trigger?) -> no coreference, so not yet
+                continue
+        f_html.flush()
+        f_html.close()
+
+    print("Fine-grained event typing done for ", lang)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('lang', type=str,
@@ -399,90 +475,6 @@ if __name__ == '__main__':
     # output = os.path.join(output_dir, 'events_%s_fine.cs' % lang)
     # visualpath = os.path.join(output_dir, 'events_%s_fine.html' % lang)
 
-
-
-    # lang = 'en'
-    # entity_finegrain = '/nas/data/m1/panx2/tmp/aida/eval/2019/%s/0322/%s.linking.corf.fine.json' % (lang, lang)
-    # # entity_finegrain = '/nas/data/m1/panx2/tmp/aida/eval/2019/%s/0322/%s.linking.fine.json' % (lang, lang)
-    # entity_coarse = '/nas/data/m1/lim22/aida2019/dryrun/0322/%s/edl/merged.cs' % lang ##(?? not the final seedling type)
-    # # entity_coarse = '/nas/data/m1/panx2/tmp/aida/eval/2019/%s/0322/%s.linking.cs' % (lang, lang)
-    # filler_coarse = '/nas/data/m1/lud2/AIDA/dryrun/201905/filler/%s/filler_%s_cleaned.cs' % (lang, lang)
-    # event_coarse = '/nas/data/m1/lim22/aida2019/dryrun/0322/%s/event/events_tme.cs' % lang
-    # # event_coarse = '/nas/data/m1/subbua/dryrun0322/cs/%s_dryrun_0322.cs' % lang
-    # output = '/nas/data/m1/lim22/aida2019/dryrun/0322/%s/event/events_%s_fine.cs' % (lang, lang)
-    # visualpath = '/nas/data/m1/lim22/aida2019/dryrun/0322/%s/event/events_%s_fine.html' % (lang, lang)
-
-    # ltf_dir = '/nas/data/m1/lim22/aida2019/dryrun/source/%s' % lang
-    ltf_util = LTF_util(ltf_dir)
-
-    # trans_file = '/nas/data/m1/lim22/aida2019/dryrun/source/%s.bio_trans' % lang
-    # if trans_file is not None and len(trans_file) != 0:
-    trans = load_trans(trans_file, lang)
-    # print(trans)
-
-    # if not os.path.exists(output_dir):
-    #     os.makedirs(output_dir)
-
-    type_dict_path = os.path.join(CURRENT_DIR, 'rules/type_dict.txt')
-    trigger_dict_path = os.path.join(CURRENT_DIR, 'rules/trigger_dict_clean_v2.txt')
-    context_dict_path = os.path.join(CURRENT_DIR, 'rules/context_dict.txt')
-    hierarchy_dir = os.path.join(CURRENT_DIR, '../../aida_edl/conf/yago_taxonomy_wordnet_single_parent.json')
-    finetype_util = FineGrainedUtil(hierarchy_dir)
-    entity_dict = finetype_util.entity_finegrain_by_json(entity_finegrain, entity_freebase_tab, entity_coarse,
-                                                         filler_coarse)
-
-    entity_dict = entity_finegrain_by_cs(entity_finegrain_aida, entity_dict)
-
-    # print(entity_dict)
-    stemmer = load_stemmer(lang)
-    en_stemmer = load_stemmer('en')
-
-    event_dict = load_events(event_coarse, entity_dict)
-    print('event_dict', len(event_dict))
-    type_dict = load_type_dict(type_dict_path)
-    # print(type_dict)
-    trigger_dict = load_trigger_dict(trigger_dict_path)
-    # print(trigger_dict)
-    context_dict = load_context_dict(context_dict_path)
-    # print(context_dict)
-
-    event_newtype = update_type_all(event_dict, type_dict, trigger_dict, context_dict, ltf_util, trans, lang, stemmer, en_stemmer)
-    rewrite(event_newtype, event_coarse, output)
-
-    if args.visualpath is not None:
-        head = '''
-        <!DOCTYPE html>
-        <html>
-        <head>
-        <title>Page Title</title>
-        </head>
-        <body>
-        '''
-
-        tail = '''
-        </body>
-        </html>
-        '''
-
-        f_html = open(visualpath, 'w')
-        f_html.write('%s\n' % head)
-        count = 0
-        for event in event_newtype:
-            for trigger in event_dict[event]['mention']:
-                count = count + 1
-                ###    print('Trigger: %s'%trigger[3], 'Argument: %s'%argument[3])
-                f_html.write('<p>%d. Old Event type: %s;<br> New Event type: %s;<br> Trigger: %s;</p>' % ( #<br> Argument: %s; Argument Role: %s
-                    count, event_dict[event]['type'], event_newtype[event], trigger))  # , event_dict[event]['type']
-                sent_out = ltf_util.get_context(event_dict[event]['mention'][trigger])
-                sent_out_new = []
-                for word in sent_out:
-                    if word == trigger:
-                        word = '<span style="color:blue">' + word + '</span>'
-                    sent_out_new.append(word)
-                f_html.write('<p>%s</p><br><br>' % (' '.join(sent_out_new)))
-                # one trigger ##(??? multiple trigger?) -> no coreference, so not yet
-                continue
-        f_html.flush()
-        f_html.close()
-
-    print("Fine-grained event typing done for ", lang)
+    runner(lang, ltf_dir, entity_finegrain, entity_freebase_tab, entity_coarse,
+           filler_coarse, event_coarse, trans_file, output, visualpath, entity_finegrain_aida
+           )

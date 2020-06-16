@@ -13,3 +13,5 @@ Conflict.Demonstrate	Conflict.Demonstrate.MarchProtestPoliticalGathering	Demonst
 Movement.TransportPerson	Movement.TransportPerson.SmuggleExtract	Passenger	Person
 Movement.TransportArtifact	Movement.TransportArtifact.SmuggleExtract	Artifact	Weapon, Vehicle, Commodity
 Inspection.SensoryObserve	Inspection.SensoryObserve.InspectPeopleOrganization	ObservedEntity	Person, Organization, Side
+Business.Merge	Government.Formation.MergeGPE	Organization	GPE
+Business.Start	Government.Formation.StartGPE	Organization	GPE

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE LCTL_TEXT SYSTEM "ltf.v1.5.dtd">
+<LCTL_TEXT lang="eng">
+<DOC id="IC001L4Q0" lang="eng" tokenization="tokenization_parameters.v5.0" grammar="none" raw_text_char_length="1009" raw_text_md5="cef612d3283ebab6530d757efe5856d4">
+<TEXT>
+<SEG id="segment-0" start_char="1" end_char="52">
+<ORIGINAL_TEXT>В деле о гибели Чечетова появились новые подробности</ORIGINAL_TEXT>
+<TOKEN id="token-0-0" pos="word" morph="none" start_char="1" end_char="1">В</TOKEN>
+<TOKEN id="token-0-1" pos="word" morph="none" start_char="3" end_char="6">деле</TOKEN>
+<TOKEN id="token-0-2" pos="word" morph="none" start_char="8" end_char="8">о</TOKEN>
+<TOKEN id="token-0-3" pos="word" morph="none" start_char="10" end_char="15">гибели</TOKEN>
+<TOKEN id="token-0-4" pos="word" morph="none" start_char="17" end_char="24">Чечетова</TOKEN>
+<TOKEN id="token-0-5" pos="word" morph="none" start_char="26" end_char="34">появились</TOKEN>
+<TOKEN id="token-0-6" pos="word" morph="none" start_char="36" end_char="40">новые</TOKEN>
+<TOKEN id="token-0-7" pos="word" morph="none" start_char="42" end_char="52">подробности</TOKEN>
+</SEG>
+<SEG id="segment-1" start_char="56" end_char="95">
+<ORIGINAL_TEXT>Следователи нашли оружие бывшего нардепа</ORIGINAL_TEXT>
+<TOKEN id="token-1-0" pos="word" morph="none" start_char="56" end_char="66">Следователи</TOKEN>
+<TOKEN id="token-1-1" pos="word" morph="none" start_char="68" end_char="72">нашли</TOKEN>
+<TOKEN id="token-1-2" pos="word" morph="none" start_char="74" end_char="79">оружие</TOKEN>
+<TOKEN id="token-1-3" pos="word" morph="none" start_char="81" end_char="87">бывшего</TOKEN>
+<TOKEN id="token-1-4" pos="word" morph="none" start_char="89" end_char="95">нардепа</TOKEN>
+</SEG>
+<SEG id="segment-2" start_char="99" end_char="148">
+<ORIGINAL_TEXT>Неожиданные факты по делу гибели Михаила Чечетова.</ORIGINAL_TEXT>
+<TOKEN id="token-2-0" pos="word" morph="none" start_char="99" end_char="109">Неожиданные</TOKEN>
+<TOKEN id="token-2-1" pos="word" morph="none" start_char="111" end_char="115">факты</TOKEN>
+<TOKEN id="token-2-2" pos="word" morph="none" start_char="117" end_char="118">по</TOKEN>
+<TOKEN id="token-2-3" pos="word" morph="none" start_char="120" end_char="123">делу</TOKEN>
+<TOKEN id="token-2-4" pos="word" morph="none" start_char="125" end_char="130">гибели</TOKEN>
+<TOKEN id="token-2-5" pos="word" morph="none" start_char="132" end_char="138">Михаила</TOKEN>
+<TOKEN id="token-2-6" pos="word" morph="none" start_char="140" end_char="147">Чечетова</TOKEN>
+<TOKEN id="token-2-7" pos="punct" morph="none" start_char="148" end_char="148">.</TOKEN>
+</SEG>
+<SEG id="segment-3" start_char="150" end_char="226">
+<ORIGINAL_TEXT>Следователи столичной прокуратуры нашли пистолет Маузер-К-96 бывшего нардепа.</ORIGINAL_TEXT>
+<TOKEN id="token-3-0" pos="word" morph="none" start_char="150" end_char="160">Следователи</TOKEN>
+<TOKEN id="token-3-1" pos="word" morph="none" start_char="162" end_char="170">столичной</TOKEN>
+<TOKEN id="token-3-2" pos="word" morph="none" start_char="172" end_char="182">прокуратуры</TOKEN>
+<TOKEN id="token-3-3" pos="word" morph="none" start_char="184" end_char="188">нашли</TOKEN>
+<TOKEN id="token-3-4" pos="word" morph="none" start_char="190" end_char="197">пистолет</TOKEN>
+<TOKEN id="token-3-5" pos="unknown" morph="none" start_char="199" end_char="209">Маузер-К-96</TOKEN>
+<TOKEN id="token-3-6" pos="word" morph="none" start_char="211" end_char="217">бывшего</TOKEN>
+<TOKEN id="token-3-7" pos="word" morph="none" start_char="219" end_char="225">нардепа</TOKEN>
+<TOKEN id="token-3-8" pos="punct" morph="none" start_char="226" end_char="226">.</TOKEN>
+</SEG>
+<SEG id="segment-4" start_char="229" end_char="310">
+<ORIGINAL_TEXT>Оружие попало в руки правоохранителей во время обыска в одном из домов на Дарнице.</ORIGINAL_TEXT>
+<TOKEN id="token-4-0" pos="word" morph="none" start_char="229" end_char="234">Оружие</TOKEN>
+<TOKEN id="token-4-1" pos="word" morph="none" start_char="236" end_char="241">попало</TOKEN>
+<TOKEN id="token-4-2" pos="word" morph="none" start_char="243" end_char="243">в</TOKEN>
+<TOKEN id="token-4-3" pos="word" morph="none" start_char="245" end_char="248">руки</TOKEN>
+<TOKEN id="token-4-4" pos="word" morph="none" start_char="250" end_char="265">правоохранителей</TOKEN>
+<TOKEN id="token-4-5" pos="word" morph="none" start_char="267" end_char="268">во</TOKEN>
+<TOKEN id="token-4-6" pos="word" morph="none" start_char="270" end_char="274">время</TOKEN>
+<TOKEN id="token-4-7" pos="word" morph="none" start_char="276" end_char="281">обыска</TOKEN>
+<TOKEN id="token-4-8" pos="word" morph="none" start_char="283" end_char="283">в</TOKEN>
+<TOKEN id="token-4-9" pos="word" morph="none" start_char="285" end_char="289">одном</TOKEN>
+<TOKEN id="token-4-10" pos="word" morph="none" start_char="291" end_char="292">из</TOKEN>
+<TOKEN id="token-4-11" pos="word" morph="none" start_char="294" end_char="298">домов</TOKEN>
+<TOKEN id="token-4-12" pos="word" morph="none" start_char="300" end_char="301">на</TOKEN>
+<TOKEN id="token-4-13" pos="word" morph="none" start_char="303" end_char="309">Дарнице</TOKEN>
+<TOKEN id="token-4-14" pos="punct" morph="none" start_char="310" end_char="310">.</TOKEN>
+</SEG>
+<SEG id="segment-5" start_char="312" end_char="359">
+<ORIGINAL_TEXT>Что примечательно, дом принадлежали не Чечетову.</ORIGINAL_TEXT>
+<TOKEN id="token-5-0" pos="word" morph="none" start_char="312" end_char="314">Что</TOKEN>
+<TOKEN id="token-5-1" pos="word" morph="none" start_char="316" end_char="328">примечательно</TOKEN>
+<TOKEN id="token-5-2" pos="punct" morph="none" start_char="329" end_char="329">,</TOKEN>
+<TOKEN id="token-5-3" pos="word" morph="none" start_char="331" end_char="333">дом</TOKEN>
+<TOKEN id="token-5-4" pos="word" morph="none" start_char="335" end_char="346">принадлежали</TOKEN>
+<TOKEN id="token-5-5" pos="word" morph="none" start_char="348" end_char="349">не</TOKEN>
+<TOKEN id="token-5-6" pos="word" morph="none" start_char="351" end_char="358">Чечетову</TOKEN>
+<TOKEN id="token-5-7" pos="punct" morph="none" start_char="359" end_char="359">.</TOKEN>
+</SEG>
+<SEG id="segment-6" start_char="362" end_char="428">
+<ORIGINAL_TEXT>Кроме пистолета, там обнаружили целый арсенал оружия и боеприпасов.</ORIGINAL_TEXT>
+<TOKEN id="token-6-0" pos="word" morph="none" start_char="362" end_char="366">Кроме</TOKEN>
+<TOKEN id="token-6-1" pos="word" morph="none" start_char="368" end_char="376">пистолета</TOKEN>
+<TOKEN id="token-6-2" pos="punct" morph="none" start_char="377" end_char="377">,</TOKEN>
+<TOKEN id="token-6-3" pos="word" morph="none" start_char="379" end_char="381">там</TOKEN>
+<TOKEN id="token-6-4" pos="word" morph="none" start_char="383" end_char="392">обнаружили</TOKEN>
+<TOKEN id="token-6-5" pos="word" morph="none" start_char="394" end_char="398">целый</TOKEN>
+<TOKEN id="token-6-6" pos="word" morph="none" start_char="400" end_char="406">арсенал</TOKEN>
+<TOKEN id="token-6-7" pos="word" morph="none" start_char="408" end_char="413">оружия</TOKEN>
+<TOKEN id="token-6-8" pos="word" morph="none" start_char="415" end_char="415">и</TOKEN>
+<TOKEN id="token-6-9" pos="word" morph="none" start_char="417" end_char="427">боеприпасов</TOKEN>
+<TOKEN id="token-6-10" pos="punct" morph="none" start_char="428" end_char="428">.</TOKEN>
+</SEG>
+<SEG id="segment-7" start_char="431" end_char="487">
+<ORIGINAL_TEXT>Напомним, Михаил Чечетов погиб в прошлом году 28 февраля.</ORIGINAL_TEXT>
+<TOKEN id="token-7-0" pos="word" morph="none" start_char="431" end_char="438">Напомним</TOKEN>
+<TOKEN id="token-7-1" pos="punct" morph="none" start_char="439" end_char="439">,</TOKEN>
+<TOKEN id="token-7-2" pos="word" morph="none" start_char="441" end_char="446">Михаил</TOKEN>
+<TOKEN id="token-7-3" pos="word" morph="none" start_char="448" end_char="454">Чечетов</TOKEN>
+<TOKEN id="token-7-4" pos="word" morph="none" start_char="456" end_char="460">погиб</TOKEN>
+<TOKEN id="token-7-5" pos="word" morph="none" start_char="462" end_char="462">в</TOKEN>
+<TOKEN id="token-7-6" pos="word" morph="none" start_char="464" end_char="470">прошлом</TOKEN>
+<TOKEN id="token-7-7" pos="word" morph="none" start_char="472" end_char="475">году</TOKEN>
+<TOKEN id="token-7-8" pos="word" morph="none" start_char="477" end_char="478">28</TOKEN>
+<TOKEN id="token-7-9" pos="word" morph="none" start_char="480" end_char="486">февраля</TOKEN>
+<TOKEN id="token-7-10" pos="punct" morph="none" start_char="487" end_char="487">.</TOKEN>
+</SEG>
+<SEG id="segment-8" start_char="489" end_char="563">
+<ORIGINAL_TEXT>Политик, по официальной версии, выбросился из окна своего дома на 17 этаже.</ORIGINAL_TEXT>
+<TOKEN id="token-8-0" pos="word" morph="none" start_char="489" end_char="495">Политик</TOKEN>
+<TOKEN id="token-8-1" pos="punct" morph="none" start_char="496" end_char="496">,</TOKEN>
+<TOKEN id="token-8-2" pos="word" morph="none" start_char="498" end_char="499">по</TOKEN>
+<TOKEN id="token-8-3" pos="word" morph="none" start_char="501" end_char="511">официальной</TOKEN>
+<TOKEN id="token-8-4" pos="word" morph="none" start_char="513" end_char="518">версии</TOKEN>
+<TOKEN id="token-8-5" pos="punct" morph="none" start_char="519" end_char="519">,</TOKEN>
+<TOKEN id="token-8-6" pos="word" morph="none" start_char="521" end_char="530">выбросился</TOKEN>
+<TOKEN id="token-8-7" pos="word" morph="none" start_char="532" end_char="533">из</TOKEN>
+<TOKEN id="token-8-8" pos="word" morph="none" start_char="535" end_char="538">окна</TOKEN>
+<TOKEN id="token-8-9" pos="word" morph="none" start_char="540" end_char="545">своего</TOKEN>
+<TOKEN id="token-8-10" pos="word" morph="none" start_char="547" end_char="550">дома</TOKEN>
+<TOKEN id="token-8-11" pos="word" morph="none" start_char="552" end_char="553">на</TOKEN>
+<TOKEN id="token-8-12" pos="word" morph="none" start_char="555" end_char="556">17</TOKEN>
+<TOKEN id="token-8-13" pos="word" morph="none" start_char="558" end_char="562">этаже</TOKEN>
+<TOKEN id="token-8-14" pos="punct" morph="none" start_char="563" end_char="563">.</TOKEN>
+</SEG>
+<SEG id="segment-9" start_char="565" end_char="624">
+<ORIGINAL_TEXT>Посторонних людей рядом с ним не было, заверили следователи.</ORIGINAL_TEXT>
+<TOKEN id="token-9-0" pos="word" morph="none" start_char="565" end_char="575">Посторонних</TOKEN>
+<TOKEN id="token-9-1" pos="word" morph="none" start_char="577" end_char="581">людей</TOKEN>
+<TOKEN id="token-9-2" pos="word" morph="none" start_char="583" end_char="587">рядом</TOKEN>
+<TOKEN id="token-9-3" pos="word" morph="none" start_char="589" end_char="589">с</TOKEN>
+<TOKEN id="token-9-4" pos="word" morph="none" start_char="591" end_char="593">ним</TOKEN>
+<TOKEN id="token-9-5" pos="word" morph="none" start_char="595" end_char="596">не</TOKEN>
+<TOKEN id="token-9-6" pos="word" morph="none" start_char="598" end_char="601">было</TOKEN>
+<TOKEN id="token-9-7" pos="punct" morph="none" start_char="602" end_char="602">,</TOKEN>
+<TOKEN id="token-9-8" pos="word" morph="none" start_char="604" end_char="611">заверили</TOKEN>
+<TOKEN id="token-9-9" pos="word" morph="none" start_char="613" end_char="623">следователи</TOKEN>
+<TOKEN id="token-9-10" pos="punct" morph="none" start_char="624" end_char="624">.</TOKEN>
+</SEG>
+<SEG id="segment-10" start_char="627" end_char="680">
+<ORIGINAL_TEXT>оружие, чечетов, пистолет, нашли, политик, следователи</ORIGINAL_TEXT>
+<TOKEN id="token-10-0" pos="word" morph="none" start_char="627" end_char="632">оружие</TOKEN>
+<TOKEN id="token-10-1" pos="punct" morph="none" start_char="633" end_char="633">,</TOKEN>
+<TOKEN id="token-10-2" pos="word" morph="none" start_char="635" end_char="641">чечетов</TOKEN>
+<TOKEN id="token-10-3" pos="punct" morph="none" start_char="642" end_char="642">,</TOKEN>
+<TOKEN id="token-10-4" pos="word" morph="none" start_char="644" end_char="651">пистолет</TOKEN>
+<TOKEN id="token-10-5" pos="punct" morph="none" start_char="652" end_char="652">,</TOKEN>
+<TOKEN id="token-10-6" pos="word" morph="none" start_char="654" end_char="658">нашли</TOKEN>
+<TOKEN id="token-10-7" pos="punct" morph="none" start_char="659" end_char="659">,</TOKEN>
+<TOKEN id="token-10-8" pos="word" morph="none" start_char="661" end_char="667">политик</TOKEN>
+<TOKEN id="token-10-9" pos="punct" morph="none" start_char="668" end_char="668">,</TOKEN>
+<TOKEN id="token-10-10" pos="word" morph="none" start_char="670" end_char="680">следователи</TOKEN>
+</SEG>
+<SEG id="segment-11" start_char="684" end_char="771">
+<ORIGINAL_TEXT>Вы сейчас просматриваете новость "В деле о гибели Чечетова появились новые подробности".</ORIGINAL_TEXT>
+<TOKEN id="token-11-0" pos="word" morph="none" start_char="684" end_char="685">Вы</TOKEN>
+<TOKEN id="token-11-1" pos="word" morph="none" start_char="687" end_char="692">сейчас</TOKEN>
+<TOKEN id="token-11-2" pos="word" morph="none" start_char="694" end_char="707">просматриваете</TOKEN>
+<TOKEN id="token-11-3" pos="word" morph="none" start_char="709" end_char="715">новость</TOKEN>
+<TOKEN id="token-11-4" pos="punct" morph="none" start_char="717" end_char="717">"</TOKEN>
+<TOKEN id="token-11-5" pos="word" morph="none" start_char="718" end_char="718">В</TOKEN>
+<TOKEN id="token-11-6" pos="word" morph="none" start_char="720" end_char="723">деле</TOKEN>
+<TOKEN id="token-11-7" pos="word" morph="none" start_char="725" end_char="725">о</TOKEN>
+<TOKEN id="token-11-8" pos="word" morph="none" start_char="727" end_char="732">гибели</TOKEN>
+<TOKEN id="token-11-9" pos="word" morph="none" start_char="734" end_char="741">Чечетова</TOKEN>
+<TOKEN id="token-11-10" pos="word" morph="none" start_char="743" end_char="751">появились</TOKEN>
+<TOKEN id="token-11-11" pos="word" morph="none" start_char="753" end_char="757">новые</TOKEN>
+<TOKEN id="token-11-12" pos="word" morph="none" start_char="759" end_char="769">подробности</TOKEN>
+<TOKEN id="token-11-13" pos="punct" morph="none" start_char="770" end_char="771">".</TOKEN>
+</SEG>
+<SEG id="segment-12" start_char="773" end_char="832">
+<ORIGINAL_TEXT>Другие Новости политики смотрите в блоке "Последние новости"</ORIGINAL_TEXT>
+<TOKEN id="token-12-0" pos="word" morph="none" start_char="773" end_char="778">Другие</TOKEN>
+<TOKEN id="token-12-1" pos="word" morph="none" start_char="780" end_char="786">Новости</TOKEN>
+<TOKEN id="token-12-2" pos="word" morph="none" start_char="788" end_char="795">политики</TOKEN>
+<TOKEN id="token-12-3" pos="word" morph="none" start_char="797" end_char="804">смотрите</TOKEN>
+<TOKEN id="token-12-4" pos="word" morph="none" start_char="806" end_char="806">в</TOKEN>
+<TOKEN id="token-12-5" pos="word" morph="none" start_char="808" end_char="812">блоке</TOKEN>
+<TOKEN id="token-12-6" pos="punct" morph="none" start_char="814" end_char="814">"</TOKEN>
+<TOKEN id="token-12-7" pos="word" morph="none" start_char="815" end_char="823">Последние</TOKEN>
+<TOKEN id="token-12-8" pos="word" morph="none" start_char="825" end_char="831">новости</TOKEN>
+<TOKEN id="token-12-9" pos="punct" morph="none" start_char="832" end_char="832">"</TOKEN>
+</SEG>
+<SEG id="segment-13" start_char="837" end_char="856">
+<ORIGINAL_TEXT>Ну как вам наш Крым?</ORIGINAL_TEXT>
+<TOKEN id="token-13-0" pos="word" morph="none" start_char="837" end_char="838">Ну</TOKEN>
+<TOKEN id="token-13-1" pos="word" morph="none" start_char="840" end_char="842">как</TOKEN>
+<TOKEN id="token-13-2" pos="word" morph="none" start_char="844" end_char="846">вам</TOKEN>
+<TOKEN id="token-13-3" pos="word" morph="none" start_char="848" end_char="850">наш</TOKEN>
+<TOKEN id="token-13-4" pos="word" morph="none" start_char="852" end_char="855">Крым</TOKEN>
+<TOKEN id="token-13-5" pos="punct" morph="none" start_char="856" end_char="856">?</TOKEN>
+</SEG>
+<SEG id="segment-14" start_char="858" end_char="874">
+<ORIGINAL_TEXT>из крымских сетей</ORIGINAL_TEXT>
+<TOKEN id="token-14-0" pos="word" morph="none" start_char="858" end_char="859">из</TOKEN>
+<TOKEN id="token-14-1" pos="word" morph="none" start_char="861" end_char="868">крымских</TOKEN>
+<TOKEN id="token-14-2" pos="word" morph="none" start_char="870" end_char="874">сетей</TOKEN>
+</SEG>
+<SEG id="segment-15" start_char="879" end_char="889">
+<ORIGINAL_TEXT>Путін зник?</ORIGINAL_TEXT>
+<TOKEN id="token-15-0" pos="word" morph="none" start_char="879" end_char="883">Путін</TOKEN>
+<TOKEN id="token-15-1" pos="word" morph="none" start_char="885" end_char="888">зник</TOKEN>
+<TOKEN id="token-15-2" pos="punct" morph="none" start_char="889" end_char="889">?</TOKEN>
+</SEG>
+<SEG id="segment-16" start_char="891" end_char="917">
+<ORIGINAL_TEXT>Що сталося з президентом РФ</ORIGINAL_TEXT>
+<TOKEN id="token-16-0" pos="word" morph="none" start_char="891" end_char="892">Що</TOKEN>
+<TOKEN id="token-16-1" pos="word" morph="none" start_char="894" end_char="900">сталося</TOKEN>
+<TOKEN id="token-16-2" pos="word" morph="none" start_char="902" end_char="902">з</TOKEN>
+<TOKEN id="token-16-3" pos="word" morph="none" start_char="904" end_char="914">президентом</TOKEN>
+<TOKEN id="token-16-4" pos="word" morph="none" start_char="916" end_char="917">РФ</TOKEN>
+</SEG>
+<SEG id="segment-17" start_char="921" end_char="964">
+<ORIGINAL_TEXT>Боєць ЗСУ вбив сімох окупантів під час атаки</ORIGINAL_TEXT>
+<TOKEN id="token-17-0" pos="word" morph="none" start_char="921" end_char="925">Боєць</TOKEN>
+<TOKEN id="token-17-1" pos="word" morph="none" start_char="927" end_char="929">ЗСУ</TOKEN>
+<TOKEN id="token-17-2" pos="word" morph="none" start_char="931" end_char="934">вбив</TOKEN>
+<TOKEN id="token-17-3" pos="word" morph="none" start_char="936" end_char="940">сімох</TOKEN>
+<TOKEN id="token-17-4" pos="word" morph="none" start_char="942" end_char="950">окупантів</TOKEN>
+<TOKEN id="token-17-5" pos="word" morph="none" start_char="952" end_char="954">під</TOKEN>
+<TOKEN id="token-17-6" pos="word" morph="none" start_char="956" end_char="958">час</TOKEN>
+<TOKEN id="token-17-7" pos="word" morph="none" start_char="960" end_char="964">атаки</TOKEN>
+</SEG>
+<SEG id="segment-18" start_char="969" end_char="1005">
+<ORIGINAL_TEXT>Россию обвинили в футбольном заговоре</ORIGINAL_TEXT>
+<TOKEN id="token-18-0" pos="word" morph="none" start_char="969" end_char="974">Россию</TOKEN>
+<TOKEN id="token-18-1" pos="word" morph="none" start_char="976" end_char="983">обвинили</TOKEN>
+<TOKEN id="token-18-2" pos="word" morph="none" start_char="985" end_char="985">в</TOKEN>
+<TOKEN id="token-18-3" pos="word" morph="none" start_char="987" end_char="996">футбольном</TOKEN>
+<TOKEN id="token-18-4" pos="word" morph="none" start_char="998" end_char="1005">заговоре</TOKEN>
+</SEG>
+</TEXT>
+</DOC>
+</LCTL_TEXT>

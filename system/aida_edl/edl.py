@@ -11,9 +11,9 @@ PWD=os.path.dirname(os.path.abspath(__file__))
 
 def edl(indir_ltf, indir_rsd, lang, outdir, edl_bio, edl_tab_nam, edl_tab_nom,
         edl_tab_pro, fine_grain_model):
-    if os.path.exists(outdir):
-        shutil.rmtree(outdir)
-    os.makedirs(outdir, exist_ok=True)
+    # if os.path.exists(outdir):
+    #     shutil.rmtree(outdir)
+    # os.makedirs(outdir, exist_ok=True)
 
     # edl_tab_raw_nam = edl_tab_raw
     # edl_tab_raw_nom = edl_tab_raw.replace('.nam.','.nom.')
@@ -39,10 +39,10 @@ def edl(indir_ltf, indir_rsd, lang, outdir, edl_bio, edl_tab_nam, edl_tab_nom,
             if r.status_code != 200:
                 continue
             ans = json.loads(r.text)
-            with codecs.open(edl_bio, 'a', encoding="utf-8") as fw:
-                bio_content = ans['bio']#.encode('utf-8')
-                fw.write(bio_content)
-                fw.write('\n')
+            # with codecs.open(edl_bio, 'a', encoding="utf-8") as fw:
+            #     bio_content = ans['bio']#.encode('utf-8')
+            #     fw.write(bio_content)
+            #     fw.write('\n')
             with codecs.open(edl_tab_nam, 'a', encoding="utf-8") as fw:
                 if 'nam_tab' in ans:
                     fw.write(ans['nam_tab'])

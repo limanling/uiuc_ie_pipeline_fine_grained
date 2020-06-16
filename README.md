@@ -1,5 +1,5 @@
-# UIUC AIDA Pipeline
-One single script to run text information extraction, including entity extraction, relation extraction and event extraction.
+# UIUC Information Extraction Pipeline
+One single script to run text information extraction, including fine-grained entity extraction, relation extraction and event extraction.
 
 ## Prerequisites
 ### Packages to install
@@ -15,19 +15,8 @@ docker pull charlesztt/aida_event
 docker pull dylandilu/event_coreference_xdoc
 docker pull wangqy96/aida_nominal_coreference_en
 docker pull panx27/data-processor
-docker pull frnkenstien/corenlp
-```
-
-### Download the latest models
-Please download the entity linking models:
-```bash
-docker run -v ${PWD}/system/aida_edl:/data panx27/data-processor wget http://159.89.180.81/demo/resources/edl_data.tar.gz -P /data
-docker run -v ${PWD}/system/aida_edl:/data panx27/data-processor tar zxvf /data/edl_data.tar.gz -C /data
-```
-and event extraction models:
-```bash
-docker run -v ${PWD}/system/aida_event:/tmp_event panx27/data-processor wget http://159.89.180.81/demo/resources/aida_event_data.tgz -P /tmp_event
-docker run -v ${PWD}/system/aida_event:/tmp_event panx27/data-processor tar zxvf /tmp_event/aida_event_data.tgz -C /tmp_event
+docker pull limanling/aida-tools
+docker pull graham3333/corenlp-complete
 ```
 
 ## Deployment
@@ -40,6 +29,8 @@ Step 1. Start the EDL mongo database server
 Please wait until you see "waiting for connections on port 27017" message appear on the screen.
 
 ```bash
+docker run -v ${PWD}/system/aida_edl:/data panx27/data-processor wget http://159.89.180.81/demo/resources/edl_data.tar.gz -P /data
+docker run -v ${PWD}/system/aida_edl:/data panx27/data-processor tar zxvf /data/edl_data.tar.gz -C /data
 docker run --rm -v ${PWD}/system/aida_edl/edl_data/db:/data/db --name db mongo
 ```
 
@@ -59,6 +50,8 @@ Step 4. Start the event extractor
 
 This step will take a few minutes, you can proceed after you see "Serving Flask app ..." message.
 ```bash
+docker run -v ${PWD}/system/aida_event:/tmp_event panx27/data-processor wget http://159.89.180.81/demo/resources/aida_event_data.tgz -P /tmp_event
+docker run -v ${PWD}/system/aida_event:/tmp_event panx27/data-processor tar zxvf /tmp_event/aida_event_data.tgz -C /tmp_event
 docker run -i -t --rm -v ${PWD}/system/aida_event/aida_event_data:/tmp -w /aida_event -p 5234:5234 --name aida_event charlesztt/aida_event python gail_event.py
 ```
 
@@ -69,16 +62,6 @@ This step will take a few minutes, you can proceed after you see "Serving Flask 
 docker run -i -t --rm -w /event_coreference_xdoc -p 6001:6001 --name event_coreference dylandilu/event_coreference_xdoc python aida_event_coreference_backen_eng.py
 ```
 
-Step 6. Prepare Stanford CoreNLP
-
-Please start the CoreNLP Server under the CoreNLP folder.
-```bash
-docker run -p 9000:9000 --name coreNLP --rm -i -t frnkenstien/corenlp
-```
-Please test the CoreNLP Server is running successfully:
-```bash
-wget --post-data 'The quick brown fox jumped over the lazy dog.' 'localhost:9000/?properties={"annotators":"tokenize,ssplit,pos,lemma,ner,regexner,depparse,entitymentions","outputFormat":"json"}'
-```
 
 ## Run the codes
 * Make sure you have RSD (Raw Source Data, ending with `*.rsd.txt`) and LTF (Logical Text Format, ending with `*.ltf.xml`) files. 
@@ -86,11 +69,11 @@ wget --post-data 'The quick brown fox jumped over the lazy dog.' 'localhost:9000
 	* If you have LTF files, please use the AIDA ltf2rsd tool (`LDC2018E62_AIDA_Month_9_Pilot_Eval_Corpus_V1.0/tools/ltf2txt/ltf2rsd.perl`) to generate the RSD files. 
 * Edit the `pipeline_sample.sh` for your run, including `data_root` containing a subfolder `ltf` with your input LTF files and a subfolder `rsd` with your input RSD files. Then run the shell file, 
 ```bash
-sh pipeline_sample_en.sh ${data_root}
+sh pipeline_sample.sh ${data_root}
 ```
 For example, 
 ```bash
-sh pipeline_sample_en.sh data/testdata/en_small
+sh pipeline_sample.sh data/testdata_all
 ```
 <!--
 For each raw document `doc_id.ltf.xml` and `doc_id.rsd.txt`, there will be a RDF format KB `doc_id.ttl` generated. If the final *.ttl files needs to be renamed, please provide the mapping file between the raw_id and rename_id as a second parameter, and the raw_id_column as the third parameter, rename_id_column as the fourth parameter. For example, in AIDA project, each file can be mapped a parent file. The final *.ttl files should be renamed to parent_file_id, whereas the raw document is named by child_file_id. 

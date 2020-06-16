@@ -1,20 +1,22 @@
 # -*- coding: utf-8 -*
-
-# import ujson as json
-import argparse
+import os
 import sys
-# sys.path.append("/data/m1/lim22/aida")
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(os.path.join(CURRENT_DIR, ".."))
+
+
+import ujson as json
+import argparse
 # from event_newtype.fine_grained_events import entity_finegrain_by_json
-# from util.finegrain_util import FineGrainedUtil
+from aida_utilities.finegrain_util import FineGrainedUtil
 # from .geonames_property import get_feature
 from collections import defaultdict
 from nltk.stem import WordNetLemmatizer
 from nltk.stem.snowball import SnowballStemmer
 # from collections import Counter
-import os
 import numpy as np
 
-CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+
 prefix = "https://tac.nist.gov/tracks/SM-KBP/2019/ontologies/LDCOntology#"
 lemmatizer = WordNetLemmatizer()
 
@@ -75,8 +77,8 @@ def load_type_mapping(mapping_file):
         line = line.rstrip('\n')
         tabs = line.split('\t')
         for yago_type in tabs[1].split(','):
-            if yago_type in yago_aida_map:
-                print('Multiple annotation ', yago_type)
+            # if yago_type in yago_aida_map:
+            #     print('Multiple annotation ', yago_type)
             yago_aida_map[yago_type.strip(' ')] = tabs[0]
     return yago_aida_map
 
@@ -86,8 +88,8 @@ def load_type_mapping_weight(mapping_file):
         line = line.rstrip('\n')
         tabs = line.split('\t')
         for yago_type in tabs[2].split(','):
-            if yago_type in yago_aida_map:
-                print('Multiple annotation ', yago_type)
+            # if yago_type in yago_aida_map:
+            #     print('Multiple annotation ', yago_type)
             yago_aida_map[yago_type.strip(' ')][tabs[1]] = float(tabs[0])
     return yago_aida_map
 
@@ -154,7 +156,8 @@ def valid_parent(old_type, new_type, backuptype_mapping):
 # change type
 def update_type(entity_id, entity_offsets, entity_mentions, entity_geonames,
                 old_type, link_yago_types, offset_yago_map,
-                yago_aida_mapping, geocode_aida_map, keywords_aida_map, backuptype_mapping,
+                yago_aida_mapping, geocode_aida_map, geonames_features,
+                keywords_aida_map, backuptype_mapping,
                 stemmer,
                 hard_parent_type_constraint=True,
                 groundtruth_offset_type=None):   # old_types??
@@ -201,7 +204,7 @@ def update_type(entity_id, entity_offsets, entity_mentions, entity_geonames,
     # new_types_by_keyword_sorted = sorted(new_types_by_keyword.items(), key=lambda x: (len(x[0].split('.')), x[1]),
     new_types_by_keyword_sorted = sorted(new_types_by_gt.items(), key=lambda x: (len(x[0].split('.')), x[1]),
                                          reverse=True)
-    print('keyword-based: ', new_types_by_keyword_sorted)
+    # print('keyword-based: ', new_types_by_keyword_sorted)
     if len(new_types_by_keyword_sorted) > 0:
         # all_source_voter[new_types_by_keyword_sorted[0][0]] += 1
         max_type, max_score = new_types_by_keyword_sorted[0]
@@ -224,13 +227,13 @@ def update_type(entity_id, entity_offsets, entity_mentions, entity_geonames,
                         new_types_by_model[aida_type] += yago_aida_mapping[yago_type][aida_type] #1
             else:
                 remaining_yago_types.add(yago_type)
-                print('model-based: other yago_type ', yago_type)
-        else:
-            print('No model-based type')
+        #         print('model-based: other yago_type ', yago_type)
+        # else:
+        #     print('No model-based type')
     # model-based 不用管粗细粒度的排序，所以先频率为先
     new_types_by_model_sorted = sorted(new_types_by_model.items(), key=lambda x: (x[1], len(x[0].split('.'))),
                                        reverse=True)
-    print('model-based: ', new_types_by_model_sorted)
+    # print('model-based: ', new_types_by_model_sorted)
     if len(new_types_by_model_sorted) > 0:
         # all_source_voter[new_types_by_model_sorted[0][0]] += 1
         max_type, max_score = new_types_by_model_sorted[0]
@@ -238,54 +241,54 @@ def update_type(entity_id, entity_offsets, entity_mentions, entity_geonames,
             # if each_score == max_score and len(max_type.split('.')) == len(each_type.split('.')):
                 all_source_voter[each_type] += 1.0 * float(each_score) / float(mention_size)
 
-    # # (2) linking
-    # new_types_by_linking = defaultdict(int)
-    # for yago_type in link_yago_types:
-    #     # 向上取，一旦取到就终止，不应该继续！！！！
-    #     # multiple links
-    #     if yago_type in yago_aida_mapping:
-    #         for aida_type in yago_aida_mapping[yago_type]:
-    #             # (6) match coarse type
-    #             # if hard_parent_type_constraint:
-    #             if valid_parent(old_type, aida_type, backuptype_mapping):
-    #                 # if the parent type of new type does not match the old type, trust the coarse type, and do not update
-    #                 new_types_by_linking[aida_type] += yago_aida_mapping[yago_type][aida_type] #1 # * len(aida_type.split('.'))
-    #     else:
-    #         remaining_yago_types.add(yago_type)
-    #         print('linking-based: other yago_type ', yago_type)
-    # new_types_by_linking_sorted = sorted(new_types_by_linking.items(), key=lambda x: (len(x[0].split('.')), x[1]), reverse=True)
+    # (2) linking
+    new_types_by_linking = defaultdict(int)
+    for yago_type in link_yago_types:
+        # 向上取，一旦取到就终止，不应该继续！！！！
+        # multiple links
+        if yago_type in yago_aida_mapping:
+            for aida_type in yago_aida_mapping[yago_type]:
+                # (6) match coarse type
+                # if hard_parent_type_constraint:
+                if valid_parent(old_type, aida_type, backuptype_mapping):
+                    # if the parent type of new type does not match the old type, trust the coarse type, and do not update
+                    new_types_by_linking[aida_type] += yago_aida_mapping[yago_type][aida_type] #1 # * len(aida_type.split('.'))
+        else:
+            remaining_yago_types.add(yago_type)
+            # print('linking-based: other yago_type ', yago_type)
+    new_types_by_linking_sorted = sorted(new_types_by_linking.items(), key=lambda x: (len(x[0].split('.')), x[1]), reverse=True)
     # print('linking-based: ', new_types_by_linking_sorted)
-    # if len(new_types_by_linking_sorted) > 0:
-    #     max_type, max_score = new_types_by_linking_sorted[0]
-    #     for each_type, each_score in new_types_by_linking_sorted:
-    #         if each_type == 'PER.ProfessionalPosition.Spy' and \
-    #                 ('PER.ProfessionalPosition.Spy' not in all_source_voter):
-    #             continue
-    #         if each_type == 'PER.ProfessionalPosition.Scientist' and \
-    #                 ('PER.ProfessionalPosition.Scientist' not in all_source_voter):
-    #             continue
-    #         # if each_score == max_score and len(max_type.split('.')) == len(each_type.split('.')):
-    #         if len(max_type.split('.')) == len(each_type.split('.')):
-    #             all_source_voter[each_type] += float(each_score) / float(mention_size) #float(len(link_yago_types)) #
-    #
-    # # (5) geonames
-    # # if old_type in ['FAC', 'LOC', 'GPE']:
-    # if entity_id in entity_geonames:
-    #     feature_class, feature_code = get_feature(entity_geonames[entity_id].split('_')[0])
-    #     if feature_class is not None:
-    #         if feature_code in geocode_aida_map:
-    #             newtype = geocode_aida_map[feature_code]
-    #         else:
-    #             newtype = geocode_aida_map[feature_class]
-    #         if valid_parent(old_type, newtype, backuptype_mapping):
-    #             print('GeoNames-based (', feature_class, feature_code, '): ', newtype)
-    #             all_source_voter[newtype] += 1
+    if len(new_types_by_linking_sorted) > 0:
+        max_type, max_score = new_types_by_linking_sorted[0]
+        for each_type, each_score in new_types_by_linking_sorted:
+            if each_type == 'PER.ProfessionalPosition.Spy' and \
+                    ('PER.ProfessionalPosition.Spy' not in all_source_voter):
+                continue
+            if each_type == 'PER.ProfessionalPosition.Scientist' and \
+                    ('PER.ProfessionalPosition.Scientist' not in all_source_voter):
+                continue
+            # if each_score == max_score and len(max_type.split('.')) == len(each_type.split('.')):
+            if len(max_type.split('.')) == len(each_type.split('.')):
+                all_source_voter[each_type] += float(each_score) / float(mention_size) #float(len(link_yago_types)) #
+
+    # (5) geonames
+    # if old_type in ['FAC', 'LOC', 'GPE']:
+    if entity_id in entity_geonames:
+        feature_class, feature_code = get_feature(entity_geonames[entity_id].split('_')[0], geonames_features)
+        if feature_class is not None:
+            if feature_code in geocode_aida_map:
+                newtype = geocode_aida_map[feature_code]
+            else:
+                newtype = geocode_aida_map[feature_class]
+            if valid_parent(old_type, newtype, backuptype_mapping):
+                # print('GeoNames-based (', feature_class, feature_code, '): ', newtype)
+                all_source_voter[newtype] += 1
 
     newtypes = dict()
     if len(all_source_voter) == 0:
         newtype = backuptype_mapping[old_type]
         newtypes[newtype] = 1.0
-        print('\nno fine-grained type')
+        # print('\nno fine-grained type')
     else:
         # newtype = all_source_voter.most_common(1)[0][0]
         all_source_voter_sorted = sorted(all_source_voter.items(), key=lambda x: (x[1], len(x[0].split('.'))),
@@ -304,14 +307,15 @@ def update_type(entity_id, entity_offsets, entity_mentions, entity_geonames,
                 if not already_in:
                     newtypes[each_type] = np.tanh(0.7 * each_score)
                     new_score_dict[each_type] = each_score
-        print('\nall_source_voter', all_source_voter)
-        print('\nnormalized_voter', new_score_dict)
-        print('\nfinal fine-grained type', newtypes)#all_source_voter.most_common(1))
+        # print('\nall_source_voter', all_source_voter)
+        # print('\nnormalized_voter', new_score_dict)
+        # print('\nfinal fine-grained type', newtypes)#all_source_voter.most_common(1))
     # print(old_type, '->', newtype)
     # print('\n=====================================\n')
     # if not valid_parent(old_type, newtype, backuptype_mapping):
     #     print('[ERROR] old type is ignored', old_type, newtype)
     return newtypes
+
 
 def load_ground_truth_tab(ground_truth_tab_dir):
     offset_type = dict()
@@ -325,8 +329,9 @@ def load_ground_truth_tab(ground_truth_tab_dir):
             offset_type[offset] = fine_type
     return offset_type
 
+
 def rewrite(entity_coarse, output, entity_yagotypes,
-            offset_yago_map, yago_aida_mapping, geocode_aida_map,
+            offset_yago_map, yago_aida_mapping, geocode_aida_map, geonames_features,
             keywords_aida_map, backuptype_mapping, stemmer=None,
             ground_truth_tab_dir=None,
             isFiller=False):
@@ -368,6 +373,7 @@ def rewrite(entity_coarse, output, entity_yagotypes,
                                       offset_yago_map,
                                       yago_aida_mapping,
                                       geocode_aida_map,
+                                      geonames_features,
                                       keywords_aida_map,
                                       backuptype_mapping,
                                       stemmer,
@@ -387,6 +393,20 @@ def rewrite(entity_coarse, output, entity_yagotypes,
     f_out.close()
 
     return update_count
+
+
+def get_feature(geoname_id, geonames_features):
+    if geoname_id in geonames_features:
+        return geonames_features[geoname_id]['feature_class'], geonames_features[geoname_id]['feature_code']
+    else:
+        # print('no property for geoname id ', geoname_id)
+        return None, None
+
+
+def load_geoname_features(geonames_features):
+    geonames_features = json.load(open(geonames_features))
+    return geonames_features
+
 
 if __name__ == '__main__':
     # lang = 'en'
@@ -408,6 +428,8 @@ if __name__ == '__main__':
                         help='entity_freebase_tab')
     parser.add_argument('fine_grain_model_result', type=str,
                         help='fine-grained typing model result')
+    parser.add_argument('geonames_features_result', type=str,
+                        help='GeoNames feature result')
     parser.add_argument('entity_coarse', type=str,
                         help='entity_coarse')
     parser.add_argument('output_entity', type=str,
@@ -426,9 +448,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     lang = args.lang
-    # entity_finegrain = args.entity_finegrain
-    # entity_freebase_tab = args.entity_freebase_tab
+    entity_finegrain = args.entity_finegrain
+    entity_freebase_tab = args.entity_freebase_tab
     model_output = args.fine_grain_model_result
+    geonames_features_result = args.geonames_features_result
     entity_coarse = args.entity_coarse
     filler_coarse = args.filler_coarse
     output_entity = args.output_entity
@@ -438,23 +461,23 @@ if __name__ == '__main__':
     ground_truth_tab_dir = args.ground_truth_tab_dir
 
     stemmer = load_stemmer(lang)
-    mapping_file = os.path.join(CURRENT_DIR, 'conf/aida_yago_mapping_weighted.txt')
-    mapping_backup_file = os.path.join(CURRENT_DIR, 'conf/rename_type.txt')
-    geonames_mapping_file = os.path.join(CURRENT_DIR, 'conf/geonames_mapping.txt')
-    keywords_file = os.path.join(CURRENT_DIR, 'conf/keywords.txt')
+    mapping_file = os.path.join(CURRENT_DIR, 'conf', 'aida_yago_mapping_weighted.txt')
+    mapping_backup_file = os.path.join(CURRENT_DIR, 'conf', 'rename_type.txt')
+    geonames_mapping_file = os.path.join(CURRENT_DIR, 'conf', 'geonames_mapping.txt')
+    keywords_file = os.path.join(CURRENT_DIR, 'conf', 'keywords.txt')
 
-    # hierarchy_dir = 'conf/yago_taxonomy_wordnet_single_parent.json'
-    # finetype_util = FineGrainedUtil(hierarchy_dir)
-    #
-    # # print('fine-grained types')
-    # entity_yagotypes = finetype_util.entity_finegrain_by_json(entity_finegrain, entity_freebase_tab, entity_coarse, filler_coarse)
-    entity_yagotypes = None
+    hierarchy_dir = os.path.join(CURRENT_DIR, 'conf', 'yago_taxonomy_wordnet_single_parent.json')
+    finetype_util = FineGrainedUtil(hierarchy_dir)
+
+    # print('fine-grained types')
+    entity_yagotypes = finetype_util.entity_finegrain_by_json(entity_finegrain, entity_freebase_tab, entity_coarse, filler_coarse)
     offset_yago_map = load_yago_modeloutput(model_output)
     # print('entity_yagotypes: ', len(entity_yagotypes))
     yago_aida_mapping = load_type_mapping_weight(mapping_file)
     backuptype_mapping = load_type_mapping(mapping_backup_file)
     geocode_aida_map = load_geonames(geonames_mapping_file)
     keywords_aida_map = load_keywords(keywords_file, lang, lemma=True, stemmer=stemmer)
+    geonames_features = load_geoname_features(geonames_features_result)
 
     # entity_newtype = update_type_all(entity_yagotypes, YAGO_AIDA_mapping)
 
@@ -462,13 +485,13 @@ if __name__ == '__main__':
     # rewrite(entity_newtype, entity_coarse, output_entity, backuptype_mapping, False, hard_parent_type_constraint)
     update_count = \
         rewrite(entity_coarse, output_entity, entity_yagotypes,
-            offset_yago_map, yago_aida_mapping, geocode_aida_map,
+            offset_yago_map, yago_aida_mapping, geocode_aida_map, geonames_features,
             keywords_aida_map, backuptype_mapping, stemmer, ground_truth_tab_dir, False)
     if filler_coarse is not None and len(filler_coarse) != 0:
         # rewrite(entity_newtype, filler_coarse, output_filler, backuptype_mapping, True, hard_parent_type_constraint)
         update_count += \
             rewrite(filler_coarse, output_filler, entity_yagotypes,
-                offset_yago_map, yago_aida_mapping, geocode_aida_map,
+                offset_yago_map, yago_aida_mapping, geocode_aida_map, geonames_features,
                 keywords_aida_map, backuptype_mapping, stemmer, ground_truth_tab_dir, True)
 
     # print(update_count)

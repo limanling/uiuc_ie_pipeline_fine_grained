@@ -55,6 +55,7 @@ def load_ltf(ltf_str):
 
 
 def write2file(bio_str, out_file):
+    os.makedirs(os.path.dirname(out_file), exist_ok=True)
     with codecs.open(out_file, 'w', 'utf-8') as f:
         f.write(bio_str)
 

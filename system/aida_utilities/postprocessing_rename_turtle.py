@@ -3,14 +3,17 @@ import shutil
 from rdflib import Graph
 import sys
 import argparse
+from parent_child_util import get_column_idx
 
 parser = argparse.ArgumentParser()
 parser.add_argument('parent_child_mapping_file', type=str,
                     help='the parent_child mapping file path')
-parser.add_argument('raw_id_column', type=int,
-                    help='the child column in parent_child_tab_path')
-parser.add_argument('rename_id_column', type=int,
-                    help='the parent column in parent_child_tab_path')
+parser.add_argument('parent_child_mapping_file_sorted', type=int,
+                    help='1 if the parent_child mapping file is sorted.tab, otherwise 0')
+# parser.add_argument('raw_id_column', type=int,
+#                     help='the child column in parent_child_tab_path')
+# parser.add_argument('rename_id_column', type=int,
+#                     help='the parent column in parent_child_tab_path')
 parser.add_argument('input_folder', type=str,
                     help='the input directory where the files use child_file_id')
 parser.add_argument('output_folder', type=str,
@@ -18,10 +21,12 @@ parser.add_argument('output_folder', type=str,
 
 args = parser.parse_args()
 parent_child_tab_path = args.parent_child_mapping_file
-raw_id_column = args.raw_id_column
-rename_id_column = args.rename_id_column
+# raw_id_column = args.raw_id_column
+# rename_id_column = args.rename_id_column
 input_folder = args.input_folder
 output_folder = args.output_folder
+
+raw_id_column, rename_id_column, date_column = get_column_idx(sorted=args.parent_child_mapping_file_sorted!=0)
 
 if os.path.exists(output_folder) is False:
     os.mkdir(output_folder)
