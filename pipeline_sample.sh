@@ -20,9 +20,9 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result}
 
-for lang in 'en' #'ru' 'uk'
+for lang in 'en' 'ru' 'uk'
 do
-    for datasource in '' #'_asr' '_ocr'
+    for datasource in '' '_asr' '_ocr'
     do
         (
             data_root_lang=${data_root_result}/${lang}${datasource}

@@ -119,7 +119,7 @@ docker run --rm -v `pwd`:`pwd` -w `pwd`  -i limanling/uiuc_ie_m18 \
     ./system/aida_edl/tab2cs.py \
     ${edl_tab_final} ${edl_cs_coarse} 'EDL'
 
- Relation Extraction (coarse-grained)
+# Relation Extraction (coarse-grained)
 echo "** Extraction relations **"
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/aida_relation_coarse/bin/python \

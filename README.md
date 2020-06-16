@@ -46,6 +46,7 @@ docker run -i -t --rm --name uiuc_ie_m18 -w /entity_api -p 5500:5500 --name aida
     /entity_api/entity_api/app.py
 ```
 
+<!--
 Step 4. Start the event extractor
 
 This step will take a few minutes, you can proceed after you see "Serving Flask app ..." message.
@@ -54,8 +55,9 @@ docker run -v ${PWD}/system/aida_event:/tmp_event panx27/data-processor wget htt
 docker run -v ${PWD}/system/aida_event:/tmp_event panx27/data-processor tar zxvf /tmp_event/aida_event_data.tgz -C /tmp_event
 docker run -i -t --rm -v ${PWD}/system/aida_event/aida_event_data:/tmp -w /aida_event -p 5234:5234 --name aida_event charlesztt/aida_event python gail_event.py
 ```
+--> 
 
-Step 5. Start the event coreference solution
+Step 4. Start the event coreference solution
 
 This step will take a few minutes, you can proceed after you see "Serving Flask app "aida_event_coreference_backen_{eng, rus, ukr}"" message. Notice that the port 6001, 6101 and 6201 are for English, Russian and Ukrainian respectively.
 ```bash
@@ -69,11 +71,11 @@ docker run -i -t --rm -w /event_coreference_xdoc -p 6001:6001 --name event_coref
 	* If you have LTF files, please use the AIDA ltf2rsd tool (`LDC2018E62_AIDA_Month_9_Pilot_Eval_Corpus_V1.0/tools/ltf2txt/ltf2rsd.perl`) to generate the RSD files. 
 * Edit the `pipeline_sample.sh` for your run, including `data_root` containing a subfolder `ltf` with your input LTF files and a subfolder `rsd` with your input RSD files. Then run the shell file, 
 ```bash
-sh pipeline_sample.sh ${data_root}
+sh pipeline_sample.sh ${data_root} ${parent_child_tab}
 ```
 For example, 
 ```bash
-sh pipeline_sample.sh data/testdata_all
+sh pipeline_sample.sh data/testdata_all data/testdata_all/parent_children.sorted.tab
 ```
 <!--
 For each raw document `doc_id.ltf.xml` and `doc_id.rsd.txt`, there will be a RDF format KB `doc_id.ttl` generated. If the final *.ttl files needs to be renamed, please provide the mapping file between the raw_id and rename_id as a second parameter, and the raw_id_column as the third parameter, rename_id_column as the fourth parameter. For example, in AIDA project, each file can be mapped a parent file. The final *.ttl files should be renamed to parent_file_id, whereas the raw document is named by child_file_id. 
@@ -81,3 +83,12 @@ For each raw document `doc_id.ltf.xml` and `doc_id.rsd.txt`, there will be a RDF
 sh pipeline_sample.sh ${data_root} ${parent_child_mapping_tab} ${child_column} ${parent_column}
 ```
 -->
+
+For OneIE version, please use the script `pipeline_sample_oneie.sh` 
+```bash
+sh pipeline_sample_oneie.sh ${data_root} ${parent_child_tab}
+```
+For example, 
+```bash
+sh pipeline_sample_oneie.sh data/testdata_all data/testdata_all/parent_children.sorted.tab
+```
