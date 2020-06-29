@@ -12,6 +12,7 @@ sorted=1
 data_root_ltf=${data_root}/ltf
 data_root_rsd=${data_root}/rsd
 data_root_result=${data_root}/result
+output_folder=${data_root_result}/kb/ttl
 
 #####################################################################
 # preprocessing, including language detection, ASR/OCR preprcessing
@@ -46,9 +47,4 @@ done
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
-#    parser.add_argument('--root_folder', type=str,
-#                        help='root_folder')
-#    parser.add_argument('--final_dir_name', type=str,
-#                        help='final_dir_name')
-#    parser.add_argument('--output_folder', type=str,
-#                        help='output directory after merging')
+    ${data_root_result} 'final' ${output_folder}
