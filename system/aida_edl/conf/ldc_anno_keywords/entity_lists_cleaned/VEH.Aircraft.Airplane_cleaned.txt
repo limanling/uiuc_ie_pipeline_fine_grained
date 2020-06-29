@@ -1,0 +1,6 @@
+turboprop
+private jet
+business jet
+biplane
+airplane
+glider

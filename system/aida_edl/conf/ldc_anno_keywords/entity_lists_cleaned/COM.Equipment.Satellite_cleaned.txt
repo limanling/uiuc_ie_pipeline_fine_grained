@@ -1,0 +1,4 @@
+gps satellite
+satellite
+mobile satellite
+low-orbit satellite

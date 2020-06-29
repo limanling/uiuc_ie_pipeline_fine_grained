@@ -1,0 +1,5 @@
+airports
+airport
+airfield
+Airport
+airstrip

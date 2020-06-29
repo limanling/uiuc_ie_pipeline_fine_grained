@@ -85,6 +85,7 @@ WEA.Bullets.RubberBullets	rubber bullets
 FAC.Building.School	school, schools
 PER.ProfessionalPosition.Scientist	scientist, professor, scholars
 PER.Combatant.Sniper	sniper
+PER.Combatant	combatant, combat
 PER.ProfessionalPosition.Spokesperson	spokesperson, spokesman
 PER.ProfessionalPosition.Spy	spy
 FAC.Building.StoreShop	store, shop
@@ -161,7 +162,7 @@ VEH.Watercraft.Yacht	yacht, motor yacht, sailing yacht, expedition yacht, catama
 ORG.Government.LawEnforcementAgency	security forces
 PER.Combatant	militant, rebels, fighters, insurgents, assailants, extremists, bomber, separatists, terrorist, militia, goons, rivals
 ORG.Government	government
-WEA.Bullets	bullets
+WEA.Bullets	bullets, bullet
 PER.ProfessionalPosition	authorities, judges, lawyer, professionals, experts
 SID.Political.Opposition	the opposition
 PER.MilitaryPersonnel.MilitaryOfficer	captain

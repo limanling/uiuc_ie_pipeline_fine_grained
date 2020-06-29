@@ -1,0 +1,8 @@
+arsenal
+atomic
+Missiles
+warheads
+missiles
+warhead
+nukes
+nuke

@@ -88,8 +88,8 @@ echo "** Extracting entities **"
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i --network="host" limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     ./system/aida_edl/edl.py \
-    ${ltf_source} ${rsd_source} ${lang} ${edl_output_dir} \
-    ${edl_bio} ${edl_tab_nam} ${edl_tab_nom} ${edl_tab_pro} \
+    ${ltf_source} ${rsd_source} ${lang} \
+    ${edl_tab_nam} ${edl_tab_nom} ${edl_tab_pro} \
     ${entity_fine_model}
 ## linking
 echo "** Linking entities to KB **"
@@ -102,7 +102,11 @@ docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     ls ${link_dir}/input
 docker run -v ${PWD}/system/aida_edl/edl_data:/data --link db:mongo panx27/edl \
     python ./projs/docker_aida19/aida19.py \
-    ${lang} /data/test/input/ /data/test/output
+    ${lang} \
+    /data/test/input/${edl_tab_nam_filename} \
+    /data/test/input/${edl_tab_nom_filename} \
+    /data/test/input/${edl_tab_pro_filename} \
+    /data/test/output
 docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     cp ${link_dir}/output/* ${edl_output_dir}/
 docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \

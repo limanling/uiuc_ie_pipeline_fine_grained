@@ -1,0 +1,5 @@
+knife
+daggers
+machetes
+spears
+dagger

@@ -12,11 +12,48 @@ from aida_utilities.finegrain_util import FineGrainedUtil
 
 from nltk.stem.snowball import SnowballStemmer
 from nltk import WordNetLemmatizer
+from pymystem3 import Mystem
 
 event_newtype = {}
 type_dict = defaultdict(lambda: defaultdict(lambda: defaultdict(str)))
 trigger_dict = defaultdict(lambda: defaultdict(str))
 context_dict = defaultdict(lambda: defaultdict(str))
+
+
+def load_lemmer(lang):
+    if lang.startswith('en'):
+        lemmer = WordNetLemmatizer()
+        return lemmer
+    elif lang.startswith('ru'):
+        lemmer = Mystem()
+        return lemmer
+    elif lang.startswith('uk'):
+        stemmer = dict()
+        for line in open(os.path.join(CURRENT_DIR, 'rules', 'lemmatization-uk.txt')):
+            line = line.rstrip('\n')
+            tabs = line.split('\t')
+            if len(tabs) == 2:
+                stemmer[tabs[0]] = tabs[1]
+        return stemmer
+    else:
+        return None
+
+def lemma_long(trigger, lemmer, lang):
+    if lang.startswith('en'):
+        return ' '.join([lemmer.lemmatize(trigger_sub) for trigger_sub in trigger.split(' ')])
+    elif lang.startswith('ru'):
+        return ' '.join(lemmer.lemmatize(trigger))
+    elif lang.startswith('uk'):
+        toks = []
+        for trigger_sub in trigger.split(' '):
+            if trigger_sub in lemmer:
+                toks.append(lemmer[trigger_sub])
+            else:
+                toks.append(trigger_sub)
+        return ' '.join(toks)
+    else:
+        return trigger
+
 
 def stem_long(trigger, stemmer, lang):
     if lang.startswith('uk'):
@@ -39,12 +76,14 @@ def load_stemmer(lang):
         return stemmer
     elif lang.startswith('uk'):
         stemmer = dict()
-        for line in open(os.path.dir(CURRENT_DIR, 'rules', 'lemmatization-uk.txt')):
+        for line in open(os.path.join(CURRENT_DIR, 'rules', 'lemmatization-uk.txt')):
             line = line.rstrip('\n')
             tabs = line.split('\t')
             if len(tabs) == 2:
                 stemmer[tabs[0]] = tabs[1]
-    return stemmer
+        return stemmer
+    else:
+        return None
 
 def load_mapping(mapping_file):
     mapping = {}
@@ -126,14 +165,16 @@ def load_events(event_coarse, entity_dict):
     return event_dict
 
 # ps = PorterStemmer()
-def trigger_lang_stem(trigger, offset, trans, lang, en_stemmer):
-    # ->english
-    if not lang.startswith('en'):
-        trigger = trans[offset]
+def trigger_lang_stem(trigger, offset, lang, stemmer, en_stemmer):
+    # # ->english
+    # if not lang.startswith('en'):
+    #     trigger = trans[offset]
+    #     lang = 'en'
+    # stemmer = en_stemmer
     # stem
     trigger = trigger.lower()
     if stemmer is not None:
-        trigger_stem = stem_long(trigger, en_stemmer, 'en')
+        trigger_stem = stem_long(trigger, stemmer, lang)
         return trigger_stem
     else:
         return trigger
@@ -151,8 +192,8 @@ def load_type_dict(type_dict_path):
     return type_dict
 
 # read trigger constraint
-def load_trigger_dict(trigger_dict_path):
-    stemmer = SnowballStemmer("english")
+def load_trigger_dict(trigger_dict_path, stemmer, lang):
+    # stemmer = SnowballStemmer("english")
     for line in open(trigger_dict_path):
         line = line.rstrip('\n')
         tabs = line.split('\t')
@@ -160,15 +201,12 @@ def load_trigger_dict(trigger_dict_path):
         new_type = tabs[1]
         for trigger_need in tabs[2].split(','):
             trigger_need = trigger_need.strip()
-            trigger_need = stem_long(trigger_need, stemmer, 'en')
+            trigger_need = stem_long(trigger_need, stemmer, lang)
             trigger_dict[old_type][trigger_need] = new_type
     return trigger_dict
 
-lemmer = WordNetLemmatizer()
-def lemma_long(trigger):
-    return ' '.join([lemmer.lemmatize(trigger_sub) for trigger_sub in trigger.split(' ')])
 # read context constraint
-def load_context_dict(context_dict_path):
+def load_context_dict(context_dict_path, lemmer):
     # stemmer = SnowballStemmer("english") # dict is english
     for line in open(context_dict_path):
         line = line.rstrip('\n')
@@ -177,12 +215,13 @@ def load_context_dict(context_dict_path):
         new_type = tabs[1]
         for context_need in tabs[2].split(','):
             context_need = context_need.strip()
-            context_need = lemma_long(context_need)
+            context_need = lemma_long(context_need, lemmer, lang)
             context_dict[old_type][context_need] = new_type
     return context_dict
 
 # change type
-def update_type(event_id, event_dict, type_dict, trigger_dict, context_dict, ltf_util, trans, lang, stemmer, en_stemmer):
+def update_type(event_id, event_dict, type_dict, trigger_dict, context_dict, ltf_util,
+                lang, stemmer, en_stemmer, lemmer):
     all_source_voter = Counter()
 
     # print(event_dict[event_id])
@@ -222,7 +261,10 @@ def update_type(event_id, event_dict, type_dict, trigger_dict, context_dict, ltf
     for trigger in event_dict[event_id]['mention']:
         # only one offset, before coreference
         offset = event_dict[event_id]['mention'][trigger]
-        trigger_stem = trigger_lang_stem(trigger, offset, trans, lang, en_stemmer)
+        # if use_translate:
+        #     trigger_stem = trigger_lang_stem(trigger, offset, lang, stemmer, en_stemmer)
+        # else:
+        trigger_stem = trigger_lang_stem(trigger, offset, lang, stemmer, en_stemmer)
         if trigger_stem in trigger_dict[old_type]:
             aida_type = trigger_dict[old_type][trigger_stem]
             new_types_by_trgger[aida_type] += 1
@@ -233,16 +275,21 @@ def update_type(event_id, event_dict, type_dict, trigger_dict, context_dict, ltf
 
         # if lang == 'en':
         context_sent = ' '.join(ltf_util.get_context(offset)).lower()
-        # context_sent = stem_long(context_sent, stemmer, lang)
-        context_sent = lemma_long(context_sent)
+        context_sent = lemma_long(context_sent, lemmer, lang)
         for context_symbol in context_dict[old_type]:
             if ' '+context_symbol+' ' in context_sent:
                 aida_type = context_dict[old_type][context_symbol]
                 new_types_by_context[aida_type] += 1
                 # print(trigger, context_symbol, old_type, aida_type, context_sent)
 
-        if trigger_stem == 'fire' and old_type == 'Conflict.Attack':
-            if stem_long('set fire', en_stemmer, 'en') not in context_sent:
+        fire_str = {'en': 'fire', 'ru': 'Пожар', 'uk': 'вогонь'}
+        set_fire_str = {'en': 'set fire', 'ru': 'поджечь', 'uk': 'підпалити'}
+        if trigger_stem == fire_str[lang] and old_type == 'Conflict.Attack':
+            # if use_translate:
+            #     stemmed = stem_long('set fire', en_stemmer, 'en')
+            # else:
+            stemmed = stem_long(set_fire_str[lang], stemmer, lang)
+            if stemmed not in context_sent:
                 aida_type = 'Conflict.Attack.FirearmAttack'
                 all_source_voter[aida_type] += 1
             else:
@@ -288,9 +335,12 @@ def update_type(event_id, event_dict, type_dict, trigger_dict, context_dict, ltf
     # print('\n=====================================\n')
     return newtype
 
-def update_type_all(event_dict, type_dict, trigger_dict, context_dict, ltf_util, trans, lang, stemmer, en_stemmer):
+def update_type_all(event_dict, type_dict, trigger_dict, context_dict, ltf_util,
+                    lang, stemmer, en_stemmer, lemmer):
     for event_id in event_dict:
-        newtype = update_type(event_id, event_dict, type_dict, trigger_dict, context_dict, ltf_util, trans, lang, stemmer, en_stemmer)
+        newtype = update_type(event_id, event_dict, type_dict, trigger_dict, context_dict, ltf_util,
+                              lang, stemmer, en_stemmer,
+                              lemmer)
         if newtype is not None:
             event_newtype[event_id] = newtype
             # print(event_dict[event_id]['mention'])
@@ -359,15 +409,15 @@ def load_trans(trans_file, lang):
 
 
 def runner(lang, ltf_dir, entity_finegrain, entity_freebase_tab, entity_coarse,
-            filler_coarse, event_coarse, trans_file, output, visualpath, entity_finegrain_aida
+            filler_coarse, event_coarse, output, visualpath, entity_finegrain_aida
            ):
     ltf_util = LTF_util(ltf_dir)
 
-    trans = load_trans(trans_file, lang)
+    # trans = load_trans(trans_file, lang)
 
-    type_dict_path = os.path.join(CURRENT_DIR, 'rules/type_dict.txt')
-    trigger_dict_path = os.path.join(CURRENT_DIR, 'rules/trigger_dict_clean_v2.txt')
-    context_dict_path = os.path.join(CURRENT_DIR, 'rules/context_dict.txt')
+    type_dict_path = os.path.join(CURRENT_DIR, 'rules', 'type_dict.txt')
+    trigger_dict_path = os.path.join(CURRENT_DIR, 'rules', lang+'_trigger_dict_clean_v2.txt')
+    context_dict_path = os.path.join(CURRENT_DIR, 'rules', lang+'_context_dict.txt')
     hierarchy_dir = os.path.join(CURRENT_DIR, '../../aida_edl/conf/yago_taxonomy_wordnet_single_parent.json')
     finetype_util = FineGrainedUtil(hierarchy_dir)
     entity_dict = finetype_util.entity_finegrain_by_json(entity_finegrain, entity_freebase_tab, entity_coarse,
@@ -378,18 +428,19 @@ def runner(lang, ltf_dir, entity_finegrain, entity_freebase_tab, entity_coarse,
     # print(entity_dict)
     stemmer = load_stemmer(lang)
     en_stemmer = load_stemmer('en')
+    lemmer = load_lemmer(lang)
 
     event_dict = load_events(event_coarse, entity_dict)
     print('event_dict', len(event_dict))
     type_dict = load_type_dict(type_dict_path)
     # print(type_dict)
-    trigger_dict = load_trigger_dict(trigger_dict_path)
+    trigger_dict = load_trigger_dict(trigger_dict_path, stemmer, lang)
     # print(trigger_dict)
-    context_dict = load_context_dict(context_dict_path)
+    context_dict = load_context_dict(context_dict_path, lemmer)
     # print(context_dict)
 
-    event_newtype = update_type_all(event_dict, type_dict, trigger_dict, context_dict, ltf_util, trans, lang, stemmer,
-                                    en_stemmer)
+    event_newtype = update_type_all(event_dict, type_dict, trigger_dict, context_dict, ltf_util,
+                                    lang, stemmer, en_stemmer, lemmer)
     rewrite(event_newtype, event_coarse, output)
 
     if args.visualpath is not None:
@@ -451,8 +502,8 @@ if __name__ == '__main__':
                         help='output')
     parser.add_argument('--visualpath', default=None,
                         help='visualpath')
-    parser.add_argument('--trans_file', type=None,
-                        help='trans_file')
+    # parser.add_argument('--trans_file', type=None,
+    #                     help='trans_file')
     parser.add_argument('--filler_coarse', type=None,
                         help='filler_coarse')
     parser.add_argument('--entity_finegrain_aida', type=None,
@@ -467,7 +518,7 @@ if __name__ == '__main__':
     entity_coarse = args.entity_coarse
     filler_coarse = args.filler_coarse
     event_coarse = args.event_coarse
-    trans_file = args.trans_file
+    # trans_file = args.trans_file
     output = args.output
     visualpath = args.visualpath
     entity_finegrain_aida = args.entity_finegrain_aida
@@ -476,5 +527,5 @@ if __name__ == '__main__':
     # visualpath = os.path.join(output_dir, 'events_%s_fine.html' % lang)
 
     runner(lang, ltf_dir, entity_finegrain, entity_freebase_tab, entity_coarse,
-           filler_coarse, event_coarse, trans_file, output, visualpath, entity_finegrain_aida
+           filler_coarse, event_coarse, output, visualpath, entity_finegrain_aida
            )

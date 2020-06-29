@@ -1,0 +1,28 @@
+fragments
+ammunitions
+missiles
+Missile
+tracer
+arsenal
+різні предмети
+Bullets
+запалені шини
+rocks
+missideS
+ammo
+stones
+mortar
+missile
+rockets
+mortars
+triple-A
+AAA
+arms
+ammunition
+sticks
+bullets
+bullet
+shells
+shrapnel
+missle
+rocket

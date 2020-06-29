@@ -20,6 +20,9 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result}
 
+#####################################################################
+# extraction, including entity, relation, event
+#####################################################################
 for lang in 'en' 'ru' 'uk'
 do
     for datasource in '' '_asr' '_ocr'
@@ -29,7 +32,7 @@ do
             if [ -d "${data_root_lang}/ltf" ]
             then
                 sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted}
-                sh pipeline_sample_${lang}_oneie.sh ${data_root_lang} ${lang} ${datasource}
+                sh pipeline_sample_${lang}.sh ${data_root_lang} ${parent_child_tab_path} ${lang} ${datasource}
             else
                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
             fi
@@ -37,3 +40,9 @@ do
     done
 done
 
+#####################################################################
+# merging results
+#####################################################################
+docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    postprocessing_combine_turtle_from_all_sources.py

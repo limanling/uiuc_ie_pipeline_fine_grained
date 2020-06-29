@@ -61,7 +61,9 @@ Step 4. Start the event coreference solution
 
 This step will take a few minutes, you can proceed after you see "Serving Flask app "aida_event_coreference_backen_{eng, rus, ukr}"" message. Notice that the port 6001, 6101 and 6201 are for English, Russian and Ukrainian respectively.
 ```bash
-docker run -i -t --rm -w /event_coreference_xdoc -p 6001:6001 --name event_coreference dylandilu/event_coreference_xdoc python aida_event_coreference_backen_eng.py
+docker run -i -t --rm -w /event_coreference_xdoc -p 6001:6001 --name event_coreference_en dylandilu/event_coreference_xdoc python aida_event_coreference_backen_eng.py
+docker run -i -t --rm -w /event_coreference_xdoc -p 6101:6101 --name event_coreference_ru dylandilu/event_coreference_xdoc python aida_event_coreference_backen_rus.py
+docker run -i -t --rm -w /event_coreference_xdoc -p 6201:6201 --name event_coreference_uk dylandilu/event_coreference_xdoc python aida_event_coreference_backen_ukr.py
 ```
 
 

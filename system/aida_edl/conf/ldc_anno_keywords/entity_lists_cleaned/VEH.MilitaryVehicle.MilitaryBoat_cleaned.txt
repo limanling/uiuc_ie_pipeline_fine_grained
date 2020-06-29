@@ -1,0 +1,15 @@
+armored cruiser
+submarine
+amphibious transport dock
+torpedo boat
+guided missile cruiser
+immediate support vessel
+ISV
+protected cruiser
+assault boat
+amphibious assault ship
+raiding boat
+amphibious command ship
+landing platform dock
+aircraft carrier
+LPD

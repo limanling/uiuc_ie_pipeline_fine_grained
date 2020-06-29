@@ -1,0 +1,8 @@
+oxygen
+gurney
+stretcher
+wheel chair
+crutches
+hospital bed
+bandage
+oxygen tank

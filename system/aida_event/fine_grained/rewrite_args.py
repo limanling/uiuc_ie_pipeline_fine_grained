@@ -1,20 +1,88 @@
 from collections import defaultdict
 import argparse
+import os
 import sys
-sys.path.append("/nas/data/m1/lim22/aida")
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(os.path.join(CURRENT_DIR, ".."))
 from util.ltf_util import LTF_util
 
 from nltk.stem.snowball import SnowballStemmer, PorterStemmer
 from nltk.stem import WordNetLemmatizer
+from pymystem3 import Mystem
 
-lemmatizer = WordNetLemmatizer()
-stemmer = PorterStemmer()
+# lemmatizer = WordNetLemmatizer()
+# stemmer = PorterStemmer()
 
 prefix = "https://tac.nist.gov/tracks/SM-KBP/2019/ontologies/LDCOntology#"
 
-def lemma_long(trigger):
-    # return ' '.join([lemmatizer.lemmatize(trigger_sub.lower()) for trigger_sub in trigger.split(' ')])
-    return ' '.join([stemmer.stem(trigger_sub.lower()) for trigger_sub in trigger.split(' ')])
+
+def load_lemmer(lang):
+    if lang.startswith('en'):
+        lemmer = WordNetLemmatizer()
+        return lemmer
+    elif lang.startswith('ru'):
+        lemmer = Mystem()
+        return lemmer
+    elif lang.startswith('uk'):
+        stemmer = dict()
+        for line in open(os.path.join(CURRENT_DIR, 'rules', 'lemmatization-uk.txt')):
+            line = line.rstrip('\n')
+            tabs = line.split('\t')
+            if len(tabs) == 2:
+                stemmer[tabs[0]] = tabs[1]
+        return stemmer
+    else:
+        return None
+
+
+def lemma_long(trigger, lemmer, lang):
+    if lang.startswith('en'):
+        return ' '.join([lemmer.lemmatize(trigger_sub) for trigger_sub in trigger.split(' ')])
+    elif lang.startswith('ru'):
+        return ' '.join(lemmer.lemmatize(trigger))
+    elif lang.startswith('uk'):
+        toks = []
+        for trigger_sub in trigger.split(' '):
+            if trigger_sub in lemmer:
+                toks.append(lemmer[trigger_sub])
+            else:
+                toks.append(trigger_sub)
+        return ' '.join(toks)
+    else:
+        return trigger
+
+
+def stem_long(trigger, stemmer, lang):
+    if lang.startswith('uk'):
+        toks = []
+        for trigger_sub in trigger.split(' '):
+            if trigger_sub in stemmer:
+                toks.append(stemmer[trigger_sub])
+            else:
+                toks.append(trigger_sub)
+        return ' '.join(toks)
+    else:
+        return ' '.join([stemmer.stem(trigger_sub) for trigger_sub in trigger.split(' ')])
+
+
+def load_stemmer(lang):
+    if lang.startswith('en'):
+        stemmer = SnowballStemmer("english")
+        return stemmer
+    elif lang.startswith('ru'):
+        stemmer = SnowballStemmer("russian")
+        return stemmer
+    elif lang.startswith('uk'):
+        stemmer = dict()
+        for line in open(os.path.join(CURRENT_DIR, 'rules', 'lemmatization-uk.txt')):
+            line = line.rstrip('\n')
+            tabs = line.split('\t')
+            if len(tabs) == 2:
+                stemmer[tabs[0]] = tabs[1]
+        return stemmer
+    else:
+        return None
+
 
 def load_arg_mapping(mapping_arg_file):
     mapping = defaultdict(lambda: defaultdict(str))
@@ -28,10 +96,11 @@ def load_arg_mapping(mapping_arg_file):
         #     print(line)
     return mapping
 
+
 # read trigger constraint
-def load_trigger_dict(trigger_dict_path):
+def load_trigger_dict(trigger_dict_path, stemmer, lang):
     trigger_dict = defaultdict(lambda: defaultdict(str))
-    stemmer = SnowballStemmer("english")
+    # stemmer = SnowballStemmer("english")
     for line in open(trigger_dict_path):
         line = line.rstrip('\n')
         tabs = line.split('\t')
@@ -39,12 +108,23 @@ def load_trigger_dict(trigger_dict_path):
         new_type = tabs[1]
         for trigger_need in tabs[2].split(','):
             trigger_need = trigger_need.strip()
-            trigger_need = lemma_long(trigger_need)
+            trigger_need = stem_long(trigger_need, stemmer, lang)
             trigger_dict[old_type][trigger_need] = new_type
     return trigger_dict
 
-def need_update_types(event_coarse, lang, trans, trans_long, ltf_util, trigger_dict_path):
-    trigger_type_dict = load_trigger_dict(trigger_dict_path)
+def need_update_types(event_coarse, stemmer, lang, ltf_util, trigger_dict_path, context_dict):
+    trigger_type_dict = load_trigger_dict(trigger_dict_path, stemmer, lang)
+    trigger_shot_str = {'en': 'shot', 'ru': 'выстрел', 'uk': 'постріл'}
+    trigger_bomb_str = {'en': 'bomb', 'ru': 'бомбить', 'uk': 'бомба'}
+    trigger_bombing_str = {'en': 'bombing', 'ru': 'бомбардировка', 'uk': 'бомбардування'}
+    trigger_blasts_str = {'en': 'blasts', 'ru': 'взрывы', 'uk': 'вибухи'}
+    trigger_bombblast_str = {'en': 'bomb blast', 'ru': 'взрыв бомбы', 'uk': 'вибух бомби'}
+    trigger_shootout_str = {'en': 'shoot out', 'ru': 'стрелять', 'uk': 'вистрілити'}
+    trigger_purchased_str = {'en': 'purchased', 'ru': 'купленный', 'uk': 'придбано'}
+    trigger_trafficking_str = {'en': 'trafficking', 'ru': 'торговля', 'uk': 'торгівля людьми'}
+    trigger_murders_str = {'en': 'murders', 'ru': 'убийства', 'uk': 'вбивства'}
+    trigger_passedoff_str = {'en': 'passed off', 'ru': 'прошло', 'uk': 'відійшов'}
+
 
     # event_type_trigger = defaultdict(set)
     offset2trigger = defaultdict()
@@ -70,10 +150,10 @@ def need_update_types(event_coarse, lang, trans, trans_long, ltf_util, trigger_d
 
                 for trigger_offset in event_type_trigger_offset[event_id]:
                     trigger = offset2trigger[trigger_offset]
-                    if not lang.startswith('en'):
-                        trigger = trans[trigger_offset]
+                    # if not lang.startswith('en'):
+                    #     trigger = trans[trigger_offset]
 
-                    trigger_lemma = lemma_long(trigger)
+                    trigger_lemma = stem_long(trigger, stemmer, lang)
                     for trigger_dict in trigger_type_dict[event_type]:
                         if trigger_lemma == trigger_dict:
                             need_update_type[event_id] = trigger_type_dict[event_type][trigger_dict]
@@ -81,9 +161,9 @@ def need_update_types(event_coarse, lang, trans, trans_long, ltf_util, trigger_d
                     # print(trigger_lemma)
                     if event_id not in need_update_type:
                         trigger_expand = ' '.join(ltf_util.get_expand_text(trigger_offset, 2))
-                        if not lang.startswith('en'):
-                            trigger_expand = trans_long[trigger_offset]
-                        trigger_expand = lemma_long(trigger_expand)
+                        # if not lang.startswith('en'):
+                        #     trigger_expand = trans_long[trigger_offset]
+                        trigger_expand = stem_long(trigger_expand, stemmer, lang)
                         for trigger_dict in trigger_type_dict[event_type]:
                             if len(trigger_dict.split()) > 1:
                                 if trigger_dict in trigger_expand:
@@ -99,28 +179,29 @@ def need_update_types(event_coarse, lang, trans, trans_long, ltf_util, trigger_d
                                 # print(event_type, aida_type, context_symbol)
                         if aida_type is not None:
                             need_update_type[event_id] = aida_type
-                    # if event_type == 'Conflict.Attack' and lemma_long(trigger) == lemma_long('shot'):
-                    #     need_update_type[event_id] = 'Conflict.Attack.FirearmAttack'
-                    # elif event_type == 'Conflict.Attack' and lemma_long(trigger) == lemma_long('bomb'):
-                    #     need_update_type[event_id] = 'Conflict.Attack.Bombing'
-                    # elif event_type == 'Conflict.Attack' and lemma_long(trigger) == lemma_long('bombing'):
-                    #     need_update_type[event_id] = 'Conflict.Attack.Bombing'
-                    # elif event_type == 'Conflict.Attack' and lemma_long(trigger) == lemma_long('Bomb'):
-                    #     need_update_type[event_id] = 'Conflict.Attack.Bombing'
-                    # elif event_type == 'Conflict.Attack' and lemma_long(trigger) == lemma_long('blasts'):
-                    #     need_update_type[event_id] = 'Conflict.Attack.Bombing'
-                    # elif event_type == 'Conflict.Attack' and lemma_long(trigger) == lemma_long('bomb blast'):
-                    #     need_update_type[event_id] = 'Conflict.Attack.Bombing'
-                    # elif event_type == 'Conflict.Attack' and lemma_long(trigger) == lemma_long('shootout'):
-                    #     need_update_type[event_id] = 'Conflict.Attack.FirearmAttack'
-                    # elif event_type == 'Transaction.TransferOwnership' and trigger == 'purchased':
-                    #     need_update_type[event_id] = 'Transaction.TransferOwnership.Purchase'
-                    # elif event_type == 'Life.Die' and lemma_long(trigger) == lemma_long('passed off'):
-                    #     need_update_type[event_id] = 'Life.Die.NonviolentDeath'
-                    # elif event_type == 'Movement.TransportPerson' and lemma_long(trigger) == lemma_long('trafficking'):
-                    #     need_update_type[event_id] = 'Movement.TransportPerson.SmuggleExtract'
-                    # elif event_type == 'Life.Die' and lemma_long(trigger) == lemma_long('murders'):
-                    #     need_update_type[event_id] = 'Life.Die.DeathCausedByViolentEvents'
+
+                    if event_type == 'Conflict.Attack' and stem_long(trigger, stemmer, lang) == stem_long(trigger_shot_str[lang], stemmer, lang):
+                        need_update_type[event_id] = 'Conflict.Attack.FirearmAttack'
+                    elif event_type == 'Conflict.Attack' and stem_long(trigger, stemmer, lang) == stem_long(trigger_bomb_str[lang], stemmer, lang):
+                        need_update_type[event_id] = 'Conflict.Attack.Bombing'
+                    elif event_type == 'Conflict.Attack' and stem_long(trigger, stemmer, lang) == stem_long(trigger_bombing_str[lang], stemmer, lang):
+                        need_update_type[event_id] = 'Conflict.Attack.Bombing'
+                    elif event_type == 'Conflict.Attack' and stem_long(trigger, stemmer, lang) == stem_long('Bomb', stemmer, lang):
+                        need_update_type[event_id] = 'Conflict.Attack.Bombing'
+                    elif event_type == 'Conflict.Attack' and stem_long(trigger, stemmer, lang) == stem_long(trigger_blasts_str[lang], stemmer, lang):
+                        need_update_type[event_id] = 'Conflict.Attack.Bombing'
+                    elif event_type == 'Conflict.Attack' and stem_long(trigger, stemmer, lang) == stem_long(trigger_bombblast_str[lang], stemmer, lang):
+                        need_update_type[event_id] = 'Conflict.Attack.Bombing'
+                    elif event_type == 'Conflict.Attack' and stem_long(trigger, stemmer, lang) == stem_long(trigger_shootout_str[lang], stemmer, lang):
+                        need_update_type[event_id] = 'Conflict.Attack.FirearmAttack'
+                    elif event_type == 'Transaction.TransferOwnership' and stem_long(trigger, stemmer, lang) == stem_long(trigger_purchased_str[lang], stemmer, lang):
+                        need_update_type[event_id] = 'Transaction.TransferOwnership.Purchase'
+                    elif event_type == 'Life.Die' and stem_long(trigger, stemmer, lang) == stem_long(trigger_passedoff_str[lang], stemmer, lang):
+                        need_update_type[event_id] = 'Life.Die.NonviolentDeath'
+                    elif event_type == 'Movement.TransportPerson' and stem_long(trigger, stemmer, lang) == stem_long(trigger_trafficking_str[lang], stemmer, lang):
+                        need_update_type[event_id] = 'Movement.TransportPerson.SmuggleExtract'
+                    elif event_type == 'Life.Die' and stem_long(trigger, stemmer, lang) == stem_long(trigger_murders_str[lang], stemmer, lang):
+                        need_update_type[event_id] = 'Life.Die.DeathCausedByViolentEvents'
             elif 'https:' in tabs[1]:
                 old_role = tabs[1][tabs[1].find('_')+1:].replace(".actual", "")
                 if old_role == 'None':
@@ -289,13 +370,13 @@ def filter_roles(new_line):
     )
     return new_line
 
-def rewrite(event_coarse, output, ltf_dir, lang, trans, trans_long, trigger_dict_path):
+def rewrite(event_coarse, output, ltf_dir, stemmer, lang, trigger_dict_path, context_dict):
     ltf_util = LTF_util(ltf_dir)
 
     events_del = delete_event_list(event_coarse, ltf_util)
 
-    need_update_type = need_update_types(event_coarse, lang, trans, trans_long, ltf_util, trigger_dict_path)
-    arg_mapping = load_arg_mapping('rules/mapping_args.txt')
+    need_update_type = need_update_types(event_coarse, stemmer, lang, ltf_util, trigger_dict_path, context_dict)
+    arg_mapping = load_arg_mapping(os.path.join(CURRENT_DIR, 'rules', 'mapping_args.txt'))
     f_out = open(output, 'w')
     for line in open(event_coarse):
         if line.startswith(':Event'):
@@ -319,11 +400,11 @@ def rewrite(event_coarse, output, ltf_dir, lang, trans, trans_long, trigger_dict
             elif 'https:' in tabs[1]:
 
                 old_role = tabs[1][tabs[1].find('_')+1:].replace(".actual", "")
-                if old_role == 'Time':
-                    f_out.write('%s\ttime\t%s\t%s\t%s\n' %
-                                (event_id, tabs[2].replace(':Filler_', ':Entity_Filler_'),
-                                 tabs[3], tabs[4]))
-                    continue
+                # if old_role == 'Time':
+                #     f_out.write('%s\ttime\t%s\t%s\t%s\n' %
+                #                 (event_id, tabs[2].replace(':Filler_', ':Entity_Filler_'),
+                #                  tabs[3], tabs[4]))
+                #     continue
                 if old_role == 'None':
                     continue
                 if newtype in arg_mapping:
@@ -381,7 +462,7 @@ def load_trans(trans_file, lang):
     return trans
 
 
-def load_context_dict(context_dict_path):
+def load_context_dict(context_dict_path, stemmer, lang):
     # stemmer = SnowballStemmer("english") # dict is english
     context_dict = defaultdict(lambda : defaultdict())
     for line in open(context_dict_path):
@@ -391,11 +472,10 @@ def load_context_dict(context_dict_path):
         new_type = tabs[1]
         for context_need in tabs[2].split(','):
             context_need = context_need.strip()
-            context_need = lemma_long(context_need)
+            context_need = stem_long(context_need, stemmer, lang)
             context_dict[old_type][context_need] = new_type
     return context_dict
-context_dict_path = 'rules/context_dict.txt'
-context_dict = load_context_dict(context_dict_path)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -407,15 +487,18 @@ if __name__ == '__main__':
                         help='output event file')
     parser.add_argument('lang', type=str,
                         help='input event file')
-    parser.add_argument('trans_file', type=str, default="",
-                        help='input event file')
-    parser.add_argument('trans_file_long', type=str, default="",
-                        help='input event file')
+    # parser.add_argument('trans_file', type=str, default="",
+    #                     help='input event file')
+    # parser.add_argument('trans_file_long', type=str, default="",
+    #                     help='input event file')
 
     args = parser.parse_args()
 
-    trans = load_trans(args.trans_file, args.lang)
-    trans_long = load_trans(args.trans_file_long, args.lang)
-    trigger_dict_path = 'rules/trigger_dict_clean.txt'
-    rewrite(args.input, args.output, args.ltf_dir, args.lang, trans, trans_long, trigger_dict_path)
+    lang = args.lang
+
+    stemmer = load_stemmer(lang)
+    trigger_dict_path = os.path.join(CURRENT_DIR, 'rules', '%s_trigger_dict_clean_v2.txt' % lang)
+    context_dict_path = os.path.join(CURRENT_DIR, 'rules', '%s_context_dict.txt' % lang)
+    context_dict = load_context_dict(context_dict_path, stemmer, lang)
+    rewrite(args.input, args.output, args.ltf_dir, stemmer, lang, trigger_dict_path, context_dict)
     ## number exact equal

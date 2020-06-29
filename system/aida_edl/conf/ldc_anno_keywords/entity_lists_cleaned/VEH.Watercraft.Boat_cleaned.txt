@@ -1,0 +1,11 @@
+ferry
+trimaran
+speed boat
+speedboat
+canoe
+airboat
+skiff
+pontoon boat
+tugboat
+pontoon
+boat

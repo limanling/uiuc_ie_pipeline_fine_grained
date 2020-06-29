@@ -6,20 +6,30 @@ import requests
 import json
 import shutil
 import codecs
+import glob
 
 PWD=os.path.dirname(os.path.abspath(__file__))
 
-def edl(indir_ltf, indir_rsd, lang, outdir, edl_bio, edl_tab_nam, edl_tab_nom,
-        edl_tab_pro, fine_grain_model):
+def edl(indir_ltf, indir_rsd, lang, edl_tab_nam, edl_tab_nom,
+        edl_tab_pro, fine_grain_model, output_dir):
+
+    url = 'http://0.0.0.0:5500/tagging'
+    tab_filenames = {'nam_tab': edl_tab_nam, 'nom_tab': edl_tab_nom, 'pro_tab': edl_tab_pro}
+
     # if os.path.exists(outdir):
     #     shutil.rmtree(outdir)
     # os.makedirs(outdir, exist_ok=True)
+    try:
+        for tab_filetype in tab_filenames:
+            os.remove(tab_filenames[tab_filetype].replace('.tab', '.bio'))
+            os.remove(tab_filenames[tab_filetype])
+        hid_fileList = glob.glob(os.path.join(output_dir, '*_hid.txt'))
+        for filePath in hid_fileList:
+                os.remove(filePath)
+    except:
+        pass
 
-    # edl_tab_raw_nam = edl_tab_raw
-    # edl_tab_raw_nom = edl_tab_raw.replace('.nam.','.nom.')
-    # edl_tab_raw_pro = edl_tab_raw.replace('.nam.', '.pro.')
 
-    url = 'http://0.0.0.0:5500/tagging'
     for doc_name_ltf in os.listdir(indir_ltf):
         print('processing %s' % doc_name_ltf)
         if not doc_name_ltf.endswith('.ltf.xml'):
@@ -39,22 +49,29 @@ def edl(indir_ltf, indir_rsd, lang, outdir, edl_bio, edl_tab_nam, edl_tab_nom,
             if r.status_code != 200:
                 continue
             ans = json.loads(r.text)
-            # with codecs.open(edl_bio, 'a', encoding="utf-8") as fw:
-            #     bio_content = ans['bio']#.encode('utf-8')
-            #     fw.write(bio_content)
-            #     fw.write('\n')
-            with codecs.open(edl_tab_nam, 'a', encoding="utf-8") as fw:
-                if 'nam_tab' in ans:
-                    fw.write(ans['nam_tab'])
+            # save bio
+            for bio_filename in [edl_tab_nam, edl_tab_nom, edl_tab_pro]:
+                with codecs.open(bio_filename.replace('.tab', '.bio'), 'a', encoding="utf-8") as fw:
+                    bio_content = ans['bio']
+                    fw.write(bio_content)
                     fw.write('\n')
-            with codecs.open(edl_tab_nom, 'a', encoding="utf-8") as fw:
-                if 'nom_tab' in ans:
-                    fw.write(ans['nom_tab'])
-                    fw.write('\n')
-            with codecs.open(edl_tab_pro, 'a', encoding="utf-8") as fw:
-                if 'pro_tab' in ans:
-                    fw.write(ans['pro_tab'])
-                    fw.write('\n')
+            # save tab
+            for tab_filetype in tab_filenames:
+                with codecs.open(tab_filenames[tab_filetype], 'a', encoding="utf-8") as fw:
+                    if tab_filetype in ans:
+                        fw.write(ans[tab_filetype])
+                        fw.write('\n')
+            # save hidden vecs
+            for hid_filetype in ['en_nam_hid', 'en_nom_5type_hid',
+                                 'en_nom_wv_hid', 'en_pro_hid',
+                                 'ru_nam_5type_hid', 'ru_nam_wv_hid',
+                                 'uk_nam_5type_hid', 'uk_nam_wv_hid'
+                                 ]:
+                hid_filepath = os.path.join(output_dir, hid_filetype+'.txt')
+                with codecs.open(hid_filepath, 'a', encoding="utf-8") as fw:
+                    if hid_filetype in ans:
+                        fw.write(ans[hid_filetype])
+                        fw.write('\n')
             # for line in ans['tab'].split('\n'):
             #     tmp = line.split('\t')
             #     if len(tmp) > 3:
@@ -134,28 +151,29 @@ def edl(indir_ltf, indir_rsd, lang, outdir, edl_bio, edl_tab_nam, edl_tab_nom,
     # subprocess.call(' '.join(cmd), shell=True)
 
 if __name__ == '__main__':
-    if len(sys.argv) < 10:
-        print(sys.argv)
+    print(sys.argv)
+    if len(sys.argv) < 8:
         print('USAGE: python <ltf input dir> <rsd input dir> <lang> '
-              '<output dir> <bio output file> <tab output file (before coreference)> '
+              '<tab output file (before coreference)> '
               '<tab output file (after coreference)> <cs output file> '
-              '<fine_grain_model output file>')
+              '<fine_grain_model output file> <output_dir>')
         exit()
     indir_ltf= sys.argv[1]
     indir_rsd= sys.argv[2]
     lang= sys.argv[3]
-    outdir = sys.argv[4]
-    edl_bio = sys.argv[5]
-    edl_tab_nam = sys.argv[6]
-    edl_tab_nom = sys.argv[7]
-    edl_tab_pro = sys.argv[8]
+    # outdir = sys.argv[4]
+    # edl_bio = sys.argv[5]
+    edl_tab_nam = sys.argv[4]
+    edl_tab_nom = sys.argv[5]
+    edl_tab_pro = sys.argv[6]
     # edl_tab = sys.argv[7]
     # edl_cs_coarse = sys.argv[8]
-    fine_grain_model = sys.argv[9]
+    fine_grain_model = sys.argv[7]
+    output_dir = sys.argv[8]
     # use_nominal_corefer = False
     # if len(sys.argv) == 11:
     #     if int(sys.argv[10]) > 0:
     #         use_nominal_corefer = True
 
-    edl(indir_ltf, indir_rsd, lang, outdir, edl_bio, edl_tab_nam, edl_tab_nom,
-        edl_tab_pro, fine_grain_model)
+    edl(indir_ltf, indir_rsd, lang, edl_tab_nam, edl_tab_nom,
+        edl_tab_pro, fine_grain_model, output_dir)

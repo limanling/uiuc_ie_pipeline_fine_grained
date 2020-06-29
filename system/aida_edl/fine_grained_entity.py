@@ -13,15 +13,50 @@ from aida_utilities.finegrain_util import FineGrainedUtil
 from collections import defaultdict
 from nltk.stem import WordNetLemmatizer
 from nltk.stem.snowball import SnowballStemmer
+from pymystem3 import Mystem
+
 # from collections import Counter
 import numpy as np
-
+from flashtext import KeywordProcessor
+import xml.etree.ElementTree as ET
+import re
 
 prefix = "https://tac.nist.gov/tracks/SM-KBP/2019/ontologies/LDCOntology#"
-lemmatizer = WordNetLemmatizer()
 
-def lemma_long(string):
-    return ' '.join([lemmatizer.lemmatize(str_sub) for str_sub in string.split(' ')])
+def load_lemmer(lang):
+    if lang.startswith('en'):
+        lemmer = WordNetLemmatizer()
+        return lemmer
+    elif lang.startswith('ru'):
+        lemmer = Mystem()
+        return lemmer
+    elif lang.startswith('uk'):
+        stemmer = dict()
+        for line in open(os.path.join(CURRENT_DIR, 'conf', 'lemmatization-uk.txt')):
+            line = line.rstrip('\n')
+            tabs = line.split('\t')
+            if len(tabs) == 2:
+                stemmer[tabs[0]] = tabs[1]
+        return stemmer
+    else:
+        return None
+
+def lemma_long(trigger, lemmer, lang):
+    if lang.startswith('en'):
+        return ' '.join([lemmer.lemmatize(trigger_sub) for trigger_sub in trigger.split(' ')])
+    elif lang.startswith('ru'):
+        return ' '.join(lemmer.lemmatize(trigger))
+    elif lang.startswith('uk'):
+        toks = []
+        for trigger_sub in trigger.split(' '):
+            if trigger_sub in lemmer:
+                toks.append(lemmer[trigger_sub])
+            else:
+                toks.append(trigger_sub)
+        return ' '.join(toks)
+    else:
+        return trigger
+
 
 def stem_long(trigger, stemmer, lang):
     if lang.startswith('uk'):
@@ -32,10 +67,9 @@ def stem_long(trigger, stemmer, lang):
             else:
                 toks.append(trigger_sub)
         return ' '.join(toks)
-    elif lang.startswith('en'):
-        return ' '.join([lemmatizer.lemmatize(trigger_sub) for trigger_sub in trigger.split(' ')])
     else:
         return ' '.join([stemmer.stem(trigger_sub) for trigger_sub in trigger.split(' ')])
+
 
 def load_stemmer(lang):
     if lang.startswith('en'):
@@ -46,12 +80,14 @@ def load_stemmer(lang):
         return stemmer
     elif lang.startswith('uk'):
         stemmer = dict()
-        for line in open('/data/m1/lim22/aida/conf/lemmatization-uk.txt'):
+        for line in open(os.path.join(CURRENT_DIR, 'conf', 'lemmatization-uk.txt')):
             line = line.rstrip('\n')
             tabs = line.split('\t')
             if len(tabs) == 2:
                 stemmer[tabs[0]] = tabs[1]
-    return stemmer
+        return stemmer
+    else:
+        return None
 
 def prep_type_old(typestr):
     return typestr.split('#')[-1]
@@ -114,7 +150,7 @@ def load_geonames(geonames_mapping_file):
         geocode_aida_map[tabs[1]] = tabs[0]
     return geocode_aida_map
 
-def load_yago_modeloutput(model_output):
+def load_yago_modeloutput(model_output, lemmer):
     '''
     load fine-grained typing system output
     e.g. HC0007HXR:248-257       Washington      City108524735   0.21216438710689545
@@ -128,9 +164,12 @@ def load_yago_modeloutput(model_output):
         mention = tabs[1].lower()
         yago_type = tabs[2]
         # confidence = tabs[3]
-        if lemma_long(mention) == 'president':
+        if lemma_long(mention, lemmer, lang) == 'president' \
+                or lemma_long(mention, lemmer, lang) == 'президент':
             offset_yago_map[offset] = 'President110467179'
-        elif lemma_long(mention) == 'government':
+        elif lemma_long(mention, lemmer, lang) == 'government' \
+                or lemma_long(mention, lemmer, lang) == 'правительство' \
+                or lemma_long(mention, lemmer, lang) == 'уряду':
             offset_yago_map[offset] = 'Government108050678'
         elif (mention == 'woman' or mention == 'women' or mention == 'witnesses' \
                 or mention == 'son' or mention == 'relatives' or mention == 'brothers' \
@@ -171,21 +210,21 @@ def update_type(entity_id, entity_offsets, entity_mentions, entity_geonames,
 
     mention_size = len(entity_mentions)
 
-    # # check ground truth type:
+    # check ground truth type:
     new_types_by_gt = defaultdict(int)
-    # for offset in entity_offsets:
-    #     if offset in groundtruth_offset_type:
-    #         aida_type = groundtruth_offset_type[offset]
-    #         if valid_parent(old_type, aida_type, backuptype_mapping):
-    #             print(offset, aida_type)
-    #             new_types_by_gt[aida_type] += 1
-    # # if len(new_types_by_gt) > 0:
-    # #     new_types_by_gt_sorted = sorted(new_types_by_gt.items(), key=lambda x: (len(x[0].split('.')), x[1]),
-    # #                                        reverse=True)
-    # #     print('From Ananya: ', new_types_by_gt_sorted)
-    # #     # print('\n=====================================\n')
-    # #     # return new_types_by_gt_sorted[0][0]
-    # #     all_source_voter[new_types_by_gt_sorted[0][0]] += 1
+    for offset in entity_offsets:
+        if offset in groundtruth_offset_type:
+            aida_type = groundtruth_offset_type[offset]
+            if valid_parent(old_type, aida_type, backuptype_mapping):
+                # print(offset, aida_type)
+                new_types_by_gt[aida_type] += 1
+    # if len(new_types_by_gt) > 0:
+    #     new_types_by_gt_sorted = sorted(new_types_by_gt.items(), key=lambda x: (len(x[0].split('.')), x[1]),
+    #                                        reverse=True)
+    #     print('From Ananya: ', new_types_by_gt_sorted)
+    #     # print('\n=====================================\n')
+    #     # return new_types_by_gt_sorted[0][0]
+    #     all_source_voter[new_types_by_gt_sorted[0][0]] += 1
     # (4) keywords
     # new_types_by_keyword = defaultdict(int)
     for ent_mention in entity_mentions:
@@ -319,7 +358,7 @@ def update_type(entity_id, entity_offsets, entity_mentions, entity_geonames,
 
 def load_ground_truth_tab(ground_truth_tab_dir):
     offset_type = dict()
-    print(ground_truth_tab_dir)
+    # print(ground_truth_tab_dir)
     for ground_truth_tab in os.listdir(ground_truth_tab_dir):
         for line in open(os.path.join(ground_truth_tab_dir, ground_truth_tab)):
             line = line.rstrip('\n')
@@ -408,6 +447,91 @@ def load_geoname_features(geonames_features):
     return geonames_features
 
 
+def get_all_ltf_offsets(ltf_path):
+    offset_dict = dict()
+    for file in os.listdir(ltf_path):
+        if '._' in file:
+            continue
+        file = file.replace('.ltf.xml', '')
+        offset_dict[file] = dict()
+        offset_dict[file]['starts'] = list()
+        offset_dict[file]['ends'] = list()
+        tree = ET.parse(os.path.join(ltf_path, file + '.ltf.xml'))
+        root = tree.getroot()
+        for doc in root:
+            for text in doc:
+                for seg in text:
+                    for token in seg:
+                        if token.tag == "TOKEN":
+                            offset_dict[file]['starts'].append(token.attrib["start_char"])
+                            offset_dict[file]['ends'].append(token.attrib["end_char"])
+    return offset_dict
+
+
+def extract(type_files, rsd_path, ltf_path, outfile, keyword_source, lang, offset_dict):
+    entries = []
+    count = -1
+
+    for f in type_files:  # gpe_ru.txt, fac_ru.txt, etc.. which contain the nominal keywords in lang
+        if '._' in f:
+            continue
+        enttype = os.path.basename(f).replace('_' + keyword_source + '.txt', '')
+
+        keyword_processor = KeywordProcessor(case_sensitive=True)
+
+        # for each of the keyword files do....
+
+        with open(f, 'r', encoding='utf-8') as keywordsfile:
+            try:
+                keywordsfull = keywordsfile.read().strip()
+            except UnicodeDecodeError:
+                # print(f)
+                continue
+            keywords = keywordsfull.split('\n')
+            for k in keywords:
+                if k == 'the':
+                    continue
+                k = re.sub(r'^the\s', '', k)
+                k = re.sub(r'^The\s', '', k)
+                keyword_processor.add_keyword(k)
+
+            for fil in os.listdir(rsd_path):
+
+                file = os.path.join(rsd_path, fil)
+                if os.path.isfile(file) and '._' not in file:  # do not want mac os hidden files..
+                    fname = fil.strip().split('.')[0]
+                    # the actual extraction happens here:
+                    with open(file, 'r', encoding='utf-8') as rsd:
+                        text = rsd.read()
+                        keywords_found = keyword_processor.extract_keywords(text, span_info=True)
+                        # realign with ltf using math, and write output!
+                        for keyword in keywords_found:
+                            count = count + 1
+                            k1 = keyword[1]
+                            k2 = keyword[2]
+                            st = k1
+                            en = k2 - 1
+                            if str(st) not in offset_dict[fname.replace('.ltf.xml', '')]['starts']:
+                                #                                print('start',fname, st, text[k1-2:k2+2].strip())
+                                #                                print(offset_dict[fname.replace('.ltf.xml','')])
+                                #                                sys.exit(1)
+                                continue
+                            if str(en) not in offset_dict[fname.replace('.ltf.xml', '')]['ends']:
+                                #                                print('end', fname, en, keyword)
+                                #                                sys.exit(1)
+                                continue
+                            entries.append('ELISA_IE' + '\t' + \
+                                           lang.upper() + '_MENTION_' + str(count).zfill(7) + '\t' + \
+                                           text[k1:k2].strip() + '\t' + \
+                                           fname + ':' + str(st) + '-' + str(en) + '\t' + \
+                                           'NIL' + '\t' + \
+                                           enttype + '\t' + \
+                                           'NOM' + '\t' + \
+                                           '1.000')
+    with open(outfile, 'w', encoding='utf-8') as o:
+        o.write('\n'.join(entries))
+
+
 if __name__ == '__main__':
     # lang = 'en'
     # entity_finegrain = '/nas/data/m1/panx2/tmp/aida/eval/2019/%s/0322/%s.linking.corf.fine.json' % (lang, lang)
@@ -444,6 +568,10 @@ if __name__ == '__main__':
                         help='hard_parent_type_constraint')
     parser.add_argument('--ground_truth_tab_dir', type=str,
                         help='ground_truth_tab_dir')
+    parser.add_argument('--ltf_dir', type=str, default="",
+                        help='ltf_dir')
+    parser.add_argument('--rsd_dir', type=str, default="",
+                        help='rsd_dir')
 
     args = parser.parse_args()
 
@@ -459,8 +587,24 @@ if __name__ == '__main__':
     # visualpath = args.visualpath
     hard_parent_type_constraint = args.hard_parent_constraint
     ground_truth_tab_dir = args.ground_truth_tab_dir
+    if not os.path.exists(ground_truth_tab_dir):
+        os.makedirs(ground_truth_tab_dir, exist_ok=True)
 
+    # generate ground truth file
+    offset_dict = get_all_ltf_offsets(args.ltf_dir)
+    for keyword_source in ['cleaned', 'ace', 'wiki']:
+        filelist = list()
+        anno_keywords_dir = os.path.join(CURRENT_DIR, 'conf', 'ldc_anno_keywords')
+        for f in os.listdir(anno_keywords_dir):
+            for f_2 in os.listdir(os.path.join(anno_keywords_dir, f)):
+                filelist.append(os.path.join(anno_keywords_dir, f, f_2))
+        extract(filelist, args.rsd_dir, args.ltf_dir,
+                os.path.join(ground_truth_tab_dir, 'entities_ldc_%s.txt' % keyword_source),
+                keyword_source, args.lang, offset_dict)
+
+    # fine-grained typing
     stemmer = load_stemmer(lang)
+    lemmer = load_lemmer(lang)
     mapping_file = os.path.join(CURRENT_DIR, 'conf', 'aida_yago_mapping_weighted.txt')
     mapping_backup_file = os.path.join(CURRENT_DIR, 'conf', 'rename_type.txt')
     geonames_mapping_file = os.path.join(CURRENT_DIR, 'conf', 'geonames_mapping.txt')
@@ -471,7 +615,7 @@ if __name__ == '__main__':
 
     # print('fine-grained types')
     entity_yagotypes = finetype_util.entity_finegrain_by_json(entity_finegrain, entity_freebase_tab, entity_coarse, filler_coarse)
-    offset_yago_map = load_yago_modeloutput(model_output)
+    offset_yago_map = load_yago_modeloutput(model_output, lemmer)
     # print('entity_yagotypes: ', len(entity_yagotypes))
     yago_aida_mapping = load_type_mapping_weight(mapping_file)
     backuptype_mapping = load_type_mapping(mapping_backup_file)
