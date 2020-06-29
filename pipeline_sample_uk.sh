@@ -231,7 +231,7 @@ echo "** Event coreference **"
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i --network="host" limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     ./system/aida_event_coreference/gail_event_coreference_test_${lang}.py \
-    -i ${event_fine} -o ${event_corefer} -r ${rsd_source}
+    -i ${event_fine_all_clean} -o ${event_corefer} -r ${rsd_source}
 ### update `time` format
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \

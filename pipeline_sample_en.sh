@@ -306,9 +306,6 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     --fine_grained_entity_type_path ${edl_json_fine} \
     --freebase_link_mapping ${freebase_private_data} \
     --lorelei_link_mapping ${lorelei_link_private_data}
-#    --translation_path $
-#    parser.add_argument('--translation_path', type=str, default='',
-#                        help='%s.linking.freebase.translations.json')
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_rename_turtle.py \

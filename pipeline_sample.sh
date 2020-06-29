@@ -41,6 +41,8 @@ do
     done
 done
 
+wait
+
 #####################################################################
 # merging results
 #####################################################################
@@ -50,3 +52,7 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     --root_folder ${data_root_result} \
     --final_dir_name 'final' \
     --output_folder ${output_folder}
+
+wait
+
+exit 0
