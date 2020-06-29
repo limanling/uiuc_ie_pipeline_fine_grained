@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+
+#./pipeline_sample_ru.sh data/testdata_all/result/ru data/testdata_all/parent_children.sorted.tab ru
+
+
 ######################################################
 # Arguments
 ######################################################
@@ -43,7 +47,7 @@ edl_tab_freebase=${edl_output_dir}/${lang}.linking.freebase.tab
 freebase_private_data=${edl_output_dir}/freebase_private_data.json
 lorelei_link_private_data=${edl_output_dir}/lorelei_private_data.json
 entity_lorelei_multiple=${edl_output_dir}/${lang}.linking.tab.candidates.json
-translation_freebase=${edl_output_dir}/${lang}linking.freebase.translations.json
+translation_freebase=${edl_output_dir}/${lang}.linking.freebase.translations.json
 edl_cs_fine_all=${edl_output_dir}/merged_all_fine.cs
 edl_cs_fine_protester=${edl_output_dir}/merged_all_fine_protester.cs
 edl_cs_info=${edl_output_dir}/merged_all_fine_info.cs
@@ -102,24 +106,15 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i --network="host" limanling/uiuc_ie_m1
     ${entity_fine_model} ${edl_output_dir}
 ## linking
 echo "** Linking entities to KB **"
-link_dir=system/aida_edl/edl_data/test
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    mkdir -p ${link_dir}/input
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    cp -r ${edl_output_dir}/* ${link_dir}/input/
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    ls ${link_dir}/input
-docker run -v ${PWD}/system/aida_edl/edl_data:/data --link db:mongo panx27/edl \
+docker run -v ${PWD}/system/aida_edl/edl_data:/data \
+    -v ${PWD}/${edl_output_dir}:/testdata_${lang}${source} \
+    --link db:mongo panx27/edl \
     python ./projs/docker_aida19/aida19.py \
     ${lang} \
-    /data/test/input/${edl_tab_nam_filename} \
-    /data/test/input/${edl_tab_nom_filename} \
-    /data/test/input/${edl_tab_pro_filename} \
-    /data/test/output
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    cp ${link_dir}/output/* ${edl_output_dir}/
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    rm -rf ${link_dir}
+    /testdata_${lang}${source}/${edl_tab_nam_filename} \
+    /testdata_${lang}${source}/${edl_tab_nom_filename} \
+    /testdata_${lang}${source}/${edl_tab_pro_filename} \
+    /testdata_${lang}${source}
 ## nominal coreference for ru and uk
 docker run --rm -v `pwd`/data:/scr/data -w /scr -i dylandilu/chuck_coreference \
     python appos_extract.py \
@@ -281,7 +276,7 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_converter_params.py \
     ${data_root}/converter.param ${merged_cs_link} ${ttl_initial}
-docker run --rm -v ${PWD}:/aida-tools-master/sample_params/m18-eval -w /aida-tools-master -i -t limanling/aida-tools \
+docker run --rm -v ${PWD}:/aida-tools-master/sample_params/m18-eval -w /aida-tools-master -i limanling/aida-tools \
     /aida-tools-master/aida-eval-tools/target/appassembler/bin/coldstart2AidaInterchange  \
     sample_params/m18-eval/${data_root}/converter.param
 # Append private information

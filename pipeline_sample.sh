@@ -47,4 +47,6 @@ done
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
-    ${data_root_result} 'final' ${output_folder}
+    --root_folder ${data_root_result} \
+    --final_dir_name 'final' \
+    --output_folder ${output_folder}

@@ -100,26 +100,15 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i --network="host" limanling/uiuc_ie_m1
     ${entity_fine_model} ${edl_output_dir}
 ## linking
 echo "** Linking entities to KB **"
-link_dir=system/aida_edl/edl_data/test
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    mkdir -p ${link_dir}/input
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    cp -r ${edl_output_dir}/* ${link_dir}/input/
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    ls ${link_dir}/input
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    echo 'finished'
-docker run -v ${PWD}/system/aida_edl/edl_data:/data --link db:mongo panx27/edl \
+docker run -v ${PWD}/system/aida_edl/edl_data:/data \
+    -v ${PWD}/${edl_output_dir}:/testdata_${lang}${source} \
+    --link db:mongo panx27/edl \
     python ./projs/docker_aida19/aida19.py \
     ${lang} \
-    /data/test/input/${edl_tab_nam_filename} \
-    /data/test/input/${edl_tab_nom_filename} \
-    /data/test/input/${edl_tab_pro_filename} \
-    /data/test/output
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    cp ${link_dir}/output/* ${edl_output_dir}/
-docker run -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-    rm -rf ${link_dir}
+    /testdata_${lang}${source}/${edl_tab_nam_filename} \
+    /testdata_${lang}${source}/${edl_tab_nom_filename} \
+    /testdata_${lang}${source}/${edl_tab_pro_filename} \
+    /testdata_${lang}${source}
 ## nominal coreference
 echo "** Starting nominal coreference **"
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i --network="host" limanling/uiuc_ie_m18 \
@@ -172,7 +161,7 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i --network="host" limanling/uiuc_ie_m1
 # Event (Coarse)
 echo "** Extracting events for En **"
 # method 1
-docker run -it --rm -v `pwd`/data:/data -i lifuhuang/aida_event_lf \
+docker run -i --rm -v `pwd`/data:/data -i lifuhuang/aida_event_lf \
     sh /aida_run_all_docker.sh \
     /${event_result_dir} /${edl_tab_final} /${ltf_source} /${edl_cs_coarse}
 # Add time argument
@@ -304,7 +293,7 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_converter_params.py \
     ${data_root}/converter.param ${merged_cs_link} ${ttl_initial}
-docker run --rm -v ${PWD}:/aida-tools-master/sample_params/m18-eval -w /aida-tools-master -i -t limanling/aida-tools \
+docker run --rm -v ${PWD}:/aida-tools-master/sample_params/m18-eval -w /aida-tools-master -i limanling/aida-tools \
     /aida-tools-master/aida-eval-tools/target/appassembler/bin/coldstart2AidaInterchange  \
     sample_params/m18-eval/${data_root}/converter.param
 # Append private information

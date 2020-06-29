@@ -17,12 +17,12 @@ en_asr_ltf=${data_root}/source/en_asr
 en_asr_mapping_file_path=${data_root}/source/en_asr_mapping
 
 #en_ocr_csv_file=${data_root}/rawdata/ocr.keyframes.ldc2019e42/en.cleaned.csv
-en_ocr_rsd=${data_root}/source/en_ocr_img_rsd
-en_ocr_ltf=${data_root}/source/en_ocr_img
+en_ocr_rsd=${data_root}/source/en_ocr_rsd
+en_ocr_ltf=${data_root}/source/en_ocr
 
 #ru_ocr_csv_file=${data_root}/rawdata/ocr.keyframes.ldc2019e42/ru.cleaned.csv
-ru_ocr_rsd=${data_root}/source/ru_ocr_img_rsd
-ru_ocr_ltf=${data_root}/source/ru_ocr_img
+ru_ocr_rsd=${data_root}/source/ru_ocr_rsd
+ru_ocr_ltf=${data_root}/source/ru_ocr
 
 #en_ocr_csv_file_video=${data_root}/rawdata/ocr.videos.ldc2019e42/en.cleaned.csv
 #en_ocr_rsd_video=${data_root}/source/en_ocr_video_rsd
