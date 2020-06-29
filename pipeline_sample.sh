@@ -45,4 +45,10 @@ done
 #####################################################################
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
-    postprocessing_combine_turtle_from_all_sources.py
+    /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
+#    parser.add_argument('--root_folder', type=str,
+#                        help='root_folder')
+#    parser.add_argument('--final_dir_name', type=str,
+#                        help='final_dir_name')
+#    parser.add_argument('--output_folder', type=str,
+#                        help='output directory after merging')

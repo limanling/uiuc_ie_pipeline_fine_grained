@@ -329,7 +329,7 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     --parent_child_tab_path ${parent_child_tab_path} \
     --child_column_idx 2 \
     --parent_column_idx 7
-#
-#
-#echo "Final result in Cold Start Format is in "${merged_cs_link}
-#
+
+
+echo "Final result in Cold Start Format is in "${merged_cs_link}
+echo "Final result in RDF Format is in "${ttl_final}

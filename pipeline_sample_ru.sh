@@ -43,6 +43,7 @@ edl_tab_freebase=${edl_output_dir}/${lang}.linking.freebase.tab
 freebase_private_data=${edl_output_dir}/freebase_private_data.json
 lorelei_link_private_data=${edl_output_dir}/lorelei_private_data.json
 entity_lorelei_multiple=${edl_output_dir}/${lang}.linking.tab.candidates.json
+translation_freebase=${edl_output_dir}/${lang}linking.freebase.translations.json
 edl_cs_fine_all=${edl_output_dir}/merged_all_fine.cs
 edl_cs_fine_protester=${edl_output_dir}/merged_all_fine_protester.cs
 edl_cs_info=${edl_output_dir}/merged_all_fine_info.cs
@@ -82,7 +83,9 @@ framenet_path=${event_result_dir}/'framenet_res'
 # final output
 merged_cs=${data_root}/${lang}${source}_full.cs
 merged_cs_link=${data_root}/${lang}${source}_full_link.cs
-
+ttl_initial=${data_root}/initial
+ttl_initial_private=${data_root}/initial_private_data
+ttl_final=${data_root}/final
 
 ######################################################
 # Running scripts
@@ -269,5 +272,39 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     ${entity_lorelei_multiple} ${merged_cs} ${merged_cs_link} ${lorelei_link_private_data}
 
 
-echo "Final result in Cold Start Format is in "${merged_cs_link}
+######################################################
+# Format converter
+######################################################
 
+# AIF converter
+docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    /postprocessing/postprocessing_converter_params.py \
+    ${data_root}/converter.param ${merged_cs_link} ${ttl_initial}
+docker run --rm -v ${PWD}:/aida-tools-master/sample_params/m18-eval -w /aida-tools-master -i -t limanling/aida-tools \
+    /aida-tools-master/aida-eval-tools/target/appassembler/bin/coldstart2AidaInterchange  \
+    sample_params/m18-eval/${data_root}/converter.param
+# Append private information
+docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    /postprocessing/postprocessing_append_private_data.py \
+    --language_id ${lang}${source} \
+    --initial_folder ${ttl_initial} \
+    --output_folder ${ttl_initial_private} \
+    --fine_grained_entity_type_path ${edl_json_fine} \
+    --freebase_link_mapping ${freebase_private_data} \
+    --lorelei_link_mapping ${lorelei_link_private_data} \
+    --translation_path ${translation_freebase}
+docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    /postprocessing/postprocessing_rename_turtle.py \
+    --language_id ${lang}${source} \
+    --input_private_folder ${ttl_initial_private} \
+    --output_folder ${ttl_final} \
+    --parent_child_tab_path ${parent_child_tab_path} \
+    --child_column_idx 2 \
+    --parent_column_idx 7
+
+
+echo "Final result in Cold Start Format is in "${merged_cs_link}
+echo "Final result in RDF Format is in "${ttl_final}
