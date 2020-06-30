@@ -18,12 +18,6 @@ For example,
 ```bash
 sh pipeline_sample.sh data/testdata_all data/testdata_all/parent_children.sorted.tab data/asr.english data/video.ocr/en.cleaned.csv data/video.ocr/ru.cleaned.csv
 ```
-<!--
-For each raw document `doc_id.ltf.xml` and `doc_id.rsd.txt`, there will be a RDF format KB `doc_id.ttl` generated. If the final *.ttl files needs to be renamed, please provide the mapping file between the raw_id and rename_id as a second parameter, and the raw_id_column as the third parameter, rename_id_column as the fourth parameter. For example, in AIDA project, each file can be mapped a parent file. The final *.ttl files should be renamed to parent_file_id, whereas the raw document is named by child_file_id. 
-```bash
-sh pipeline_sample.sh ${data_root} ${parent_child_mapping_tab} ${child_column} ${parent_column}
-```
--->
 
 For OneIE version, please use the script `pipeline_sample_oneie.sh` 
 ```bash
