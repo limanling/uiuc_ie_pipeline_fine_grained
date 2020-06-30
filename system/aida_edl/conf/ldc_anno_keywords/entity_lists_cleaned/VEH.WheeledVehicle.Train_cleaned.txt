@@ -1,7 +1,0 @@
-locomotive
-tram
-monorail
-high-speed train
-trolley
-mine train
-freight train

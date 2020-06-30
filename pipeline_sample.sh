@@ -18,6 +18,13 @@ data_root_ltf=${data_root}/ltf
 data_root_rsd=${data_root}/rsd
 data_root_result=${data_root}/result
 output_folder=${data_root_result}/kb/ttl
+log_dir=${data_root}/log
+
+#####################################################################
+# set up services, please reserve the the following ports and ensure that no other programs/services are occupying these ports:
+# `27017`, `2468`, `5500`, `5000`, `5234`, `9000`, `6001`, `6101` and `6201`.
+#####################################################################
+sh set_up.sh > ${log_dir}/log_set_up.txt
 
 #####################################################################
 # preprocessing, including language detection, ASR/OCR preprcessing
@@ -33,13 +40,16 @@ sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr
 #####################################################################
 for lang in 'en' 'ru' 'uk'
 do
-    for datasource in '' '_asr' '_ocr'
+    for datasource in '' #'_asr' '_ocr'
     do
         (
             data_root_lang=${data_root_result}/${lang}${datasource}
             if [ -d "${data_root_lang}/ltf" ]
             then
-                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted}
+                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} > ${log_dir}/log_preprocess_${lang}${source}.txt
+
+                wait
+
                 sh pipeline_sample_${lang}.sh ${data_root_lang} ${parent_child_tab_path} ${lang} ${datasource}
             else
                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
@@ -61,6 +71,18 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     --output_folder ${output_folder}
 echo "Final output of English, Russian, Ukrainian in "${output_folder}
 
-wait
+
+#####################################################################
+# docker stop
+#####################################################################
+#docker stop $(docker ps -q --filter ancestor=<image-name> )
+#docker stop $(docker container ls -q --filter name=db*)
+docker stop db
+docker stop nominal_coreference
+docker stop aida_entity
+docker stop event_coreference_en
+docker stop event_coreference_ru
+docker stop event_coreference_uk
+
 
 exit 0

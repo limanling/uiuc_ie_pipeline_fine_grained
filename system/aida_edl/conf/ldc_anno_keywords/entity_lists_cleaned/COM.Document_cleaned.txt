@@ -1,5 +1,0 @@
-papers
-docs
-doc
-document
-documents

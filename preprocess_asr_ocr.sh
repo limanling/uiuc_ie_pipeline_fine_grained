@@ -39,7 +39,7 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     mkdir -p ${en_asr_ltf}
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
-    ./system/aida_utilities/rsd2ltf.py ${en_asr_rsd} ${en_asr_ltf} \
+    /aida_utilities/rsd2ltf.py ${en_asr_rsd} ${en_asr_ltf} \
     --seg_option nltk+linebreak --tok_option space --extension .rsd.txt
 # asr sentence mapping
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
@@ -54,7 +54,7 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     mkdir -p ${en_ocr_ltf}
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
-    ./system/aida_utilities/rsd2ltf.py ${en_ocr_rsd} ${en_ocr_ltf} \
+    /aida_utilities/rsd2ltf.py ${en_ocr_rsd} ${en_ocr_ltf} \
     --seg_option nltk+linebreak --tok_option unitok --extension .rsd.txt
 # for russian ocr
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
@@ -64,6 +64,6 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     mkdir -p ${ru_ocr_ltf}
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
-    ./system/aida_utilities/rsd2ltf.py ${ru_ocr_rsd} ${ru_ocr_ltf} \
+    /aida_utilities/rsd2ltf.py ${ru_ocr_rsd} ${ru_ocr_ltf} \
     --seg_option nltk+linebreak --tok_option unitok --extension .rsd.txt
 

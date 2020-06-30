@@ -1,7 +1,0 @@
-units
-самообороной Майдана
-centers
-chains
-team
-institute
-institutes
