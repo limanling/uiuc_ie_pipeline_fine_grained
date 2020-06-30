@@ -12,11 +12,11 @@ Docker (Please do not set up UIUC IE Pipeline in a NAS, as the EDL needs MongoDB
 	* If you have LTF files, please use the AIDA ltf2rsd tool (`LDC2018E62_AIDA_Month_9_Pilot_Eval_Corpus_V1.0/tools/ltf2txt/ltf2rsd.perl`) to generate the RSD files. 
 * Edit the `pipeline_sample.sh` for your run, including `data_root` containing a subfolder `ltf` with your input LTF files and a subfolder `rsd` with your input RSD files. Then run the shell file, 
 ```bash
-sh pipeline_sample.sh ${data_root} ${parent_child_tab}
+sh pipeline_sample.sh ${data_root} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path}
 ```
 For example, 
 ```bash
-sh pipeline_sample.sh data/testdata_all data/testdata_all/parent_children.sorted.tab
+sh pipeline_sample.sh data/testdata_all data/testdata_all/parent_children.sorted.tab data/asr.english data/video.ocr/en.cleaned.csv data/video.ocr/ru.cleaned.csv
 ```
 <!--
 For each raw document `doc_id.ltf.xml` and `doc_id.rsd.txt`, there will be a RDF format KB `doc_id.ttl` generated. If the final *.ttl files needs to be renamed, please provide the mapping file between the raw_id and rename_id as a second parameter, and the raw_id_column as the third parameter, rename_id_column as the fourth parameter. For example, in AIDA project, each file can be mapped a parent file. The final *.ttl files should be renamed to parent_file_id, whereas the raw document is named by child_file_id. 
@@ -27,9 +27,9 @@ sh pipeline_sample.sh ${data_root} ${parent_child_mapping_tab} ${child_column} $
 
 For OneIE version, please use the script `pipeline_sample_oneie.sh` 
 ```bash
-sh pipeline_sample_oneie.sh ${data_root} ${parent_child_tab}
+sh pipeline_sample_oneie.sh ${data_root} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path}
 ```
 For example, 
 ```bash
-sh pipeline_sample_oneie.sh data/testdata_all data/testdata_all/parent_children.sorted.tab
+sh pipeline_sample_oneie.sh data/testdata_all data/testdata_all/parent_children.sorted.tab data/asr.english data/video.ocr/en.cleaned.csv data/video.ocr/ru.cleaned.csv
 ```

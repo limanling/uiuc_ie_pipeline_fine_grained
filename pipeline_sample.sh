@@ -80,12 +80,13 @@ sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr
 #####################################################################
 #docker stop $(docker ps -q --filter ancestor=<image-name> )
 #docker stop $(docker container ls -q --filter name=db*)
+echo "Stop dockers..."
 docker stop db
 docker stop nominal_coreference
 docker stop aida_entity
 docker stop event_coreference_en
 docker stop event_coreference_ru
 docker stop event_coreference_uk
-
+docker ps
 
 exit 0
