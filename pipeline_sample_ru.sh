@@ -162,10 +162,10 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i --network="host" limanling/uiuc_ie_m1
 
 
 # Event (Coarse)
-echo "** Extracting events for Ru **"
+echo "** Extracting events for "${lang}" **"
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
    /opt/conda/envs/ru_event/bin/python \
-   /ru_event/ru_event/ru_event_backend.py \
+   /ru_event/${lang}_event/${lang}_event_backend.py \
    --ltf_folder_path ${ltf_source} \
    --input_edl_bio_file_path ${edl_tab_nam_bio} \
    --input_rsd_folder_path ${rsd_source} \

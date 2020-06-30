@@ -8,10 +8,10 @@ import xml.etree.ElementTree as ET
 import codecs
 
 # dirty import from current dir
-script_dirname = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(script_dirname)
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(os.path.join(CURRENT_DIR))
 # print(script_dirname)
-from .tokenizer import Tokenizer
+from tokenizer import Tokenizer
 
 
 def rsd2ltf(rsd_str, doc_id,
