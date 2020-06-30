@@ -7,18 +7,19 @@
 ######################################################
 # input root path
 data_root=$1
-parent_child_tab_path=$2
-asr_en_path=$3
-ocr_en_path=$4
-ocr_ru_path=$5
+output_dir=$2
+parent_child_tab_path=$3
+asr_en_path=$4
+ocr_en_path=$5
+ocr_ru_path=$6
 sorted=1
 
 # data folder that specified with language
 data_root_ltf=${data_root}/ltf
 data_root_rsd=${data_root}/rsd
-data_root_result=${data_root}/result
-output_folder=${data_root_result}/kb/ttl
-log_dir=${data_root}/log
+data_root_result=${output_dir}
+output_ttl=${data_root_result}/kb/ttl
+log_dir=${output_dir}/log
 
 #####################################################################
 # set up services, please reserve the the following ports and ensure that no other programs/services are occupying these ports:
@@ -71,8 +72,8 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
     --root_folder ${data_root_result} \
     --final_dir_name 'final' \
-    --output_folder ${output_folder}
-echo "Final output of English, Russian, Ukrainian in "${output_folder}
+    --output_folder ${output_ttl}
+echo "Final output of English, Russian, Ukrainian in "${output_ttl}
 
 
 #####################################################################
