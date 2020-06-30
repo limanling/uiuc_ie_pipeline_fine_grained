@@ -26,7 +26,8 @@ log_dir=${output_dir}/log
 # `27017`, `2468`, `5500`, `5000`, `5234`, `9000`, `6001`, `6101` and `6201`.
 #####################################################################
 mkdir -p ${log_dir}
-sh set_up.sh > ${log_dir}/log_set_up.txt
+#sh set_up.sh > ${log_dir}/log_set_up.txt
+sh set_up.sh
 echo "set_up successfully"
 docker ps
 
