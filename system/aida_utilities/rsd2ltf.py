@@ -24,9 +24,9 @@ def rsd2ltf(rsd_str, doc_id,
         # running segmentation and tokenization, then re-segment the tokenized
         # sentences (use space to concatenate tokens. this solves segmentation
         # problem, e.g. How are you?I'm fine.).
-        print('=> running segmentation...')
+        # print('=> running segmentation...')
         sents = tokenizer.run_segmenter(rsd_str)
-        print('=> running tokenization...')
+        # print('=> running tokenization...')
         raw_tokens = tokenizer.run_tokenizer(sents)
 
         # re-segment tokenized sentence
@@ -80,13 +80,13 @@ def rsd2ltf(rsd_str, doc_id,
 
     else:
         # running segmentation and tokenization
-        print('=> running segmentation...')
+        # print('=> running segmentation...')
         sents = tokenizer.run_segmenter(rsd_str)
-        print('=> running tokenization...')
+        # print('=> running tokenization...')
         tokens = tokenizer.run_tokenizer(sents)
 
     # generate offset for sentences and tokens
-    print('=> generating offset...')
+    # print('=> generating offset...')
     indexer = 0
     sent_offset = []
     for i, s in enumerate(sents):

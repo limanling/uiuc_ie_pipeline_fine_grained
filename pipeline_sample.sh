@@ -28,38 +28,39 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
 sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path}
 
 
-######################################################################
-## extraction, including entity, relation, event
-######################################################################
-#for lang in 'en' 'ru' 'uk'
-#do
-#    for datasource in '' '_asr' '_ocr'
-#    do
-#        (
-#            data_root_lang=${data_root_result}/${lang}${datasource}
-#            if [ -d "${data_root_lang}/ltf" ]
-#            then
-#                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted}
-#                sh pipeline_sample_${lang}.sh ${data_root_lang} ${parent_child_tab_path} ${lang} ${datasource}
-#            else
-#                echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
-#            fi
-#        )&
-#    done
-#done
-#
-#wait
-#
-######################################################################
-## merging results
-######################################################################
-#docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
-#    /opt/conda/envs/py36/bin/python \
-#    /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
-#    --root_folder ${data_root_result} \
-#    --final_dir_name 'final' \
-#    --output_folder ${output_folder}
-#
-#wait
-#
-#exit 0
+#####################################################################
+# extraction, including entity, relation, event
+#####################################################################
+for lang in 'en' 'ru' 'uk'
+do
+    for datasource in '' '_asr' '_ocr'
+    do
+        (
+            data_root_lang=${data_root_result}/${lang}${datasource}
+            if [ -d "${data_root_lang}/ltf" ]
+            then
+                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted}
+                sh pipeline_sample_${lang}.sh ${data_root_lang} ${parent_child_tab_path} ${lang} ${datasource}
+            else
+                echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
+            fi
+        )&
+    done
+done
+
+wait
+
+#####################################################################
+# merging results
+#####################################################################
+docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
+    --root_folder ${data_root_result} \
+    --final_dir_name 'final' \
+    --output_folder ${output_folder}
+echo "Final output of English, Russian, Ukrainian in "${output_folder}
+
+wait
+
+exit 0

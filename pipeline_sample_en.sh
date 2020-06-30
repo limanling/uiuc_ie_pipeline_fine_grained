@@ -250,7 +250,11 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     ./system/aida_event/fine_grained/rewrite_args.py \
-    ${event_fine_all} ${ltf_source} ${event_fine_all_clean} ${lang}
+    ${event_fine_all} ${ltf_source} ${event_fine_all_clean}_tmp ${lang}
+docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    ./system/aida_event/fine_grained/rewrite_args.py \
+    ${event_fine_all_clean}_tmp ${ltf_source} ${event_fine_all_clean} ${lang}
 echo "Fix time and format"
 ## Event coreference
 echo "** Event coreference **"
@@ -288,6 +292,10 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     ./system/aida_utilities/postprocessing_link_confidence.py \
     ${entity_lorelei_multiple} ${merged_cs} ${merged_cs_link} ${lorelei_link_private_data}
 
+
+######################################################
+# Format converter
+######################################################
 # AIF converter
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \

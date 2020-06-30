@@ -229,7 +229,11 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     ./system/aida_event/fine_grained/rewrite_args.py \
-    ${event_fine} ${ltf_source} ${event_fine_all_clean} ${lang}
+    ${event_fine} ${ltf_source} ${event_fine_all_clean}_tmp ${lang}
+docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    ./system/aida_event/fine_grained/rewrite_args.py \
+    ${event_fine_all_clean}_tmp ${ltf_source} ${event_fine_all_clean} ${lang}
 ## Event coreference
 echo "** Event coreference **"
 docker run --rm -v `pwd`:`pwd` -w `pwd` -i --network="host" limanling/uiuc_ie_m18 \
