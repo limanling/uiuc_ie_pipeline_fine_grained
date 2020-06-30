@@ -30,6 +30,7 @@ sh set_up.sh > ${log_dir}/log_set_up.txt
 echo "set_up successfully"
 docker ps
 
+
 #####################################################################
 # preprocessing, including language detection, ASR/OCR preprcessing
 #####################################################################
@@ -42,7 +43,7 @@ sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr
 #####################################################################
 # extraction, including entity, relation, event
 #####################################################################
-for lang in 'en' 'ru' 'uk'
+for lang in 'en' #'ru' 'uk'
 do
     for datasource in '' #'_asr' '_ocr'
     do
@@ -63,6 +64,7 @@ do
 done
 
 wait
+
 
 #####################################################################
 # merging results
