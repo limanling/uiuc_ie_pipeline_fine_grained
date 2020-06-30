@@ -51,7 +51,7 @@ do
             data_root_lang=${data_root_result}/${lang}${datasource}
             if [ -d "${data_root_lang}/ltf" ]
             then
-                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} > ${log_dir}/log_preprocess_${lang}${source}.txt
+                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted}
 
                 wait
 
