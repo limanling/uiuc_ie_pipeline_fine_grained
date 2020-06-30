@@ -29,7 +29,7 @@ mkdir -p ${log_dir}
 #sh set_up.sh > ${log_dir}/log_set_up.txt
 sh set_up.sh
 echo "set_up successfully"
-docker ps
+#docker ps
 
 
 #####################################################################
@@ -40,22 +40,20 @@ docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
     /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result}
 sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path}
 
+wait
 
 #####################################################################
 # extraction, including entity, relation, event
 #####################################################################
-for lang in 'en' 'ru' 'uk'
+for lang in 'en' #'ru' 'uk'
 do
-    for datasource in '' '_asr' '_ocr'
+    for datasource in '' #'_asr' '_ocr'
     do
         (
             data_root_lang=${data_root_result}/${lang}${datasource}
             if [ -d "${data_root_lang}/ltf" ]
             then
                 sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted}
-
-                wait
-
                 sh pipeline_sample_${lang}.sh ${data_root_lang} ${parent_child_tab_path} ${lang} ${datasource}
             else
                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
