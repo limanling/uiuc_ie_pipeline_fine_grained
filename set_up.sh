@@ -9,7 +9,7 @@ else
     docker run -v ${PWD}/system/aida_edl:/data panx27/data-processor tar zxvf /data/edl_data.tar.gz -C /data
 
 fi
-docker run --rm -v ${PWD}/system/aida_edl/edl_data/db:/data/db --name db mongo
+docker run -d --rm -v ${PWD}/system/aida_edl/edl_data/db:/data/db --name db mongo
 
 docker run -d -i -t --rm -w /aida_nominal_coreference_en -p 2468:2468 --name nominal_coreference wangqy96/aida_nominal_coreference_en python nominal_backend.py
 

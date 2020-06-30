@@ -26,6 +26,8 @@ log_dir=${data_root}/log
 #####################################################################
 mkdir -p ${log_dir}
 sh set_up.sh > ${log_dir}/log_set_up.txt
+echo "set_up successfully"
+docker ps
 
 #####################################################################
 # preprocessing, including language detection, ASR/OCR preprcessing
