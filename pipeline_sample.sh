@@ -44,9 +44,9 @@ sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr
 #####################################################################
 # extraction, including entity, relation, event
 #####################################################################
-for lang in 'en' #'ru' 'uk'
+for lang in 'en' 'ru' 'uk'
 do
-    for datasource in '' #'_asr' '_ocr'
+    for datasource in '' '_asr' '_ocr'
     do
         (
             data_root_lang=${data_root_result}/${lang}${datasource}
