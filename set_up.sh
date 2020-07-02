@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+docker pull mongo
+docker pull panx27/edl
+docker pull limanling/uiuc_ie_m18
+docker pull charlesztt/aida_event
+docker pull dylandilu/event_coreference_xdoc
+docker pull wangqy96/aida_nominal_coreference_en
+docker pull panx27/data-processor
+docker pull limanling/aida-tools
+
 if [ -d "${PWD}/system/aida_edl" ]
 then
     echo "KB for linking is already in "${PWD}"/system/aida_edl"
