@@ -1,12 +1,22 @@
 # UIUC Information Extraction Pipeline
 One single script to run text information extraction, including fine-grained entity extraction, relation extraction and event extraction.
 
-## Prerequisites
-### Packages to install
+Table of Contents
+=================
+  * [Overview](#overview)
+  * [Requirements](#requirements)
+  * [Quickstart](#quickstart)
+  
+## Overview
+<p align="center">
+  <img src="overview_text.png" alt="Photo" style="width="100%;"/>
+</p>
+
+## Requirements
 Docker (Please do not set up UIUC IE Pipeline in a NAS, as the EDL needs MongoDB, which may lead to permission issues in a NAS.)
 
 
-## Run the codes
+## Quick Start
 * Make sure you have RSD (Raw Source Data, ending with `*.rsd.txt`) and LTF (Logical Text Format, ending with `*.ltf.xml`) files. 
 	* If you have RSD files, please use the `aida_utilities/rsd2ltf.py` to generate the LTF files. 
 	* If you have LTF files, please use the AIDA ltf2rsd tool (`LDC2018E62_AIDA_Month_9_Pilot_Eval_Corpus_V1.0/tools/ltf2txt/ltf2rsd.perl`) to generate the RSD files. 
@@ -16,7 +26,7 @@ sh pipeline_sample.sh ${data_root} ${output_dir} ${parent_child_tab} ${en_asr_pa
 ```
 For example, 
 ```bash
-sh pipeline_sample.sh data/testdata_all data/output data/testdata_all/parent_children.sorted.tab data/asr.english data/video.ocr/en.cleaned.csv data/video.ocr/ru.cleaned.csv
+sh pipeline_sample.sh ${PWD}/data/testdata_all ${PWD}/data/output ${PWD}/data/testdata_all/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
 ```
 
 For OneIE version, please use the script `pipeline_sample_oneie.sh` 
@@ -25,5 +35,6 @@ sh pipeline_sample_oneie.sh ${data_root} ${output_dir} ${parent_child_tab} ${en_
 ```
 For example, 
 ```bash
-sh pipeline_sample_oneie.sh data/testdata_all data/testdata_all/parent_children.sorted.tab data/asr.english data/video.ocr/en.cleaned.csv data/video.ocr/ru.cleaned.csv
+sh pipeline_sample_oneie.sh ${PWD}/data/testdata_all ${PWD}/data/testdata_all/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
 ```
+Note that the file paths are absolute paths.

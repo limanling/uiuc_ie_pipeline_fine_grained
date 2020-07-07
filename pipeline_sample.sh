@@ -21,6 +21,7 @@ data_root_result=${output_dir}
 output_ttl=${data_root_result}/kb/ttl
 log_dir=${output_dir}/log
 
+
 #####################################################################
 # set up services, please reserve the the following ports and ensure that no other programs/services are occupying these ports:
 # `27017`, `2468`, `5500`, `5000`, `5234`, `9000`, `6001`, `6101` and `6201`.
@@ -32,10 +33,10 @@ echo "set_up successfully"
 #docker ps
 
 
-#####################################################################
+####################################################################
 # preprocessing, including language detection, ASR/OCR preprcessing
-#####################################################################
-docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+####################################################################
+docker run --rm -v ${data_root}:${data_root} -v ${data_root_result}:${data_root_result} -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result}
 sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path}
@@ -45,9 +46,9 @@ wait
 #####################################################################
 # extraction, including entity, relation, event
 #####################################################################
-for lang in 'en' #'ru' 'uk'
+for lang in 'en' 'ru' 'uk'
 do
-    for datasource in '' #'_asr' '_ocr'
+    for datasource in '' '_asr' '_ocr'
     do
         (
             data_root_lang=${data_root_result}/${lang}${datasource}

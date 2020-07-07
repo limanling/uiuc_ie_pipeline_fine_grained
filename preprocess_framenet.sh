@@ -11,10 +11,11 @@ framenet_path=${event_result_dir}/'framenet_res'
 thread_num=3
 
 ## preprocess for English
-docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /event/aida_event/framenet/generate_framenet.py \
     ${lang} ${ltf_source} ${ltf_txt_path} ${framenet_path}
-docker run --rm -v `pwd`/data:/data -w `pwd` -i limanling/aida-tools \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -w `pwd` -i limanling/aida-tools \
     /bin/bash /semafor/bin/runSemafor_dir.sh  \
-    /${ltf_txt_path} /${framenet_path} ${thread_num}
+    ${ltf_txt_path} ${framenet_path} ${thread_num}
+#docker run --rm -v `pwd`/data:/data -w `pwd` -w `pwd` -i limanling/aida-tools \

@@ -8,6 +8,7 @@ docker pull dylandilu/event_coreference_xdoc
 docker pull wangqy96/aida_nominal_coreference_en
 docker pull panx27/data-processor
 docker pull limanling/aida-tools
+docker pull dylandilu/filler
 
 if [ -d "${PWD}/system/aida_edl" ]
 then
