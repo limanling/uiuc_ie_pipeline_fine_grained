@@ -6,6 +6,8 @@ Table of Contents
   * [Overview](#overview)
   * [Requirements](#requirements)
   * [Quickstart](#quickstart)
+  * [Sourcecode](#sourcecode)
+  * [References](#references)
   
 ## Overview
 <p align="center">
@@ -38,3 +40,18 @@ For example,
 sh pipeline_sample_oneie.sh ${PWD}/data/testdata_all ${PWD}/data/testdata_all/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
 ```
 Note that the file paths are absolute paths.
+
+## Source Code
+
+Please find source code in https://github.com/limanling/uiuc_ie_pipeline_finegrained_source_code.
+
+## References
+```
+@inproceedings{li2020gaia,
+  title={GAIA: A Fine-grained Multimedia Knowledge Extraction System},
+  author={Li, Manling and Zareian, Alireza and Lin, Ying and Pan, Xiaoman and Whitehead, Spencer and Chen, Brian and Wu, Bo and Ji, Heng and Chang, Shih-Fu and Voss, Clare and others},
+  booktitle={Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations},
+  pages={77--86},
+  year={2020}
+}
+```
