@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-#./pipeline_sample.sh data/testdata_all data/testdata_all/parent_children.sorted.tab data/asr.english data/video.ocr/en.cleaned.csv data/video.ocr/ru.cleaned.csv
-
 ######################################################
 # Arguments
 ######################################################
@@ -12,12 +10,12 @@ parent_child_tab_path=$3
 asr_en_path=$4
 ocr_en_path=$5
 ocr_ru_path=$6
-sorted=1
+sorted=0
 
 # data folder that specified with language
-data_root_ltf=${data_root}/ltf
-data_root_rsd=${data_root}/rsd
 data_root_result=${output_dir}
+data_root_ltf=${data_root_result}/ltf
+data_root_rsd=${data_root_result}/rsd
 output_ttl=${data_root_result}/kb/ttl
 log_dir=${output_dir}/log
 
@@ -34,9 +32,15 @@ echo "set_up successfully"
 
 
 ####################################################################
+# data prepreparation
+####################################################################
+sh data_preparation_ldc.sh ${data_root} ${data_root_ltf} ${data_root_rsd}
+
+
+####################################################################
 # preprocessing, including language detection, ASR/OCR preprcessing
 ####################################################################
-docker run --rm -v ${data_root}:${data_root} -v ${data_root_result}:${data_root_result} -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root_rsd}:${data_root_rsd} -v ${data_root_ltf}:${data_root_ltf} -v ${data_root_result}:${data_root_result} -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result}
 sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path}
@@ -55,7 +59,7 @@ do
             if [ -d "${data_root_lang}/ltf" ]
             then
                 sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted}
-                sh pipeline_sample_${lang}.sh ${data_root_lang} ${parent_child_tab_path} ${lang} ${datasource}
+                sh pipeline_sample_${lang}.sh ${data_root_lang} ${parent_child_tab_path} ${sorted} ${lang} ${datasource}
             else
                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
             fi
@@ -65,6 +69,7 @@ done
 
 wait
 
+#
 
 #####################################################################
 # merging results

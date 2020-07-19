@@ -5,8 +5,9 @@
 ######################################################
 data_root=$1
 parent_child_tab_path=$2
-lang=$3
-source=$4
+sorted=$3
+lang=$4
+source=$5
 use_nominal_corefer=1
 
 # ltf source folder path
@@ -26,10 +27,10 @@ edl_bio=${edl_output_dir}/${lang}.bio
 edl_tab_nam_filename=${lang}.nam.tagged.tab
 edl_tab_nom_filename=${lang}.nom.tagged.tab
 edl_tab_pro_filename=${lang}.pro.tagged.tab
-edl_vec_file1=en_nom_5type_hid.txt
-edl_vec_file2=en_nom_wv_hid.txt
-edl_vec_file3=en_pro_hid.txt
-edl_vec_file4=en_nam_hid.txt
+edl_vec_file1=en_nom_5type.mention.hidden.txt
+edl_vec_file2=en_nom_wv.mention.hidden.txt
+edl_vec_file3=en_pro.mention.hidden.txt
+edl_vec_file4=en_nam.mention.hidden.txt
 edl_tab_nam=${edl_output_dir}/${edl_tab_nam_filename}
 edl_tab_nom=${edl_output_dir}/${edl_tab_nom_filename}
 edl_tab_pro=${edl_output_dir}/${edl_tab_pro_filename}
@@ -309,17 +310,22 @@ docker run --rm -v ${data_root}:/aida-tools-master/sample_params/m18-eval/${data
     /aida-tools-master/aida-eval-tools/target/appassembler/bin/coldstart2AidaInterchange  \
     sample_params/m18-eval/${data_root}/converter.param
 # Append private information
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
-    /opt/conda/envs/py36/bin/python \
+#docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/aida_entity/bin/python \
     /postprocessing/postprocessing_append_private_data.py \
     --language_id ${lang}${source} \
+    --ltf_dir ${ltf_source} \
     --initial_folder ${ttl_initial} \
     --output_folder ${ttl_initial_private} \
     --fine_grained_entity_type_path ${edl_json_fine} \
     --freebase_link_mapping ${freebase_private_data} \
     --lorelei_link_mapping ${lorelei_link_private_data} \
+    --parent_child_tab_path ${parent_child_tab_path} \
+    --sorted \
     --ent_vec_dir ${edl_output_dir} \
-    --ent_vec_files ${edl_vec_file1} ${edl_vec_file2} ${edl_vec_file3} ${edl_vec_file4}
+    --ent_vec_files ${edl_vec_file1} ${edl_vec_file2} ${edl_vec_file3} ${edl_vec_file4} \
+    --edl_tab ${edl_tab_final}
 docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_rename_turtle.py \
@@ -327,9 +333,8 @@ docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${paren
     --input_private_folder ${ttl_initial_private} \
     --output_folder ${ttl_final} \
     --parent_child_tab_path ${parent_child_tab_path} \
-    --child_column_idx 2 \
-    --parent_column_idx 7
-
-
+    --sorted
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+    chmod -R 777 ${ttl_final} ${ttl_initial_private}
 echo "Final result in Cold Start Format is in "${merged_cs_link}
 echo "Final result in RDF Format is in "${ttl_final}
