@@ -50,9 +50,9 @@ wait
 #####################################################################
 # extraction, including entity, relation, event
 #####################################################################
-for lang in 'en' 'ru' 'uk'
+for lang in 'en' #'ru' 'uk'
 do
-    for datasource in '' '_asr' '_ocr'
+    for datasource in '' #'_asr' '_ocr'
     do
         (
             data_root_lang=${data_root_result}/${lang}${datasource}
