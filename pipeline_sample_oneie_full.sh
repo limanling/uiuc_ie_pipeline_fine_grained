@@ -69,7 +69,7 @@ wait
 #####################################################################
 # merging results
 #####################################################################
-docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root_result}:${data_root_result} -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
     --root_folder ${data_root_result} \
