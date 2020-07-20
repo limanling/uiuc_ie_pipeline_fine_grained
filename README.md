@@ -33,6 +33,10 @@ If there is no ASR and OCR files, please use `None` as input, e.g.,
 sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/data/testdata_ldc/output ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None
 ```
 
+To run OneIE version (RUN2), please run script
+```bash
+sh pipeline_sample_oneie.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path}
+```
 
 
 ### Running on raw text data
