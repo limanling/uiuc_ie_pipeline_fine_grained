@@ -299,7 +299,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
     --freebase_link_mapping ${freebase_private_data} \
     --lorelei_link_mapping ${lorelei_link_private_data} \
     --parent_child_tab_path ${parent_child_tab_path} \
-    --sorted \
+    --parent_child_mapping_sorted ${sorted} \
     --ent_vec_dir ${edl_output_dir} \
     --ent_vec_files ${edl_vec_file1} ${edl_vec_file2} \
     --edl_tab ${edl_tab_final} \
@@ -311,7 +311,7 @@ docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${paren
     --input_private_folder ${ttl_initial_private} \
     --output_folder ${ttl_final} \
     --parent_child_tab_path ${parent_child_tab_path} \
-    --sorted
+    --parent_child_mapping_sorted ${sorted}
 
 echo "Final result in Cold Start Format is in "${merged_cs_link}
 echo "Final result in RDF Format is in "${ttl_final}
