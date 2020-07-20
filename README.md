@@ -44,7 +44,7 @@ sh pipeline_sample_oneie.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} $
 	* If you have RSD files, please use the `aida_utilities/rsd2ltf.py` to generate the LTF files. 
 	* If you have LTF files, please use the AIDA ltf2rsd tool (`LDC2018E62_AIDA_Month_9_Pilot_Eval_Corpus_V1.0/tools/ltf2txt/ltf2rsd.perl`) to generate the RSD files. 
 * Optional files including the meta data and ASR/OCR results. If you do not have these files, please use `None`. 
-    * `parent_child_tab` is a meta data file containing columns `child_uid` and `parent_uid` as file name, `content_date` as publication date, and example file is `testdata_dryrun/parent_children.sorted.tab`.
+    * `parent_child_tab` is a meta data file containing columns `child_uid` and `parent_uid` as file name, `content_date` as publication date, and example file is `testdata_dryrun/parent_children.sorted.tab`. It is used to normalize the time expression to 'YYYY-MM-DD'.
     * `en_asr_path`, `en_ocr_path` and `ru_ocr_path` are generated from ASR and OCR system using docker `gaiaaida/asr` from DockerHub. Example files are in `asr.english` and `data/video.ocr`. 
 * Run the scripts. Note that the file paths are absolute paths.   
 ```bash
@@ -66,6 +66,12 @@ For example,
 sh pipeline_sample_oneie.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/data/output_oneie ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
 ```
 Note that the file paths are absolute paths.
+
+## Run on reduced version
+Reduced Version disables the functions that will take long runningtime, including the functions of entity filler extraction (time, value, title, etc), part of fine-grained event extraction, etc.
+```bash
+sh pipeline_reduced.sh ${data_root_ltf} ${data_root_rsd} ${output_dir}
+```
 
 ## Source Code
 

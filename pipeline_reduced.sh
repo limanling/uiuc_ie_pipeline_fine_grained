@@ -4,20 +4,20 @@
 # Arguments
 ######################################################
 # input root path
+#data_root=$1
 data_root_ltf=$1
 data_root_rsd=$2
-#data_root=$1
 output_dir=$3
-parent_child_tab_path=$4
-asr_en_path=$5
-ocr_en_path=$6
-ocr_ru_path=$7
-sorted=1
+#parent_child_tab_path=$3
+#asr_en_path=$4
+#ocr_en_path=$5
+#ocr_ru_path=$6
+#sorted=0
 
 # data folder that specified with language
 data_root_result=${output_dir}
-data_root_ltf=${data_root_result}/ltf
-data_root_rsd=${data_root_result}/rsd
+#data_root_ltf=${data_root_result}/ltf
+#data_root_rsd=${data_root_result}/rsd
 output_ttl=${data_root_result}/kb/ttl
 log_dir=${output_dir}/log
 
@@ -33,13 +33,19 @@ echo "set_up successfully"
 #docker ps
 
 
+#####################################################################
+## data prepreparation
+#####################################################################
+#sh data_preparation_ldc.sh ${data_root} ${output_dir} ${output_dir}
+
+
 ####################################################################
 # preprocessing, including language detection, ASR/OCR preprcessing
 ####################################################################
 docker run --rm -v ${data_root_rsd}:${data_root_rsd} -v ${data_root_ltf}:${data_root_ltf} -v ${data_root_result}:${data_root_result} -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result}
-sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path}
+#sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path}
 
 wait
 
@@ -48,14 +54,13 @@ wait
 #####################################################################
 for lang in 'en' 'ru' 'uk'
 do
-    for datasource in '' '_asr' '_ocr'
+    for datasource in '' #'_asr' '_ocr'
     do
         (
             data_root_lang=${data_root_result}/${lang}${datasource}
             if [ -d "${data_root_lang}/ltf" ]
             then
-                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted}
-                sh pipeline_sample_${lang}.sh ${data_root_lang} ${parent_child_tab_path} ${sorted} ${lang} ${datasource}
+                sh pipeline_reduced_${lang}.sh ${data_root_lang} ${lang}
             else
                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
             fi
@@ -65,18 +70,16 @@ done
 
 wait
 
-#
-
-#####################################################################
-# merging results
-#####################################################################
-docker run --rm -v ${data_root_result}:${data_root_result} -w `pwd` -i limanling/uiuc_ie_m18 \
-    /opt/conda/envs/py36/bin/python \
-    /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
-    --root_folder ${data_root_result} \
-    --final_dir_name 'final' \
-    --output_folder ${output_ttl}
-echo "Final output of English, Russian, Ukrainian in "${output_ttl}
+######################################################################
+## merging results
+######################################################################
+#docker run --rm -v ${data_root_result}:${data_root_result} -i limanling/uiuc_ie_m18 \
+#    /opt/conda/envs/py36/bin/python \
+#    /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
+#    --root_folder ${data_root_result} \
+#    --final_dir_name 'final' \
+#    --output_folder ${output_ttl}
+#echo "Final output of English, Russian, Ukrainian in "${output_ttl}
 
 
 #####################################################################

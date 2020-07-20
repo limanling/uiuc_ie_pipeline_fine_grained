@@ -55,13 +55,15 @@ edl_cs_fine_all=${edl_output_dir}/merged_all_fine.cs
 edl_cs_fine_protester=${edl_output_dir}/merged_all_fine_protester.cs
 edl_cs_info=${edl_output_dir}/merged_all_fine_info.cs
 edl_cs_info_conf=${edl_output_dir}/merged_all_fine_info_conf.cs
-edl_cs_color=${edl_output_dir}/${lang}.linking.col.tab
+edl_tab_color=${edl_output_dir}/${lang}.linking.col.tab
+edl_cs_color=${edl_output_dir}/${lang}.color.cs
 conf_all=${edl_output_dir}/all_conf.txt
 ground_truth_tab_dir=${edl_output_dir}/ldc_anno_matched
 
 # filler output
 core_nlp_output_path=${data_root}/corenlp
 filler_coarse=${edl_output_dir}/filler_${lang}.cs
+filler_coarse_color=${edl_output_dir}/filler_${lang}_all.cs
 filler_fine=${edl_output_dir}/filler_fine.cs
 udp_dir=${data_root}/udp
 chunk_file=${edl_output_dir}/chunk.txt
@@ -162,7 +164,13 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanl
     --filler_coarse ${filler_coarse} \
     --ground_truth_tab_dir ${ground_truth_tab_dir} \
     --ltf_dir ${ltf_source} --rsd_dir ${rsd_source}
-
+docker run -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    /relation/FineRelationExtraction/utils/color_fillers.py \
+    --en_color_fill_tab_fname ${edl_tab_color} \
+    --en_fill_cs_fname ${filler_coarse} \
+    --en_combo_outfname ${filler_coarse_color} \
+    --en_color_outfname ${edl_cs_color}
 
 # Event (Coarse)
 echo "** Extracting events for "${lang}" **"
@@ -188,7 +196,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
     --lang_id ${lang} \
     --ltf_dir ${ltf_source} \
     --rsd_dir ${rsd_source} \
-    --cs_fnames ${edl_cs_coarse} ${filler_coarse} ${relation_cs_coarse} ${new_relation_coarse}  ${event_coarse_with_time} \
+    --cs_fnames ${edl_cs_coarse} ${filler_coarse_color} ${relation_cs_coarse} ${new_relation_coarse}  ${event_coarse_with_time} \
     --fine_ent_type_tab ${edl_tab_freebase} \
     --fine_ent_type_json ${edl_json_fine} \
     --outdir ${relation_result_dir} \
@@ -289,7 +297,7 @@ docker run --rm -v ${data_root}:/aida-tools-master/sample_params/m18-eval/${data
     sample_params/m18-eval/${data_root}/converter.param
 # Append private information
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
-    /opt/conda/envs/py36/bin/python \
+    /opt/conda/envs/aida_entity/bin/python \
     /postprocessing/postprocessing_append_private_data.py \
     --language_id ${lang}${source} \
     --ltf_dir ${ltf_source} \
