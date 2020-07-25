@@ -52,7 +52,7 @@ sh pipeline_sample_full.sh ${data_root_ltf} ${data_root_rsd} ${output_dir} ${par
 ```
 For example, 
 ```bash
-sh pipeline_sample_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/data/output ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
+sh pipeline_sample_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_m18 ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
 ```
 If you do not have `parent_child_tab`, `en_asr_path`, `en_ocr_path` and `ru_ocr_path`, please use `None`.
 
@@ -63,7 +63,7 @@ sh pipeline_sample_oneie.sh ${data_root_ltf} ${data_root_rsd} ${output_dir} ${pa
 ```
 For example, 
 ```bash
-sh pipeline_sample_oneie.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/data/output_oneie ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
+sh pipeline_sample_oneie.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_oneie ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
 ```
 Note that the file paths are absolute paths.
 
@@ -71,6 +71,10 @@ Note that the file paths are absolute paths.
 Reduced Version disables the functions that will take long runningtime, including the functions of entity filler extraction (time, value, title, etc), part of fine-grained event extraction, etc.
 ```bash
 sh pipeline_reduced.sh ${data_root_ltf} ${data_root_rsd} ${output_dir}
+```
+For example,
+```bash
+sh pipeline_reduced.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_reduced_dryrun
 ```
 
 ## Source Code

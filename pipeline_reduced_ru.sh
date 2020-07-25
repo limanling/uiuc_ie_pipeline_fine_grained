@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-
-#./pipeline_sample_ru.sh data/testdata_all/result/ru data/testdata_all/parent_children.sorted.tab ru
-
-
 ######################################################
 # Arguments
 ######################################################
@@ -100,6 +96,18 @@ ttl_final=${data_root}/final
 # Running scripts
 ######################################################
 
+# generate *.bio
+docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    /aida_utilities/ltf2bio.py /uiuc/${ltf_source} /uiuc/${edl_bio}
+# generate file list
+docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    /aida_utilities/dir_readlink.py /uiuc/${rsd_source} /uiuc/${rsd_file_list}
+docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    /aida_utilities/dir_ls.py /uiuc/${ltf_source} /uiuc/${ltf_file_list}
+
 # EDL
 ## entity extraction
 echo "** Extracting entities **"
@@ -141,7 +149,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
     -l ${ltf_file_list} \
     -f ${ltf_source} \
     -e ${edl_cs_coarse} \
-    -t ${edl_tab_final} \
+    -t ${edl_tab_link} \
     -o ${relation_cs_coarse}
 ### Filler Extraction & new relation
 #docker run --rm -v ${data_root}:${data_root} -w /scr -i dylandilu/filler \
@@ -160,7 +168,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanl
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/fine_grained_entity.py \
     ${lang} ${edl_json_fine} ${edl_tab_freebase} ${entity_fine_model} \
-    ${geonames_features} ${edl_cs_coarse} ${edl_cs_fine}  \
+    ${geonames_features} ${edl_cs_coarse} ${edl_cs_fine} ${filler_fine} \
     --ground_truth_tab_dir ${ground_truth_tab_dir} \
     --ltf_dir ${ltf_source} --rsd_dir ${rsd_source}
 #    --filler_coarse ${filler_coarse} \
@@ -272,8 +280,9 @@ echo "** Merging all items **"
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /aida_utilities/pipeline_merge_m18.py \
-    --cs_fnames ${edl_cs_info_conf} ${edl_cs_color} ${relation_cs_fine} ${event_final} \
+    --cs_fnames ${edl_cs_info_conf} ${relation_cs_fine} ${event_final} \
     --output_file ${merged_cs}
+    # ${edl_cs_color} 
 ## multiple freebase links
 #docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
 #    /opt/conda/envs/py36/bin/python \
@@ -313,7 +322,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
 #    --parent_child_mapping_sorted ${sorted} \
 #    --ent_vec_dir ${edl_output_dir} \
 #    --ent_vec_files ${edl_vec_file1} ${edl_vec_file2} \
-#    --edl_tab ${edl_tab_final} \
+#    --edl_tab ${edl_tab_link} \
 #    --translation_path ${translation_freebase}
 #docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m18 \
 #    /opt/conda/envs/py36/bin/python \

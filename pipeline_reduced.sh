@@ -29,6 +29,7 @@ log_dir=${output_dir}/log
 mkdir -p ${log_dir}
 #sh set_up.sh > ${log_dir}/log_set_up.txt
 sh set_up.sh
+# sleep 5m
 echo "set_up successfully"
 #docker ps
 
@@ -70,30 +71,20 @@ done
 
 wait
 
+
+
 ######################################################################
-## merging results
+## docker stop
 ######################################################################
-#docker run --rm -v ${data_root_result}:${data_root_result} -i limanling/uiuc_ie_m18 \
-#    /opt/conda/envs/py36/bin/python \
-#    /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
-#    --root_folder ${data_root_result} \
-#    --final_dir_name 'final' \
-#    --output_folder ${output_ttl}
-#echo "Final output of English, Russian, Ukrainian in "${output_ttl}
-
-
-#####################################################################
-# docker stop
-#####################################################################
-#docker stop $(docker ps -q --filter ancestor=<image-name> )
-#docker stop $(docker container ls -q --filter name=db*)
-echo "Stop dockers..."
-docker stop db
-docker stop nominal_coreference
-docker stop aida_entity
-docker stop event_coreference_en
-docker stop event_coreference_ru
-docker stop event_coreference_uk
-docker ps
-
-exit 0
+##docker stop $(docker ps -q --filter ancestor=<image-name> )
+##docker stop $(docker container ls -q --filter name=db*)
+#echo "Stop dockers..."
+#docker stop db
+#docker stop nominal_coreference
+#docker stop aida_entity
+#docker stop event_coreference_en
+#docker stop event_coreference_ru
+#docker stop event_coreference_uk
+#docker ps
+#
+#exit 0

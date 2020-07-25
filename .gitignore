@@ -197,10 +197,12 @@ Temporary Items
 .apdisk
 
 # AIDA local rest api
-aida_api/
-backup/
+aida_api/*
+backup/*
 edl.sh
 event.sh
 relation.sh
 merge.sh
-visualization/
+visualization/*
+output/*
+system/aida_edl/*
