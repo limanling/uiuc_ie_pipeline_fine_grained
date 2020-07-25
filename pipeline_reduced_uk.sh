@@ -214,17 +214,17 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
 ##   --use_gpu \
 #${filler_coarse_color} ${new_relation_coarse}
 ## Postprocessing, adding informative justification
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
-    /opt/conda/envs/py36/bin/python \
-    /aida_utilities/pipeline_merge_m18.py \
-    --cs_fnames ${edl_cs_fine}  \
-    --output_file ${edl_cs_fine_all}
-#    ${filler_fine}
+# docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+#     /opt/conda/envs/py36/bin/python \
+#     /aida_utilities/pipeline_merge_m18.py \
+#     --cs_fnames ${edl_cs_fine}  \
+#     --output_file ${edl_cs_fine_all}
+# #    ${filler_fine}
 echo "add protester"
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/add_protester.py \
-    ${event_coarse_without_time} ${edl_cs_fine_all} ${edl_cs_fine_protester}
+    ${event_coarse_without_time} ${edl_cs_fine} ${edl_cs_fine_protester}
 #echo "** Informative Justification **"
 #docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
 #    /opt/conda/envs/py36/bin/python \
@@ -245,7 +245,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
     /event/aida_event/fine_grained/fine_grained_events.py \
     ${lang} ${ltf_source} ${edl_json_fine} ${edl_tab_freebase} \
     ${edl_cs_coarse} ${event_coarse_without_time} ${event_fine} \
-    --entity_finegrain_aida ${edl_cs_fine_all}
+    --entity_finegrain_aida ${edl_cs_fine_protester}
 #--filler_coarse ${filler_coarse} \
 ## rewrite-args
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
