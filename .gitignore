@@ -196,13 +196,16 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+.vscode
+
 # AIDA local rest api
-aida_api/*
-backup/*
+aida_api/
+backup/
 edl.sh
 event.sh
 relation.sh
 merge.sh
-visualization/*
-output/*
-system/aida_edl/*
+visualization/
+output/
+system/aida_edl/
+data/testdata_ldc2

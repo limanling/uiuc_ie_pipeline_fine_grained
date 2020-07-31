@@ -26,16 +26,20 @@ sh pipeline_sample.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_as
 ```
 where `parent_child_tab` is the file meta data in `docs` of LDC corpus. For example, 
 ```bash
-sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/data/testdata_ldc/output ${PWD}/data/testdata_ldc/docs/parent_children.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
+sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
 ```
 If there is no ASR and OCR files, please use `None` as input, e.g.,
 ```bash
-sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/data/testdata_ldc/output ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None
+sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None
 ```
 
 To run OneIE version (RUN2), please run script
 ```bash
 sh pipeline_sample_oneie.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path}
+```
+For example,
+```bash
+sh pipeline_sample_oneie.sh ${PWD}/data/testdata_ldc ${PWD}/output/output_oneie ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None
 ```
 
 
@@ -59,11 +63,11 @@ If you do not have `parent_child_tab`, `en_asr_path`, `en_ocr_path` and `ru_ocr_
 
 For OneIE version, please use the script `pipeline_sample_oneie.sh` 
 ```bash
-sh pipeline_sample_oneie.sh ${data_root_ltf} ${data_root_rsd} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path}
+sh pipeline_sample_oneie_full.sh ${data_root_ltf} ${data_root_rsd} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path}
 ```
 For example, 
 ```bash
-sh pipeline_sample_oneie.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_oneie ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
+sh pipeline_sample_oneie_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_oneie ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
 ```
 Note that the file paths are absolute paths.
 

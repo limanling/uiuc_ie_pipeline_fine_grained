@@ -84,15 +84,13 @@ echo "Final output of English, Russian, Ukrainian in "${output_ttl}
 #####################################################################
 # docker stop
 #####################################################################
-#docker stop $(docker ps -q --filter ancestor=<image-name> )
-#docker stop $(docker container ls -q --filter name=db*)
-echo "Stop dockers..."
-docker stop db
-docker stop nominal_coreference
-docker stop aida_entity
-docker stop event_coreference_en
-docker stop event_coreference_ru
-docker stop event_coreference_uk
-docker ps
+# echo "Stop dockers..."
+# docker stop db
+# docker stop nominal_coreference
+# docker stop aida_entity
+# docker stop event_coreference_en
+# docker stop event_coreference_ru
+# docker stop event_coreference_uk
+# docker ps
 
 exit 0

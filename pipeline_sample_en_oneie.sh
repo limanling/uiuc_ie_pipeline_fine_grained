@@ -23,6 +23,7 @@ rsd_file_list=${data_root}/rsd_lst
 
 # edl output
 edl_output_dir=${data_root}/mention
+edl_cs_oneie=${data_root}/cs/entity.cs
 edl_bio=${data_root}/edl/${lang}.bio
 edl_cfet_json=${edl_output_dir}/english.nam.cfet.json
 edl_tab_nam_bio=${edl_output_dir}/english.nam.bio
@@ -66,15 +67,16 @@ chunk_file=${data_root}/edl/chunk.txt
 
 # relation output
 relation_result_dir=${data_root}/cs   # final cs output file path
-relation_cs_coarse=${relation_result_dir}/relation.cs # final cs output for relation
+relation_cs_oneie=${relation_result_dir}/relation.cs # final cs output for relation
 #relation_result_dir=${data_root}/relation   # final cs output file path
-#relation_cs_coarse=${relation_result_dir}/${lang}.rel.cs # final cs output for relation
+relation_cs_coarse=${relation_result_dir}/${lang}.rel.cs # final cs output for relation
 relation_cs_fine=${relation_result_dir}/${lang}/${lang}.fine_rel.cs # final cs output for relation
 new_relation_coarse=${relation_result_dir}/new_relation_${lang}.cs
 
 # event output
 event_result_dir=${data_root}/cs
-event_coarse_without_time=${event_result_dir}/event.cs
+event_coarse_oneie=${event_result_dir}/event.cs
+event_coarse_without_time=${event_result_dir}/event_rewrite.cs
 event_coarse_with_time=${event_result_dir}/events_tme.cs
 event_fine=${event_result_dir}/events_fine.cs
 event_frame=${event_result_dir}/events_fine_framenet.cs
@@ -138,6 +140,11 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd`  -i limanling/uiuc_ie_m18 
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/tab2cs.py \
     ${edl_tab_final} ${edl_cs_coarse} 'EDL'
+docker run --rm -v ${data_root}:${data_root} -v `pwd`:`pwd` -w `pwd`  -i limanling/uiuc_ie_m18 \
+    /opt/conda/envs/py36/bin/python \
+    ./system/rewrite_entity_id.py \
+    ${edl_cs_oneie} ${relation_cs_oneie} ${event_coarse_oneie} ${edl_cs_coarse} \
+    ${relation_cs_coarse} ${event_coarse_without_time}
 
 
 # Relation Extraction (coarse-grained)
