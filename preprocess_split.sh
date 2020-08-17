@@ -11,7 +11,7 @@ rsd_source_thread_dir=${data_root}/rsd_minibatch
 
 # ================ script =========================
 # split files
-docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
     /preprocessing/postprocessing_separate_files.py \
     ${ltf_source} ${rsd_source} ${ltf_source_thread_dir} ${rsd_source_thread_dir} ${thread_num}
