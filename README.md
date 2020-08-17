@@ -22,24 +22,24 @@ Docker (Please do not set up UIUC IE Pipeline in a NAS, as the EDL needs MongoDB
 
 ### Running LDC corpus, such as `LDC2019E42_AIDA_Phase_1_Evaluation_Source_Data_V1.0`.
 ```bash
-sh pipeline_sample.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path}
+sh pipeline_sample.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path} ${thread_num}
 ```
 where `parent_child_tab` is the file meta data in `docs` of LDC corpus. For example, 
 ```bash
-sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
+sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 2
 ```
 If there is no ASR and OCR files, please use `None` as input, e.g.,
 ```bash
-sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None
+sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None 2
 ```
 
 To run OneIE version (RUN2), please run script
 ```bash
-sh pipeline_sample_oneie.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path}
+sh pipeline_sample_oneie.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path} 2
 ```
 For example,
 ```bash
-sh pipeline_sample_oneie.sh ${PWD}/data/testdata_ldc ${PWD}/output/output_oneie ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None
+sh pipeline_sample_oneie.sh ${PWD}/data/testdata_ldc ${PWD}/output/output_oneie ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None 2
 ```
 
 
@@ -52,22 +52,22 @@ sh pipeline_sample_oneie.sh ${PWD}/data/testdata_ldc ${PWD}/output/output_oneie 
     * `en_asr_path`, `en_ocr_path` and `ru_ocr_path` are generated from ASR and OCR system using docker `gaiaaida/asr` from DockerHub. Example files are in `asr.english` and `data/video.ocr`. 
 * Run the scripts. Note that the file paths are absolute paths.   
 ```bash
-sh pipeline_sample_full.sh ${data_root_ltf} ${data_root_rsd} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path}
+sh pipeline_sample_full.sh ${data_root_ltf} ${data_root_rsd} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path} ${thread_num}
 ```
 For example, 
 ```bash
-sh pipeline_sample_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_m18 ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
+sh pipeline_sample_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_m18 ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 2
 ```
 If you do not have `parent_child_tab`, `en_asr_path`, `en_ocr_path` and `ru_ocr_path`, please use `None`.
 
 
 For OneIE version, please use the script `pipeline_sample_oneie.sh` 
 ```bash
-sh pipeline_sample_oneie_full.sh ${data_root_ltf} ${data_root_rsd} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path}
+sh pipeline_sample_oneie_full.sh ${data_root_ltf} ${data_root_rsd} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path} ${thread_num}
 ```
 For example, 
 ```bash
-sh pipeline_sample_oneie_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_oneie ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv
+sh pipeline_sample_oneie_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_oneie ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 2
 ```
 Note that the file paths are absolute paths.
 

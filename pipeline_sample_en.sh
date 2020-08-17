@@ -16,10 +16,6 @@ ltf_source=${data_root}/ltf
 rsd_source=${data_root}/rsd
 # file list of ltf files (only file names)
 ltf_file_list=${data_root}/ltf_lst
-#ls ${ltf_source} > ${ltf_file_list}
-# file list of rsd files (absolute paths, this is a temporary file)
-rsd_file_list=${data_root}/rsd_lst
-#readlink -f ${rsd_source}/* > ${rsd_file_list}
 
 # edl output
 edl_output_dir=${data_root}/edl

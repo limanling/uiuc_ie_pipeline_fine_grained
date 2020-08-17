@@ -10,6 +10,7 @@ parent_child_tab_path=$3
 asr_en_path=$4
 ocr_en_path=$5
 ocr_ru_path=$6
+thread_num=$7
 sorted=0
 
 # data folder that specified with language
@@ -58,7 +59,7 @@ do
             data_root_lang=${data_root_result}/${lang}${datasource}
             if [ -d "${data_root_lang}/ltf" ]
             then
-                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted}
+                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} ${thread_num}
                 sh pipeline_sample_${lang}.sh ${data_root_lang} ${parent_child_tab_path} ${sorted} ${lang} ${datasource}
             else
                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
@@ -81,18 +82,16 @@ docker run --rm -v ${data_root_result}:${data_root_result} -i limanling/uiuc_ie_
 echo "Final output of English, Russian, Ukrainian in "${output_ttl}
 
 
-#####################################################################
-# docker stop
-#####################################################################
-#docker stop $(docker ps -q --filter ancestor=<image-name> )
-#docker stop $(docker container ls -q --filter name=db*)
-echo "Stop dockers..."
-docker stop db
-docker stop nominal_coreference
-docker stop aida_entity
-docker stop event_coreference_en
-docker stop event_coreference_ru
-docker stop event_coreference_uk
-docker ps
+# #####################################################################
+# # docker stop
+# #####################################################################
+# echo "Stop dockers..."
+# docker stop db
+# docker stop nominal_coreference
+# docker stop aida_entity
+# docker stop event_coreference_en
+# docker stop event_coreference_ru
+# docker stop event_coreference_uk
+# docker ps
 
-exit 0
+# exit 0

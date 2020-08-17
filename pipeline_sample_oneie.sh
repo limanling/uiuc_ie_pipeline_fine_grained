@@ -10,6 +10,7 @@ parent_child_tab_path=$3
 asr_en_path=$4
 ocr_en_path=$5
 ocr_ru_path=$6
+thread_num=$7
 sorted=0
 
 # data folder that specified with language
@@ -57,7 +58,7 @@ do
             data_root_lang=${data_root_result}/${lang}${datasource}
             if [ -d "${data_root_lang}/ltf" ]
             then
-                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted}
+                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} ${thread_num}
                 sh pipeline_sample_${lang}_oneie.sh ${data_root_lang} ${parent_child_tab_path} ${sorted} ${lang} ${datasource}
             else
                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
