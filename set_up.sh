@@ -24,7 +24,7 @@ fi
 
 docker run -d --rm -v ${PWD}/system/aida_edl/edl_data/db:/data/db --name db mongo
 
-docker run -d -i --rm -w /aida_nominal_coreference_en -p 2468:2468 --name nominal_coreference wangqy96/aida_nominal_coreference_en python nominal_backend.py
+docker run -d -i --rm -w /aida_nominal_coreference_en -p 2468:2468 --name nominal_coreference wangqy96/aida_nominal_coreference_en /opt/conda/envs/aida_coreference/bin/python nominal_backend.py
 
 docker run -d -i --rm --name uiuc_ie_m18 -w /entity_api -p 5500:5500 --name aida_entity limanling/uiuc_ie_m18 \
     /opt/conda/envs/aida_entity/bin/python \
