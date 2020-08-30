@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-
-#./pipeline_sample_ru.sh data/testdata_all/result/ru data/testdata_all/parent_children.sorted.tab ru
-
-
 ######################################################
 # Arguments
 ######################################################
@@ -21,16 +17,21 @@ rsd_source=${data_root}/rsd
 # file list of ltf files (only file names)
 ltf_file_list=${data_root}/ltf_lst
 #ls ${ltf_source} > ${ltf_file_list}
+# file list of rsd files (absolute paths, this is a temporary file)
+rsd_file_list=${data_root}/rsd_lst
+#readlink -f ${rsd_source}/* > ${rsd_file_list}
 
 # edl output
-edl_output_dir=${data_root}/edl
-edl_bio=${edl_output_dir}/${lang}.bio
-edl_tab_nam_bio=${edl_output_dir}/${lang}.nam.tagged.bio
-edl_tab_nam_filename=${lang}.nam.tagged.tab
-edl_tab_nom_filename=${lang}.nom.tagged.tab
-edl_tab_pro_filename=${lang}.pro.tagged.tab
-edl_vec_file1=${lang}_nam_5type.mention.hidden.txt
-edl_vec_file2=${lang}_nam_wv.mention.hidden.txt
+edl_output_dir=${data_root}/mention
+edl_cs_oneie=${data_root}/cs/entity.cs
+edl_bio=${data_root}/edl/${lang}.bio
+edl_cfet_json=${edl_output_dir}/spanish.nam.cfet.json
+edl_tab_nam_bio=${edl_output_dir}/spanish.nam.bio
+edl_tab_nam_filename=spanish.nam.tab
+edl_tab_nom_filename=spanish.nom.tab
+edl_tab_pro_filename=spanish.pro.tab
+edl_vec_file=spanish.mention.hidden.txt
+evt_vec_file=spanish.trigger.hidden.txt
 edl_tab_nam=${edl_output_dir}/${edl_tab_nam_filename}
 edl_tab_nom=${edl_output_dir}/${edl_tab_nom_filename}
 edl_tab_pro=${edl_output_dir}/${edl_tab_pro_filename}
@@ -47,7 +48,6 @@ edl_tab_freebase=${edl_output_dir}/${lang}.linking.freebase.tab
 freebase_private_data=${edl_output_dir}/freebase_private_data.json
 lorelei_link_private_data=${edl_output_dir}/lorelei_private_data.json
 entity_lorelei_multiple=${edl_output_dir}/${lang}.linking.tab.candidates.json
-translation_freebase=${edl_output_dir}/${lang}.linking.freebase.translations.json
 edl_cs_fine_all=${edl_output_dir}/merged_all_fine.cs
 edl_cs_fine_protester=${edl_output_dir}/merged_all_fine_protester.cs
 edl_cs_info=${edl_output_dir}/merged_all_fine_info.cs
@@ -63,17 +63,20 @@ filler_coarse=${edl_output_dir}/filler_${lang}.cs
 filler_coarse_color=${edl_output_dir}/filler_${lang}_all.cs
 filler_fine=${edl_output_dir}/filler_fine.cs
 udp_dir=${data_root}/udp
-chunk_file=${edl_output_dir}/chunk.txt
+chunk_file=${data_root}/edl/chunk.txt
 
 # relation output
-relation_result_dir=${data_root}/relation   # final cs output file path
+relation_result_dir=${data_root}/cs   # final cs output file path
+relation_cs_oneie=${relation_result_dir}/relation.cs # final cs output for relation
+#relation_result_dir=${data_root}/relation   # final cs output file path
 relation_cs_coarse=${relation_result_dir}/${lang}.rel.cs # final cs output for relation
 relation_cs_fine=${relation_result_dir}/${lang}/${lang}.fine_rel.cs # final cs output for relation
 new_relation_coarse=${relation_result_dir}/new_relation_${lang}.cs
 
 # event output
-event_result_dir=${data_root}/event
-event_coarse_without_time=${event_result_dir}/events.cs
+event_result_dir=${data_root}/cs
+event_coarse_oneie=${event_result_dir}/event.cs
+event_coarse_without_time=${event_result_dir}/event_rewrite.cs
 event_coarse_with_time=${event_result_dir}/events_tme.cs
 event_fine=${event_result_dir}/events_fine.cs
 event_frame=${event_result_dir}/events_fine_framenet.cs
@@ -82,10 +85,10 @@ event_fine_all=${event_result_dir}/events_fine_all.cs
 event_fine_all_clean=${event_result_dir}/events_fine_all_clean.cs
 event_corefer=${event_result_dir}/events_corefer.cs
 event_corefer_confidence=${event_result_dir}/events_corefer_confidence.tab
-event_corefer_time=${event_result_dir}/events_4tuple.cs  #events_corefer_timefix.cs
+event_corefer_time=${event_result_dir}/events_4tuple.cs  #${event_result_dir}/events_corefer_timefix.cs
 event_final=${event_result_dir}/events_info.cs
 ltf_txt_path=${event_result_dir}/'ltf_txt'
-framenet_path=${event_result_dir}/'framenet_res'
+framenet_path=${data_root}/event/'framenet_res'
 
 # final output
 merged_cs=${data_root}/${lang}${source}_full.cs
@@ -98,16 +101,21 @@ ttl_final=${data_root}/final
 # Running scripts
 ######################################################
 
-EDL
+# EDL
 # entity extraction
-echo "** Extracting entities **"
+echo "** Extracting coarse-grained entities, relations, and events **"
+docker run --rm -i -v ${data_root}:${data_root} -w /oneie limteng/oneie_aida_m36 \
+    /opt/conda/bin/python \
+    /oneie/predict.py -i ${ltf_source} -o ${data_root} -l ${lang} --output_hidden
+# fine-grained typing by model
+echo "fine-grained typing started"
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
-    /entity/aida_edl/edl.py \
-    ${ltf_source} ${rsd_source} ${lang} \
-    ${edl_tab_nam} ${edl_tab_nom} ${edl_tab_pro} \
-    ${entity_fine_model} ${edl_output_dir}
-## linking
+    /entity/aida_edl/typing.py \
+    ${lang} ${edl_tab_nam_bio} ${entity_fine_model}
+echo "fine-grained typing finished"
+
+# linking
 echo "** Linking entities to KB **"
 docker run -v ${PWD}/system/aida_edl/edl_data:/data \
     -v ${edl_output_dir}:/testdata_${lang}${source} \
@@ -119,7 +127,8 @@ docker run -v ${PWD}/system/aida_edl/edl_data:/data \
     /testdata_${lang}${source}/${edl_tab_pro_filename} \
     /testdata_${lang}${source} \
     m36
-## nominal coreference for ru and uk
+## nominal coreference
+echo "** Starting nominal coreference **"
 docker run --rm -v ${data_root}:/uiuc/${data_root} -w /scr -i dylandilu/chuck_coreference \
     python appos_extract.py \
     --udp_dir /uiuc/${udp_dir} \
@@ -130,19 +139,15 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd`  -i limanling/uiuc_ie_m36 
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/tab2cs.py \
     ${edl_tab_final} ${edl_cs_coarse} 'EDL'
+docker run --rm -v ${data_root}:${data_root} -v ${data_root}:${data_root} -w `pwd`  -i limanling/uiuc_ie_m36 \
+    /opt/conda/envs/py36/bin/python \
+    /aida_utilities/rewrite_entity_id.py \
+    ${edl_cs_oneie} ${relation_cs_oneie} ${event_coarse_oneie} ${edl_cs_coarse} \
+    ${relation_cs_coarse} ${event_coarse_without_time}
+# echo ${edl_cs_oneie} ${relation_cs_oneie} ${event_coarse_oneie} ${edl_cs_coarse}
+# python /shared/nas/data/m1/manling2/aida_docker/docker_m18/aida_utilities/rewrite_entity_id.py \
 
-# Relation Extraction (coarse-grained)
-echo "** Extraction relations **"
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/aida_relation_coarse/bin/python \
-    -u /relation/CoarseRelationExtraction/exec_relation_extraction.py \
-    -i ${lang} \
-    -l ${ltf_file_list} \
-    -f ${ltf_source} \
-    -e ${edl_cs_coarse} \
-    -t ${edl_tab_final} \
-    -o ${relation_cs_coarse}
-## Filler Extraction & new relation
+# # Filler Extraction & new relation
 docker run --rm -v ${data_root}:${data_root} -w /scr -i dylandilu/filler \
     python extract_filler_relation.py \
     --corenlp_dir ${core_nlp_output_path} \
@@ -171,39 +176,27 @@ docker run -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     --en_fill_cs_fname ${filler_coarse} \
     --en_combo_outfname ${filler_coarse_color} \
     --en_color_outfname ${edl_cs_color}
-
-# Event (Coarse)
-echo "** Extracting events for "${lang}" **"
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
-   /opt/conda/envs/ru_event/bin/python \
-   /ru_event/${lang}_event/${lang}_event_backend.py \
-   --ltf_folder_path ${ltf_source} \
-   --input_edl_bio_file_path ${edl_tab_nam_bio} \
-   --input_rsd_folder_path ${rsd_source} \
-   --entity_cs_file_path ${edl_cs_coarse} \
-   --output_dir ${event_result_dir} \
-   --output_event_cs ${event_coarse_without_time}
-## Add time expression
+## Add time argument
 docker run -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /event/aida_event/postprocessing_add_time_expression.py \
     ${ltf_source} ${filler_coarse} ${event_coarse_without_time} ${event_coarse_with_time}
-echo ${event_coarse_with_time}
 
 # Relation Extraction (fine)
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
-    -u /relation/FineRelationExtraction/EVALfine_grained_relations.py \
+    -u /relation_spa/FineRelationExtraction/EVALfine_grained_relations.py \
     --lang_id ${lang} \
     --ltf_dir ${ltf_source} \
     --rsd_dir ${rsd_source} \
-    --cs_fnames ${edl_cs_coarse} ${filler_coarse_color} ${relation_cs_coarse} ${new_relation_coarse}  ${event_coarse_without_time} \
+    --cs_fnames ${edl_cs_coarse} ${filler_coarse_color} ${relation_cs_coarse} ${new_relation_coarse} ${event_coarse_without_time} \
     --fine_ent_type_tab ${edl_tab_freebase} \
     --fine_ent_type_json ${edl_json_fine} \
     --outdir ${relation_result_dir} \
     --fine_grained
 ##   --reuse_cache \
 ##   --use_gpu \
+
 ## Postprocessing, adding informative justification
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
@@ -227,8 +220,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     ${edl_tab_link} ${entity_lorelei_multiple} ${ltf_source} \
     ${edl_cs_info} ${edl_cs_info_conf} ${conf_all}
 
-
-## Event (Fine-grained)
+# Event (Fine-grained)
 echo "** Event fine-grained typing **"
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
@@ -246,8 +238,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /event/aida_event/fine_grained/rewrite_args.py \
     ${event_fine_all_clean}_tmp ${ltf_source} ${event_fine_all_clean} ${lang}
-echo "Fix time and format"
-# Event coreference
+## Event coreference
 echo "** Event coreference **"
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
@@ -267,16 +258,17 @@ docker run -i -t --rm -v ${data_root}:${data_root} \
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /event/aida_event/postprocessing_event_informative_mentions.py \
-    ${ltf_source} ${event_corefer_time} ${event_final} --eval m36
+    ${ltf_source} ${event_corefer_time} ${event_final}
 echo "Update event informative mention"
 
 # Final Merge
 echo "** Merging all items **"
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
-    /postprocessing/pipeline_merge.py \
-    --cs_fnames ${edl_cs_info_conf} ${edl_cs_color} ${relation_cs_fine} ${event_final} \
-    --output_file ${merged_cs} --eval m36
+    /aida_utilities/pipeline_merge_m18.py \
+    --cs_fnames ${edl_cs_info_conf} ${edl_cs_color} ${event_final} \
+    --output_file ${merged_cs}
+    # ${relation_cs_fine} 
 # multiple freebase links
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
@@ -292,7 +284,6 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
 ######################################################
 # Format converter
 ######################################################
-
 # AIF converter
 docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/aida_entity/bin/python \
@@ -315,10 +306,11 @@ docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${paren
     --parent_child_tab_path ${parent_child_tab_path} \
     --parent_child_mapping_sorted ${sorted} \
     --ent_vec_dir ${edl_output_dir} \
-    --ent_vec_files ${edl_vec_file1} ${edl_vec_file2} \
+    --ent_vec_files ${edl_vec_file} \
+    --evt_vec_dir ${edl_output_dir} \
+    --evt_vec_files ${evt_vec_file} \
     --edl_tab ${edl_tab_final} \
-    --eval m36
-    # --translation_path ${translation_freebase}
+    --event_embedding_from_file
 docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_rename_turtle.py \
@@ -328,7 +320,7 @@ docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${paren
     --parent_child_tab_path ${parent_child_tab_path} \
     --parent_child_mapping_sorted ${sorted}
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
-    chmod -R 777 ${ttl_final} ${ttl_initial_private} ${ttl_initial}
+    chmod -R 777 ${ttl_final} ${ttl_initial_private}
 
 echo "Final result in Cold Start Format is in "${merged_cs_link}
 echo "Final result in RDF Format is in "${ttl_final}
