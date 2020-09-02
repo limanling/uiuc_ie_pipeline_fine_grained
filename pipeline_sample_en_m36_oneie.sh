@@ -23,7 +23,7 @@ rsd_file_list=${data_root}/rsd_lst
 
 # edl output
 edl_output_dir=${data_root}/mention
-edl_cs_oneie=${data_root}/cs/entity.cs
+edl_cs_oneie=${data_root}/merge/cs/entity.cs
 edl_bio=${data_root}/edl/${lang}.bio
 edl_cfet_json=${edl_output_dir}/english.nam.cfet.json
 edl_tab_nam_bio=${edl_output_dir}/english.nam.bio
@@ -66,7 +66,7 @@ udp_dir=${data_root}/udp
 chunk_file=${data_root}/edl/chunk.txt
 
 # relation output
-relation_result_dir=${data_root}/cs   # final cs output file path
+relation_result_dir=${data_root}/merge/cs   # final cs output file path
 relation_cs_oneie=${relation_result_dir}/relation.cs # final cs output for relation
 #relation_result_dir=${data_root}/relation   # final cs output file path
 relation_cs_coarse=${relation_result_dir}/${lang}.rel.cs # final cs output for relation
@@ -74,7 +74,7 @@ relation_cs_fine=${relation_result_dir}/${lang}/${lang}.fine_rel.cs # final cs o
 new_relation_coarse=${relation_result_dir}/new_relation_${lang}.cs
 
 # event output
-event_result_dir=${data_root}/cs
+event_result_dir=${data_root}/merge/cs
 event_coarse_oneie=${event_result_dir}/event.cs
 event_coarse_without_time=${event_result_dir}/event_rewrite.cs
 event_coarse_with_time=${event_result_dir}/events_tme.cs
@@ -104,7 +104,7 @@ ttl_final=${data_root}/final
 # EDL
 # entity extraction
 echo "** Extracting coarse-grained entities, relations, and events **"
-docker run --rm -i -v ${data_root}:${data_root} -w /oneie limteng/oneie_aida_m36 \
+docker run --rm -i -v ${data_root}:${data_root} -w /oneie --gpus all limteng/oneie_aida_m36 \
     /opt/conda/bin/python \
     /oneie/predict.py -i ${ltf_source} -o ${data_root} -l ${lang} --output_hidden
 # fine-grained typing by model

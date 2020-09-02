@@ -274,15 +274,10 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanl
     /opt/conda/envs/py36/bin/python \
     /event/aida_event_coreference/gail_event_coreference_test.py \
     -i ${event_fine_all_clean} -o ${event_corefer} -c ${event_corefer_confidence} -r ${rsd_source} -l ${lang}
-###### update `time` format
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /event/aida_event/fine_grained/rewrite_time.py \
-    ${event_corefer} ${event_corefer_time}
 # ###### add haoyang's
 docker run -i -t --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
-    -w /EventTimeArg wenhycs/uiuc_event_time \
+    -w /EventTimeArg -gpus all wenhycs/uiuc_event_time \
     python aida_event_time_pipeline.py \
     --time_cold_start_filename ${filler_coarse} \
     --event_cold_start_filename ${event_corefer} \
