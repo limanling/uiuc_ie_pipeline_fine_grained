@@ -277,7 +277,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanl
 # ###### add haoyang's
 docker run -i -t --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
-    -w /EventTimeArg -gpus all wenhycs/uiuc_event_time \
+    -w /EventTimeArg --gpus all wenhycs/uiuc_event_time \
     python aida_event_time_pipeline.py \
     --time_cold_start_filename ${filler_coarse} \
     --event_cold_start_filename ${event_corefer} \
@@ -299,7 +299,7 @@ echo "** Merging all items **"
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/pipeline_merge.py \
-    --cs_fnames ${edl_cs_info_conf} ${edl_cs_color} ${relation_cs_fine} ${event_final} \
+    --cs_fnames ${edl_cs_info_conf}  ${edl_cs_color} ${relation_cs_fine} ${event_final} \
     --output_file ${merged_cs} --eval m36
 ######  !!!
 # multiple freebase links

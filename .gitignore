@@ -210,3 +210,5 @@ output/
 system/aida_edl/
 data/testdata_ldc2
 data/pengfei
+system/postprocessing/
+test.sh

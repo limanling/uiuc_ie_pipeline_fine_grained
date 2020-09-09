@@ -98,7 +98,7 @@ ttl_final=${data_root}/final
 # Running scripts
 ######################################################
 
-EDL
+# EDL
 # entity extraction
 echo "** Extracting entities **"
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanling/uiuc_ie_m36 \

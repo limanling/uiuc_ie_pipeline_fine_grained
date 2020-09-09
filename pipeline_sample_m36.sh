@@ -41,7 +41,7 @@ sh data_preparation_ldc.sh ${data_root} ${output_dir} ${output_dir}
 ####################################################################
 # preprocessing, including language detection, ASR/OCR preprcessing
 ####################################################################
-docker run --rm -v ${data_root_rsd}:${data_root_rsd} -v ${data_root_ltf}:${data_root_ltf} -v ${data_root_result}:${data_root_result} -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root_rsd}:${data_root_rsd} -v ${data_root_ltf}:${data_root_ltf} -v ${data_root_result}:${data_root_result} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result}
 sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path}
@@ -51,9 +51,9 @@ wait
 #####################################################################
 # extraction, including entity, relation, event
 #####################################################################
-for lang in 'en' 'ru' 'uk'
+for lang in 'en' 'ru' 'es'
 do
-    for datasource in '' '_asr' '_ocr'
+    for datasource in '' #'_asr' '_ocr'
     do
         (
             data_root_lang=${data_root_result}/${lang}${datasource}
@@ -73,7 +73,7 @@ wait
 #####################################################################
 # merging results
 #####################################################################
-docker run --rm -v ${data_root_result}:${data_root_result} -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root_result}:${data_root_result} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
     --root_folder ${data_root_result} \

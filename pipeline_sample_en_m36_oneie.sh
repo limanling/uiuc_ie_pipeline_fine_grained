@@ -22,7 +22,7 @@ rsd_file_list=${data_root}/rsd_lst
 #readlink -f ${rsd_source}/* > ${rsd_file_list}
 
 # edl output
-edl_output_dir=${data_root}/mention
+edl_output_dir=${data_root}/merge/mention
 edl_cs_oneie=${data_root}/merge/cs/entity.cs
 edl_bio=${data_root}/edl/${lang}.bio
 edl_cfet_json=${edl_output_dir}/english.nam.cfet.json
@@ -129,7 +129,8 @@ docker run -v ${PWD}/system/aida_edl/edl_data:/data \
     m36
 ## nominal coreference
 echo "** Starting nominal coreference **"
-docker run --rm -v ${data_root}:${data_root} -w /aida_nominal_coreference_en -i wangqy96/aida_nominal_coreference_en \
+docker run --rm -v ${data_root}:${data_root} -w /aida_nominal_coreference_en \
+    --gpus all -i wangqy96/aida_nominal_coreference_en \
     /opt/conda/envs/aida_coreference/bin/python \
     /aida_nominal_coreference_en/gail_nominal_no_web.py \
     --dev ${edl_bio} \
@@ -183,7 +184,7 @@ docker run -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     ${ltf_source} ${filler_coarse} ${event_coarse_without_time} ${event_coarse_with_time}
 
 # Relation Extraction (fine)
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --gpus all limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     -u /relation/FineRelationExtraction/EVALfine_grained_relations.py \
     --lang_id ${lang} \
@@ -193,9 +194,9 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     --fine_ent_type_tab ${edl_tab_freebase} \
     --fine_ent_type_json ${edl_json_fine} \
     --outdir ${relation_result_dir} \
-    --fine_grained
+    --fine_grained \
+    --use_gpu
 ##   --reuse_cache \
-##   --use_gpu \
 
 ## Postprocessing, adding informative justification
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
@@ -264,7 +265,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanl
 # generate 4tuple
 docker run -i -t --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
-    -w /EventTimeArg wenhycs/uiuc_event_time \
+    -w /EventTimeArg --gpus all wenhycs/uiuc_event_time \
     python aida_event_time_pipeline.py \
     --time_cold_start_filename ${filler_coarse} \
     --event_cold_start_filename ${event_corefer} \
@@ -285,10 +286,16 @@ echo "Update event informative mention"
 echo "** Merging all items **"
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
-    /aida_utilities/pipeline_merge_m18.py \
-    --cs_fnames ${edl_cs_info_conf} ${edl_cs_color} ${event_final} \
-    --output_file ${merged_cs}
-    # ${relation_cs_fine} 
+    /postprocessing/pipeline_merge.py \
+    --cs_fnames ${edl_cs_info_conf} ${edl_cs_color} ${relation_cs_fine} ${event_final} \
+    --output_file ${merged_cs} --eval m36
+# echo "** Merging all items **"
+# docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /postprocessing/pipeline_merge.py \
+#     --cs_fnames ${edl_cs_fine_protester} ${edl_cs_color} ${relation_cs_fine} ${event_final} \
+#     --output_file ${merged_cs}.noextent --eval m36
+#     # ${edl_cs_info_conf} 
 # multiple freebase links
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \

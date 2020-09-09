@@ -2,7 +2,7 @@
 
 docker pull mongo
 docker pull panx27/edl
-# docker pull limanling/uiuc_ie_m36
+docker pull limanling/uiuc_ie_m36
 docker pull dylandilu/event_coreference_xdoc
 docker pull wangqy96/aida_nominal_coreference_en
 docker pull panx27/data-processor
@@ -12,6 +12,7 @@ docker pull dylandilu/chuck_coreference
 docker pull lifuhuang/aida_event_lf
 docker pull limteng/oneie_aida_m36
 docker pull wenhycs/uiuc_event_time
+docker pull laituan245/aida_attrs_filter
 
 
 if [ -d "${PWD}/system/aida_edl" ]
