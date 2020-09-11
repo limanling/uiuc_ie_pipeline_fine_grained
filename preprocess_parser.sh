@@ -6,6 +6,7 @@ lang=$2
 parent_child_tab=$3
 sorted=$4
 thread_id=$5
+eval=$6
 # ================ default arguments =======================
 # ltf source folder path
 ltf_source_thread=${data_root}/ltf_minibatch/${thread_id}
@@ -26,18 +27,18 @@ timetable_tab=${data_root}/time_table.tab
 # ================ script =========================
 # generate files for each thread
 # generate *.bio
-docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
     /opt/conda/envs/py36/bin/python \
     /aida_utilities/ltf2bio.py /uiuc/${ltf_source_thread} /uiuc/${edl_bio_thread}
 # generate file list
-docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
     /opt/conda/envs/py36/bin/python \
     /aida_utilities/dir_readlink.py /uiuc/${rsd_source_thread} /uiuc/${rsd_file_list_thread}
 
 # apply stanford corenlp
 docker run --rm -v ${data_root}:/uiuc/${data_root} \
     -v ${parent_child_tab}:/uiuc/${parent_child_tab} \
-    -w `pwd` -i limanling/uiuc_ie_m18 \
+    -w `pwd` -i limanling/uiuc_ie_${eval} \
     /opt/conda/envs/py36/bin/python \
     /aida_utilities/parent_child_util.py \
     /uiuc/${parent_child_tab} ${sorted} /uiuc/${timetable_tab}

@@ -20,28 +20,40 @@ Docker (Please do not set up UIUC IE Pipeline in a NAS, as the EDL needs MongoDB
 
 ## Quick Start
 
-### Running LDC corpus, such as `LDC2019E42_AIDA_Phase_1_Evaluation_Source_Data_V1.0`.
+### AIDA M18: Running LDC corpus, such as `LDC2019E42_AIDA_Phase_1_Evaluation_Source_Data_V1.0`.
 ```bash
 sh pipeline_sample.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path} ${thread_num}
 ```
 where `parent_child_tab` is the file meta data in `docs` of LDC corpus. For example, 
 ```bash
-sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 2
+sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 10
 ```
 If there is no ASR and OCR files, please use `None` as input, e.g.,
 ```bash
-sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None 2
+sh pipeline_sample.sh ${PWD}/data/testdata_ldc ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None 10
 ```
 
 To run OneIE version (RUN2), please run script
 ```bash
-sh pipeline_sample_oneie.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path} 2
+sh pipeline_sample_oneie.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path} 10
 ```
 For example,
 ```bash
-sh pipeline_sample_oneie.sh ${PWD}/data/testdata_ldc ${PWD}/output/output_oneie ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None 2
+sh pipeline_sample_oneie.sh ${PWD}/data/testdata_ldc ${PWD}/output/output_oneie ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None 10
 ```
 
+### AIDA M36: Running LDC corpus and link entities to LDC released KB 
+```bash
+sh pipeline_sample_m36.sh ${data_root_ldc} ${kb_data_dir} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path} ${thread_num}
+```
+where `parent_child_tab` is the file meta data in `docs` of LDC corpus. `kb_data_dir` is the `data` directory of a LDC released KB, such as `${PWD}/data/LDC2020E27_AIDA_Phase_2_Practice_Topics_Reference_Knowledge_Base_V1.1/data`. For example, 
+```bash
+sh pipeline_sample_m36.sh ${PWD}/data/testdata_ldc ${PWD}/data/LDC2020E27_AIDA_Phase_2_Practice_Topics_Reference_Knowledge_Base_V1.1/data ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 10
+```
+If there is no ASR and OCR files, please use `None` as input, e.g.,
+```bash
+sh pipeline_sample_m36.sh ${PWD}/data/testdata_ldc ${PWD}/data/LDC2020E27_AIDA_Phase_2_Practice_Topics_Reference_Knowledge_Base_V1.1/data ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None 10
+```
 
 ### Running on raw text data
 * Make sure you have RSD (Raw Source Data, ending with `*.rsd.txt`) and LTF (Logical Text Format, ending with `*.ltf.xml`) files. 
@@ -56,7 +68,7 @@ sh pipeline_sample_full.sh ${data_root_ltf} ${data_root_rsd} ${output_dir} ${par
 ```
 For example, 
 ```bash
-sh pipeline_sample_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_m18 ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 2
+sh pipeline_sample_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_m18 ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 10
 ```
 If you do not have `parent_child_tab`, `en_asr_path`, `en_ocr_path` and `ru_ocr_path`, please use `None`.
 
@@ -67,7 +79,7 @@ sh pipeline_sample_oneie_full.sh ${data_root_ltf} ${data_root_rsd} ${output_dir}
 ```
 For example, 
 ```bash
-sh pipeline_sample_oneie_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_oneie ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 2
+sh pipeline_sample_oneie_full.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_oneie ${PWD}/data/testdata_dryrun/parent_children.sorted.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 10
 ```
 Note that the file paths are absolute paths.
 

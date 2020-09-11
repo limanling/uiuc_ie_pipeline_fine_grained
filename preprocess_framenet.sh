@@ -4,6 +4,7 @@
 data_root=$1
 lang=$2
 thread_id=$3
+eval=$4
 # ================ default arguments =======================
 # ltf source folder path
 ltf_source=${data_root}/ltf_minibatch/${thread_id}
@@ -14,7 +15,7 @@ framenet_path=${event_result_dir}/framenet_res
 
 # ================ script =========================
 ## preprocess for English
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
     /opt/conda/envs/py36/bin/python \
     /event/aida_event/framenet/generate_framenet.py \
     ${lang} ${ltf_source} ${ltf_txt_path} ${framenet_path}

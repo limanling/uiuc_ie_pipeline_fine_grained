@@ -4,6 +4,7 @@
 # ================ input arguments =========================
 data_root=$1
 lang=$2
+eval=$3
 # ================ default arguments =======================
 ltf_source=${data_root}/ltf
 rsd_source=${data_root}/rsd
@@ -21,15 +22,15 @@ chunk_file=${edl_output_dir}/chunk.txt
 # ================ script =========================
 # generate files for full_dir
 # # generate *.bio
-docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
     /opt/conda/envs/py36/bin/python \
     /aida_utilities/ltf2bio.py /uiuc/${ltf_source} /uiuc/${edl_bio}
 # # generate file list
-docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
     /opt/conda/envs/py36/bin/python \
     /aida_utilities/dir_ls.py /uiuc/${ltf_source} /uiuc/${ltf_file_list}
 # apply universal dependency parser
-docker run --rm -v ${data_root}:/uiuc/${data_root} -i limanling/uiuc_ie_m18 \
+docker run --rm -v ${data_root}:/uiuc/${data_root} -i limanling/uiuc_ie_${eval} \
     mkdir -p /uiuc/${udp_dir}
 docker run --rm -v ${data_root}:/uiuc/${data_root} -w /scr -i dylandilu/chuck_coreference \
     python bio2udp.py \

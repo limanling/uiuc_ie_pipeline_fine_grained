@@ -191,7 +191,7 @@ docker run -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
 echo ${event_coarse_with_time}
 
 # Relation Extraction (fine)
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --gpus all limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     -u /relation/FineRelationExtraction/EVALfine_grained_relations.py \
     --lang_id ${lang} \
@@ -201,9 +201,9 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     --fine_ent_type_tab ${edl_tab_freebase} \
     --fine_ent_type_json ${edl_json_fine} \
     --outdir ${relation_result_dir} \
-    --fine_grained
+    --fine_grained \
+    --use_gpu 
 ##   --reuse_cache \
-##   --use_gpu \
 ## Postprocessing, adding informative justification
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
@@ -211,7 +211,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     --cs_fnames ${edl_cs_fine} ${filler_fine} \
     --output_file ${edl_cs_fine_all}
 echo "add protester"
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/add_protester.py \
     ${event_coarse_without_time} ${edl_cs_fine_all} ${edl_cs_fine_protester}
@@ -256,7 +256,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanl
 # generate 4tuple
 docker run -i -t --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
-    -w /EventTimeArg wenhycs/uiuc_event_time \
+    -w /EventTimeArg --gpus all wenhycs/uiuc_event_time \
     python aida_event_time_pipeline.py \
     --time_cold_start_filename ${filler_coarse} \
     --event_cold_start_filename ${event_corefer} \
@@ -302,7 +302,7 @@ docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${paren
     --evt_coref_score_tab ${event_corefer_confidence} \
     --source_tab ${parent_child_tab_path}
 # Append private information
-docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i --gpus all limanling/uiuc_ie_m36 \
     /opt/conda/envs/aida_entity/bin/python \
     /postprocessing/postprocessing_append_private_data_m36.py \
     --language_id ${lang}${source} \

@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+kb_dir=$1  #/scratch/xiaoman6/tmp/edl_data/kb/LDC2019E43_AIDA_Phase_1_Evaluation_Reference_Knowledge_Base/data
+
 docker pull mongo
 docker pull panx27/edl
-docker pull limanling/uiuc_ie_m36
+# docker pull limanling/uiuc_ie_m36
 docker pull dylandilu/event_coreference_xdoc
 docker pull wangqy96/aida_nominal_coreference_en
 docker pull panx27/data-processor
@@ -26,7 +28,13 @@ fi
 
 docker run -d --rm -v ${PWD}/system/aida_edl/edl_data/db:/data/db --name db mongo
 
-docker run -d -i --rm --name uiuc_ie_m36 -w /entity_api -p 5500:5500 --name aida_entity limanling/uiuc_ie_m36 \
+if [ -d "${kb_dir}" ]
+then
+    docker run --rm --link db:mongo -v ${kb_dir}:/data panx27/edl python ./projs/docker_aida19/kb/import_kb.py /data/entities.tab
+    docker run --rm --link db:mongo -v ${kb_dir}:/data panx27/edl python ./projs/docker_aida19/kb/import_mentions.py /data/entities.tab
+fi
+
+docker run -d -i --rm --name uiuc_ie_m36 -w /entity_api -p 5500:5500 --name aida_entity --gpus all limanling/uiuc_ie_m36 \
     /opt/conda/envs/aida_entity/bin/python \
     /entity_api/entity_api/app.py --eval m36
 

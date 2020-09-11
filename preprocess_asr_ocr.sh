@@ -4,7 +4,7 @@ data_root=$1
 en_asr_aln=$2
 en_ocr_csv_file=$3
 ru_ocr_csv_file=$4
-
+eval=$5
 
 ######################################################
 # Arguments
@@ -36,21 +36,21 @@ then
     # for asr
     docker run --rm -v ${data_root}:${data_root} \
         -v ${en_asr_aln}:${en_asr_aln} \
-        -w `pwd` -i limanling/uiuc_ie_m18 \
+        -w `pwd` -i limanling/uiuc_ie_${eval} \
         /opt/conda/envs/py36/bin/python \
         /preprocessing/preprocess_asr.py ${en_asr_aln} ${en_asr_rsd} ${en_asr_rsd_file_list}
     docker run --rm -v ${data_root}:${data_root} \
-        -w `pwd` -i limanling/uiuc_ie_m18 \
+        -w `pwd` -i limanling/uiuc_ie_${eval} \
         mkdir -p ${en_asr_ltf}
     docker run --rm -v ${data_root}:${data_root} \
-        -w `pwd` -i limanling/uiuc_ie_m18 \
+        -w `pwd` -i limanling/uiuc_ie_${eval} \
         /opt/conda/envs/py36/bin/python \
         /aida_utilities/rsd2ltf.py ${en_asr_rsd} ${en_asr_ltf} \
         --seg_option nltk+linebreak --tok_option space --extension .rsd.txt
     # asr sentence mapping
     docker run --rm -v ${data_root}:${data_root} \
         -v ${en_asr_aln}:${en_asr_aln} \
-        -w `pwd` -i limanling/uiuc_ie_m18 \
+        -w `pwd` -i limanling/uiuc_ie_${eval} \
         /opt/conda/envs/py36/bin/python \
         /preprocessing/asr_sentence_mapping.py ${en_asr_ltf} ${en_asr_aln} ${en_asr_mapping_file_path}
 else
@@ -62,19 +62,19 @@ then
     # for english ocr
     docker run --rm -v ${data_root}:${data_root} \
         -v ${en_ocr_csv_file}:${en_ocr_csv_file} \
-        -w `pwd` -i limanling/uiuc_ie_m18 \
+        -w `pwd` -i limanling/uiuc_ie_${eval} \
         /opt/conda/envs/py36/bin/python \
         /preprocessing/preprocess_ocr.py ${en_ocr_csv_file} ${en_ocr_rsd}
     docker run --rm -v ${data_root}:${data_root} \
-        -w `pwd` -i limanling/uiuc_ie_m18 \
+        -w `pwd` -i limanling/uiuc_ie_${eval} \
         mkdir -p ${en_ocr_ltf}
     docker run --rm -v ${data_root}:${data_root} \
-        -w `pwd` -i limanling/uiuc_ie_m18 \
+        -w `pwd` -i limanling/uiuc_ie_${eval} \
         /opt/conda/envs/py36/bin/python \
         /aida_utilities/rsd2ltf.py ${en_ocr_rsd} ${en_ocr_ltf} \
         --seg_option nltk+linebreak --tok_option unitok --extension .rsd.txt
 else
-    echo "no Russian OCR files"
+    echo "no English OCR files"
 fi
 
 if [ -d "${ru_ocr_csv_file}" ]
@@ -82,18 +82,18 @@ then
     # for russian ocr
     docker run --rm -v ${data_root}:${data_root} \
         -v ${ru_ocr_csv_file}:${ru_ocr_csv_file} \
-        -w `pwd` -i limanling/uiuc_ie_m18 \
+        -w `pwd` -i limanling/uiuc_ie_${eval} \
         /opt/conda/envs/py36/bin/python \
         /preprocessing/preprocess_ocr.py ${ru_ocr_csv_file} ${ru_ocr_rsd}
     docker run --rm -v ${data_root}:${data_root} \
-        -w `pwd` -i limanling/uiuc_ie_m18 \
+        -w `pwd` -i limanling/uiuc_ie_${eval} \
         mkdir -p ${ru_ocr_ltf}
     docker run --rm -v ${data_root}:${data_root} \
-        -w `pwd` -i limanling/uiuc_ie_m18 \
+        -w `pwd` -i limanling/uiuc_ie_${eval} \
         /opt/conda/envs/py36/bin/python \
         /aida_utilities/rsd2ltf.py ${ru_ocr_rsd} ${ru_ocr_ltf} \
         --seg_option nltk+linebreak --tok_option unitok --extension .rsd.txt
 else
-    echo "no Ukrainian OCR files"
+    echo "no Russian OCR files"
 fi
 

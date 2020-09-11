@@ -12,6 +12,7 @@ ocr_en_path=$5
 ocr_ru_path=$6
 thread_num=$7
 sorted=0
+eval='m36'
 
 # data folder that specified with language
 data_root_result=${output_dir}
@@ -35,7 +36,7 @@ echo "set_up successfully"
 ####################################################################
 # data prepreparation
 ####################################################################
-sh data_preparation_ldc.sh ${data_root} ${output_dir} ${output_dir}
+sh data_preparation_ldc.sh ${data_root} ${output_dir} ${output_dir} ${eval}
 
 
 ####################################################################
@@ -43,8 +44,9 @@ sh data_preparation_ldc.sh ${data_root} ${output_dir} ${output_dir}
 ####################################################################
 docker run --rm -v ${data_root_rsd}:${data_root_rsd} -v ${data_root_ltf}:${data_root_ltf} -v ${data_root_result}:${data_root_result} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
-    /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result}
-sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path}
+    /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result} \
+    --langs en ru es
+sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path} ${eval}
 
 wait
 
@@ -53,13 +55,13 @@ wait
 #####################################################################
 for lang in 'en' 'ru' 'es'
 do
-    for datasource in '' #'_asr' '_ocr'
+    for datasource in '' '_asr' #'_ocr'
     do
         (
             data_root_lang=${data_root_result}/${lang}${datasource}
             if [ -d "${data_root_lang}/ltf" ]
             then
-                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} ${thread_num}
+                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} ${thread_num} ${eval}
                 sh pipeline_sample_${lang}_m36.sh ${data_root_lang} ${parent_child_tab_path} ${sorted} ${lang} ${datasource}
             else
                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
@@ -82,16 +84,16 @@ docker run --rm -v ${data_root_result}:${data_root_result} -i limanling/uiuc_ie_
 echo "Final output of English, Russian, Ukrainian in "${output_ttl}
 
 
-# #####################################################################
-# # docker stop
-# #####################################################################
-# echo "Stop dockers..."
-# docker stop db
-# docker stop nominal_coreference
-# docker stop aida_entity
-# docker stop event_coreference_en
-# docker stop event_coreference_ru
-# docker stop event_coreference_uk
-# docker ps
+# # #####################################################################
+# # # docker stop
+# # #####################################################################
+# # echo "Stop dockers..."
+# # docker stop db
+# # docker stop nominal_coreference
+# # docker stop aida_entity
+# # docker stop event_coreference_en
+# # docker stop event_coreference_ru
+# # docker stop event_coreference_uk
+# # docker ps
 
-# exit 0
+# # exit 0

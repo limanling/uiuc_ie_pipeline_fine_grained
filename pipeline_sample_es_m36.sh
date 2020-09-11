@@ -109,7 +109,7 @@ docker run --rm -i -v ${data_root}:${data_root} -w /oneie --gpus all limteng/one
     /oneie/predict.py -i ${ltf_source} -o ${data_root} -l ${lang} --output_hidden
 # fine-grained typing by model
 echo "fine-grained typing started"
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" --gpus all limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/typing.py \
     ${lang} ${edl_tab_nam_bio} ${entity_fine_model}
@@ -160,7 +160,7 @@ docker run --rm -v ${data_root}:${data_root} -w /scr -i dylandilu/filler \
 
 ## Fine-grained Entity
 echo "** Fine-grained entity typing **"
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/fine_grained_entity.py \
     ${lang} ${edl_json_fine} ${edl_tab_freebase} ${entity_fine_model} \
@@ -204,7 +204,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     --cs_fnames ${edl_cs_fine} ${filler_fine} \
     --output_file ${edl_cs_fine_all}
 echo "add protester"
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/add_protester.py \
     ${event_coarse_without_time} ${edl_cs_fine_all} ${edl_cs_fine_protester}
@@ -219,6 +219,8 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     ${lang}${source} ${edl_tab_nam} ${edl_tab_nom} ${edl_tab_pro} \
     ${edl_tab_link} ${entity_lorelei_multiple} ${ltf_source} \
     ${edl_cs_info} ${edl_cs_info_conf} ${conf_all}
+
+
 # Event (Fine-grained)
 echo "** Event fine-grained typing **"
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
@@ -257,7 +259,7 @@ docker run -i -t --rm -v ${data_root}:${data_root} \
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /event/aida_event/postprocessing_event_informative_mentions.py \
-    ${ltf_source} ${event_corefer_time} ${event_final}
+    ${ltf_source} ${event_corefer_time} ${event_final} --eval m36
 echo "Update event informative mention"
 
 # Final Merge
@@ -291,7 +293,7 @@ docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${paren
     --evt_coref_score_tab ${event_corefer_confidence} \
     --source_tab ${parent_child_tab_path}
 # Append private information
-docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` --gpus all -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/aida_entity/bin/python \
     /postprocessing/postprocessing_append_private_data_m36.py \
     --language_id ${lang}${source} \
