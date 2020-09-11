@@ -4,7 +4,7 @@ kb_dir=$1  #/scratch/xiaoman6/tmp/edl_data/kb/LDC2019E43_AIDA_Phase_1_Evaluation
 
 docker pull mongo
 docker pull panx27/edl
-# docker pull limanling/uiuc_ie_m36
+docker pull limanling/uiuc_ie_m36
 docker pull dylandilu/event_coreference_xdoc
 docker pull wangqy96/aida_nominal_coreference_en
 docker pull panx27/data-processor
