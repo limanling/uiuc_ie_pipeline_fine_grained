@@ -5,12 +5,13 @@
 ######################################################
 # input root path
 data_root=$1
-output_dir=$2
-parent_child_tab_path=$3
-asr_en_path=$4
-ocr_en_path=$5
-ocr_ru_path=$6
-thread_num=$7
+kb_dir=$2
+output_dir=$3
+parent_child_tab_path=$4
+asr_en_path=$5
+ocr_en_path=$6
+ocr_ru_path=$7
+thread_num=$8
 sorted=0
 eval='m36'
 
@@ -28,10 +29,9 @@ log_dir=${output_dir}/log
 #####################################################################
 mkdir -p ${log_dir}
 #sh set_up.sh > ${log_dir}/log_set_up.txt
-sh set_up_m36.sh
+sh set_up_m36.sh ${kb_dir}
 echo "set_up successfully"
-#docker ps
-
+docker ps
 
 ####################################################################
 # data prepreparation
