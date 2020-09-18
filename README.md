@@ -48,11 +48,11 @@ sh pipeline_sample_m36.sh ${data_root_ldc} ${kb_data_dir} ${output_dir} ${parent
 ```
 where `parent_child_tab` is the file meta data in `docs` of LDC corpus. `kb_data_dir` is the `data` directory of a LDC released KB, such as `${PWD}/data/LDC2020E27_AIDA_Phase_2_Practice_Topics_Reference_Knowledge_Base_V1.1/data`. For example, 
 ```bash
-sh pipeline_sample_m36.sh ${PWD}/data/testdata_ldc ${PWD}/data/LDC2020E27_AIDA_Phase_2_Practice_Topics_Reference_Knowledge_Base_V1.1/data ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab ${PWD}/data/asr.english ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 10
+sh pipeline_sample_m36.sh ${PWD}/data/LDC2020E29 ${PWD}/data/LDC2020E27_AIDA_Phase_2_Practice_Topics_Reference_Knowledge_Base_V1.1/data ${PWD}/output/output_dryrun_E29_test ${PWD}/data/LDC2020E11_AIDA_Phase_2_Practice_Topic_Source_Data_V1.0/docs/parent_children.tab ${PWD}/output/output_dryrun_E11_asr_aln ${PWD}/data/video.ocr/en.cleaned.csv ${PWD}/data/video.ocr/ru.cleaned.csv 20
 ```
 If there is no ASR and OCR files, please use `None` as input, e.g.,
 ```bash
-sh pipeline_sample_m36.sh ${PWD}/data/testdata_ldc ${PWD}/data/LDC2020E27_AIDA_Phase_2_Practice_Topics_Reference_Knowledge_Base_V1.1/data ${PWD}/output/output ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None 10
+sh pipeline_sample_m36.sh ${PWD}/data/LDC2020E29 ${PWD}/data/LDC2020E27_AIDA_Phase_2_Practice_Topics_Reference_Knowledge_Base_V1.1/data ${PWD}/output/output_dryrun_E29_test ${PWD}/data/LDC2020E11_AIDA_Phase_2_Practice_Topic_Source_Data_V1.0/docs/parent_children.tab None None None 20
 ```
 
 ### Running on raw text data

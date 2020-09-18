@@ -23,37 +23,35 @@ output_ttl=${data_root_result}/kb/ttl
 log_dir=${output_dir}/log
 
 
-#####################################################################
-# set up services, please reserve the the following ports and ensure that no other programs/services are occupying these ports:
-# `27017`, `2468`, `5500`, `5000`, `5234`, `9000`, `6001`, `6101` and `6201`.
-#####################################################################
-mkdir -p ${log_dir}
-#sh set_up.sh > ${log_dir}/log_set_up.txt
+# #####################################################################
+# # set up services, please reserve the the following ports and ensure that no other programs/services are occupying these ports:
+# # `27017`, `2468`, `5500`, `5000`, `5234`, `9000`, `6001`, `6101` and `6201`.
+# #####################################################################
 sh set_up_m36.sh ${kb_dir}
-echo "set_up successfully"
-docker ps
+# echo "set_up successfully"
+# # docker ps
 
-####################################################################
-# data prepreparation
-####################################################################
-sh data_preparation_ldc.sh ${data_root} ${output_dir} ${output_dir} ${eval}
+# ####################################################################
+# # data prepreparation
+# ####################################################################
+# sh data_preparation_ldc.sh ${data_root} ${output_dir} ${output_dir} ${eval}
 
 
-####################################################################
-# preprocessing, including language detection, ASR/OCR preprcessing
-####################################################################
-docker run --rm -v ${data_root_rsd}:${data_root_rsd} -v ${data_root_ltf}:${data_root_ltf} -v ${data_root_result}:${data_root_result} -w `pwd` -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result} \
-    --langs en ru es
-sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path} ${eval}
+# ####################################################################
+# # preprocessing, including language detection, ASR/OCR preprcessing
+# ####################################################################
+# docker run --rm -v ${data_root_rsd}:${data_root_rsd} -v ${data_root_ltf}:${data_root_ltf} -v ${data_root_result}:${data_root_result} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result} \
+#     --langs en ru es --parent_child_tab_path ${parent_child_tab_path}
+# sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path} ${eval}
 
-wait
+# wait
 
 #####################################################################
 # extraction, including entity, relation, event
 #####################################################################
-for lang in 'en' 'ru' 'es'
+for lang in 'es' 'ru' 'en' 
 do
     for datasource in '' '_asr' #'_ocr'
     do
@@ -61,8 +59,8 @@ do
             data_root_lang=${data_root_result}/${lang}${datasource}
             if [ -d "${data_root_lang}/ltf" ]
             then
-                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} ${thread_num} ${eval}
-                sh pipeline_sample_${lang}_m36.sh ${data_root_lang} ${parent_child_tab_path} ${sorted} ${lang} ${datasource}
+                # sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} ${thread_num} ${eval}
+                sh pipeline_sample_${lang}_m36_oneie.sh ${data_root_lang} ${parent_child_tab_path} ${sorted} ${lang} ${datasource}
             else
                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
             fi
@@ -84,16 +82,16 @@ docker run --rm -v ${data_root_result}:${data_root_result} -i limanling/uiuc_ie_
 echo "Final output of English, Russian, Ukrainian in "${output_ttl}
 
 
-# # #####################################################################
-# # # docker stop
-# # #####################################################################
-# # echo "Stop dockers..."
-# # docker stop db
-# # docker stop nominal_coreference
-# # docker stop aida_entity
-# # docker stop event_coreference_en
-# # docker stop event_coreference_ru
-# # docker stop event_coreference_uk
-# # docker ps
+# # # #####################################################################
+# # # # docker stop
+# # # #####################################################################
+# # # echo "Stop dockers..."
+# # # docker stop db
+# # # docker stop nominal_coreference
+# # # docker stop aida_entity
+# # # docker stop event_coreference_en
+# # # docker stop event_coreference_ru
+# # # docker stop event_coreference_uk
+# # # docker ps
 
-# # exit 0
+# # # exit 0

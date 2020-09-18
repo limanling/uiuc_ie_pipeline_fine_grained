@@ -212,3 +212,6 @@ data/testdata_ldc2
 data/pengfei
 system/postprocessing/
 test.sh
+bak/
+data/LDC*
+data/kairos*

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-data_root="/shared/nas/data/m1/manling2/aida_docker_test/uiuc_ie_pipeline_fine_grained/output/output_dryrun_E29_ann_singletype"
-parent_child_tab_path="/shared/nas/data/m1/manling2/aida_docker_test/uiuc_ie_pipeline_fine_grained/output/output_dryrun_E29_ann/parent_children.tab"
+data_root="/shared/nas/data/m1/manling2/aida_docker_test/uiuc_ie_pipeline_fine_grained/output/output_dryrun_E29_oneie_entcoref"
+parent_child_tab_path="/shared/nas/data/m1/manling2/aida_docker_test/uiuc_ie_pipeline_fine_grained/output/bak_output_dryrun_E29_ann/parent_children.tab"
 output_ttl=${data_root}"/kb/ttl" 
 # all_merged_ttl=${output_ttl}
 variant=1
@@ -16,16 +16,16 @@ docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     --output_folder ${output_ttl}
 echo "Final output of English, Russian, Spanish in "${output_ttl}
 
-# # merge sentiment
-# docker run --rm -v `pwd`:`pwd` -w `pwd` -i -t limanling/uiuc_ie_m18 \
-#     /opt/conda/envs/py36/bin/python \
-#     /postprocessing/postprocessing_add_relation.py \
-#     --relation_cs_files ${language_id} \
-#     --input_ttl_folder ${cu_merged_ttl} \
-#     --output_ttl_folder ${all_merged_ttl} \
-#     --parent_child_tab_path ${parent_child_tab_path} \
-#     --child_column_idx ${child_column_idx} \
-#     --parent_column_idx ${root_column_idx}
+# # # merge sentiment
+# # docker run --rm -v `pwd`:`pwd` -w `pwd` -i -t limanling/uiuc_ie_m18 \
+# #     /opt/conda/envs/py36/bin/python \
+# #     /postprocessing/postprocessing_add_relation.py \
+# #     --relation_cs_files ${language_id} \
+# #     --input_ttl_folder ${cu_merged_ttl} \
+# #     --output_ttl_folder ${all_merged_ttl} \
+# #     --parent_child_tab_path ${parent_child_tab_path} \
+# #     --child_column_idx ${child_column_idx} \
+# #     --parent_column_idx ${root_column_idx}
 
 # run docker python /shared/nas/data/m1/manling2/aida_docker/docker_m18/postprocessing/postprocessing_cleankb_params.py \
 docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -i limanling/uiuc_ie_m36 \

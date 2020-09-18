@@ -33,7 +33,8 @@ docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie
 # generate file list
 docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
     /opt/conda/envs/py36/bin/python \
-    /aida_utilities/dir_readlink.py /uiuc/${rsd_source_thread} /uiuc/${rsd_file_list_thread}
+    /aida_utilities/dir_readlink.py /uiuc/${rsd_source_thread} /uiuc/${rsd_file_list_thread} \
+    --stanford_corenlp /uiuc/${core_nlp_output_path}
 
 # apply stanford corenlp
 docker run --rm -v ${data_root}:/uiuc/${data_root} \

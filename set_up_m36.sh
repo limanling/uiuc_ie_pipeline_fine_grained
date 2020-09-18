@@ -4,17 +4,20 @@ kb_dir=$1  #/scratch/xiaoman6/tmp/edl_data/kb/LDC2019E43_AIDA_Phase_1_Evaluation
 
 docker pull mongo
 docker pull panx27/edl
-docker pull limanling/uiuc_ie_m36
+# docker pull limanling/uiuc_ie_m36
 docker pull dylandilu/event_coreference_xdoc
 docker pull wangqy96/aida_nominal_coreference_en
 docker pull panx27/data-processor
 docker pull limanling/aida-tools
 docker pull dylandilu/filler
 docker pull dylandilu/chuck_coreference
-docker pull lifuhuang/aida_event_lf
+# docker pull lifuhuang/aida_event_lf
 docker pull limteng/oneie_aida_m36
 docker pull wenhycs/uiuc_event_time
-docker pull laituan245/aida_attrs_filter
+# docker pull laituan245/aida_attrs_filter
+docker pull panx27/aida20_mention
+docker pull laituan245/spanbert_entity_coref
+docker pull laituan245/spanbert_coref
 
 
 if [ -d "${PWD}/system/aida_edl" ]
