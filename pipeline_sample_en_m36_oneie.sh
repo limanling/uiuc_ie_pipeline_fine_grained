@@ -123,15 +123,8 @@ docker run -v ${PWD}/system/aida_edl/edl_data:/data \
     /testdata_${lang}${source}/edl \
     m36
 ## nominal coreference
-docker run --rm -v ${data_root}:${data_root} -w /aida_nominal_coreference_en -i --gpus '"device=1"' wangqy96/aida_nominal_coreference_en \
-    /opt/conda/envs/aida_coreference/bin/python \
-    /aida_nominal_coreference_en/gail_nominal_no_web.py \
-    --dev ${edl_bio} \
-    --dev_e ${edl_tab_link} \
-    --dev_f ${edl_tab_link_fb} \
-    --out_e ${edl_tab_final}
-# docker run --gpus '"device=1"' --rm -v ${data_root}:${data_root} laituan245/spanbert_entity_coref \
-#     -edl_official ${edl_tab_link} -edl_freebase ${edl_tab_link_fb} -l ${ltf_source} -o ${edl_tab_final}
+docker run --gpus '"device=1"' --rm -v ${data_root}:${data_root} laituan245/spanbert_entity_coref \
+    -edl_official ${edl_tab_link} -edl_freebase ${edl_tab_link_fb} -l ${ltf_source} -o ${edl_tab_final}
 ## tab2cs
 docker run --rm -v ${data_root}:${data_root} -w `pwd`  -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
@@ -187,7 +180,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --gpus '"device=1"' lim
     --fine_grained \
     --use_gpu
 ##   --reuse_cache \
-docker run -i -t --rm -v ${data_root}:${data_root} \
+docker run -i --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
     -w /EventTimeArg --gpus '"device=1"' wenhycs/uiuc_event_time \
     python aida_event_time_pipeline.py \
@@ -255,15 +248,15 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /event/aida_event/fine_grained/rewrite_args.py \
     ${event_fine_all_clean}_tmp ${ltf_source} ${event_fine_all_clean} ${lang}
 # Event coreference
-echo "** Event coreference **"
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /event/aida_event_coreference/gail_event_coreference_test.py \
-    -i ${event_fine_all_clean} -o ${event_corefer} -c ${event_corefer_confidence} -r ${rsd_source} -l ${lang}
-# docker run --rm -v ${data_root}:${data_root} --gpus '"device=1"' laituan245/spanbert_coref \
-#     -i ${event_fine_all_clean} -c ${event_corefer} -t ${event_corefer_confidence} -l ${ltf_source}
+# echo "** Event coreference **"
+# docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /event/aida_event_coreference/gail_event_coreference_test.py \
+#     -i ${event_fine_all_clean} -o ${event_corefer} -c ${event_corefer_confidence} -r ${rsd_source} -l ${lang}
+docker run --rm -v ${data_root}:${data_root} --gpus '"device=1"' laituan245/spanbert_coref \
+    -i ${event_fine_all_clean} -c ${event_corefer} -t ${event_corefer_confidence} -l ${ltf_source}
 # generate 4tuple
-docker run -i -t --rm -v ${data_root}:${data_root} \
+docker run -i --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
     -w /EventTimeArg --gpus '"device=1"' wenhycs/uiuc_event_time \
     python aida_event_time_pipeline.py \

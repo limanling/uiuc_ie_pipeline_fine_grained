@@ -201,7 +201,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --gpus device=3 limanli
     --fine_grained \
     --use_gpu 
 ##   --reuse_cache \
-docker run -i -t --rm -v ${data_root}:${data_root} \
+docker run -i --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
     -w /EventTimeArg --gpus device=3 wenhycs/uiuc_event_time \
     python aida_event_time_pipeline.py \
@@ -259,7 +259,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --network="host" limanl
     /event/aida_event_coreference/gail_event_coreference_test.py \
     -i ${event_fine_all_clean} -o ${event_corefer} -c ${event_corefer_confidence} -r ${rsd_source} -l ${lang}
 # generate 4tuple
-docker run -i -t --rm -v ${data_root}:${data_root} \
+docker run -i --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
     -w /EventTimeArg --gpus device=3 wenhycs/uiuc_event_time \
     python aida_event_time_pipeline.py \
