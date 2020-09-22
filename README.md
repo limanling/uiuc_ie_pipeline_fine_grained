@@ -24,6 +24,10 @@ Docker (Please do not set up UIUC IE Pipeline in a NAS, as the EDL needs MongoDB
 * Prepare a data directory `data` containing sub-directories `rsd` and `ltf`. The `rsd` sub-directory contains RSD (Raw Source Data, ending with `*.rsd.txt`), and `ltf` sub-directory has LTF (Logical Text Format, ending with `*.ltf.xml`) files. 
 	* If you have RSD files, please use the [`aida_utilities/rsd2ltf.py`](https://github.com/limanling/uiuc_ie_pipeline_finegrained_source_code/blob/master/aida_utilities/rsd2ltf.py) to generate the LTF files. 
 	* If you have LTF files, please use the AIDA ltf2rsd tool (`LDC2018E62_AIDA_Month_9_Pilot_Eval_Corpus_V1.0/tools/ltf2txt/ltf2rsd.perl`) to generate the RSD files. 
+* Start services
+```bash
+sh set_up_m36.sh
+```
 * Run the scripts. Note that the file paths are absolute paths.   
 ```bash
 sh pipeline_full_en.sh ${data_root}
