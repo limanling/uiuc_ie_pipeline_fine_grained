@@ -34,7 +34,7 @@ sh pipeline_full_en.sh ${PWD}/data/testdata_dryrun
 ```
 
 
-### AIDA M18: Running LDC corpus, such as `LDC2019E42_AIDA_Phase_1_Evaluation_Source_Data_V1.0`.
+<!-- ### AIDA M18: Running LDC corpus, such as `LDC2019E42_AIDA_Phase_1_Evaluation_Source_Data_V1.0`.
 ```bash
 sh pipeline_sample.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} ${en_asr_path} ${en_ocr_path} ${ru_ocr_path} ${thread_num}
 ```
@@ -54,7 +54,7 @@ sh pipeline_sample_oneie.sh ${data_root_ldc} ${output_dir} ${parent_child_tab} $
 For example,
 ```bash
 sh pipeline_sample_oneie.sh ${PWD}/data/testdata_ldc ${PWD}/output/output_oneie ${PWD}/data/testdata_ldc/docs/parent_children.tab None None None 10
-```
+``` -->
 
 ### AIDA M36: Running LDC corpus and link entities to LDC released KB 
 ```bash
