@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-data_root="/shared/nas/data/m1/manling2/aida_docker_test/uiuc_ie_pipeline_fine_grained/output/output_dryrun_E11_new/vis/WORKING/columbia_vision_shared/cu_graph_merging_ttl/dryrun"
+# input
 parent_child_tab_path="/shared/nas/data/m1/manling2/aida_docker_test/uiuc_ie_pipeline_fine_grained/output/bak_output_dryrun_E29_ann/parent_children.tab"
-output_ttl=${data_root}"/merged_ttl" 
-# all_merged_ttl=${output_ttl}
+output_ttl="/shared/nas/data/m1/manling2/aida_docker_test/uiuc_ie_pipeline_fine_grained/output/output_dryrun_E11_new/vis/WORKING/columbia_vision_shared/cu_graph_merging_ttl/dryrun/merged_ttl" 
 variant=1
-final_ttl=${data_root}"/final_clean"
+# output
+final_ttl="/shared/nas/data/m1/manling2/aida_docker_test/uiuc_ie_pipeline_fine_grained/output/output_dryrun_E11_new/vis/WORKING/columbia_vision_shared/cu_graph_merging_ttl/dryrun/final_clean"
 
 
 # docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
