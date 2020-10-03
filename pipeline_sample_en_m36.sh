@@ -125,7 +125,7 @@ echo "** Starting nominal coreference **"
 #     --dev_e ${edl_tab_link} \
 #     --dev_f ${edl_tab_link_fb} \
 #     --out_e ${edl_tab_final}
-docker run --gpus '"device=1"' --rm -v ${data_root}:${data_root} laituan245/spanbert_entity_coref \
+docker run --rm -v ${data_root}:${data_root} --gpus '"device=1"' laituan245/spanbert_entity_coref \
     -edl_official ${edl_tab_link} -edl_freebase ${edl_tab_link_fb} -l ${ltf_source} -o ${edl_tab_final}
 ## tab2cs
 docker run --rm -v ${data_root}:${data_root} -w `pwd`  -i limanling/uiuc_ie_m36 \

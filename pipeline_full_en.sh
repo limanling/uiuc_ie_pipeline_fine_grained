@@ -10,6 +10,7 @@ lang="en"
 # lang=$4
 # source=$5
 use_nominal_corefer=1
+eval=m36
 
 # ltf source folder path
 ltf_source=${data_root}/ltf
@@ -23,12 +24,12 @@ rsd_file_list=${data_root}/rsd_lst
 edl_output_dir=${data_root}/edl
 edl_cs_oneie=${data_root}/merge/cs/entity.cs
 edl_bio=${edl_output_dir}/${lang}.bio
-edl_tab_nam_bio=${data_root}/merge/mention/english.nam.bio
-edl_tab_nam_filename=english.nam.tab
-edl_tab_nom_filename=english.nom.tab
-edl_tab_pro_filename=english.pro.tab
-edl_vec_file=english.mention.hidden.txt
-evt_vec_file=english.trigger.hidden.txt
+edl_tab_nam_bio=${data_root}/merge/mention/${lang}.nam.bio
+edl_tab_nam_filename=${lang}.nam.tab
+edl_tab_nom_filename=${lang}.nom.tab
+edl_tab_pro_filename=${lang}.pro.tab
+edl_vec_file=${lang}.mention.hidden.txt
+evt_vec_file=${lang}.trigger.hidden.txt
 edl_tab_nam=${data_root}/merge/mention/${edl_tab_nam_filename}
 edl_tab_nom=${data_root}/merge/mention/${edl_tab_nom_filename}
 edl_tab_pro=${data_root}/merge/mention/${edl_tab_pro_filename}

@@ -19,7 +19,7 @@ docker run --rm -it \
        -v ${DIR_PATH}:/v \
        --entrypoint /opt/aif-validator/java/target/appassembler/bin/validateAIF \
        nextcenturycorp/aif_validator:latest \
-       -o --ont /opt/aif-validator/java/src/main/resources/com/ncc/aif/ontologies/LDCOntologyM36 -d /v
+       -o --ont /opt/aif-validator/java/src/main/resources/com/ncc/aif/ontologies/LDCOntologyM36 --nist -d /v
 
 # # if all files are valid, delete the test file directory
 # rm -r $test_directory

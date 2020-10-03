@@ -210,7 +210,7 @@ output/
 system/aida_edl/
 data/testdata_ldc2
 data/pengfei
-system/postprocessing/
+system/postprocessing/shared/
 test.sh
 bak/
 data/LDC*
