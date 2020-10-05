@@ -19,18 +19,18 @@ ltf_file_list=${data_root}/ltf_lst
 
 # edl output
 edl_output_dir=${data_root}/edl
-edl_cs_oneie=${data_root}/cs/entity.cs
+edl_cs_oneie=${data_root}/merge/cs/entity.cs
 edl_bio=${edl_output_dir}/${lang}.bio
-# edl_cfet_json=${data_root}/mention/${lang}.nam.cfet.json
-edl_tab_nam_bio=${data_root}/mention/${lang}.nam.bio
+# edl_cfet_json=${data_root}/merge/mention/${lang}.nam.cfet.json
+edl_tab_nam_bio=${data_root}/merge/mention/${lang}.nam.bio
 edl_tab_nam_filename=${lang}.nam.tab
 edl_tab_nom_filename=${lang}.nom.tab
 edl_tab_pro_filename=${lang}.pro.tab
 edl_vec_file=${lang}.mention.hidden.txt
 evt_vec_file=${lang}.trigger.hidden.txt
-edl_tab_nam=${data_root}/mention/${edl_tab_nam_filename}
-edl_tab_nom=${data_root}/mention/${edl_tab_nom_filename}
-edl_tab_pro=${data_root}/mention/${edl_tab_pro_filename}
+edl_tab_nam=${data_root}/merge/mention/${edl_tab_nam_filename}
+edl_tab_nom=${data_root}/merge/mention/${edl_tab_nom_filename}
+edl_tab_pro=${data_root}/merge/mention/${edl_tab_pro_filename}
 edl_tab_link=${edl_output_dir}/${lang}.linking.tab
 edl_tab_link_fb=${edl_output_dir}/${lang}.linking.freebase.tab
 edl_tab_coref_ru=${edl_output_dir}/${lang}.coreference.tab
@@ -62,7 +62,7 @@ udp_dir=${data_root}/udp
 chunk_file=${edl_output_dir}/chunk.txt
 
 # relation output
-relation_cs_oneie=${data_root}/cs/relation.cs   # final cs output for relation
+relation_cs_oneie=${data_root}/merge/cs/relation.cs   # final cs output for relation
 relation_result_dir=${data_root}/relation   # final cs output file path
 relation_cs_coarse=${relation_result_dir}/${lang}.rel.cs # final cs output for relation
 relation_cs_fine=${relation_result_dir}/${lang}/${lang}.fine_rel.cs # final cs output for relation
@@ -71,7 +71,7 @@ new_relation_coarse=${relation_result_dir}/new_relation_${lang}.cs
 
 # event output
 event_result_dir=${data_root}/event
-event_coarse_oneie=${data_root}/cs/event.cs
+event_coarse_oneie=${data_root}/merge/cs/event.cs
 event_coarse_without_time=${event_result_dir}/event_rewrite.cs
 event_coarse_with_time=${event_result_dir}/events_tme.cs
 event_fine=${event_result_dir}/events_fine.cs
@@ -118,9 +118,9 @@ docker run -v ${PWD}/system/aida_edl/edl_data:/data \
     --link db:mongo panx27/edl \
     python ./projs/docker_aida19/aida19.py \
     ${lang} \
-    /testdata_${lang}${source}/mention/${edl_tab_nam_filename} \
-    /testdata_${lang}${source}/mention/${edl_tab_nom_filename} \
-    /testdata_${lang}${source}/mention/${edl_tab_pro_filename} \
+    /testdata_${lang}${source}/merge/mention/${edl_tab_nam_filename} \
+    /testdata_${lang}${source}/merge/mention/${edl_tab_nom_filename} \
+    /testdata_${lang}${source}/merge/mention/${edl_tab_pro_filename} \
     /testdata_${lang}${source}/edl \
     m36
 ## nominal coreference
