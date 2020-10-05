@@ -24,7 +24,7 @@ Docker (Please do not set up UIUC IE Pipeline in a NAS, as the EDL needs MongoDB
 * Prepare a data directory `data` containing sub-directories `rsd` and `ltf`. The `rsd` sub-directory contains RSD (Raw Source Data, ending with `*.rsd.txt`), and `ltf` sub-directory has LTF (Logical Text Format, ending with `*.ltf.xml`) files. 
 	* If you have RSD files, please use the [`aida_utilities/rsd2ltf.py`](https://github.com/limanling/uiuc_ie_pipeline_finegrained_source_code/blob/master/aida_utilities/rsd2ltf.py) to generate the LTF files. 
   ```bash
-  docker run --rm -v ${ltf_dir}:${ltf_dir} -v ${rsd_dir}:${rsd_dir} -w `pwd` -i limanling/uiuc_ie_m36 /opt/conda/envs/py36/bin/python /aida_utilities/rsd2ltf.py --seg_option nltk+linebreak --tok_option nltk_wordpunct --extension .rsd.txt ${rsd_dir} ${ltf_dir}
+  docker run --rm -v ${ltf_dir}:${ltf_dir} -v ${rsd_dir}:${rsd_dir} -i limanling/uiuc_ie_m36 /opt/conda/envs/py36/bin/python /aida_utilities/rsd2ltf.py --seg_option nltk+linebreak --tok_option nltk_wordpunct --extension .rsd.txt ${rsd_dir} ${ltf_dir}
   ```
 	* If you have LTF files, please use the AIDA ltf2rsd tool (`LDC2018E62_AIDA_Month_9_Pilot_Eval_Corpus_V1.0/tools/ltf2txt/ltf2rsd.perl`) to generate the RSD files. 
 * Start services

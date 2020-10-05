@@ -96,8 +96,8 @@ ttl_final=${data_root}/final
 # Running scripts
 ######################################################
 
-# EDL
-# entity extraction
+EDL
+entity extraction
 echo "** Extracting coarse-grained entities, relations, and events **"
 docker run --rm -i -v ${data_root}:${data_root} -w /oneie --gpus '"device=1"' limteng/oneie_aida_m36 \
     /opt/conda/bin/python \
