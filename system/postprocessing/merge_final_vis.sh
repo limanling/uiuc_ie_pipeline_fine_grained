@@ -9,26 +9,6 @@ variant=1
 final_ttl=${data_root}"/final_clean"
 
 
-# docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
-#     /opt/conda/envs/py36/bin/python \
-#     /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
-#     --root_folder ${data_root} \
-#     --final_dir_name 'final' \
-#     --output_folder ${output_ttl}
-# echo "Final output of English, Russian, Spanish in "${output_ttl}
-
-# # # merge sentiment
-# # docker run --rm -v `pwd`:`pwd` -w `pwd` -i -t limanling/uiuc_ie_m18 \
-# #     /opt/conda/envs/py36/bin/python \
-# #     /postprocessing/postprocessing_add_relation.py \
-# #     --relation_cs_files ${language_id} \
-# #     --input_ttl_folder ${cu_merged_ttl} \
-# #     --output_ttl_folder ${all_merged_ttl} \
-# #     --parent_child_tab_path ${parent_child_tab_path} \
-# #     --child_column_idx ${child_column_idx} \
-# #     --parent_column_idx ${root_column_idx}
-
-# run docker python /shared/nas/data/m1/manling2/aida_docker/docker_m18/postprocessing/postprocessing_cleankb_params.py \
 docker run --rm -v ${output_ttl}:${output_ttl} -v ${final_ttl}:${final_ttl} -v ${parent_child_tab_path}:${parent_child_tab_path} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_cleankb_params.py \
