@@ -78,7 +78,7 @@ event_coarse_oneie=${data_root}/merge/cs/event.cs
 event_coarse_without_time=${event_result_dir}/event_rewrite.cs
 event_coarse_with_time=${event_result_dir}/events_tme.cs
 event_fine=${event_result_dir}/events_fine.cs
-event_frame=${event_result_dir}/events_fine_framenet.cs
+# event_frame=${event_result_dir}/events_fine_framenet.cs
 event_depen=${event_result_dir}/events_fine_depen.cs
 event_fine_all=${event_result_dir}/events_fine_all.cs
 event_fine_all_clean=${event_result_dir}/events_fine_all_clean.cs
@@ -86,8 +86,8 @@ event_corefer=${event_result_dir}/events_corefer.cs
 event_corefer_confidence=${event_result_dir}/events_corefer_confidence.tab
 event_corefer_time=${event_result_dir}/events_4tuple.cs 
 event_final=${event_result_dir}/events_info.cs
-ltf_txt_path=${event_result_dir}/'ltf_txt'
-framenet_path=${data_root}/event/'framenet_res'
+# ltf_txt_path=${event_result_dir}/'ltf_txt'
+# framenet_path=${data_root}/event/'framenet_res'
 
 # final output
 merged_cs=${data_root}/${lang}${source}_full.cs
@@ -125,14 +125,14 @@ docker run --rm -v ${data_root}:/uiuc/${data_root} -w /stanford-corenlp-aida_0 -
     -filelist /uiuc/${rsd_file_list} \
     -properties StanfordCoreNLP_${lang}.properties \
     -outputDirectory /uiuc/${core_nlp_output_path}
-# apply FrameNet Parser
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
-    /opt/conda/envs/py36/bin/python \
-    /event/aida_event/framenet/generate_framenet.py \
-    ${lang} ${ltf_source} ${ltf_txt_path} ${framenet_path}
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -w `pwd` -i limanling/aida-tools \
-    /bin/bash /semafor/bin/runSemafor_dir.sh  \
-    ${ltf_txt_path} ${framenet_path} 10
+# # apply FrameNet Parser
+# docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
+#     /opt/conda/envs/py36/bin/python \
+#     /event/aida_event/framenet/generate_framenet.py \
+#     ${lang} ${ltf_source} ${ltf_txt_path} ${framenet_path}
+# docker run --rm -v ${data_root}:${data_root} -w `pwd` -w `pwd` -i limanling/aida-tools \
+#     /bin/bash /semafor/bin/runSemafor_dir.sh  \
+#     ${ltf_txt_path} ${framenet_path} 10
 # # apply universal dependency parser
 # docker run --rm -v ${data_root}:/uiuc/${data_root} -i limanling/uiuc_ie_${eval} \
 #     mkdir -p /uiuc/${udp_dir}
@@ -280,21 +280,21 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     --entity_finegrain_aida ${edl_cs_fine_all}
 ## Event Rule-based
 echo "** Event rule-based **"
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /event/aida_event/framenet/new_event_framenet.py \
-    ${framenet_path} ${ltf_source} ${rsd_source} \
-    ${edl_cs_coarse} ${filler_coarse} ${event_fine} ${event_frame}
+# docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /event/aida_event/framenet/new_event_framenet.py \
+#     ${framenet_path} ${ltf_source} ${rsd_source} \
+#     ${edl_cs_coarse} ${filler_coarse} ${event_fine} ${event_frame}
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /event/aida_event/framenet/new_event_dependency.py \
     ${rsd_source} ${core_nlp_output_path} \
-    ${edl_cs_coarse} ${filler_coarse} ${event_fine} ${event_frame} ${event_depen}
+    ${edl_cs_coarse} ${filler_coarse} ${event_fine} ${event_fine} ${event_depen}
 ## Combine fine-grained typing and rule-based
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /aida_utilities/pipeline_merge_m18.py \
-    --cs_fnames ${event_fine} ${event_frame} ${event_depen} \
+    --cs_fnames ${event_fine} ${event_depen} \
     --output_file ${event_fine_all}
 ## rewrite-args
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
