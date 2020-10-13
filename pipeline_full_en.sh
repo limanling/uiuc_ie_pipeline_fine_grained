@@ -11,6 +11,7 @@ lang="en"
 # source=$5
 use_nominal_corefer=1
 eval=m36
+source=""
 
 # ltf source folder path
 ltf_source=${data_root}/ltf
@@ -343,13 +344,12 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
 # Format converter
 ######################################################
 # AIF converter
-docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/aida_entity/bin/python \
     /postprocessing/aif_converter_combine.py \
     --input_cs ${merged_cs_link} --ltf_dir ${ltf_source} \
     --output_ttl_dir ${ttl_initial} --lang ${lang}${source} --eval m36 \
     --evt_coref_score_tab ${event_corefer_confidence} \
-    --source_tab ${parent_child_tab_path} \
     --ent_vec_dir ${data_root}/merge/mention \
     --ent_vec_files ${edl_vec_file} \
     --evt_vec_dir ${data_root}/merge/mention \
@@ -357,32 +357,21 @@ docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${paren
     --event_embedding_from_file \
     --freebase_tab ${edl_tab_freebase} \
     --fine_grained_entity_type_path ${edl_json_fine} \
-    --lorelei_link_mapping ${lorelei_link_private_data} \
-    --parent_child_tab_path ${parent_child_tab_path}
-docker run --rm -v ${data_root}:${data_root} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /postprocessing/postprocessing_rename_turtle.py \
-    --language_id ${lang}${source} \
-    --input_private_folder ${ttl_initial} \
-    --output_folder ${ttl_final} \
-    --parent_child_tab_path ${parent_child_tab_path} \
-    --parent_child_mapping_sorted ${sorted}
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
-    chmod -R 777 ${ttl_final} ${ttl_initial}
-
+    --lorelei_link_mapping ${lorelei_link_private_data}
 docker run --rm -v ${data_root}:${data_root} -v ${ttl_final}:${ttl_final} \
-    -v ${ttl_cleaned}:${ttl_cleaned} -v ${parent_child_tab_path}:${parent_child_tab_path} \
+    -v ${ttl_cleaned}:${ttl_cleaned} \
     -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /postprocessing/postprocessing_cleankb_params_caci.py \
-    ${data_root}/cleankb.param ${ttl_final} ${ttl_cleaned} 1 \
-    --parent_child_tab_path ${parent_child_tab_path} \
+    ${data_root}/cleankb.param ${ttl_initial} ${ttl_cleaned} 1 \
     --eval m36
 docker run --rm -v ${data_root}:${data_root} \
-    -v ${parent_child_tab_path}:${parent_child_tab_path} \
     -w /aida-tools-java11 -i -t limanling/aida-tools \
     /aida-tools-java11/aida-eval-tools/target/appassembler/bin/cleanKB  \
     ${data_root}/cleankb.param
+
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
+    chmod -R 777 ${ttl_cleaned} ${ttl_cleaned}
 
 echo "Final result in Cold Start Format is in "${merged_cs_link}
 echo "Final result in RDF Format is in "${ttl_cleaned}
