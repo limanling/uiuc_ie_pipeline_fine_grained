@@ -96,12 +96,12 @@ ttl_final=${data_root}/final
 # Running scripts
 ######################################################
 
-# # EDL
-# # entity extraction
-# echo "** Extracting coarse-grained entities, relations, and events **"
-# docker run --rm -i -v ${data_root}:${data_root} -w /oneie --gpus device=3 limteng/oneie_aida_m36 \
-#     /opt/conda/bin/python \
-#     /oneie/predict.py -i ${ltf_source} -o ${data_root} -l ${lang} --output_hidden
+# EDL
+# entity extraction
+echo "** Extracting coarse-grained entities, relations, and events **"
+docker run --rm -i -v ${data_root}:${data_root} -w /oneie --gpus device=3 limteng/oneie_aida_m36 \
+    /opt/conda/bin/python \
+    /oneie/predict.py -i ${ltf_source} -o ${data_root} -l ${lang} --output_hidden
 ## fine-grained typing by model
 echo "fine-grained typing started"
 docker run --rm -v ${data_root}:${data_root} -i --network="host" --gpus device=3 limanling/uiuc_ie_m36 \
