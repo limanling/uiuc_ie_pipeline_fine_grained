@@ -135,7 +135,7 @@ docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     --edl_tab_path ${edl_tab_link} \
     --path_out_coref ${edl_tab_final}
 ## tab2cs
-docker run --rm -v ${data_root}:${data_root} -ilimanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/tab2cs.py \
     ${edl_tab_final} ${edl_cs_coarse} 'EDL'
