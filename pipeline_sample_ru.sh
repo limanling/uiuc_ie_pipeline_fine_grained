@@ -118,11 +118,12 @@ docker run -v ${PWD}/system/aida_edl/edl_data:/data \
     /testdata_${lang}${source}/${edl_tab_pro_filename} \
     /testdata_${lang}${source}
 ## nominal coreference for ru and uk
-docker run --rm -v ${data_root}:/uiuc/${data_root} -w /scr -i dylandilu/chuck_coreference \
-    python appos_extract.py \
-    --udp_dir /uiuc/${udp_dir} \
-    --edl_tab_path /uiuc/${edl_tab_link} \
-    --path_out_coref /uiuc/${edl_tab_final}
+docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
+    /opt/conda/envs/py36/bin/python \
+    /udp/appos_extract.py \
+    --udp_dir ${udp_dir} \
+    --edl_tab_path ${edl_tab_link} \
+    --path_out_coref ${edl_tab_final}
 ## tab2cs
 docker run --rm -v ${data_root}:${data_root} -w `pwd`  -i limanling/uiuc_ie_m18 \
     /opt/conda/envs/py36/bin/python \
@@ -141,8 +142,9 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m18 \
     -t ${edl_tab_final} \
     -o ${relation_cs_coarse}
 ## Filler Extraction & new relation
-docker run --rm -v ${data_root}:${data_root} -w /scr -i dylandilu/filler \
-    python extract_filler_relation.py \
+docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
+    /opt/conda/envs/py36/bin/python \
+    /entity/aida_filler/extract_filler_relation.py \
     --corenlp_dir ${core_nlp_output_path} \
     --ltf_dir ${ltf_source} \
     --edl_path ${edl_cs_coarse} \

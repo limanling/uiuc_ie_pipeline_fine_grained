@@ -96,15 +96,15 @@ ttl_final=${data_root}/final
 # Running scripts
 ######################################################
 
-# EDL
-# entity extraction
-echo "** Extracting coarse-grained entities, relations, and events **"
-docker run --rm -i -v ${data_root}:${data_root} -w /oneie --gpus device=2 limteng/oneie_aida_m36 \
-    /opt/conda/bin/python \
-    /oneie/predict.py -i ${ltf_source} -o ${data_root} -l ${lang} --output_hidden
+# # EDL
+# # entity extraction
+# echo "** Extracting coarse-grained entities, relations, and events **"
+# docker run --rm -i -v ${data_root}:${data_root} -w /oneie --gpus device=3 limteng/oneie_aida_m36 \
+#     /opt/conda/bin/python \
+#     /oneie/predict.py -i ${ltf_source} -o ${data_root} -l ${lang} --output_hidden
 ## fine-grained typing by model
 echo "fine-grained typing started"
-docker run --rm -v ${data_root}:${data_root} -i --network="host" --gpus device=2 limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -i --network="host" --gpus device=3 limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/typing.py \
     ${lang} ${edl_tab_nam_bio} ${entity_fine_model}
@@ -135,7 +135,7 @@ docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /entity/aida_edl/tab2cs.py \
     ${edl_tab_final} ${edl_cs_coarse} 'EDL'
-docker run --rm -v ${data_root}:${data_root} -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /aida_utilities/rewrite_entity_id.py \
     ${edl_cs_oneie} ${relation_cs_oneie} ${event_coarse_oneie} ${edl_cs_coarse} \
@@ -178,9 +178,9 @@ docker run -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     ${ltf_source} ${filler_coarse} ${event_coarse_without_time} ${event_coarse_with_time}
 
 # Relation Extraction (fine)
-docker run --rm -v ${data_root}:${data_root} -i --gpus device=2 limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -i --gpus device=3 limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
-    -u /relation_spa/FineRelationExtraction/EVALfine_grained_relations.py \
+    -u /relation/FineRelationExtraction/EVALfine_grained_relations.py \
     --lang_id ${lang} \
     --ltf_dir ${ltf_source} \
     --rsd_dir ${rsd_source} \
@@ -193,7 +193,7 @@ docker run --rm -v ${data_root}:${data_root} -i --gpus device=2 limanling/uiuc_i
 ##   --reuse_cache \
 docker run -i --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
-    -w /EventTimeArg --gpus device=2 wenhycs/uiuc_event_time \
+    -w /EventTimeArg --gpus device=3 wenhycs/uiuc_event_time \
     python aida_event_time_pipeline.py \
     --relation_cold_start_filename ${relation_cs_fine} --relation \
     --parent_children_filename ${parent_child_tab_path} \
@@ -211,8 +211,9 @@ docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /entity/aida_edl/add_protester.py \
     ${event_coarse_without_time} ${edl_cs_fine_all} ${edl_cs_fine_protester}
 echo "** Informative Justification **"
-docker run --rm -v ${data_root}:${data_root} -i panx27/aida20_mention \
-    python ./extend.py ${lang} ${ltf_source} ${edl_cs_fine_protester} ${edl_cs_info}
+docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
+    /opt/conda/envs/py36/bin/python \
+    /entity/aida_edl/entity_informative.py ${chunk_file} ${edl_cs_fine_protester} ${edl_cs_info}
 ## update mention confidence
 docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
@@ -249,7 +250,7 @@ docker run --rm -v ${data_root}:${data_root} -i --network="host" limanling/uiuc_
 # generate 4tuple
 docker run -i --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
-    -w /EventTimeArg --gpus device=2 wenhycs/uiuc_event_time \
+    -w /EventTimeArg --gpus device=3 wenhycs/uiuc_event_time \
     python aida_event_time_pipeline.py \
     --time_cold_start_filename ${filler_coarse} \
     --event_cold_start_filename ${event_corefer} \

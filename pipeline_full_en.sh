@@ -137,7 +137,7 @@ docker run --rm -v ${data_root}:/uiuc/${data_root} -w /stanford-corenlp-aida_0 -
 # docker run --rm -v ${data_root}:/uiuc/${data_root} -i limanling/uiuc_ie_${eval} \
 #     mkdir -p /uiuc/${udp_dir}
 # docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_${eval} \
-#     /opt/conda/envs/py36/bin/python \ 
+#     /opt/conda/envs/py36/bin/python \
 #     /udp/bio2udp.py \
 #     --lang ${lang} \
 #     --path_bio ${edl_bio} \
@@ -146,7 +146,7 @@ docker run --rm -v ${data_root}:/uiuc/${data_root} -w /stanford-corenlp-aida_0 -
 #     echo "finish universal dependency parser for "${rsd_source}
 # # chunk extraction
 # docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_${eval} \
-#     /opt/conda/envs/py36/bin/python \ 
+#     /opt/conda/envs/py36/bin/python \
 #     /udp/chunk_mine.py \
 #     --udp_dir ${udp_dir} \
 #     --text_dir ${rsd_source} \
@@ -199,7 +199,7 @@ docker run --rm -v ${data_root}:${data_root} -v ${data_root}:${data_root} -w `pw
 
 # # Filler Extraction & new relation
 docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \ 
+    /opt/conda/envs/py36/bin/python \
     /entity/aida_filler/extract_filler_relation.py \
     --corenlp_dir ${core_nlp_output_path} \
     --ltf_dir ${ltf_source} \

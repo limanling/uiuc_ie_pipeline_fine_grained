@@ -7,7 +7,7 @@ docker pull dylandilu/event_coreference_xdoc
 docker pull wangqy96/aida_nominal_coreference_en
 docker pull panx27/data-processor
 docker pull limanling/aida-tools
-docker pull dylandilu/filler
+# docker pull dylandilu/filler
 docker pull dylandilu/chuck_coreference
 docker pull lifuhuang/aida_event_lf
 docker pull limteng/oneie_aida

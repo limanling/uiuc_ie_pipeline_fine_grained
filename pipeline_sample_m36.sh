@@ -28,8 +28,6 @@ log_dir=${output_dir}/log
 # # `27017`, `2468`, `5500`, `5000`, `5234`, `9000`, `6001`, `6101` and `6201`.
 # #####################################################################
 sh set_up_m36.sh ${kb_dir}
-# echo "set_up successfully"
-# # docker ps
 
 ####################################################################
 # data prepreparation
@@ -51,7 +49,7 @@ wait
 #####################################################################
 # extraction, including entity, relation, event
 #####################################################################
-for lang in 'es' 'ru' 'en' 
+for lang in 'en' 'es' 'ru' 
 do
     for datasource in '' '_asr' #'_ocr'
     do
@@ -60,6 +58,23 @@ do
             if [ -d "${data_root_lang}/ltf" ]
             then
                 sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} ${thread_num} ${eval}
+            else
+                echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
+            fi
+        )&
+    done
+done
+
+wait
+
+for lang in 'en' 'es' 'ru' 
+do
+    for datasource in '' '_asr' #'_ocr'
+    do
+        (
+            data_root_lang=${data_root_result}/${lang}${datasource}
+            if [ -d "${data_root_lang}/ltf" ]
+            then
                 sh pipeline_sample_${lang}_m36_oneie.sh ${data_root_lang} ${parent_child_tab_path} ${sorted} ${lang} ${datasource}
             else
                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
@@ -81,17 +96,29 @@ docker run --rm -v ${data_root_result}:${data_root_result} -i limanling/uiuc_ie_
     --output_folder ${output_ttl}
 echo "Final output of English, Russian, Ukrainian in "${output_ttl}
 
+docker run --rm -v ${data_root_result}:${data_root_result} -v ${parent_child_tab_path}:${parent_child_tab_path} -i limanling/uiuc_ie_m36 \
+    /opt/conda/envs/py36/bin/python \
+    /postprocessing/postprocessing_cleankb_params_caci.py \
+    ${data_root_result}/cleankb.param ${output_ttl} ${final_ttl} ${variant} \
+    --parent_child_tab_path ${parent_child_tab_path} \
+    --eval m36
+docker run --rm -v ${data_root_result}:${data_root_result} \
+    -v ${parent_child_tab_path}:${parent_child_tab_path} \
+    -w /aida-tools-java11 -i -t limanling/aida-tools \
+    /aida-tools-java11/aida-eval-tools/target/appassembler/bin/cleanKB  \
+    ${data_root_result}/cleankb.param
 
-# # # #####################################################################
-# # # # docker stop
-# # # #####################################################################
-# # # echo "Stop dockers..."
-# # # docker stop db
-# # # docker stop nominal_coreference
-# # # docker stop aida_entity
-# # # docker stop event_coreference_en
-# # # docker stop event_coreference_ru
-# # # docker stop event_coreference_uk
-# # # docker ps
 
-# # # exit 0
+# #####################################################################
+# # docker stop
+# #####################################################################
+# echo "Stop dockers..."
+# docker stop db
+# docker stop nominal_coreference
+# docker stop aida_entity
+# docker stop event_coreference_en
+# docker stop event_coreference_ru
+# docker stop event_coreference_uk
+# docker ps
+
+# exit 0

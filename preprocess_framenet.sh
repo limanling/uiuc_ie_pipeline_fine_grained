@@ -15,10 +15,10 @@ framenet_path=${event_result_dir}/framenet_res
 
 # ================ script =========================
 ## preprocess for English
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
-    /opt/conda/envs/py36/bin/python \
-    /event/aida_event/framenet/generate_framenet.py \
-    ${lang} ${ltf_source} ${ltf_txt_path} ${framenet_path}
-docker run --rm -v ${data_root}:${data_root} -w `pwd` -w `pwd` -i limanling/aida-tools \
-    /bin/bash /semafor/bin/runSemafor_dir.sh  \
-    ${ltf_txt_path} ${framenet_path} 10
+# docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
+#     /opt/conda/envs/py36/bin/python \
+#     /event/aida_event/framenet/generate_framenet.py \
+#     ${lang} ${ltf_source} ${ltf_txt_path} ${framenet_path}
+# docker run --rm -v ${data_root}:${data_root} -w `pwd` -w `pwd` -i limanling/aida-tools \
+#     /bin/bash /semafor/bin/runSemafor_dir.sh  \
+#     ${ltf_txt_path} ${framenet_path} 10

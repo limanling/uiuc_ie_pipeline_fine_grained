@@ -145,15 +145,16 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i --gpus device=1 limanli
     -t ${edl_tab_final} \
     -o ${relation_cs_coarse}
 ## Filler Extraction & new relation
-docker run --rm -v ${data_root}:${data_root} -w /scr -i dylandilu/filler \
-    python extract_filler_relation.py \
-    --corenlp_dir ${core_nlp_output_path} \
-    --ltf_dir ${ltf_source} \
-    --edl_path ${edl_cs_coarse} \
-    --text_dir ${rsd_source} \
-    --path_relation ${new_relation_coarse} \
-    --path_filler ${filler_coarse} \
-    --lang ${lang}
+# docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /entity/aida_filler/extract_filler_relation.py \
+#     --corenlp_dir ${core_nlp_output_path} \
+#     --ltf_dir ${ltf_source} \
+#     --edl_path ${edl_cs_coarse} \
+#     --text_dir ${rsd_source} \
+#     --path_relation ${new_relation_coarse} \
+#     --path_filler ${filler_coarse} \
+#     --lang ${lang}
 
 ## Fine-grained Entity
 echo "** Fine-grained entity typing **"

@@ -27,31 +27,31 @@ timetable_tab=${data_root}/time_table.tab
 # ================ script =========================
 # generate files for each thread
 # generate *.bio
-docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
     /opt/conda/envs/py36/bin/python \
-    /aida_utilities/ltf2bio.py /uiuc/${ltf_source_thread} /uiuc/${edl_bio_thread}
+    /aida_utilities/ltf2bio.py ${ltf_source_thread} ${edl_bio_thread}
 # generate file list
-docker run --rm -v ${data_root}:/uiuc/${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
+docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
     /opt/conda/envs/py36/bin/python \
-    /aida_utilities/dir_readlink.py /uiuc/${rsd_source_thread} /uiuc/${rsd_file_list_thread} \
-    --stanford_corenlp /uiuc/${core_nlp_output_path}
+    /aida_utilities/dir_readlink.py ${rsd_source_thread} ${rsd_file_list_thread} \
+    --stanford_corenlp ${core_nlp_output_path}
 
 # apply stanford corenlp
-docker run --rm -v ${data_root}:/uiuc/${data_root} \
-    -v ${parent_child_tab}:/uiuc/${parent_child_tab} \
+docker run --rm -v ${data_root}:${data_root} \
+    -v ${parent_child_tab}:${parent_child_tab} \
     -w `pwd` -i limanling/uiuc_ie_${eval} \
     /opt/conda/envs/py36/bin/python \
     /aida_utilities/parent_child_util.py \
-    /uiuc/${parent_child_tab} ${sorted} /uiuc/${timetable_tab}
-docker run --rm -v ${data_root}:/uiuc/${data_root} -w /stanford-corenlp-aida_0 -i limanling/aida-tools \
+    ${parent_child_tab} ${sorted} ${timetable_tab}
+docker run --rm -v ${data_root}:${data_root} -w /stanford-corenlp-aida_0 -i limanling/aida-tools \
     java -mx50g -cp '/stanford-corenlp-aida_0/*' edu.stanford.nlp.pipeline.StanfordCoreNLP \
-    $* -annotators 'tokenize,cleanxml,ssplit,pos,lemma,ner,depparse,entitymentions,parse' \
+    $* -annotators 'tokenize,ssplit,pos,lemma,ner' \
     -outputFormat json \
-    -filelist /uiuc/${rsd_file_list_thread} \
-    -ner.docdate.useMappingFile /uiuc/${timetable_tab} \
+    -filelist ${rsd_file_list_thread} \
+    -ner.docdate.useMappingFile ${timetable_tab} \
     -properties StanfordCoreNLP_${lang}.properties \
-    -outputDirectory /uiuc/${core_nlp_output_path}
-docker run --rm -v ${data_root}:/uiuc/${data_root} -w /scr -i dylandilu/chuck_coreference \
+    -outputDirectory ${core_nlp_output_path}
+docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_${eval} \
     echo "finish stanford dependency parser for "${rsd_source_thread}
 
 
