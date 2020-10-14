@@ -93,7 +93,7 @@ event_final=${event_result_dir}/events_info.cs
 merged_cs=${data_root}/${lang}${source}_full.cs
 merged_cs_link=${data_root}/${lang}${source}_full_link.cs
 ttl_initial=${data_root}/initial
-ttl_initial_private=${data_root}/initial_private_data
+ttl_clean=${data_root}/clean
 ttl_final=${data_root}/final
 
 ######################################################
@@ -136,20 +136,21 @@ docker run --rm -v ${data_root}:/uiuc/${data_root} -w /stanford-corenlp-aida_0 -
 # # apply universal dependency parser
 # docker run --rm -v ${data_root}:/uiuc/${data_root} -i limanling/uiuc_ie_${eval} \
 #     mkdir -p /uiuc/${udp_dir}
-# docker run --rm -v ${data_root}:/uiuc/${data_root} -w /scr -i dylandilu/chuck_coreference \
-#     python bio2udp.py \
-#     --corenlp_dir /uiuc/${core_nlp_output_path} \
+# docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_${eval} \
+#     /opt/conda/envs/py36/bin/python \ 
+#     /udp/bio2udp.py \
 #     --lang ${lang} \
-#     --path_bio /uiuc/${edl_bio} \
-#     --udp_dir /uiuc/${udp_dir}
-# docker run --rm -v ${data_root}:/uiuc/${data_root} -w /scr -i dylandilu/chuck_coreference \
+#     --path_bio ${edl_bio} \
+#     --udp_dir ${udp_dir}
+# docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_${eval} \
 #     echo "finish universal dependency parser for "${rsd_source}
 # # chunk extraction
-# docker run --rm -v ${data_root}:/uiuc/${data_root} -w /scr -i dylandilu/chuck_coreference \
-#     python chunk_mine.py \
-#     --udp_dir /uiuc/${udp_dir} \
-#     --text_dir /uiuc/${rsd_source} \
-#     --path_out_chunk /uiuc/${chunk_file}
+# docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_${eval} \
+#     /opt/conda/envs/py36/bin/python \ 
+#     /udp/chunk_mine.py \
+#     --udp_dir ${udp_dir} \
+#     --text_dir ${rsd_source} \
+#     --path_out_chunk ${chunk_file}
 
 
 ######################################################
@@ -197,8 +198,9 @@ docker run --rm -v ${data_root}:${data_root} -v ${data_root}:${data_root} -w `pw
     ${relation_cs_coarse} ${event_coarse_without_time}
 
 # # Filler Extraction & new relation
-docker run --rm -v ${data_root}:${data_root} -w /scr -i dylandilu/filler \
-    python extract_filler_relation.py \
+docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
+    /opt/conda/envs/py36/bin/python \ 
+    /entity/aida_filler/extract_filler_relation.py \
     --corenlp_dir ${core_nlp_output_path} \
     --ltf_dir ${ltf_source} \
     --edl_path ${edl_cs_coarse} \
@@ -358,7 +360,7 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     --freebase_tab ${edl_tab_freebase} \
     --fine_grained_entity_type_path ${edl_json_fine} \
     --lorelei_link_mapping ${lorelei_link_private_data}
-docker run --rm -v ${data_root}:${data_root} -v ${ttl_final}:${ttl_final} \
+docker run --rm -v ${data_root}:${data_root} -v ${ttl_initial}:${ttl_initial} \
     -v ${ttl_cleaned}:${ttl_cleaned} \
     -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
