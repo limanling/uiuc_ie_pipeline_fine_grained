@@ -50,7 +50,7 @@ log_dir=${output_dir}/log
 #####################################################################
 # extraction, including entity, relation, event
 #####################################################################
-for lang in 'ru' #'en' 'es' 
+for lang in 'ru' 'en' 'es' 
 do
     for datasource in '' '_asr' #'_ocr'
     do
@@ -68,7 +68,7 @@ done
 
 wait
 
-for lang in 'ru' #'en' 'es'
+for lang in 'ru' 'en' 'es'
 do
     for datasource in '' '_asr' #'_ocr'
     do
