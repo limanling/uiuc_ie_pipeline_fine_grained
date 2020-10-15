@@ -14,6 +14,7 @@ ocr_ru_path=$7
 thread_num=$8
 sorted=0
 eval='m36'
+variant=1
 
 # data folder that specified with language
 data_root_result=${output_dir}
@@ -27,29 +28,29 @@ log_dir=${output_dir}/log
 # # set up services, please reserve the the following ports and ensure that no other programs/services are occupying these ports:
 # # `27017`, `2468`, `5500`, `5000`, `5234`, `9000`, `6001`, `6101` and `6201`.
 # #####################################################################
-sh set_up_m36.sh ${kb_dir}
+# sh set_up_m36.sh ${kb_dir}
 
-####################################################################
-# data prepreparation
-####################################################################
-sh data_preparation_ldc.sh ${data_root} ${output_dir} ${output_dir} ${eval}
+# ####################################################################
+# # data prepreparation
+# ####################################################################
+# sh data_preparation_ldc.sh ${data_root} ${output_dir} ${output_dir} ${eval}
 
 
-####################################################################
-# preprocessing, including language detection, ASR/OCR preprcessing
-####################################################################
-docker run --rm -v ${data_root_rsd}:${data_root_rsd} -v ${data_root_ltf}:${data_root_ltf} -v ${data_root_result}:${data_root_result} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result} \
-    --langs en ru es --parent_child_tab_path ${parent_child_tab_path}
-sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path} ${eval}
+# ####################################################################
+# # preprocessing, including language detection, ASR/OCR preprcessing
+# ####################################################################
+# docker run --rm -v ${data_root_rsd}:${data_root_rsd} -v ${data_root_ltf}:${data_root_ltf} -v ${data_root_result}:${data_root_result} -v ${parent_child_tab_path}:${parent_child_tab_path} -w `pwd` -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /preprocessing/preprocess_detect_languages.py ${data_root_rsd} ${data_root_ltf} ${data_root_result} \
+#     --langs en ru es --parent_child_tab_path ${parent_child_tab_path}
+# sh preprocess_asr_ocr.sh ${data_root_result} ${asr_en_path} ${ocr_en_path} ${ocr_ru_path} ${eval}
 
-wait
+# wait
 
 #####################################################################
 # extraction, including entity, relation, event
 #####################################################################
-for lang in 'en' 'es' 'ru' 
+for lang in 'ru' #'en' 'es' 
 do
     for datasource in '' '_asr' #'_ocr'
     do
@@ -67,7 +68,7 @@ done
 
 wait
 
-for lang in 'en' 'es' 'ru' 
+for lang in 'ru' #'en' 'es'
 do
     for datasource in '' '_asr' #'_ocr'
     do
