@@ -21,6 +21,7 @@ data_root_result=${output_dir}
 data_root_ltf=${data_root_result}/ltf
 data_root_rsd=${data_root_result}/rsd
 output_ttl=${data_root_result}/kb/ttl
+final_ttl=${data_root_result}/NIST
 log_dir=${output_dir}/log
 
 
@@ -47,55 +48,55 @@ log_dir=${output_dir}/log
 
 # wait
 
-#####################################################################
-# extraction, including entity, relation, event
-#####################################################################
-for lang in 'ru' 'en' 'es' 
-do
-    for datasource in '' '_asr' #'_ocr'
-    do
-        (
-            data_root_lang=${data_root_result}/${lang}${datasource}
-            if [ -d "${data_root_lang}/ltf" ]
-            then
-                sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} ${thread_num} ${eval}
-            else
-                echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
-            fi
-        )&
-    done
-done
+# #####################################################################
+# # extraction, including entity, relation, event
+# #####################################################################
+# for lang in 'ru' 'en' 'es' 
+# do
+#     for datasource in '' '_asr' #'_ocr'
+#     do
+#         (
+#             data_root_lang=${data_root_result}/${lang}${datasource}
+#             if [ -d "${data_root_lang}/ltf" ]
+#             then
+#                 sh preprocess.sh ${data_root_lang} ${lang} ${parent_child_tab_path} ${sorted} ${thread_num} ${eval}
+#             else
+#                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
+#             fi
+#         )&
+#     done
+# done
 
-wait
+# wait
 
-for lang in 'ru' 'en' 'es'
-do
-    for datasource in '' '_asr' #'_ocr'
-    do
-        (
-            data_root_lang=${data_root_result}/${lang}${datasource}
-            if [ -d "${data_root_lang}/ltf" ]
-            then
-                sh pipeline_sample_${lang}_m36_oneie.sh ${data_root_lang} ${parent_child_tab_path} ${sorted} ${lang} ${datasource}
-            else
-                echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
-            fi
-        )&
-    done
-done
+# for lang in 'ru' 'en' 'es'
+# do
+#     for datasource in '' '_asr' #'_ocr'
+#     do
+#         (
+#             data_root_lang=${data_root_result}/${lang}${datasource}
+#             if [ -d "${data_root_lang}/ltf" ]
+#             then
+#                 sh pipeline_sample_${lang}_m36_oneie.sh ${data_root_lang} ${parent_child_tab_path} ${sorted} ${lang} ${datasource}
+#             else
+#                 echo "No" ${lang}${datasource} " documents in the corpus. Please double check. "
+#             fi
+#         )&
+#     done
+# done
 
-wait
+# wait
 
-#####################################################################
-# merging results
-#####################################################################
-docker run --rm -v ${data_root_result}:${data_root_result} -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
-    --root_folder ${data_root_result} \
-    --final_dir_name 'final' \
-    --output_folder ${output_ttl}
-echo "Final output of English, Russian, Ukrainian in "${output_ttl}
+# #####################################################################
+# # merging results
+# #####################################################################
+# docker run --rm -v ${data_root_result}:${data_root_result} -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /postprocessing/postprocessing_combine_turtle_from_all_sources.py \
+#     --root_folder ${data_root_result} \
+#     --final_dir_name 'final' \
+#     --output_folder ${output_ttl}
+
 
 docker run --rm -v ${data_root_result}:${data_root_result} -v ${parent_child_tab_path}:${parent_child_tab_path} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
@@ -108,6 +109,7 @@ docker run --rm -v ${data_root_result}:${data_root_result} \
     -w /aida-tools-java11 -i -t limanling/aida-tools \
     /aida-tools-java11/aida-eval-tools/target/appassembler/bin/cleanKB  \
     ${data_root_result}/cleankb.param
+echo "Final output of English, Russian, Ukrainian in "${final_ttl}
 
 
 # #####################################################################
