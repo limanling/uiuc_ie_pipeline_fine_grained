@@ -13,8 +13,8 @@ event_result_dir=${data_root}/event
 ltf_txt_path=${event_result_dir}/ltf_txt/${thread_id}
 framenet_path=${event_result_dir}/framenet_res
 
-# ================ script =========================
-## preprocess for English
+# # ================ script =========================
+# # preprocess for English
 # docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_${eval} \
 #     /opt/conda/envs/py36/bin/python \
 #     /event/aida_event/framenet/generate_framenet.py \

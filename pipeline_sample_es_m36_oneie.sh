@@ -124,12 +124,14 @@ docker run -v ${PWD}/system/aida_edl/edl_data:/data \
     m36
 ## nominal coreference
 echo "** Starting nominal coreference **"
-docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /udp/appos_extract.py \
-    --udp_dir ${udp_dir} \
-    --edl_tab_path ${edl_tab_link} \
-    --path_out_coref ${edl_tab_final}
+# docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /udp/appos_extract.py \
+#     --udp_dir ${udp_dir} \
+#     --edl_tab_path ${edl_tab_link} \
+#     --path_out_coref ${edl_tab_final}
+docker run --gpus '"device=0"' --rm -v ${data_root}:${data_root} laituan245/es_spanbert_entity_coref \
+    -edl_official ${edl_tab_link} -edl_freebase ${edl_tab_link_fb} -l ${ltf_source} -o ${edl_tab_final}
 ## tab2cs
 docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
@@ -231,6 +233,17 @@ docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     ${edl_cs_coarse} ${event_coarse_without_time} ${event_fine} \
     --filler_coarse ${filler_coarse} \
     --entity_finegrain_aida ${edl_cs_fine_all}
+# docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /event/aida_event/framenet/new_event_dependency.py \
+#     ${rsd_source} ${udp_dir} \
+#     ${edl_cs_coarse} ${filler_coarse} ${event_fine} ${event_frame} ${event_depen} #${event_frame} ${event_depen}
+# ## Combine fine-grained typing and rule-based
+# docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /aida_utilities/pipeline_merge_m18.py \
+#     --cs_fnames ${event_fine} ${event_depen} \
+#     --output_file ${event_fine_all}
 ## rewrite-args
 docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
@@ -242,10 +255,12 @@ docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     ${event_fine_all_clean}_tmp ${ltf_source} ${event_fine_all_clean} ${lang}
 ## Event coreference
 echo "** Event coreference **"
-docker run --rm -v ${data_root}:${data_root} -i --network="host" limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /event/aida_event_coreference/gail_event_coreference_test.py \
-    -i ${event_fine_all_clean} -o ${event_corefer} -c ${event_corefer_confidence} -r ${rsd_source} -l ${lang}
+# docker run --rm -v ${data_root}:${data_root} -i --network="host" limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /event/aida_event_coreference/gail_event_coreference_test.py \
+#     -i ${event_fine_all_clean} -o ${event_corefer} -c ${event_corefer_confidence} -r ${rsd_source} -l ${lang}
+docker run --gpus '"device=1"' --rm -v ${data_root}:${data_root} laituan245/es_event_coref \
+    -i ${event_fine_all_clean} -c ${event_corefer} -t ${event_corefer_confidence} -l ${ltf_source}
 # generate 4tuple
 docker run -i --rm -v ${data_root}:${data_root} \
     -v ${parent_child_tab_path}:${parent_child_tab_path} \
@@ -263,7 +278,7 @@ docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     ${ltf_source} ${event_corefer_time} ${event_final} --eval m36
 echo "Update event informative mention"
 
-# Final Merge
+Final Merge
 echo "** Merging all items **"
 docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \

@@ -57,7 +57,7 @@ core_nlp_output_path=${data_root}/corenlp
 filler_coarse=${edl_output_dir}/filler_${lang}.cs
 filler_coarse_color=${edl_output_dir}/filler_${lang}_all.cs
 filler_fine=${edl_output_dir}/filler_fine.cs
-# udp_dir=${data_root}/udp
+udp_dir=${data_root}/udp
 # chunk_file=${data_root}/edl/chunk.txt
 
 # relation output
@@ -221,34 +221,43 @@ docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
     ${edl_cs_coarse} ${event_coarse_without_time} ${event_fine} \
     --filler_coarse ${filler_coarse} \
     --entity_finegrain_aida ${edl_cs_fine_all}
-## Event Rule-based
+# Event Rule-based
 echo "** Event rule-based **"
 # docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
 #     /opt/conda/envs/py36/bin/python \
 #     /event/aida_event/framenet/new_event_framenet.py \
 #     ${framenet_path} ${ltf_source} ${rsd_source} \
 #     ${edl_cs_coarse} ${filler_coarse} ${event_fine} ${event_frame}
-# docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
-#     /opt/conda/envs/py36/bin/python \
-#     /event/aida_event/framenet/new_event_dependency.py \
-#     ${rsd_source} ${udp_dir} \
-#     ${edl_cs_coarse} ${filler_coarse} ${event_fine} ${event_fine} ${event_depen} #${event_frame} ${event_depen}
-# ## Combine fine-grained typing and rule-based
-# docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
-#     /opt/conda/envs/py36/bin/python \
-#     /aida_utilities/pipeline_merge_m18.py \
-#     --cs_fnames ${event_fine} ${event_depen} \
-#     --output_file ${event_fine_all}
-#         # --cs_fnames ${event_fine} ${event_frame} ${event_depen} \
+docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
+    /opt/conda/envs/py36/bin/python \
+    /event/aida_event/framenet/new_event_dependency.py \
+    ${rsd_source} ${udp_dir} \
+    ${edl_cs_coarse} ${filler_coarse} ${event_fine} ${event_frame} ${event_depen} #${event_frame} ${event_depen}
+## Combine fine-grained typing and rule-based
+docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
+    /opt/conda/envs/py36/bin/python \
+    /aida_utilities/pipeline_merge_m18.py \
+    --cs_fnames ${event_fine} ${event_depen} \
+    --output_file ${event_fine_all}
+        # --cs_fnames ${event_fine} ${event_frame} ${event_depen} \
 ## rewrite-args
 docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /event/aida_event/fine_grained/rewrite_args.py \
-    ${event_fine} ${ltf_source} ${event_fine_all_clean}_tmp ${lang}
+    ${event_fine_all} ${ltf_source} ${event_fine_all_clean}_tmp ${lang}
 docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /event/aida_event/fine_grained/rewrite_args.py \
     ${event_fine_all_clean}_tmp ${ltf_source} ${event_fine_all_clean} ${lang}
+# event attribute
+# POLARITY_TYPES = ['Negative', 'Positive']
+# MODALITY_TYPES = ['Asserted', 'Other']
+# GENERICITY_TYPES = ['Generic', 'Specific']
+# TENSE_TYPES = ['Unspecified', 'Past', 'Future', 'Present']
+# REALIS_TYPES = ['actual', 'generic', 'other']
+# docker run --rm -v ${data_root}:${data_root} laituan245/aida_attrs_filter \
+#     -i ${event_fine_all_clean} -o ${event_fine_all_clean}_attribute -l ${ltf_source} \
+#     -polarity polarity_pattern -modality modality_pattern -genericity genericity_pattern -tense tense_pattern
 # echo "** Event coreference **"
 docker run --rm -v ${data_root}:${data_root} --gpus '"device=1"' laituan245/spanbert_coref \
     -i ${event_fine_all_clean} -c ${event_corefer} -t ${event_corefer_confidence} -l ${ltf_source}

@@ -236,6 +236,17 @@ docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     ${edl_cs_coarse} ${event_coarse_without_time} ${event_fine} \
     --filler_coarse ${filler_coarse} \
     --entity_finegrain_aida ${edl_cs_fine_all}
+# docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /event/aida_event/framenet/new_event_dependency.py \
+#     ${rsd_source} ${udp_dir} \
+#     ${edl_cs_coarse} ${filler_coarse} ${event_fine} ${event_frame} ${event_depen} #${event_frame} ${event_depen}
+# ## Combine fine-grained typing and rule-based
+# docker run --rm -v ${data_root}:${data_root}  -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /aida_utilities/pipeline_merge_m18.py \
+#     --cs_fnames ${event_fine} ${event_depen} \
+#     --output_file ${event_fine_all}
 ## rewrite-args
 docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
