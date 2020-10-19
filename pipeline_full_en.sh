@@ -360,20 +360,21 @@ docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
     --freebase_tab ${edl_tab_freebase} \
     --fine_grained_entity_type_path ${edl_json_fine} \
     --lorelei_link_mapping ${lorelei_link_private_data}
-docker run --rm -v ${data_root}:${data_root} -v ${ttl_initial}:${ttl_initial} \
-    -v ${ttl_cleaned}:${ttl_cleaned} \
-    -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /postprocessing/postprocessing_cleankb_params_caci.py \
-    ${data_root}/cleankb.param ${ttl_initial} ${ttl_cleaned} 1 \
-    --eval m36
-docker run --rm -v ${data_root}:${data_root} \
-    -w /aida-tools-java11 -i -t limanling/aida-tools \
-    /aida-tools-java11/aida-eval-tools/target/appassembler/bin/cleanKB  \
-    ${data_root}/cleankb.param
-
 docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
-    chmod -R 777 ${ttl_cleaned} ${ttl_cleaned}
+    chmod -R 777 ${ttl_initial} ${ttl_initial}
+# docker run --rm -v ${data_root}:${data_root} -v ${ttl_initial}:${ttl_initial} \
+#     -v ${ttl_cleaned}:${ttl_cleaned} \
+#     -i limanling/uiuc_ie_m36 \
+#     /opt/conda/envs/py36/bin/python \
+#     /postprocessing/postprocessing_cleankb_params_caci.py \
+#     ${data_root}/cleankb.param ${ttl_initial} ${ttl_cleaned} 1 \
+#     --eval m36
+# docker run --rm -v ${data_root}:${data_root} \
+#     -w /aida-tools-java11 -i -t limanling/aida-tools \
+#     /aida-tools-java11/aida-eval-tools/target/appassembler/bin/cleanKB  \
+#     ${data_root}/cleankb.param
+# docker run --rm -v ${data_root}:${data_root} -w `pwd` -i limanling/uiuc_ie_m36 \
+#     chmod -R 777 ${ttl_cleaned} ${ttl_cleaned}
 
 echo "Final result in Cold Start Format is in "${merged_cs_link}
-echo "Final result in RDF Format is in "${ttl_cleaned}
+echo "Final result in RDF Format is in "${ttl_initial}
