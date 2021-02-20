@@ -96,6 +96,10 @@ sh pipeline_reduced.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryr
 
 Please find source code in https://github.com/limanling/uiuc_ie_pipeline_finegrained_source_code.
 
+## License
+
+GAIA system is licensed under the [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.en.html) or later.
+
 ## References
 ```
 @inproceedings{li2020gaia,
