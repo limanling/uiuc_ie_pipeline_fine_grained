@@ -33,11 +33,15 @@ sh set_up_m36.sh
 ```
 * Run the scripts. Note that the file paths are absolute paths.   
 ```bash
-sh pipeline_full_en.sh ${data_root}
+sh pipeline_full_en.sh ${data_root} ${GPU_id}
 ```
 For example, 
 ```bash
-sh pipeline_full_en.sh ${PWD}/data/testdata_dryrun
+sh pipeline_full_en.sh ${PWD}/data/testdata_dryrun 0
+```
+If there is no gpu, please only set the `data_root` parameter:
+```bash
+sh pipeline_full_en.sh ${data_root}
 ```
 
 
