@@ -214,7 +214,7 @@ docker run -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     --en_color_outfname ${edl_cs_color}
 
 # Relation Extraction (fine)
-docker run --rm -v ${data_root}:${data_root} -i --gpus device=$2 limanling/uiuc_ie_m36 \
+docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     -u /relation/FineRelationExtraction/EVALfine_grained_relations.py \
     --lang_id ${lang} \
@@ -224,8 +224,8 @@ docker run --rm -v ${data_root}:${data_root} -i --gpus device=$2 limanling/uiuc_
     --fine_ent_type_tab ${edl_tab_freebase} \
     --fine_ent_type_json ${edl_json_fine} \
     --outdir ${relation_result_dir} \
-    --fine_grained \
-    --use_gpu
+    --fine_grained 
+    # --use_gpu # --gpus device=$2 
 # ##   --reuse_cache \
 # docker run -i --rm -v ${data_root}:${data_root} \
 #     -w /EventTimeArg --gpus device=$2 wenhycs/uiuc_event_time \
