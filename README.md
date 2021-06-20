@@ -80,9 +80,7 @@ If there is no ASR and OCR files, please use `None` as input, e.g.,
 sh pipeline_sample_m36.sh ${PWD}/data/LDC2020E29 ${PWD}/data/LDC2020E27_AIDA_Phase_2_Practice_Topics_Reference_Knowledge_Base_V1.1/data ${PWD}/output/output_dryrun_E29_test ${PWD}/data/LDC2020E11_AIDA_Phase_2_Practice_Topic_Source_Data_V1.0/docs/parent_children.tab None None None 20
 ```
 
-
-
-## Run on reduced version
+### Run on reduced version
 Reduced Version disables the functions that will take long runningtime, including the functions of entity filler extraction (time, value, title, etc), part of fine-grained event extraction, etc.
 ```bash
 sh pipeline_reduced.sh ${data_root_ltf} ${data_root_rsd} ${output_dir}
@@ -92,9 +90,46 @@ For example,
 sh pipeline_reduced.sh ${PWD}/data/testdata_dryrun/ltf ${PWD}/data/testdata_dryrun/rsd ${PWD}/output/output_reduced_dryrun
 ```
 
+### Run on multimedia data
+
+#### Step 1. Data preparation
+Please prepare the input data file structure:
+```
+- CU_toolbox
+- data 
+  |------rsd
+  |------ltf
+  |------vision
+  |------------data/jpg/jpg
+  |------------data/video_shot_boundaries/representative_frames
+  |------------docs/video_data.msb
+  |------------docs/masterShotBoundary.msb
+  |------------docs/parent_children.tab
+  |------cu_objdet_results
+  |------cu_grounding_results
+  |------cu_grounding_matching_features
+  |------cu_grounding_dict_files
+```
+where `docs/video_data.msb` and `docs/masterShotBoundary.msb` are empty files and `data/video_shot_boundaries/representative_frames` is an empty directory. `docs/parent_children.tab` contains meta data of images and text documents in the format of `catalog_id	version	parent_uid	child_uid	url	child_asset_type	topic	lang_id	lang_manual	rel_pos	wrapped_md5	unwrapped_md5	download_date	content_date	status_in_corpus`, separated by `TAB`. If one image (e.g., `image_1.jpg`) and one text document (e.g., `text_1.ltf.xml`) belongs to the same news article (e.g., `doc_1`), then it should be formatted as:
+```
+gaia v1 doc_1 image_1 0 .jpg 0 0 0 0 0 0 0 0 0
+gaia v1 doc_1 text_1 0 .ltf.xml 0 0 0 0 0 0 0 0 0
+```
+Please avoid `.` in the file names and use `JPG` as image suffix. 
+
+The sample code of preparation is in `uiuc_ie_pipeline_fine_grained/multimedia/sample_data_preparation.py`. 
+
+Please find the sample data and result in [sample_data](https://uofi.box.com/s/fuqkq9zv5iwmtfemw94eec5yv9cbtxiy). The `CU_toolbox` can be downloaded in [CU_toolbox](https://uofi.box.com/s/v9508jvjbl170pu67rej8f8oiwyv20mq). 
+
+#### Step 2. Object detection and cross-media coreference
+Please run `uiuc_ie_pipeline_fine_grained/multimedia/multimedia.sh` to extract objects from images, and perform cross-media coreference.
+The results are saved in `cu_grounding_results`(pickle format) and `cu_graph_merging_ttl` (RDF format). Please find the result visualization code in `uiuc_ie_pipeline_fine_grained/multimedia/visualize_ttl_grounding.py` using the RDF format output. 
+
+
 ## Source Code
 
 Please find source code in https://github.com/limanling/uiuc_ie_pipeline_finegrained_source_code.
+
 
 ## License
 
