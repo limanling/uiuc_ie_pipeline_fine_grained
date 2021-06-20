@@ -123,7 +123,7 @@ Please find the sample data and result in [sample_data](https://uofi.box.com/s/f
 
 #### Step 2. Object detection and cross-media coreference
 Please run `uiuc_ie_pipeline_fine_grained/multimedia/multimedia.sh` to extract objects from images, and perform cross-media coreference.
-The results are saved in `cu_grounding_results`(pickle format) and `cu_graph_merging_ttl` (RDF format). Please find the result visualization code in `uiuc_ie_pipeline_fine_grained/multimedia/visualize_ttl_grounding.py` using the RDF format output. 
+The object results are saved in `cu_objdet_results/aida_output_34.pkl`(pickle format), and grounding results are saved in `cu_grounding_results`(pickle format) and `cu_graph_merging_ttl` (RDF format). Please find the grounding result visualization code in `uiuc_ie_pipeline_fine_grained/multimedia/visualize_ttl_grounding.py` using the RDF format output. 
 
 
 ## Source Code
