@@ -110,12 +110,7 @@ Please prepare the input data file structure:
   |------cu_grounding_matching_features
   |------cu_grounding_dict_files
 ```
-where `docs/video_data.msb` and `docs/masterShotBoundary.msb` are empty files and `data/video_shot_boundaries/representative_frames` is an empty directory. `docs/parent_children.tab` contains meta data of images and text documents in the format of 
-```
-catalog_id	version	parent_uid	child_uid	url	child_asset_type	topic	lang_id	lang_manual	rel_pos	wrapped_md5	unwrapped_md5	download_date	content_date	status_in_corpus
-``` 
-separated by `TAB`. 
-If one image (e.g., `image_1.jpg`) and one text document (e.g., `text_1.ltf.xml`) belongs to the same news article (e.g., `doc_1`), then it should be formatted as:
+where `docs/video_data.msb` and `docs/masterShotBoundary.msb` are empty files and `data/video_shot_boundaries/representative_frames` is an empty directory. `docs/parent_children.tab` contains meta data of images and text documents in the format of `catalog_id	version	parent_uid	child_uid	url	child_asset_type	topic	lang_id	lang_manual	rel_pos	wrapped_md5	unwrapped_md5	download_date	content_date	status_in_corpus`, separated by `TAB`. If one image (e.g., `image_1.jpg`) and one text document (e.g., `text_1.ltf.xml`) belongs to the same news article (e.g., `doc_1`), then it should be formatted as:
 ```
 gaia v1 doc_1 image_1 0 .jpg 0 0 0 0 0 0 0 0 0
 gaia v1 doc_1 text_1 0 .ltf.xml 0 0 0 0 0 0 0 0 0

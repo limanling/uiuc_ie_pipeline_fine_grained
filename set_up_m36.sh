@@ -22,14 +22,15 @@ docker pull laituan245/es_event_coref
 docker pull laituan245/es_spanbert_entity_coref
 
 
-if [ -d "${PWD}/system/aida_edl" ]
-then
-    echo "KB for linking is already in "${PWD}"/system/aida_edl"
-else
+# if [ -d "${PWD}/system/aida_edl" ]
+# then
+#     echo "KB for linking is already in "${PWD}"/system/aida_edl"
+# else
+    docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m36 rm -rf ${PWD}/system/aida_edl
     docker run --rm -v `pwd`:`pwd` -w `pwd` -i limanling/uiuc_ie_m36 mkdir -p ${PWD}/system/aida_edl
     docker run -v ${PWD}/system/aida_edl:/data panx27/data-processor wget http://159.89.180.81/demo/resources/edl_data.tar.gz -P /data
     docker run -v ${PWD}/system/aida_edl:/data panx27/data-processor tar zxvf /data/edl_data.tar.gz -C /data
-fi
+# fi
 
 docker run -d --rm -v ${PWD}/system/aida_edl/edl_data/db:/data/db --name db mongo
 
@@ -39,7 +40,7 @@ then
     docker run --rm --link db:mongo -v ${kb_dir}:/data panx27/edl python ./projs/docker_aida19/kb/import_mentions.py /data/entities.tab
 fi
 
-docker run -d -i --rm --name uiuc_ie_m36 -w /entity_api -p 5500:5500 --name aida_entity --gpus all limanling/uiuc_ie_m36 \
+docker run -d -i --rm --name uiuc_ie_m36 -w /entity_api -p 5500:5500 --name aida_entity limanling/uiuc_ie_m36 \
     /opt/conda/envs/aida_entity/bin/python \
     /entity_api/entity_api/app.py --eval m36
 
