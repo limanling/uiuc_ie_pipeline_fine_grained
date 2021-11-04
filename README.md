@@ -15,7 +15,7 @@ Table of Contents
 </p>
 
 ## Requirements
-Docker (Please do not set up UIUC IE Pipeline in a NAS, as the EDL needs MongoDB, which may lead to permission issues in a NAS.)
+Docker
 
 
 ## Quick Start
