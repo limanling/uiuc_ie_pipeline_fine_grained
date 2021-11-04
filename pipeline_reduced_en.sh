@@ -92,18 +92,6 @@ ttl_final=${data_root}/final
 docker run --rm -i -v ${data_root}:${data_root} -w /oneie --gpus device=${gpu_device} limteng/oneie_aida_m36 \
     /opt/conda/bin/python \
     /oneie/predict.py -i ${ltf_source} -o ${data_root} -l ${lang} #--output_hidden
-# # stanford nlp
-docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
-    /opt/conda/envs/py36/bin/python \
-    /aida_utilities/dir_readlink.py ${rsd_source} ${rsd_file_list} \
-    --stanford_corenlp ${core_nlp_output_path}
-docker run --rm -v ${data_root}:${data_root} -w /stanford-corenlp-aida_0 -i limanling/aida-tools \
-    java -mx50g -cp '/stanford-corenlp-aida_0/*' edu.stanford.nlp.pipeline.StanfordCoreNLP \
-    $* -annotators 'tokenize,ssplit,pos,lemma,ner' \
-    -outputFormat json \
-    -filelist ${rsd_file_list} \
-    -properties StanfordCoreNLP_${lang}.properties \
-    -outputDirectory ${core_nlp_output_path}
 docker run --rm -v ${data_root}:${data_root} -i limanling/uiuc_ie_m36 \
     /opt/conda/envs/py36/bin/python \
     /aida_utilities/ltf2bio.py ${ltf_source} ${edl_bio}
@@ -122,7 +110,7 @@ docker run --rm -v ${data_root}:${data_root} -i --network="host" --gpus device=$
     ${lang} ${edl_tab_nam_bio} ${entity_fine_model}
 echo "fine-grained typing finished"
 echo "** Linking entities to KB **"
-docker run -d --rm -v /shared/nas/data/m1/manling2/aida_docker_test/ta2-pipeline-local/edl_blenders/blender08/edl_data/db:/data/db --name db mongo:4.2
+# docker run -d --rm -v /shared/nas/data/m1/manling2/aida_docker_test/ta2-pipeline-local/edl_blenders/blender08/edl_data/db:/data/db --name db mongo:4.2
 docker run -v /shared/nas/data/m1/manling2/aida_docker_test/ta2-pipeline-local/edl_blenders/blender08/edl_data:/data \
     -v ${data_root}:/testdata_${lang} \
     --link db:mongo panx27/edl \
