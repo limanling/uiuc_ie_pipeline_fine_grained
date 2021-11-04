@@ -2,7 +2,7 @@
 
 kb_dir=$1  #/scratch/xiaoman6/tmp/edl_data/kb/LDC2019E43_AIDA_Phase_1_Evaluation_Reference_Knowledge_Base/data
 
-docker pull mongo
+docker pull mongo:4.2
 docker pull panx27/edl
 docker pull limanling/uiuc_ie_m36
 docker pull dylandilu/event_coreference_xdoc
@@ -31,7 +31,7 @@ else
     docker run -v ${PWD}/system/aida_edl:/data panx27/data-processor tar zxvf /data/edl_data.tar.gz -C /data
 fi
 
-docker run -d --rm -v ${PWD}/system/aida_edl/edl_data/db:/data/db --name db mongo
+docker run -d --rm -v ${PWD}/system/aida_edl/edl_data/db:/data/db --name db mongo:4.2
 
 if [ -d "${kb_dir}" ]
 then
